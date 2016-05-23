@@ -24,7 +24,7 @@
       "submit": "Suchen"
     },
     "header": {
-      "not_in_the": "Nicht in der/im"
+      "not_in_the": "Nicht in der/im "
     },
     "fake_nav": {
       "shop_kardia_mobile": "Kardia Mobile kaufen",
@@ -307,7 +307,7 @@
     }
   },
   "date_formats": {
-    "month_day_year": "%B %d, %Y"
+    "month_day_year": "%d %B, %Y"
   },
   "compatibility": {
     "compatibility": "Kompatibilität",
@@ -374,7 +374,7 @@
   "not_for_sale": {
     "sign_up": "Melden Sie sich an und erfahren Sie als Erste/r, wenn Kardia Band erhältlich ist.",
     "let_me_know": "Ich möchte mehr erfahren",
-    "email_address": "E-Mail-Adresss"
+    "email_address": "E-Mail-Adresse"
   },
   "recommended_accessories": {
     "recommended_accessories": "Empfohlenes Zubehör"

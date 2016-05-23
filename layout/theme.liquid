@@ -103,7 +103,14 @@
                     {% endif %}
                   </span>
               </a>
+              {% comment %}
+              this is a bit of a hack for now, must not keep this up
+              {% endcomment %}
+              {% if shop.locale == 'de' %}
+              <a href="#outside-us" class="outside-us">Sie sind nicht in Deutschland?</a>
+              {% else %}
               <a href="#outside-us" class="outside-us">{{ 'general.header.not_in_the' | t }}{{shop.address.country}}?</a>
+              {% endif %}
             </div>
 
             {% comment %}
@@ -245,7 +252,6 @@
         <div class="grid">
 
           <div class="grid__item large--one-half international-links">
-            <h4>Not in the {{shop.address.country}}?</h4>
             <p>{{ 'layout.footer.alivecor_is_available_in_the_following_countries' | t }}</p>
 
             <p class="other-store-list">
