@@ -323,6 +323,7 @@
     "last_updated_on": "Last updated on {{ date }}",
     "android_compatibility": "Android Compatibility",
     "tested_for_compatibility": "Tested for compatibility with the following Android devices:",
+    "samsung_S7": "Samsung S7",
     "lg_nexus_5": "LG Nexus 5",
     "samsung_note_5": "Samsung Note 5",
     "samsung_note_3": "Samsung Note 3",
