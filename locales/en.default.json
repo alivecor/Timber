@@ -379,6 +379,12 @@
   },
   "recommended_accessories": {
     "recommended_accessories": "Recommended Accessories"
+  },
+  "pardot_form": {
+    "success_msg": "Thank you! We will email you with availability updates for the Kardia Band.",
+    "error_msg": "There was a problem. Please make sure your email address is valid and try again."
+  },
+  "promo_banner": {
+    "message": ""
   }
-
 }
