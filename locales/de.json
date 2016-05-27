@@ -66,7 +66,7 @@
       "remove": "Entfernen",
       "note": "Besondere Hinweise an den Verkäufer",
       "subtotal": "Zwischensumme",
-      "shipping_at_checkout": "Versandkosten und Steuern an der Kasse berechnet",
+      "shipping_at_checkout": "Versandkosten (einschließlich Verpackung) werden an der Kasse berechnet.",
       "update": "Einkaufswagen aktualisieren",
       "checkout": "Zur Kasse",
       "empty": "Ihr Einkaufswagen ist im Moment leer.",
@@ -323,6 +323,7 @@
     "last_updated_on": "Zuletzt aktualisiert am {{ date }}",
     "android_compatibility": "Android Kompatibilität",
     "tested_for_compatibility": "Auf Kompatibilität mit den folgenden Android-Geräten geprüft:",
+    "samsung_S7": "Samsung S7",
     "lg_nexus_5": "LG Nexus 5",
     "samsung_note_5": "Samsung Note 5",
     "samsung_note_3": "Samsung Note 3",
@@ -378,5 +379,12 @@
   },
   "recommended_accessories": {
     "recommended_accessories": "Empfohlenes Zubehör"
+  },
+  "pardot_form": {
+    "success_msg": "Vielen Dank! Wir halten Sie per E-Mail auf dem Laufenden, wann Kardia Band verfügbar sein wird.",
+    "error_msg": "Ein Problem ist aufgetreten. Bitte vergewissern Sie sich, dass Ihre E-Mail-Adresse korrekt eingegeben wurde und versuchen Sie es noch einmal."
+  },
+  "promo_banner": {
+    "message": ""
   }
 }

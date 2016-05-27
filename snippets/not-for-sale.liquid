@@ -90,8 +90,10 @@
             </button>
           </span>
         </div>
-        <div class="success-msg"></div>
-        <div class="error-msg"></div>
+        <div class="pardot-messages">
+          <div class="success-msg hidden">{{ "pardot_form.success_msg" | t}}</div>
+          <div class="error-msg hidden">{{ "pardot_form.error_msg" | t}}</div>
+        </div>
       </form>
 
       <script>
@@ -112,16 +114,14 @@
 
 
         if (queryObj.successCallback === 'true') {
-          var successMsg = "Thank you! We will email you with availability updates for the Kardia Band.";
-          $('.success-msg').append(successMsg).show();
+          $('.success-msg').show();
           $('.input-group').css({
             visibility: 'hidden'
           });
         }
 
         if (queryObj.errorCallback === 'true') {
-          var errorMsg = "There was a problem. Please make sure your email address is valid and try again.";
-          $('.error-msg').append(errorMsg).show();
+          $('.error-msg').show();
         }
       </script>
 

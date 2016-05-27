@@ -323,6 +323,7 @@
     "last_updated_on": "Last updated on {{ date }}",
     "android_compatibility": "Android Compatibility",
     "tested_for_compatibility": "Tested for compatibility with the following Android devices:",
+    "samsung_S7": "Samsung S7",
     "lg_nexus_5": "LG Nexus 5",
     "samsung_note_5": "Samsung Note 5",
     "samsung_note_3": "Samsung Note 3",
@@ -379,6 +380,12 @@
   },
   "recommended_accessories": {
     "recommended_accessories": "Recommended Accessories"
+  },
+  "pardot_form": {
+    "success_msg": "Thank you! We will email you with availability updates for the Kardia Band.",
+    "error_msg": "There was a problem. Please make sure your email address is valid and try again."
+  },
+  "promo_banner": {
+    "message": ""
   }
-
 }
