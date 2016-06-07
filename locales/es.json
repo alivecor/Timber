@@ -62,7 +62,7 @@
       "update": "Actualizar carrito",
       "checkout": "Finalizar pedido",
       "empty": "Su carrito actualmente está vacío.",
-      "continue_browsing_html": "Continúe explorando <a href=\"/collections/all\">aquí</a>.",
+      "continue_browsing_html": "Continúe explorando aquí.",
       "close_cart": "Cerrar carrito"
     },
     "label": {
@@ -256,7 +256,15 @@
     "footer": {
       "social_title": "Conectarse",
       "newsletter_title": "Boletín",
-      "accepted_payments": "Pagos aceptados"
+      "accepted_payments": "Pagos aceptados",
+      "alivecor_is_available_in_the_following_countries": "AliveCor is available in the following countries",
+      "sign_up_for_the_latest_alivecor_news": "Sign up for the latest AliveCor news.",
+      "need_help": "Need help or have questions?",
+      "happy_to_help": "Our customer support team is happy to help.",
+      "email_us_at": "Email us at",
+      "all_rights_reserved": "All rights reserved AliveCor",
+      "limited_warranty_and_returns": "Limited Warranty and Returns Policy",
+      "keep_your_finger_on_the_pulse": "Keep your finger on the pulse."
     }
   },
   "products": {
@@ -292,5 +300,84 @@
   },
   "date_formats":{
     "month_day_year": "%d de %B, %Y"
+  },
+  "compatibility": {
+    "compatibility": "Compatibility",
+    "apple_compatibility": "Apple Compatibility",
+    "iphone6_plus_6s_plus": "iPhone 6 Plus / 6s Plus",
+    "iphone6_6s": "iPhone 6 / 6s",
+    "iphone5_5s_5c": "iPhone 5 / 5s / 5c",
+    "iphone4s": "iPhone 4s",
+    "ipod_touch": "iPod Touch 5G",
+    "ipad_air_air2": "iPad Air / Air 2",
+    "ipad_mini": "iPad Mini",
+    "ios_9_2": "iOS 9.2",
+    "last_updated_on": "Last updated on {{ date }}",
+    "android_compatibility": "Android Compatibility",
+    "tested_for_compatibility": "Tested for compatibility with the following Android devices:",
+    "samsung_S7": "Samsung S7",
+    "lg_nexus_5": "LG Nexus 5",
+    "samsung_note_5": "Samsung Note 5",
+    "samsung_note_3": "Samsung Note 3",
+    "galaxy_s6_s5_s4": "Galaxy S6 / S5 / S4",
+    "galaxy_s3": "Galaxy S3",
+    "htc_one_m7": "HTC One M7",
+    "jitterbug_touch_3_2": "Jitterbug Touch 3 / 2",
+    "android_6_0_1": "Android 6.0.1",
+    "android_5_x": "Android 5.x",
+    "android_4_x": "Android 4.x",
+    "app_store": "App Store",
+    "google_play": "Google Play",
+    "use_of_kardia_mobile_requires_html": "Use of Kardia Mobile requires the companion app Kardia, available for download in the {{itunes_url}} and {{play_url}}.",
+    "kardia_app": "Kardia App"
+  },
+  "product_tabs": {
+    "compatibility": "Compatibility",
+    "tech_specs": "Tech Specs",
+    "reviews": "Reviews"
+  },
+  "tech_specs": {
+    "dimensions": "Dimensions",
+    "product_dims": "8.2 cm x 3.2 cm x 0.35 cm",
+    "electrode_dims": "2 3cm x 3cm stainless-steel electrodes",
+    "weight": "Weight",
+    "product_weight": "18 grams",
+    "power": "Power",
+    "power_source": "3V CR2016 coin cell battery (included)",
+    "battery_life": "200 hours operational time",
+    "battery_life_typical": "12 months typical use",
+
+    "ekg_characteristics": "EKG Characteristics",
+    "single_lead": "Single Lead ECG",
+    "dynamic_range": "10 mV peak-to-peak input dynamic range",
+    "recording_length": "30 second to 5 minute recording duration",
+    "sample_rate": "300 samples per second sampling rate",
+    "bit_depth": "16 bit resolution",
+    "requirements": "Requirements",
+    "compatible_device": "Compatible Apple or Android device",
+    "kardia_app": "Kardia App",
+    "user_manuals": "User Manuals",
+    "ios_user_manual_link": "Kardia Mobile for iOS",
+    "android_user_manual_link": "Kardia Mobile for Android"
+  },
+  "main_product": {
+    "guarantee": "14-day money back guarantee",
+    "warranty": "1-year warranty",
+    "see_all_reviews": "See all reviews"
+  },
+  "not_for_sale": {
+    "sign_up": "Sign up to be the first to know when Kardia Band is available",
+    "let_me_know": "Let me know",
+    "email_address": "email address"
+  },
+  "recommended_accessories": {
+    "recommended_accessories": "Recommended Accessories"
+  },
+  "pardot_form": {
+    "success_msg": "Thank you! We will email you with availability updates for the Kardia Band.",
+    "error_msg": "There was a problem. Please make sure your email address is valid and try again."
+  },
+  "promo_banner": {
+    "message": "FREE ground shipping for a limited time on orders of $99 or more"
   }
 }
