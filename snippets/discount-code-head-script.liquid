@@ -1,0 +1,24 @@
+<script>
+/* Read the Query String value from the URL */
+    var urlParams;
+    (window.onpopstate = function () {
+        var match,
+            pl     = /\+/g,
+            search = /([^&=]+)=?([^&]*)/g,
+            decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+            query  = window.location.search.substring(1);
+
+    urlParams = {};
+    while (match = search.exec(query))
+      urlParams[decode(match[1])] = decode(match[2]);
+    })();
+
+    if ($("#discount_input").val() == ('' || undefined || null || 'undefined')) {
+       sessionStorage.setItem("discount", urlParams["discount"]);
+    }
+
+    else if ($("#discount_input").val() != urlParams["discount"]) {
+       sessionStorage.removeItem("discount");
+       sessionStorage.setItem("discount", urlParams["discount"]);
+    }
+</script>

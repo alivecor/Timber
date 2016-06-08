@@ -387,5 +387,8 @@
   },
   "promo_banner": {
     "message": ""
+  },
+  "discount_notification": {
+    "message": "Discount code will be applied at checkout:"
   }
 }
