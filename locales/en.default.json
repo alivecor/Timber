@@ -387,5 +387,8 @@
   },
   "promo_banner": {
     "message": "FREE ground shipping for a limited time on orders of $99 or more"
+  },
+  "discount_notification": {
+    "message": "Discount code will be applied at checkout:"
   }
 }

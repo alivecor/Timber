@@ -1,0 +1,24 @@
+<div class="hidden discount-code-notifier">
+  <div class="discount-code-notifier-inner">
+    <span class="msg">
+      {{ 'discount_notification.message' | t}} &nbsp;
+    </span>
+    <span class="display-code">
+    </span>
+    <a class="notifier-dismiss" title="Dismiss">
+      &times;
+    </a>
+  </div>
+</div>
+
+<script>
+  if (sessionStorage.getItem("discount").length != 0) {
+    $('.discount-code-notifier').removeClass('hidden');
+    $('.display-code').text(sessionStorage.getItem("discount"));
+  }
+  //allow users to dismiss the message
+  $('.notifier-dismiss').on('click', function() {
+    $('.discount-code-notifier').addClass('hidden');
+  });
+</script>
+
