@@ -14,6 +14,9 @@
     <!-- DISCOUNT CODE script for checkout ================================================== -->
     {% include 'discount-code-cart' %}
 
+    <!-- Script for FB Tacking -->
+    {% include 'fb-tracking-code' %}
+
     <h2>{{ 'cart.general.title' | t }}</h2>
     <div class="checkout-button-container">
       <input type="submit" name="checkout" class="btn" value="{{ 'cart.general.checkout' | t }}">
