@@ -12,7 +12,8 @@
 </div>
 
 <script>
-  if (sessionStorage.getItem("discount").length != 0) {
+  var discountCookie = sessionStorage.getItem("discount")
+  if (discountCookie && discountCookie.length != 0) {
     $('.discount-code-notifier').removeClass('hidden');
     $('.display-code').text(sessionStorage.getItem("discount"));
   }

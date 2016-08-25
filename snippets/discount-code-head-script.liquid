@@ -10,6 +10,7 @@
         query  = window.location.search.substring(1);
 
     query = query.split("?")[0];
+    query = query.split("%")[0];
 
     urlParams = {};
     while (match = search.exec(query))
