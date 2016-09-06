@@ -50,7 +50,7 @@
 
   <!-- Discount CODE from URL ================================================= -->
   {% include 'discount-code-head-script' %}
-  {% include 'analytics-scripts' %}
+
 </head>
 
 {% comment %}
@@ -300,6 +300,7 @@
         <span>{{ 'layout.footer.all_rights_reserved' | t }}</span>
         <a href="http://www.alivecor.com/warranty">{{ 'layout.footer.limited_warranty_and_returns' | t }}</a>
       </div>
+      {% include 'analytics-scripts' %}
 
     </footer>
     <!-- //site-footer -->
