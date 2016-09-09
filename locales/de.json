@@ -314,6 +314,7 @@
     "apple_compatibility": "Apple Kompatibilität",
     "iphone6_plus_6s_plus": "iPhone 6 Plus / 6s Plus",
     "iphone6_6s": "iPhone 6 / 6s",
+    "iphonese": "iPhone SE",
     "iphone5_5s_5c": "iPhone 5 / 5s / 5c",
     "iphone4s": "iPhone 4s",
     "ipod_touch": "iPod Touch 5G",
@@ -337,7 +338,8 @@
     "app_store": "App Storr",
     "google_play": "Google Play",
     "use_of_kardia_mobile_requires_html": "Zur Verwendung des Kardia Mobile ist die Begleit-App Kardia erforderlich, die Sie im {{itunes_url}} und im {{play_url}} herunterladen können.",
-    "kardia_app": "Kardia App"
+    "kardia_app": "Kardia App",
+    "omron_compatibility": "Omron Blood Pressure Monitor Compatibility"
   },
   "product_tabs": {
     "compatibility": "Kompatibilität",

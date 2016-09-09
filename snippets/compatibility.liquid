@@ -13,6 +13,10 @@
       ({{ 'compatibility.ios_9_2' | t }})
     </li>
     <li>
+      <b>{{ 'compatibility.iphonese' | t }}</b>
+      ({{ 'compatibility.ios_9_2' | t }})
+    </li>
+    <li>
       <b>{{ 'compatibility.iphone5_5s_5c' | t }}</b>
       ({{ 'compatibility.ios_9_2' | t }})
     </li>
@@ -43,8 +47,12 @@
       ({{ 'compatibility.ios_9_2' | t }})
     </li>
   </ul>
-    {% assign updated_date = '1460790000' | date: format: 'month_day_year'  %}
-  <p>{{ 'compatibility.last_updated_on' | t: date: updated_date}}</p>
+  <h3 class="omron-compat-link">
+  <a href="https://omronhealthcare.com/kardiamobile/" target="_blank">
+    {{ 'compatibility.omron_compatibility' | t }}
+  </a>
+  </h3>
+
 </div>
 <div class="grid__item large--one-half">
   <h3>{{ 'compatibility.android_compatibility' | t }}</h3>
@@ -111,4 +119,6 @@
     <a class="itunes-badge" href="https://itunes.apple.com/app/aliveecg/id579769143"><img src="https://alivecorcms.s3.amazonaws.com/sites/51b0fa1d9005a1000f00292e/theme/images/appstore-badge.svg" alt="link to AppStore"></a>
     <a class="itunes-badge" href="https://play.google.com/store/apps/details?id=com.alivecor.aliveecg"><img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Android app on Google Play"></a>
   </div>
+  {% assign updated_date = '1473318000' | date: format: 'month_day_year'  %}
+  <p class="last-updated">{{ 'compatibility.last_updated_on' | t: date: updated_date}}</p>
 </div>
