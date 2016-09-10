@@ -51,6 +51,10 @@
   <!-- Discount CODE from URL ================================================= -->
   {% include 'discount-code-head-script' %}
 
+  {% if template contains 'cart' %}
+  {% include 'tracking-pixels' %}
+  {% endif %}
+
 </head>
 
 {% comment %}
