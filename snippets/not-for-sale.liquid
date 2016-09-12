@@ -64,18 +64,18 @@
       <div class="h3">{{product.options.first | escape}}</div>
       {% endif %}
 
-      <!-- lead capture form goes here --->
+      <!-- lead capture form goes here -->
       <h3>
         {{ 'not_for_sale.sign_up' | t }}
       </h3>
       {% assign domain = shop.domain %}
       {% case domain %}
         {% when 'alivecor-europe-shop.myshopify.com' %}
-          {% assign actionUrl = "https://go.alivecor.com/l/149241/2016-05-20/8hpxw" %}
+          {% assign actionUrl = "https://go.pardot.com/l/149241/2016-05-20/8hpxw" %}
         {% when 'alivecor-uk.myshopify.com' %}
-          {% assign actionUrl = "https://go.alivecor.com/l/149241/2016-03-15/3h21" %}
+          {% assign actionUrl = "https://go.pardot.com/l/149241/2016-03-15/3h21" %}
         {% else %}
-          {% assign actionUrl = "https://go.alivecor.com/l/149241/2016-03-15/3gyt" %}
+          {% assign actionUrl = "https://go.pardot.com/l/149241/2016-03-15/3gyt" %}
       {% endcase %}
       <form
         action="{{actionUrl}}"
