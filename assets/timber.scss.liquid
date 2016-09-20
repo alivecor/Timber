@@ -2725,6 +2725,15 @@ label.error {
   }
 }
 
+.form-vertical {
+  .product-description {
+    min-height: em(310px);
+    @include at-query ($max, $postSmall) {
+      min-height: initial;
+    }
+  }
+}
+
 .form-control {
   &.out-of-stock {
     font-style: italic;
