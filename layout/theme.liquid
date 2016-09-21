@@ -422,5 +422,9 @@
     {% include 'zopim' %}
   {% endif %}
   {% include 'discount-code-notifier' %}
+  
+  {% if template contains 'cart' %}   
+  {% include 'tracking-pixels' %}   
+  {% endif %}
 </body>
 </html>
