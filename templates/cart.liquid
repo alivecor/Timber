@@ -124,3 +124,16 @@
     </a>
   </p>
 {% endif %}
+  <!-- marketizator start -->
+  <script>
+    document.onreadystatechange = function () {
+      if(document.readyState == 'complete') {
+         var experiment = _mktz.getExperiment ();
+         var visitor = _mktz.getVisitor ();
+         if(experiment && visitor) {
+            $('#mktz_custom').val('{"uid":"'+visitor.uid+'","session":"'+visitor.session_id+'","last_variation":"'+experiment[0].id_variation+'"}');
+      }
+    }
+   };
+  </script>
+  <!-- marketizator end -->
