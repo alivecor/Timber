@@ -290,7 +290,9 @@
       "unavailable": "Nicht verfügbar",
       "compare_at": "Vergleichen bei",
       "quantity": "Menge",
-      "add_to_cart": "In den Einkaufswagen"
+      "add_to_cart": "In den Einkaufswagen",
+      "preorder": "Preorder",
+      "preorder_date": "Approximate ship date will be in early November."
     }
   },
   "gift_cards": {

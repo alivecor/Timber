@@ -58,11 +58,13 @@
       </div>
 
       {% comment %}
-        If there are variants, show the user a variant title
+        If there are variants, show the user a variant title--hiding variants
       {% endcomment %}
+      {% comment %}
       {% if product.variants.size > 1 %}
       <div class="h3">{{product.options.first | escape}}</div>
       {% endif %}
+      {% endcomment %}
 
       <!-- lead capture form goes here -->
       <h3>
