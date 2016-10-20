@@ -109,14 +109,7 @@
                     {% endif %}
                   </span>
               </a>
-              {% comment %}
-              this is a bit of a hack for now, must not keep this up
-              {% endcomment %}
-              {% if shop.locale == 'de' %}
-              <a href="#outside-us" class="outside-us">Sie sind nicht in Deutschland?</a>
-              {% else %}
-              <a href="#outside-us" class="outside-us">{{ 'general.header.not_in_the' | t }}{{shop.address.country}}?</a>
-              {% endif %}
+
             </div>
 
             {% comment %}
@@ -253,17 +246,12 @@
 
     <!-- begin site-footer -->
     <footer class="site-footer small--text-center" role="contentinfo">
-      <a name="outside-us"></a>
       <div class="wrapper">
         <div class="grid">
 
-          <div class="grid__item large--one-half international-links">
-            <p>{{ 'layout.footer.alivecor_is_available_in_the_following_countries' | t }}</p>
+          <div class="grid__item large--one-half">
 
-            <p class="other-store-list">
-            </p>
-
-            <h5>{{ 'layout.footer.keep_your_finger_on_the_pulse' | t }}</h5>
+            <h4>{{ 'layout.footer.keep_your_finger_on_the_pulse' | t }}</h4>
             <p>{{ 'layout.footer.sign_up_for_the_latest_alivecor_news' | t }}</p>
             {% if settings.footer_newsletter_enable %}
               <div class="grid__item large--two-thirds medium--two-thirds small--one-whole newsletter-signup">
@@ -291,6 +279,14 @@
           </div>
 
           <div class="grid__item large--one-half">
+              {% comment %}
+              this is a bit of a hack for now, must not keep this up
+              {% endcomment %}
+              {% if shop.locale == 'de' %}
+              <a href="https://www.alivecor.com/de/resellers" class="outside-us">Kauf außerhalb Deutschlands</a>
+              {% else %}
+              <a href="#https://www.alivecor.com/en/resellers" class="outside-us">{{ 'general.header.purchase_outside_of' | t }}{{shop.address.country}}</a>
+              {% endif %}
             <h4>{{ 'layout.footer.need_help' | t }}</h4>
             <p>{{ 'layout.footer.happy_to_help' | t }}</p>
             <p>{{ 'layout.footer.email_us_at' | t }} <a href="mailto:support@alivecor.com">support@alivecor.com</a></p>
@@ -314,63 +310,9 @@
   {% comment %}
     Template-specific js
   {% endcomment %}
+
+  
   <script>
-    var storesByLocale = {
-      "AUSTRALIA": {
-        shop: "AUSTRALIA",
-        url: "http://www.alivetec.com/store",
-        fullName: "Australia"
-      },
-      "CANADA": {
-        shop: "CANADA",
-        url: "http://www.amazon.ca/s/ref=bl_dp_s_web_6205177011?ie=UTF8&amp;field-brandtextbin=AliveCor&amp;node=6205177011",
-        fullName: "Canada"
-      },
-      "HONG KONG": {
-        shop: "HONG KONG",
-        url: "http://www.alivecor.com.hk",
-        fullName: "Hong Kong"
-      },
-      "INDIA": {
-        shop: "INDIA",
-        url: "http://hng.co.in:9022/cor/ProductQuantity.aspx",
-        fullName: "India"
-      },
-      "IRELAND" : {
-        shop: "UNITED KINGDOM",
-        url: "http://shop.gb.alivecor.com",
-        fullName: "Ireland"
-      },
-      "UNITED KINGDOM": {
-        shop: "UNITED KINGDOM",
-        url: "http://shop.gb.alivecor.com",
-        fullName: "United Kingdom"
-      },
-      "UNITED STATES": {
-        shop: "UNITED STATES",
-        url: "http://shop.us.alivecor.com",
-        fullName: "United States"
-      }
-    };
-
-    var currentStoreLocale = "{{shop.address.country_upper}}";
-    var storeCount = Object.keys(storesByLocale).length;
-    var i = 0;
-    var storeList = $('.other-store-list');
-
-    for (store in storesByLocale) {
-      i++;
-
-      if (storesByLocale[store].shop != currentStoreLocale) {
-        var storeLink = $("<a href=" + storesByLocale[store].url + ">" + storesByLocale[store].fullName + "</a>");
-        storeList.append(storeLink);
-
-        if (i < storeCount - 1) {
-          storeList.append(" |")
-        }
-      }
-    }
-
     //if there's a promo banner add a class to the body so we can pad it
     var promoBannerPresent = $('#simplepromo_container').length > 0;
     if (promoBannerPresent) {
