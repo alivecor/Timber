@@ -24,7 +24,8 @@
       "submit": "Search"
     },
     "header": {
-      "not_in_the": "Not in the "
+      "not_in_the": "Not in the ",
+      "purchase_outside_of": "Purchase outside of "
     },
     "fake_nav": {
       "shop_kardia_mobile": "Shop Kardia Mobile",
