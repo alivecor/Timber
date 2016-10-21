@@ -5,24 +5,28 @@
   </div>
   <ul class="compatibility-list">
     <li>
+      <b>{{ 'compatibility.iphone7' | t }}</b>
+      ({{ 'compatibility.ios_10_0_2' | t }})
+    </li>
+    <li>
       <b>{{ 'compatibility.iphone6_plus_6s_plus' | t }}</b>
-      ({{ 'compatibility.ios_9_2' | t }})
+      ({{ 'compatibility.ios_10_0_2' | t }})
     </li>
     <li>
       <b>{{ 'compatibility.iphone6_6s' | t }}</b>
-      ({{ 'compatibility.ios_9_2' | t }})
+      ({{ 'compatibility.ios_10_0_2' | t }})
     </li>
     <li>
       <b>{{ 'compatibility.iphonese' | t }}</b>
-      ({{ 'compatibility.ios_9_2' | t }})
+      ({{ 'compatibility.ios_10_0_2' | t }})
     </li>
     <li>
       <b>{{ 'compatibility.iphone5_5s_5c' | t }}</b>
-      ({{ 'compatibility.ios_9_2' | t }})
+      ({{ 'compatibility.ios_10_0_2' | t }})
     </li>
     <li>
       <b>{{ 'compatibility.iphone4s' | t }}</b>
-      ({{ 'compatibility.ios_9_2' | t }})
+      ({{ 'compatibility.ios_9_3_5' | t }})
     </li>
   </ul>
   <div class="device-icon">
@@ -31,7 +35,7 @@
   <ul class="compatibility-list">
     <li>
       <b>{{ 'compatibility.ipod_touch' | t }}</b>
-      ({{ 'compatibility.ios_9_2' | t }})
+      ({{ 'compatibility.ios_9_3_5' | t }})
     </li>
   </ul>
   <div class="device-icon">
@@ -40,11 +44,15 @@
   <ul class="compatibility-list">
     <li>
       <b>{{ 'compatibility.ipad_air_air2' | t }}</b>
-      ({{ 'compatibility.ios_9_2' | t }})
+      ({{ 'compatibility.ios_9_3_5' | t }})
     </li>
     <li>
       <b>{{ 'compatibility.ipad_mini' | t }}</b>
-      ({{ 'compatibility.ios_9_2' | t }})
+      ({{ 'compatibility.ios_9_3_5' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.ipad_mini_2_3' | t }}</b>
+      ({{ 'compatibility.ios_10_0_2' | t }})
     </li>
   </ul>
   <h3 class="omron-compat-link">
@@ -56,42 +64,45 @@
 </div>
 <div class="grid__item large--one-half">
   <h3>{{ 'compatibility.android_compatibility' | t }}</h3>
-  <p class="h4">{{ 'compatibility.tested_for_compatibility' | t }}</p>
   <div class="device-icon">
     <img src="{{ 'icon_android_phone.png' | asset_url }}" alt=""/>
   </div>
   <ul class="compatibility-list">
     <li>
-      <b>{{ 'compatibility.samsung_S7' | t }}</b>
+      <b>{{ 'compatibility.galaxy_s3' | t }}</b>
+      ({{ 'compatibility.android_4_3' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.galaxy_s4' | t }}</b>
+      ({{ 'compatibility.android_5_0_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.galaxy_s5_s6_s7' | t }}</b>
       ({{ 'compatibility.android_6_0_1' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.lg_nexus_5' | t }}</b>
-      ({{ 'compatibility.android_6_0_1' | t }})
+      <b>{{ 'compatibility.samsung_note_3' | t }}</b>
+      ({{ 'compatibility.android_5_0' | t }})
     </li>
     <li>
       <b>{{ 'compatibility.samsung_note_5' | t }}</b>
       ({{ 'compatibility.android_6_0_1' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.samsung_note_3' | t }}</b>
-      ({{ 'compatibility.android_5_x' | t }})
+      <b>{{ 'compatibility.galaxy_j1' | t }}</b>
+      ({{ 'compatibility.android_5_1_1' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.galaxy_s6_s5_s4' | t }}</b>
-      ({{ 'compatibility.android_5_x' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.galaxy_s3' | t }}</b>
-      ({{ 'compatibility.android_4_x' | t }})
+      <b>{{ 'compatibility.lg_nexus_5' | t }}</b>
+      ({{ 'compatibility.android_6_0_1' | t }})
     </li>
     <li>
       <b>{{ 'compatibility.htc_one_m7' | t }}</b>
-      ({{ 'compatibility.android_4_x' | t }})
+      ({{ 'compatibility.android_4_3' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.jitterbug_touch_3_2' | t }}</b>
-      ({{ 'compatibility.android_4_x' | t }})
+      <b>{{ 'compatibility.jitterbug_touch_3' | t }}</b>
+      ({{ 'compatibility.android_4_3' | t }})
     </li>
   </ul>
 
@@ -119,6 +130,7 @@
     <a class="itunes-badge" href="https://itunes.apple.com/app/aliveecg/id579769143"><img src="https://alivecorcms.s3.amazonaws.com/sites/51b0fa1d9005a1000f00292e/theme/images/appstore-badge.svg" alt="link to AppStore"></a>
     <a class="itunes-badge" href="https://play.google.com/store/apps/details?id=com.alivecor.aliveecg"><img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Android app on Google Play"></a>
   </div>
-  {% assign updated_date = '1473318000' | date: format: 'month_day_year'  %}
+  {% comment %}new Date().getTime(){% endcomment %}
+  {% assign updated_date = '1477085957' | date: format: 'month_day_year'  %}
   <p class="last-updated">{{ 'compatibility.last_updated_on' | t: date: updated_date}}</p>
 </div>
