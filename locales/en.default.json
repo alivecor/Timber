@@ -293,7 +293,7 @@
       "quantity": "Quantity",
       "add_to_cart": "Add to Cart",
       "preorder": "Preorder",
-      "preorder_date": "Approximate ship date will be in early November."
+      "preorder_date": "Product will be shipped pending CE Mark."
     }
   },
   "gift_cards": {
@@ -357,7 +357,7 @@
     "return_policy": "Return Policy"
   },
   "return_policy": {
-    "p1_html": "If you decide Kardia Mobile isn’t for you, AliveCor will issue you a full refund on your purchase if you contact us within 2 weeks of delivery.  To request a refund, contact AliveCor Support at <a href=\"mailto:support@alivecor.com\">support@alivecor.com<\/a> or (650) 396-8649.  We will issue you an RMA number to include when you ship your device back to us and will process your refund upon receipt of your device.",
+    "p1_html": "If you decide Kardia Mobile isn’t for you, AliveCor will issue you a full refund on your purchase if you contact us within 2 weeks of delivery.  To request a refund, contact AliveCor Support at <a href=\"mailto:support@alivecor.com\">support@alivecor.com<\/a> or (885) 338-8800.  We will issue you an RMA number to include when you ship your device back to us and will process your refund upon receipt of your device.",
     "p2_html": "If your device has stopped working and is still under warranty please contact us for troubleshooting assistance.  If we find that your device is in fact defective while within the <a href=\"https:\/\/www.alivecor.com\/warranty\">warranty period<\/a> we will issue a replacement upon receipt of the faulty device."
   },
   "tech_specs": {
