@@ -111,14 +111,19 @@
         {% endunless %}
 
         <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
-          <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+          <span id="AddToCartText">
+          {% if sold_out %}
+          {{ 'products.product.sold_out' | t }}
+          {% endif %}
+          {% if sold_out == false %}
+          {{ 'products.product.add_to_cart' | t }}
+          {% endif %}
+          </span>
         </button>
       </form>
 
     {% endif %}
-    {% if sold_out %}
-      <br><strong>{{ 'products.product.sold_out' | t }}</strong>
-    {% endif %}
+
     {% if on_sale %}
       <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
       <br><s>{{ product.compare_at_price | money }}</s>

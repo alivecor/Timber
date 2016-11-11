@@ -58,9 +58,15 @@
 
 </div>
 
-{% for product in collections.products-not-for-sale.products %}
+{% for product in collections.featured-product.products %}
   <div class="band section">
     {% include 'main-product2' %}
+  </div>
+{% endfor %}
+
+{% for product in collections.products-not-for-sale.products %}
+  <div class="band section">
+    {% include 'not-for-sale' %}
   </div>
 {% endfor %}
 
