@@ -325,6 +325,8 @@
     "ipad_air_air2": "iPad Air / Air 2",
     "ipad_mini": "iPad Mini",
     "ipad_mini_2_3": "iPad Mini 2 / 3",
+    "watch1_2": "Apple Watch Series 1 and Series 2",
+    "watch_os_3_1": "WatchOS 3.1",
     "ios_9_3_5": "iOS 9.3.5",
     "ios_10_0_2": "iOS 10.0.2",
     "last_updated_on": "Last updated on {{ date }}",
