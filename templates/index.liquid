@@ -9,12 +9,19 @@
 
 {% for product in collections.main-product.products %}
   {% include 'main-product' %}
-
   {% comment %}
     Product tab snippets will go in here
   {% endcomment %}
   {% include 'product-tabs' product=product%}
 {% endfor %}
+
+{% for product in collections.featured-product.products %}
+  <div class="band section">
+    {% include 'main-product2' %}
+  </div>
+{% endfor %}
+
+
 
 {% comment %}
   Use class grid-uniform to have evenly sized columns clear
@@ -40,7 +47,7 @@
       Example:
         - {% assign grid_item_width = 'large--one-third medium--one-half' %}
     {% endcomment %}
-    {% assign grid_item_width = 'large--one-third medium--one-half' %}
+    {% assign grid_item_width = 'large--one-half medium--one-half' %}
     {% include 'product-grid-item' %}
 
   {% else %}
@@ -58,11 +65,7 @@
 
 </div>
 
-{% for product in collections.featured-product.products %}
-  <div class="band section">
-    {% include 'main-product2' %}
-  </div>
-{% endfor %}
+
 
 {% for product in collections.products-not-for-sale.products %}
   <div class="band section">
