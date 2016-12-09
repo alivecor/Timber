@@ -359,7 +359,7 @@
     "return_policy": "Rücksendevorschriften"
   },
   "return_policy": {
-    "p1_html": "Wenn Sie mit Kardia Mobile nicht zufrieden sind, erhalten Sie eine vollständige Erstattung des Kaufpreises, wenn Sie uns innerhalb von 14 Tagen nach Erhalt der Ware kontaktieren.  Kontaktieren Sie den AliveCor Kundendienst unter <a href=\"mailto:support@alivecor.com\">support@alivecor.com<\/a> um eine Erstattung zu beantragen.  Wir generieren eine Rücksendenummer für Sie, die Sie beilegen müssen, wenn Sie uns das Gerät zurücksenden, und wir bearbeiten Ihre Erstattung ab Eingang des Geräts.",
+    "p1_html": "Wenn Sie mit Kardia Mobile nicht zufrieden sind, erhalten Sie eine vollständige Erstattung des Kaufpreises, wenn Sie uns innerhalb von 30 Tagen nach Erhalt der Ware kontaktieren.  Kontaktieren Sie den AliveCor Kundendienst unter <a href=\"mailto:support@alivecor.com\">support@alivecor.com<\/a> um eine Erstattung zu beantragen.  Wir generieren eine Rücksendenummer für Sie, die Sie beilegen müssen, wenn Sie uns das Gerät zurücksenden, und wir bearbeiten Ihre Erstattung ab Eingang des Geräts.",
     "p2_html": "Wenn Ihr Gerät nicht mehr funktioniert, jedoch noch unter Garantie steht, kontaktieren Sie uns bitte, damit wir Ihnen bei der Fehlersuche helfen können.  Wenn wir feststellen, dass Ihr Gerät tatsächlich defekt ist und es noch von der <a href=\"https:\/\/www.alivecor.com\/warranty\">Garantiezeit<\/a> abgedeckt wird, schicken wir Ihnen nach Eingang der fehlerhaften Ware Ersatz."
   },
   "tech_specs": {
@@ -386,7 +386,7 @@
     "android_user_manual_link": "Kardia Mobile für Android"
   },
   "main_product": {
-    "guarantee": "14-tägige Geld-Zurück-Garantie",
+    "guarantee": "30-tägige Geld-Zurück-Garantie",
     "warranty": "1 Jahr Gewährleistung",
     "see_all_reviews": "Alle Bewertungen anzeigen"
   },
