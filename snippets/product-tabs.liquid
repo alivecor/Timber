@@ -79,7 +79,7 @@
       var hash = e.currentTarget.hash
       var split = hash.split('#');
       scrollToAnchor(split[1]);
-      $(hash).click();
+      $(hash + ' h3').click();
     });
 
     $('.accordion h3').on('click', function(evt) {
