@@ -57,7 +57,11 @@
       <!-- cool stuff! ======================================================== -->
       <h3 class="cool-stuff">
         {{ 'main_product.guarantee' | t }}<br>
-        {{ 'main_product.warranty' | t }}
+        {% if shop.locale == 'en' %}
+          {{ 'main_product.warranty' | t }}
+        {% else %}
+          {{ 'main_product.warranty_2years' | t }}
+        {% endif %}
       </h3>
 
       <!-- Star rating ======================================================== -->
