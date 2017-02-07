@@ -54,6 +54,12 @@
         {{ product.price | money }}
       </span>
 
+      {% if product.compare_at_price_max > product.price %}
+        <span class="strikeout">
+        {{ current_variant.compare_at_price | money }}
+        </span>
+      {% endif %}
+
       <!-- cool stuff! ======================================================== -->
       <h3 class="cool-stuff">
         {{ 'main_product.guarantee' | t }}<br>

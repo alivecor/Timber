@@ -54,6 +54,12 @@
         {{ product.price | money }}
       </span>
 
+      {% if product.compare_at_price_max > product.price %}
+        <span class="strikeout">
+        {{ current_variant.compare_at_price | money }}
+        </span>
+      {% endif %}
+
       <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
         <meta itemprop="priceCurrency" content="{{ shop.currency }}">
         <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
