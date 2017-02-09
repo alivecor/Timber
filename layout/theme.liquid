@@ -61,6 +61,12 @@
 {% endcomment %}
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
   {% include 'discount-code-body' %}
+  {% if template contains 'cart' %}
+    {% include 'tracking-pixels' %}
+    {% include 'floodlight-cart' %}
+  {% else %}
+    {% include 'floodlight-main' %}
+  {% endif %}
   <div id="PageContainer" class="is-moved-by-drawer">
     <header class="site-header" role="banner">
       <div class="wrapper">
@@ -364,9 +370,6 @@
     {% include 'zopim' %}
   {% endif %}
   {% include 'discount-code-notifier' %}
-  
-  {% if template contains 'cart' %}   
-  {% include 'tracking-pixels' %}   
-  {% endif %}
+
 </body>
 </html>
