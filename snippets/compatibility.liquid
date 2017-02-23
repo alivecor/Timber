@@ -55,17 +55,22 @@
       ({{ 'compatibility.ios_10_0_2' | t }})
     </li>
   </ul>
-  <ul class="compatibility-list">
-    <li>
-      <b>{{ 'compatibility.watch1_2' | t }}</b>
-      ({{ 'compatibility.watch_os_3_1' | t }})
-    </li>
-  </ul>
-  <h3 class="omron-compat-link">
-  <a href="https://omronhealthcare.com/kardiamobile/" target="_blank">
-    {{ 'compatibility.omron_compatibility' | t }}
-  </a>
-  </h3>
+
+  {% if shop.locale == 'en' %}
+    <h3 class="omron-compat-link">
+      <a href="https://omronhealthcare.com/kardiamobile/" target="_blank">
+        {{ 'compatibility.omron_compatibility' | t }}
+      </a>
+    </h3>
+  {% else %}
+    <ul class="compatibility-list">
+      <li>
+        <b>{{ 'compatibility.watch1_2' | t }}</b>
+        ({{ 'compatibility.watch_os_3_1' | t }})
+      </li>
+    </ul>
+  {% endif %}
+
 
 </div>
 <div class="grid__item large--one-half">
@@ -110,6 +115,14 @@
       <b>{{ 'compatibility.jitterbug_touch_3' | t }}</b>
       ({{ 'compatibility.android_4_3' | t }})
     </li>
+    <li>
+      <b>{{ 'compatibility.google_pixel' | t }}</b>
+      ({{ 'compatibility.android_7_1_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.google_pixel_xl' | t }}</b>
+      ({{ 'compatibility.android_7_1_1' | t }})
+    </li>
   </ul>
 
   {% comment %}
@@ -137,6 +150,6 @@
     <a class="itunes-badge" href="https://play.google.com/store/apps/details?id=com.alivecor.aliveecg"><img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Android app on Google Play"></a>
   </div>
   {% comment %}new Date().getTime(){% endcomment %}
-  {% assign updated_date = '1477085957' | date: format: 'month_day_year'  %}
+  {% assign updated_date = '1487808044' | date: format: 'month_day_year'  %}
   <p class="last-updated">{{ 'compatibility.last_updated_on' | t: date: updated_date}}</p>
 </div>

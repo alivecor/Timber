@@ -346,11 +346,14 @@
     "android_5_0_1": "Android 5.0.1",
     "android_5_1_1": "Android 5.1.1",
     "android_4_3": "Android 4.3",
+    "android_7_1_1": "Android 7.1.1",
     "app_store": "App Store",
     "google_play": "Google Play",
     "use_of_kardia_mobile_requires_html": "Use of Kardia Mobile requires the companion app Kardia, available for download in the {{itunes_url}} and {{play_url}}.",
     "kardia_app": "Kardia App",
-    "omron_compatibility": "Omron Blood Pressure Monitor Compatibility"
+    "omron_compatibility": "Omron Blood Pressure Monitor Compatibility",
+    "google_pixel": "Google Pixel",
+    "google_pixel_xl": "Google Pixel XL"
   },
   "product_tabs": {
     "compatibility": "Compatibility",
