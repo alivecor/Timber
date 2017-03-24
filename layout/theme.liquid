@@ -104,7 +104,7 @@
                 - #cartCost updates the total cost of the cart
                 - Documentation:  http://shopify.com/timber#ajax-cart
             {% endcomment %}
-            <div>
+            <div class="float">
               <a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
                 <img src="{{ 'store_icon_cart@3x.png' | asset_url }}"/>
                   <span id="CartCount">
@@ -122,7 +122,7 @@
               If customer accounts are enabled, provide login and create account links
             {% endcomment %}
             {% if shop.customer_accounts_enabled %}
-              <div>
+              <div class="float accountLinks">
                 {% if customer %}
                   {% if customer.first_name != blank %}
                     {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
@@ -285,17 +285,16 @@
           </div>
 
           <div class="grid__item large--one-half">
-              {% comment %}
-              this is a bit of a hack for now, must not keep this up
-              {% endcomment %}
-              {% if shop.locale == 'de' %}
-              <a href="https://www.alivecor.com/de/resellers" class="outside-us">Kauf außerhalb Deutschlands</a>
-              {% else %}
-              <a href="https://www.alivecor.com/en/resellers" class="outside-us">{{ 'general.header.purchase_outside_of' | t }}{{shop.address.country}}</a>
-              {% endif %}
+            <a href="https://www.alivecor.com/resellers" class="outside-us">{{ 'general.header.purchase_outside_of' | t }}{{shop.address.country}}</a>
             <h4>{{ 'layout.footer.need_help' | t }}</h4>
             <p>{{ 'layout.footer.happy_to_help' | t }}</p>
+
+            {% if shop.locale == 'en-GB' %}
+            <p class="noMarg">{{ 'contact.form.phone' | t }}: 0333 301 0433</p>
+            <p>{{ 'contact.form.email' | t }}: <a href="mailto:uksupport@alivecor.com">uksupport@alivecor.com</a></p>
+            {% else %}
             <p>{{ 'layout.footer.email_us_at' | t }} <a href="mailto:support@alivecor.com">support@alivecor.com</a></p>
+            {% endif %}
           </div>
 
         </div>
