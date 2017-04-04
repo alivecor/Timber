@@ -91,15 +91,18 @@
           </select>
 
           <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
-          <span id="ProductPrice" class="h2" itemprop="price">
-            {{ current_variant.price | money }}
-          </span>
-
+          <!-- Price stuff ======================================================== -->
           {% if product.compare_at_price_max > product.price %}
-            <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
-            <p id="ComparePrice">
-              {{ 'products.product.compare_at' | t }} {{ current_variant.compare_at_price | money }}
-            </p>
+            <span id="ProductPrice" class="h2" itemprop="price">
+              {{ product.price | money }}
+            </span>
+            <span class="strikeout">
+            {{ current_variant.compare_at_price | money }}
+            </span>
+          {% else %}
+            <span id="ProductPrice" class="h2 noFloat" itemprop="price">
+              {{ product.price | money }}
+            </span>
           {% endif %}
 
           <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
