@@ -67,11 +67,6 @@
         <meta itemprop="priceCurrency" content="{{ shop.currency }}">
         <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
 
-      <!-- Product Description ====================================================== -->
-      <div class="product-description rte" itemprop="description">
-        {{ product.description }}
-      </div>
-
       {% comment %}
         If there are variants, show the user a variant title
       {% endcomment %}
@@ -145,6 +140,11 @@
         </button>
       </form>
 
+      </div>
+
+      <!-- Product Description ====================================================== -->
+      <div class="product-description rte" itemprop="description">
+        {{ product.description }}
       </div>
 
       {% comment %}

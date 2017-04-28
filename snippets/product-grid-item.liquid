@@ -104,13 +104,7 @@
           <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
         </div>
 
-        {% unless no_description %}
-          <div class="product-description rte" itemprop="description">
-            {{product.description}}
-          </div>
-        {% endunless %}
-
-        <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
+        <button type="submit" name="add" id="{{product.id}}" class="btn AddToCartAccessories" {% if sold_out %}disabled{% endif %}>
           <span id="AddToCartText">
           {% if sold_out %}
           {{ 'products.product.sold_out' | t }}
@@ -121,6 +115,12 @@
           </span>
         </button>
       </form>
+
+      {% unless no_description %}
+        <div class="product-description rte" itemprop="description">
+          {{product.description}}
+        </div>
+      {% endunless %}
 
     {% endif %}
 

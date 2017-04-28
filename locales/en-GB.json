@@ -72,7 +72,8 @@
       "checkout": "Check Out",
       "empty": "Your cart is currently empty.",
       "continue_browsing_html": "Shop AliveCor Now",
-      "close_cart": "Close Cart"
+      "close_cart": "Close Cart",
+      "continue_shopping": "Continue shopping"
     },
     "label": {
       "product": "Product",
