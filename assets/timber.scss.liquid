@@ -2617,6 +2617,10 @@ label.error {
   padding-bottom: 20px;
   font-size: 16px;
   clear: both;
+  padding-top: 20px;
+  @include at-query ($min, $medium) {
+    padding-top: 0;
+  }
 }
 
 .product-tabs {
@@ -2753,13 +2757,19 @@ label.error {
   vertical-align: -webkit-baseline-middle;
 }
 
-#AddToCart {
-  padding: 8px 96px;
+#AddToCart, .AddToCartAccessories {
+  margin: 20px 0;
+  width: 100%;
+  @include at-query ($min, $small) {
+    padding: 8px 10px;
+  }
   @include at-query ($min, $medium) {
-    margin-top: 48px;
+    padding: 8px 96px;
+    margin: 20px 0;
+    width: initial;
   }
   #AddToCartText {
-    font-size: em(24px);
+    font-size: em(18px);
   }
 }
 
@@ -2956,6 +2966,7 @@ Accordion Styles
     height: 40px;
     font-size: 14px;
     color: #333;
+    max-width: 100%;
   }
 }
 
@@ -3068,4 +3079,9 @@ Accordion Styles
 
 #ProductPrice.noFloat {
   float: none;
+}
+
+.continue_shopping {
+  display: block;
+  margin-top: 20px;
 }

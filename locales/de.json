@@ -72,7 +72,8 @@
       "checkout": "Zur Kasse",
       "empty": "Ihr Einkaufswagen ist im Moment leer.",
       "continue_browsing_html": "Jetzt einkaufen bei AliveCor",
-      "close_cart": "Einkaufswagen schließen"
+      "close_cart": "Einkaufswagen schließen",
+      "continue_shopping": "Mit dem Einkaufen fortfahren"
     },
     "label": {
       "product": "Artikel",

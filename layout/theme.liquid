@@ -144,6 +144,7 @@
         </div>
 
       </div>
+      {% comment %}      
       <div class="site-title">
         <h1 class="text-center">
           <a href="/">
@@ -151,6 +152,7 @@
           </a>
         </h1>
       </div>
+      {% endcomment %}
 
     </header>
 
@@ -221,6 +223,7 @@
     </nav>
 
     <main class="wrapper main-content" role="main">
+      {% comment %}
       {% if template == 'index' %}
         <nav class="fake-nav grid">
           <ul>
@@ -245,6 +248,7 @@
           </ul>
         </nav>
       {% endif %}
+      {% endcomment %}
 
       {{ content_for_layout }}
 

@@ -50,24 +50,22 @@
       <h2 class="product-title" itemprop="name">{{ product.title }}</h2>
 
       <!-- Price stuff ======================================================== -->
-      <span id="ProductPrice" class="h2" itemprop="price">
-        {{ product.price | money }}
-      </span>
-
       {% if product.compare_at_price_max > product.price %}
+        <span id="ProductPrice" class="h2" itemprop="price">
+          {{ product.price | money }}
+        </span>
         <span class="strikeout">
         {{ current_variant.compare_at_price | money }}
+        </span>
+      {% else %}
+        <span id="ProductPrice" class="h2 noFloat" itemprop="price">
+          {{ product.price | money }}
         </span>
       {% endif %}
 
       <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
         <meta itemprop="priceCurrency" content="{{ shop.currency }}">
         <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
-
-      <!-- Product Description ====================================================== -->
-      <div class="product-description rte" itemprop="description">
-        {{ product.description }}
-      </div>
 
       {% comment %}
         If there are variants, show the user a variant title
@@ -142,6 +140,11 @@
         </button>
       </form>
 
+      </div>
+
+      <!-- Product Description ====================================================== -->
+      <div class="product-description rte" itemprop="description">
+        {{ product.description }}
       </div>
 
       {% comment %}
