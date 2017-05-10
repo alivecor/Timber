@@ -59,6 +59,7 @@
       "note": "Instrucciones especiales para el vendedor",
       "subtotal": "Subtotal",
       "shipping_at_checkout": "Gastos de envío y descuentos calculado al momento de pagar",
+      "discount": "If you have a discount code, it will be applied on the next page",
       "update": "Actualizar carrito",
       "checkout": "Finalizar pedido",
       "empty": "Su carrito actualmente está vacío.",

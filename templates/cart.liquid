@@ -99,7 +99,10 @@
           <span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
           <span class="h3 cart__subtotal">{{ cart.total_price | money }}</span>
         </p>
-        <p><em>{{ 'cart.general.shipping_at_checkout' | t }}</em></p>
+        <div class="cart-text">
+          <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
+          <p>{{ 'cart.general.discount' | t }}</p>
+        </div>
         <!-- marketizator start -->
         <input id="mktz_custom" name="attributes[mktz_custom]" type="hidden" value="" />
         <!-- marketizator end -->
