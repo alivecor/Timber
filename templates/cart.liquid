@@ -130,16 +130,22 @@
     </a>
   </p>
 {% endif %}
-  <!-- marketizator start -->
-  <script>
-    document.onreadystatechange = function () {
-      if(document.readyState == 'complete') {
-         var experiment = _mktz.getExperiment ();
-         var visitor = _mktz.getVisitor ();
-         if(experiment && visitor) {
-            $('#mktz_custom').val('{"uid":"'+visitor.uid+'","session":"'+visitor.session_id+'","last_variation":"'+experiment[0].id_variation+'"}');
-      }
+  <!-- Omniconvert Start -->
+<script>
+document.onreadystatechange = function () {
+  if (document.readyState == 'complete') {
+    var variations = _mktz.getSeenVariations();
+    var visitor    = _mktz.getVisitor();
+    if (variations && visitor) {
+      var experimentData = {
+        'uid': visitor.uid,
+        'session': visitor.session_id,
+        'last_variation': variations.join('|')
+      };
+
+      $('#mktz_custom').val(JSON.stringify(experimentData));
     }
-   };
-  </script>
-  <!-- marketizator end -->
+  }
+};
+</script>
+<!-- Omniconvert End -->
