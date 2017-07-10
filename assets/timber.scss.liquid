@@ -81,15 +81,20 @@ $breakpoint-has-pull:  ('medium', 'medium-down', 'large');
 $blue: #00abe5;
 $blue-darker: #0072bc;
 $light-gray: #efefef;
+$teal: #2d9f86;
+$teal-hover: #6bc1b6;
+$red: #f15757;
+$navy: #142A39;
+$gray3: #536062;
 
 // Timber Colors
-$colorPrimary: $blue;
+$colorPrimary: $teal;
 $colorSecondary: #bbbbbb;
 
 // Button colors
-$colorBtnPrimary: $colorPrimary;
-$colorBtnPrimaryHover: darken($colorBtnPrimary, 10%);
-$colorBtnPrimaryActive: darken($colorBtnPrimaryHover, 10%);
+$colorBtnPrimary: $red;
+$colorBtnPrimaryHover: lighten($colorBtnPrimary, 10%);
+$colorBtnPrimaryActive: lighten($colorBtnPrimary, 10%);
 $colorBtnPrimaryText: #fff;
 
 $colorBtnSecondary: $colorSecondary;
@@ -99,7 +104,7 @@ $colorBtnSecondaryText: #fff;
 
 // Text link colors
 $colorLink: $colorPrimary;
-$colorLinkHover: lighten($colorPrimary, 15%);
+$colorLinkHover: $colorPrimary;
 
 // Text colors
 $colorTextBody: {{ settings.color_body_text }};
@@ -847,6 +852,7 @@ h1, h2, h3, h4, h5, h6 {
   a {
     text-decoration: none;
     font-weight: inherit;
+    cursor: pointer;
   }
 }
 
@@ -1803,7 +1809,7 @@ label.error {
 ==============================================================================*/
 .site-header {
   padding: 15px 0;
-  background: $blue;
+  background: $colorPrimary;
   color: #fff;
 
   .grid--table {
@@ -1851,7 +1857,7 @@ label.error {
 .site-header__cart-toggle {
   display: inline-block;
   padding: 0px 7px;
-  background-color: #f7941d;
+  background-color: $red;
   border-radius: 3px;
   line-height: 1.8em;
   img {
@@ -2910,7 +2916,7 @@ Accordion Styles
   & > h3 {
     padding: 8px 16px;
     margin: 0;
-    color: $blue-darker;
+    color: $gray3;
   }
   .toggler {
     position: absolute;
@@ -2918,7 +2924,7 @@ Accordion Styles
     right: 20px;
     font-size: 1.4em;
     line-height: 1em;
-    color: $blue-darker;
+    color: $gray3;
   }
   .accordion-inner {
     overflow: auto;
@@ -3036,6 +3042,8 @@ Accordion Styles
 
 #mail, #subscribe {
   max-width: 100%;
+  font-weight: 500;
+  padding-top: 6px;
 }
 
 .accessory-line-item {
