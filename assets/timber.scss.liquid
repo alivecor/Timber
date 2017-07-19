@@ -86,6 +86,7 @@ $teal-hover: #6bc1b6;
 $red: #f15757;
 $navy: #142A39;
 $gray3: #536062;
+$gray1: #f1f5f3;
 
 // Timber Colors
 $colorPrimary: $teal;
@@ -2790,6 +2791,7 @@ label.error {
 
 .review-count {
   margin: 16px 0;
+  clear: left;
 }
 
 .product-single__photos, .product-single__thumbnail {
@@ -3109,4 +3111,119 @@ Accordion Styles
   float: left;
   margin-top: 4px;
   margin-left: 20px;
+}
+
+/* css for omniconvert winning tests */
+.benefit-icons-product {
+  border-top: 1px solid $light-gray;
+}
+.testimonial {
+  font-family: $bodyFontStack;
+  background-color: $gray1;
+  border: 1px solid $teal-hover;
+  padding: 20px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 400;
+  position: relative;
+  margin-top: 20px;
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .subject {
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .detail {
+    color: $gray3;
+    font-style: italic;
+    font-size: 13px;
+    margin-bottom: 8px;
+    span {
+      font-weight: 600;
+    }
+  }
+  .icon-block {
+    float: right;
+    padding: 12px;
+    font-size: 15px;
+    img {
+      width: 32px;
+    }
+    p {
+      font-size: 15px;
+      padding: 3px 0 0 5px;
+    }
+  }
+}
+.icons {
+  margin-top: 20px;
+  overflow: hidden;
+}
+.icon-block {
+  float: left;
+  display: inline-block;
+  img {
+    width: 46px;
+    float: left;
+  }
+  p {
+    font-family: $bodyFontStack;
+    position: relative;
+    float: left;
+    margin: 0;
+    padding: 12px 5px;
+    font-size: 16px;
+    font-weight: 800;
+    span {
+      font-weight: 400;
+    }
+  }
+  &.block {
+    clear: left;
+    @media (max-width: 960px) and (min-width: 768px) {
+      br {
+        display: block !important;
+      }
+      p {
+        padding-top: 2px;
+        line-height: 20px;
+      }
+    }
+    @media (max-width: 500px) {
+      br {
+        display: block !important;
+      }
+      p {
+        padding-top: 2px;
+        line-height: 20px;
+      }
+    }
+  }
+}
+.benefit-icons-cart {
+  clear: both;
+  text-align: center;
+  .icon-block {
+    float: none;
+    width: auto;
+    padding: 15px 5px;
+  }
+  .icon-block:first-of-type {
+    float: left;
+  }
+  .icon-block:last-of-type {
+    float: right;
+  }
+  @media (max-width: 768px) {
+    .icon-block, .icon-block:first-of-type, .icon-block:last-of-type {
+      float: none;
+      display: block;
+      overflow: hidden;
+      padding: 0 0 15px 0;
+    }
+  }
 }

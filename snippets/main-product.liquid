@@ -63,24 +63,8 @@
         </span>
       {% endif %}
 
-      <!-- cool stuff! ======================================================== -->
-      <h3 class="cool-stuff">
-        {{ 'main_product.guarantee' | t }}<br>
-        {% if shop.locale == 'en' %}
-          {{ 'main_product.warranty' | t }}
-        {% else %}
-          {{ 'main_product.warranty_2years' | t }}
-        {% endif %}
-      </h3>
-
-      <!-- Star rating ======================================================== -->
-      <div class="review-count">
-        <a href="#reviews" class="scroll-to-tab">
-          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-          <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }} ></span>
-        </a>
-      </div>
-
+      <!-- Add to Cart
+      ======================================================== -->
       <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
         <meta itemprop="priceCurrency" content="{{ shop.currency }}">
         <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
@@ -158,6 +142,24 @@
         </button>
       </form>
 
+      </div>
+
+      <!-- cool stuff! ======================================================== -->
+      <h3 class="cool-stuff">
+        {% if shop.locale == 'en' %}
+          {% include 'benefit-icons-product' %}
+        {% else %}
+          {{ 'main_product.guarantee' | t }}<br>
+          {{ 'main_product.warranty_2years' | t }}
+        {% endif %}
+      </h3>
+
+      <!-- Star rating ======================================================== -->
+      <div class="review-count">
+        <a href="#reviews" class="scroll-to-tab">
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+          <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }} ></span>
+        </a>
       </div>
 
       <!-- Product Description ====================================================== -->
