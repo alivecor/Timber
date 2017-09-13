@@ -153,3 +153,14 @@ document.onreadystatechange = function () {
 };
 </script>
 <!-- Omniconvert End -->
+<!-- Criteo Start -->
+<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+<script type="text/javascript"> window.criteo_q = window.criteo_q || [];
+var deviceType = /iPad/.test(navigator.userAgent) ? "t" : /Mobile|iP(hone|od)|Android |BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" : "d";
+window.criteo_q.push(
+{ event: "setAccount", account: 43826 },
+{ event: "setSiteType", type: deviceType },
+{ event: "viewBasket", item: [ { id: "1", price: {{ cart.total_price| money_without_currency }}, quantity: 1 } ]}
+);
+</script>
+<!-- Criteo End -->

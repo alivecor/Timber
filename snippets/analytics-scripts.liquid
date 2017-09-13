@@ -1,10 +1,10 @@
-{% comment %}<!-- Marketizator Code -->		
-<script type="text/javascript">		
-window._mktz = window._mktz || [];		
-window._mktz.cc_domain = 'alivecor.com';		
-</script>		
-<link rel="dns-prefetch" href="//app.omniconvert.com"/>		
-<script type="text/javascript" src="//d2tgfbvjf3q6hn.cloudfront.net/js/k192b35.js"></script>		
+<!-- Marketizator Code -->
+<script type="text/javascript">
+window._mktz = window._mktz || [];
+window._mktz.cc_domain = 'alivecor.com';
+</script>
+<link rel="dns-prefetch" href="//app.omniconvert.com"/>
+<script type="text/javascript" src="//d2tgfbvjf3q6hn.cloudfront.net/js/k192b35.js"></script>
 <!-- End Marketizator Code -->
 
 <!-- TouchPoint -->
@@ -28,6 +28,15 @@ src="https://www.facebook.com/tr?id=955216951280090&ev=PageView&noscript=1"
 <!-- End Facebook Pixel Code -->
 
 {% if shop.locale == 'en' %}
+<!-- Criteo Tracking Pixel -->
+<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+<script type="text/javascript">
+window.criteo_q = window.criteo_q || [];
+var deviceType = /iPad/.test(navigator.userAgent) ? "t" : /Mobile|iP(hone|od)|Android |BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" : "d";
+window.criteo_q.push(
+{ event: "setAccount", account: 43826 },
+{ event: "setSiteType", type: deviceType }, { event: "viewItem", item: "1" }
+); </script>
 <!-- Hotjar Tracking Code for https://store.alivecor.com -->
 <script>
     (function(h,o,t,j,a,r){
@@ -39,4 +48,4 @@ src="https://www.facebook.com/tr?id=955216951280090&ev=PageView&noscript=1"
         a.appendChild(r);
     })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
-{% endif %}{% endcomment %}
+{% endif %}
