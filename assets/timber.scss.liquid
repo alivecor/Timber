@@ -81,15 +81,21 @@ $breakpoint-has-pull:  ('medium', 'medium-down', 'large');
 $blue: #00abe5;
 $blue-darker: #0072bc;
 $light-gray: #efefef;
+$teal: #2d9f86;
+$teal-hover: #6bc1b6;
+$red: #f15757;
+$navy: #142A39;
+$gray3: #536062;
+$gray1: #f1f5f3;
 
 // Timber Colors
-$colorPrimary: $blue;
+$colorPrimary: $teal;
 $colorSecondary: #bbbbbb;
 
 // Button colors
-$colorBtnPrimary: $colorPrimary;
-$colorBtnPrimaryHover: darken($colorBtnPrimary, 10%);
-$colorBtnPrimaryActive: darken($colorBtnPrimaryHover, 10%);
+$colorBtnPrimary: $red;
+$colorBtnPrimaryHover: lighten($colorBtnPrimary, 10%);
+$colorBtnPrimaryActive: lighten($colorBtnPrimary, 10%);
 $colorBtnPrimaryText: #fff;
 
 $colorBtnSecondary: $colorSecondary;
@@ -99,7 +105,7 @@ $colorBtnSecondaryText: #fff;
 
 // Text link colors
 $colorLink: $colorPrimary;
-$colorLinkHover: lighten($colorPrimary, 15%);
+$colorLinkHover: $colorPrimary;
 
 // Text colors
 $colorTextBody: {{ settings.color_body_text }};
@@ -847,6 +853,7 @@ h1, h2, h3, h4, h5, h6 {
   a {
     text-decoration: none;
     font-weight: inherit;
+    cursor: pointer;
   }
 }
 
@@ -1803,7 +1810,7 @@ label.error {
 ==============================================================================*/
 .site-header {
   padding: 15px 0;
-  background: $blue;
+  background: $colorPrimary;
   color: #fff;
 
   .grid--table {
@@ -1851,7 +1858,7 @@ label.error {
 .site-header__cart-toggle {
   display: inline-block;
   padding: 0px 7px;
-  background-color: #f7941d;
+  background-color: $red;
   border-radius: 3px;
   line-height: 1.8em;
   img {
@@ -2250,7 +2257,7 @@ label.error {
 .grid__image {
   display: block;
   margin: 0 auto ($gutter / 2);
-  border: 1px solid #ccc;
+  border: 1px solid transparent;
 
   img {
     display: block;
@@ -2784,10 +2791,11 @@ label.error {
 
 .review-count {
   margin: 16px 0;
+  clear: left;
 }
 
 .product-single__photos, .product-single__thumbnail {
-  border: 1px solid #ccc;
+  border: 1px solid transparent;
 }
 
 .targets {
@@ -2818,7 +2826,12 @@ label.error {
 }
 
 .itunes-badge img {
-  height: 44px;
+  height: 53px;
+  padding: 3px 0 9px;
+}
+
+.android-badge img {
+  height: 60px;
 }
 
 .section {
@@ -2905,7 +2918,7 @@ Accordion Styles
   & > h3 {
     padding: 8px 16px;
     margin: 0;
-    color: $blue-darker;
+    color: $gray3;
   }
   .toggler {
     position: absolute;
@@ -2913,7 +2926,7 @@ Accordion Styles
     right: 20px;
     font-size: 1.4em;
     line-height: 1em;
-    color: $blue-darker;
+    color: $gray3;
   }
   .accordion-inner {
     overflow: auto;
@@ -3031,6 +3044,8 @@ Accordion Styles
 
 #mail, #subscribe {
   max-width: 100%;
+  font-weight: 500;
+  padding-top: 6px;
 }
 
 .accessory-line-item {
@@ -3084,4 +3099,131 @@ Accordion Styles
 .continue_shopping {
   display: block;
   margin-top: 20px;
+}
+.cart-text {
+  font-size: 16px;
+  margin-bottom: 20px;
+  p {
+    margin-bottom: 0;
+  }
+}
+.secure-btn {
+  float: left;
+  margin-top: 4px;
+  margin-left: 20px;
+}
+
+/* css for omniconvert winning tests */
+.benefit-icons-product {
+  border-top: 1px solid $light-gray;
+}
+.testimonial {
+  font-family: $bodyFontStack;
+  background-color: $gray1;
+  border: 1px solid $teal-hover;
+  padding: 20px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 400;
+  position: relative;
+  margin-top: 20px;
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .subject {
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .detail {
+    color: $gray3;
+    font-style: italic;
+    font-size: 13px;
+    margin-bottom: 8px;
+    span {
+      font-weight: 600;
+    }
+  }
+  .icon-block {
+    float: right;
+    padding: 12px;
+    font-size: 15px;
+    img {
+      width: 32px;
+    }
+    p {
+      font-size: 15px;
+      padding: 3px 0 0 5px;
+    }
+  }
+}
+.icons {
+  margin-top: 20px;
+  overflow: hidden;
+}
+.icon-block {
+  float: left;
+  display: inline-block;
+  img {
+    width: 46px;
+    float: left;
+  }
+  p {
+    font-family: $bodyFontStack;
+    position: relative;
+    float: left;
+    margin: 0;
+    padding: 12px 5px;
+    font-size: 16px;
+    font-weight: 800;
+    span {
+      font-weight: 400;
+    }
+  }
+  &.block {
+    clear: left;
+    @media (max-width: 960px) and (min-width: 768px) {
+      br {
+        display: block !important;
+      }
+      p {
+        padding-top: 2px;
+        line-height: 20px;
+      }
+    }
+    @media (max-width: 500px) {
+      br {
+        display: block !important;
+      }
+      p {
+        padding-top: 2px;
+        line-height: 20px;
+      }
+    }
+  }
+}
+.benefit-icons-cart {
+  clear: both;
+  text-align: center;
+  .icon-block {
+    float: none;
+    width: auto;
+    padding: 15px 5px;
+  }
+  .icon-block:first-of-type {
+    float: left;
+  }
+  .icon-block:last-of-type {
+    float: right;
+  }
+  @media (max-width: 768px) {
+    .icon-block, .icon-block:first-of-type, .icon-block:last-of-type {
+      float: none;
+      display: block;
+      overflow: hidden;
+      padding: 0 0 15px 0;
+    }
+  }
 }

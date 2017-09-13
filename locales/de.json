@@ -68,6 +68,7 @@
       "note": "Besondere Hinweise an den Verkäufer",
       "subtotal": "Zwischensumme",
       "shipping_at_checkout": "Versandkosten (einschließlich Verpackung) werden an der Kasse berechnet.",
+      "discount": "Wenn Sie einen Rabatt-Code haben, wird es auf der nächsten Seite sein.",
       "update": "Einkaufswagen aktualisieren",
       "checkout": "Zur Kasse",
       "empty": "Ihr Einkaufswagen ist im Moment leer.",
