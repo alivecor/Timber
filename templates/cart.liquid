@@ -30,6 +30,7 @@
       </thead>
       <tbody>
         {% for item in cart.items %}
+        {% include 'bold-cart-item' with item %}
           <tr class="cart__row table__section">
             <td data-label="{{ 'customer.order.product' | t }}">
               {% comment %}
@@ -86,7 +87,7 @@
               </span>
             </td>
             <td data-label="{{ 'cart.label.quantity' | t }}">
-              <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0">
+              <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" {{ bold_qty_attr }} min="0">
             </td>
             <td data-label="{{ 'cart.label.total' | t }}" class="total-cell">
               <span class="h3">

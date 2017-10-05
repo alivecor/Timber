@@ -54,6 +54,8 @@
   <!-- Analytics ================================================= -->
   {% include 'analytics-scripts' %}
 
+{% if product.metafields.inventory.ShappifyHidden == "true" %} {% endif %}
+
 </head>
 
 {% comment %}
