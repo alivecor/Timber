@@ -8,6 +8,18 @@
   </div>
   <ul class="compatibility-list">
     <li>
+      <b>{{ 'compatibility.iphoneX' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.iphone8_plus' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.iphone8' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
       <b>{{ 'compatibility.iphone7_plus' | t }}</b>
       ({{ 'compatibility.ios_10_0_2' | t }})
     </li>
@@ -87,16 +99,20 @@
   </div>
   <ul class="compatibility-list">
     <li>
-      <b>{{ 'compatibility.galaxy_s3' | t }}</b>
-      ({{ 'compatibility.android_4_3' | t }})
+      <b>{{ 'compatibility.galaxy_s8' | t }}</b>
+      ({{ 'compatibility.android_7_0' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.galaxy_s5_s6_s7' | t }}</b>
+      ({{ 'compatibility.android_6_0_1' | t }})
     </li>
     <li>
       <b>{{ 'compatibility.galaxy_s4' | t }}</b>
       ({{ 'compatibility.android_5_0_1' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.galaxy_s5_s6_s7' | t }}</b>
-      ({{ 'compatibility.android_6_0_1' | t }})
+      <b>{{ 'compatibility.galaxy_s3' | t }}</b>
+      ({{ 'compatibility.android_4_3' | t }})
     </li>
     <li>
       <b>{{ 'compatibility.samsung_note_3' | t }}</b>
@@ -157,6 +173,6 @@
     <a class="android-badge" href="https://play.google.com/store/apps/details?id=com.alivecor.aliveecg"><img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Android app on Google Play"></a>
   </div>
   {% comment %}new Date().getTime(){% endcomment %}
-  {% assign updated_date = '1489708800' | date: format: 'month_day_year'  %}
+  {% assign updated_date = '1510708800' | date: format: 'month_day_year'  %}
   <p class="last-updated">{{ 'compatibility.last_updated_on' | t: date: updated_date}}</p>
 </div>

@@ -53,6 +53,12 @@
 
   <!-- Analytics ================================================= -->
   {% include 'analytics-scripts' %}
+  
+  <!-- Bold's Common Snippet -->
+  {% include 'bold-common' %}
+
+  <!-- Zendesk chat -->
+  {% comment %}{% include 'zendesk-chat-widget' %}{% endcomment %}
 
 {% if product.metafields.inventory.ShappifyHidden == "true" %} {% endif %}
 

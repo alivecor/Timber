@@ -1278,7 +1278,7 @@ th, td {
   Only defined for IE9+
 ==============================================================================*/
 .table--responsive {
-  @include at-query($max, $small) {
+  @include at-query($max, $medium) {
     thead {
       display: none;
     }
@@ -1311,9 +1311,10 @@ th, td {
 
     &.cart-table {
       img {
-        margin: 0 auto;
+        margin: 0 auto 15px;
         float: left;
         clear: both;
+        max-width: 300px;
       }
 
       .js-qty {
@@ -2779,6 +2780,12 @@ label.error {
     font-size: em(18px);
   }
 }
+.recommended-accessories, .AddToCartAccessories {
+  @include at-query ($min, $medium) {
+    margin: 20px 0;
+    padding: 8px 10px;
+  }
+}
 
 .preorder {
   margin-top: 10px;
@@ -2850,7 +2857,7 @@ label.error {
 }
 @include at-query($min, $medium) {
   .recommended-accessories {
-    margin-top: -140px;
+    margin-top: -190px;
   }
 }
 

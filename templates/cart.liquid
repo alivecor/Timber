@@ -106,7 +106,6 @@
         </p>
         <div class="cart-text">
           <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
-          <p>{{ 'cart.general.discount' | t }}</p>
         </div>
         <!-- marketizator start -->
         <input id="mktz_custom" name="attributes[mktz_custom]" type="hidden" value="" />
@@ -118,11 +117,11 @@
     </div>
 
   </form>
-{% comment %}
+
   <div class="one-half small--one-whole recommended-accessories">
     {% include 'recommended-accessories' %}
   </div>
-  {% endcomment %}
+  
 {% else %}
   {% comment %}
     The cart is empty
