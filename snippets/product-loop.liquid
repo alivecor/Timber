@@ -1,0 +1,49 @@
+        <div id="collection">
+            {% if col_group.products.size > 0 %}
+    			{% for product in col_group.products %}
+    			{% if col_settings == '3' %}
+
+    				{% cycle 'product-loop-clear-start-2': '<div class="row-fluid"><ul class="thumbnails">', '', '' %}
+    			{% elsif col_settings == '4' %}
+    				{% cycle 'product-loop-clear-start-2': '<div class="row-fluid"><ul class="thumbnails">', '', '', '' %}
+    			{% endif %}
+    
+    				<li class="span{% if col_settings == '4' %}3{% elsif col_settings == '3' %}4{% endif %}">
+    					<div class="thumbnail">
+    						<a class="bl center rel" href= "{{ product.url | within: col_group }}" title="View {{ product.title }}">
+    							<img src="{{ product.images.first | product_img_url: 'large' }}" alt="{{ product.title }}">
+                                {% if product.available %}
+        							{% if product.compare_at_price_max > product.price %}
+                                    <span class="{{ settings.sale_icon }} abs">{{ settings.sale_text }}</span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="label abs">{{ settings.out_of_stock }}</span>
+                                {% endif %}
+    						</a>
+    						<div class="caption">
+    							<h4><a href= "{{ product.url | within: col_group }}" title="View {{ product.title }}">{{ product.title }}</a></h4>
+    							<p>
+                                    {% if product.price_varies %}From&nbsp;{% endif %}
+                                  	{% if product.price_min > 0 %}
+                                  	{{ product.price_min | money_with_currency }}
+                                  	{% endif %}
+    							</p>
+                                <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+    						</div>
+    					</div>
+    				</li>
+    				{% if forloop.last %}
+    			</ul>
+    			</div>
+    			{% else %}
+    				{% if col_settings == '3' %}
+    					{% cycle 'product-loop-clear-end-2': '', '', '</ul></div>' %}
+    				{% elsif col_settings == '4' %}
+    					{% cycle 'product-loop-clear-end-2': '', '', '', '</ul></div>' %}
+    				{% endif %}
+    			{% endif %}
+    			{% endfor %}
+            {% else %}
+                <p class="alert">Hmm, it would seem that you need <a href="/admin/custom_collections/">add some products</a> to your frontpage collection...</p>
+            {% endif %}
+        </div>

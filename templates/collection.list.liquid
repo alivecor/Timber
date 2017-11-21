@@ -58,7 +58,6 @@
 
       <!-- begin product list output -->
       {% for product in collection.products %}
-      {% include 'bold-product' with product, hide_action: 'skip' %}
         {% comment %}
           Check if the product is on sale and set a variable to be used below.
         {% endcomment %}

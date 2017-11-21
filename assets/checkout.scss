@@ -1,0 +1,13 @@
+@media (min-width: 1000px) {
+  .order-summary__section--discount {
+    position: absolute;
+    bottom: 50px;
+    border-top: none;
+    width: 100%;
+  }
+  .promoShowLink {
+    cursor: pointer;
+    position: absolute;
+    bottom: 80px;
+  }
+}

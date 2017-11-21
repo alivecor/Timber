@@ -1,0 +1,46 @@
+<div class="grid__item large--one-half">
+  <h3>{{ 'compatibility.apple_compatibility' | t }}</h3>
+  <ul class="compatibility-list">
+    <li>
+      <b>{{ 'compatibility.watch1' | t }}</b>
+      ({{ 'compatibility.watch_os_3_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.watch2' | t }}</b>
+      ({{ 'compatibility.watch_os_3_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.watch3' | t }}</b>
+      ({{ 'compatibility.watch_os_3_1' | t }})
+    </li>
+  </ul>
+</div>
+<div class="grid__item large--one-half">
+  {% comment %}
+    capture itunes and play urls for passing to the translation
+  {% endcomment %}
+  {% capture itunes_url %}
+    <a href="https://itunes.apple.com/app/aliveecg/id579769143">
+      {{ 'compatibility.app_store' | t }}
+    </a>
+  {% endcapture %}
+
+  {% capture play_url %}
+    <a href="https://play.google.com/store/apps/details?id=com.alivecor.aliveecg">
+      {{ 'compatibility.google_play' | t }}
+    </a>
+  {% endcapture %}
+
+  <h3>{{ 'compatibility.kardia_app' | t }}</h3>
+  <p class="app-text">
+  {{ 'compatibility.use_of_kardia_mobile_requires_html' | t: itunes_url: itunes_url, play_url: play_url }}
+  </p>
+
+  <div class="app-store-badges">
+    <a class="itunes-badge" href="https://itunes.apple.com/app/aliveecg/id579769143"><img src="https://alivecorcms.s3.amazonaws.com/sites/51b0fa1d9005a1000f00292e/theme/images/appstore-badge.svg" alt="link to AppStore"></a>
+    <a class="android-badge" href="https://play.google.com/store/apps/details?id=com.alivecor.aliveecg"><img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Android app on Google Play"></a>
+  </div>
+</div>
+{% comment %}new Date().getTime(){% endcomment %}
+{% assign updated_date = '1489708800' | date: format: 'month_day_year'  %}
+<p class="last-updated">{{ 'compatibility.last_updated_on' | t: date: updated_date}}</p>

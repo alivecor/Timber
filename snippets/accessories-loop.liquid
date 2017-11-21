@@ -1,0 +1,25 @@
+        <div id="collection">
+			<div class="row-fluid">
+              <ul class="thumbnails">
+                {% for product in col_group.products %}
+    				<li class="span4">
+    					<div class="thumbnail">
+    						<a class="bl center rel" href= "{{ product.url | within: col_group }}" title="View {{ product.title }}">
+    							<img src="{{ product.images.first | product_img_url: 'large' }}" alt="{{ product.title }}">
+                                {% if product.available %}
+                                {% else %}
+                                    <span class="label abs">{{ settings.out_of_stock }}</span>
+                                {% endif %}
+    						</a>
+    						<div class="caption">
+    							<h4><a href= "{{ product.url | within: col_group }}" title="View {{ product.title }}">{{ product.title }}</a></h4>
+    							<p>
+                                    {% if product.price_varies %}From&nbsp;{% endif %}{{ product.price_min | money_with_currency }}
+    							</p>
+    						</div>
+    					</div>
+    				</li>
+                {% endfor %}
+    			</ul>
+    			</div>
+        </div>

@@ -7,20 +7,31 @@
     - http://docs.shopify.com/themes/liquid-variables/global
 {% endcomment %}
 
-{% for product in collections.main-product.products %}
-  {% include 'main-product' %}
+<div class="grid-uniform">
+
   {% comment %}
-    Product tab snippets will go in here
+    Loop through products in your Frontpage collection.
+    This collection is created by default, but you must add products to it.
   {% endcomment %}
-  {% include 'product-tabs' product=product%}
-{% endfor %}
+  {% for product in collections.main-product.products limit:4 %}
 
-{% for product in collections.featured-product.products %}
-  <div class="band section">
-    {% include 'main-product2' %}
-  </div>
-{% endfor %}
+    {% comment %}
+      Change the grid item width by using classes from the grid in
+      the grid_item_width variable.
 
+      Example:
+        - {% assign grid_item_width = 'large--one-third medium--one-half' %}
+    {% endcomment %}
+    {% assign grid_item_width = 'large--one-half medium--one-half' %}
+    {% include 'home-main-item' %}
+
+  {% endfor %}
+  
+  <div class="cp-promo-ad desktop">
+  {{ 'CarryPod_ad.jpg' | asset_url | img_tag }}
+</div>
+
+</div>
 
 {% comment %}
   Use class grid-uniform to have evenly sized columns clear
@@ -30,7 +41,8 @@
 {% if collections.frontpage.products.length > 0 %}
 <div class="section">
   <a name="accessories"></a>
-  <h3>{{ 'homepage.sections.frontpage_title' | t }}</h3>
+  <span class="line"></span>
+  <h1>{{ 'homepage.sections.frontpage_title' | t }}</h1>
 </div>
 {% endif %}
 
@@ -49,12 +61,12 @@
       Example:
         - {% assign grid_item_width = 'large--one-third medium--one-half' %}
     {% endcomment %}
-    {% if collections.frontpage.products.length <= 2 %}
+  	{% if collections.frontpage.products.length <= 2 %}
       {% assign grid_item_width = 'large--one-half medium--one-half' %}
-    {% else %}
-      {% assign grid_item_width = 'large--one-third medium--one-half' %}
-    {% endif %}
-    {% include 'product-grid-item' %}
+  	{% else %}
+  		{% assign grid_item_width = 'large--one-third medium--one-half' %}
+  	{% endif %}
+    {% include 'home-grid-item' %}
 
   {% else %}
     {% comment %}
@@ -72,24 +84,3 @@
 </div>
 
 
-
-{% for product in collections.products-not-for-sale.products %}
-  <div class="band section">
-    {% include 'not-for-sale' %}
-  </div>
-{% endfor %}
-
-<div class="grid-uniform">
-  {% comment %}
-    For onboarding new users to your theme, we add some default collections and onboarding tutorials to help populate their store
-  {% endcomment %}
-
-  {% if isEmpty %}
-    {% unless emptyState %}
-      {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
-      {% assign emptyState = true %}
-    {% endunless %}
-
-    {% comment %}{% include 'onboarding-featured-collections' %}{% endcomment %}
-  {% endif %}
-</div>

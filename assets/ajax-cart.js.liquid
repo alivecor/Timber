@@ -250,6 +250,10 @@ var ajaxCart = (function(module, $) {
     // Update quantity and price
     updateCountPrice(cart);
     buildCart(cart);
+    <!-- if(BOLD && BOLD.common && BOLD.common.eventEmitter)
+    {
+    	BOLD.common.eventEmitter.emit('BOLD_COMMON_cart_loaded');
+    } -->
   };
 
   buildCart = function (cart) {

@@ -1,0 +1,38 @@
+#not-in-us {
+  background-color: #ededed;
+  padding: 30px;
+  font-family: 'Sanchez';
+  color: #555;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: -35px;
+  a {
+   color: #0072bc; 
+   text-decoration: underline;
+  }
+  .bold {
+    color: #000;
+  }
+  .map {
+	margin-top: 55px;
+    margin-right: 20px;
+    text-align: center;
+  }
+  .bordered {
+    border-top: 1px solid #333;
+	border-bottom: 1px solid #333;
+	padding: 20px 0 10px 0;
+	margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  #not-in-us {
+    padding-bottom: 370px;
+    margin: 0;
+  	margin-top: -270px;
+    .map {
+      float: right;
+    }
+  }
+}

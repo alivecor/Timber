@@ -12,16 +12,22 @@
 
     <!-- DISCOUNT CODE script for checkout ================================================== -->
     {% include 'discount-code-cart' %}
-
-    <h2>{{ 'cart.general.title' | t }}</h2>
-    <a href="//www.shopify.com/pci-compliant?utm_source=secure&amp;utm_medium=shop" title="This online store is secured by Shopify" target="_blank" class="secure-btn"><img src="//cdn.shopify.com/s/images/badges/shopify-secure-badge-light-shadow.png" alt="Shopify secure badge" /></a>
-    <div class="checkout-button-container">
-      <input type="submit" name="checkout" class="btn" value="{{ 'cart.general.checkout' | t }}">
+	<div class="cart-header">
+      <div class="wrapper">
+        <div class="cart-title">
+          <h2 class="cart">{{ 'cart.general.title' | t }}</h2>
+          <span><a href="/">&lt; Continue Shopping</a></span>
+        </div>
+        <a href="//www.shopify.com/pci-compliant?utm_source=secure&amp;utm_medium=shop" title="This online store is secured by Shopify" target="_blank" class="secure-btn"><img src="//cdn.shopify.com/s/images/badges/shopify-secure-badge-light-shadow.png" alt="Shopify secure badge" /></a>
+        <div class="checkout-button-container">
+          <input type="submit" name="checkout" class="btn" value="{{ 'cart.general.checkout' | t }}">
+        </div>
+        {% if shop.locale == 'en' %}
+          {% include 'benefit-icons-cart' %}
+        {% endif %}
+      </div>
     </div>
-    {% if shop.locale == 'en' %}
-      {% include 'benefit-icons-cart' %}
-    {% endif %}
-    <table class="cart-table full table--responsive">
+    <table class="wrapper cart-table full table--responsive">
       <thead class="cart__row cart__header-labels">
         <th colspan="2">{{ 'cart.label.product' | t }}</th>
         <th>{{ 'cart.label.price' | t }}</th>
@@ -30,18 +36,21 @@
       </thead>
       <tbody>
         {% for item in cart.items %}
-        {% include 'bold-cart-item' with item %}
           <tr class="cart__row table__section">
             <td data-label="{{ 'customer.order.product' | t }}">
+              <a href="{{ item.url }}">
               {% comment %}
                 More image size options at:
                   - http://docs.shopify.com/themes/filters/product-img-url
               {% endcomment %}
               <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+              </a>
             </td>
             <td>
               <h4>
+                <a href="{{ item.url }}">
                 {{ item.product.title }}
+                </a>
               </h4>
               {% unless item.variant.title contains 'Default' %}
                 <small>{{ item.variant.title }}</small>
@@ -87,18 +96,24 @@
               </span>
             </td>
             <td data-label="{{ 'cart.label.quantity' | t }}">
-              <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" {{ bold_qty_attr }} min="0">
+              <input class="quantity" type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0">
             </td>
             <td data-label="{{ 'cart.label.total' | t }}" class="total-cell">
               <span class="h3">
                 {{ item.line_price | money }}
               </span>
+              {% if item.total_discount > 0 %}
+                <div class="discount_message">
+              	<s>{{ item.original_line_price | money }}</s>
+                ({{ item.message }})
+                </div>
+              {% endif %}
             </td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
-    <div class="grid cart__row">
+    <div class="wrapper grid cart__row">
       <div class="grid__item one-whole text-right{% if settings.cart_notes_enable %} one-third small--one-whole{% endif %}">
         <p>
           <span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
@@ -112,27 +127,32 @@
         <!-- marketizator end -->
         <input type="submit" name="update" class="btn--secondary update-cart" value="{{ 'cart.general.update' | t }}">
         <input type="submit" name="checkout" class="btn" value="{{ 'cart.general.checkout' | t }}">
+        <div class="clearfix"></div>
         <a href="/" class="continue_shopping">&lt; {{ 'cart.general.continue_shopping' | t }}</a>
       </div>
     </div>
 
   </form>
-
-  <div class="one-half small--one-whole recommended-accessories">
-    {% include 'recommended-accessories' %}
+  <div class="wrapper">
+    <div class="one-half medium--one-whole small--one-whole recommended-accessories">
+      {% include 'recommended-accessories' %}
+    </div>
   </div>
-  
 {% else %}
   {% comment %}
     The cart is empty
   {% endcomment %}
-  <h2>{{ 'cart.general.title' | t }}</h2>
-  <p>{{ 'cart.general.empty' | t }}</p>
-  <p>
-    <a href="/" class="btn back-to-store">
-      {{ 'cart.general.continue_browsing_html' | t }}
-    </a>
-  </p>
+  <div class="wrapper">
+    <div class="cart-title empty">
+    <h2>{{ 'cart.general.title' | t }}</h2>
+    </div>
+    <p>{{ 'cart.general.empty' | t }}</p>
+    <p>
+      <a href="/" class="btn back-to-store">
+        {{ 'cart.general.continue_browsing_html' | t }}
+      </a>
+    </p>
+  </div>
 {% endif %}
   <!-- Omniconvert Start -->
 <script>

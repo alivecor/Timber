@@ -1,0 +1,80 @@
+<div class="span3 hidden-phone" id="sidebar">
+
+    <!-- SIDEBAR LOGO -->
+	{% if settings.logo_position == 'sidebar' %}
+	{% if settings.use_logo_image %}
+	<a class="bl logo l-m" href="/" title="View {{ shop.name }} homepage">
+		<img src="{{ 'sidebar_logo.png' | asset_url }}" alt="{{ shop.name }} Logo">
+	</a>
+	{% else %}
+	<a class="bl logo logo-body l-m" href="/" title="View {{ shop.name }} homepage">{{ shop.name }}</a>
+	{% endif %}
+	<hr>
+	{% endif %}
+
+	<!-- SIDEBAR LINKLISTS -->
+	{% if settings.sidebar_linklist_1.title != "" and linklists[settings.sidebar_linklist_1].links.size > 0 %} 
+	<h3 class="l-m">{{ linklists[settings.sidebar_linklist_1].title }}</h3>
+	<ul class="nav nav-list">
+		{% for link in linklists[settings.sidebar_linklist_1].links %}
+		<li>{{ link.title | link_to: link.url }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	{% if settings.sidebar_linklist_2.title != "" and linklists[settings.sidebar_linklist_2].links.size > 0 %} 
+	<h3 class="l-m top-em">{{ linklists[settings.sidebar_linklist_2].title }}</h3>
+	<ul class="nav nav-list">
+		{% for link in linklists[settings.sidebar_linklist_2].links %}
+		<li>{{ link.title | link_to: link.url }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	{% if settings.sidebar_linklist_3.title != "" and linklists[settings.sidebar_linklist_3].links.size > 0 %} 
+	<h3 class="l-m top-em">{{ linklists[settings.sidebar_linklist_3].title }}</h3>
+	<ul class="nav nav-list">
+		{% for link in linklists[settings.sidebar_linklist_3].links %}
+		<li>{{ link.title | link_to: link.url }}</li>
+		{% endfor %} 
+	</ul>
+	{% endif %}
+
+	<!-- SIDEBAR BLOG SUMMARY -->
+	{% if settings.main_blog %}
+	<h3 class="l-m top-em">{{ blogs[settings.main_blog].title }}</h3>
+	<ul class="nav nav-list">
+		{% for article in blogs[settings.main_blog].articles limit:settings.blog_limit %}
+		<li><a href="{{ article.url }}"><span class="softer">{{ article.published_at | date: "%d/%m/%y" }}&nbsp;&mdash; </span>{{ article.title }}</a></li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+	<!-- SIDEBAR NEWSLETTER -->
+	{% if settings.show_newsletter %}
+	<hr>
+	<h3 class="l-m top-em">{{ settings.newsletter_title }}</h3>
+	{% if settings.mailchimp %}
+	<form action="{{ settings.mailchimp_url }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="contact-form l-m" target="_blank">
+		<input type="email" value="" name="EMAIL" class="required email" id="contact_email" placeholder="Email address">
+		<input type="submit" value="Sign Up" name="subscribe" id="mc-embedded-subscribe" class="submit btn btn-primary">
+	</form>
+	{% else %}    
+	{% form 'customer' %}
+	<div class="l-m">
+		{% if form.posted_successfully? %}
+		<p>{{ settings.tr_newsletter_success }}</p>
+		{% elsif form.errors %}
+		{% for field in form.errors %}
+		<p><em>{{ field }} - {{ form.errors.messages[field] }}</em></p>
+		{% endfor %}
+		{% endif %}
+		<input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
+		<input type="hidden" id="newsletter-first-name" name="contact[first_name]" value="Subscriber" />
+		<input type="hidden" id="newsletter-last-name" name="contact[last_name]" value="Newsletter" />
+		<input type="email" id="contact_email" name="contact[email]" required pattern="[^ @]*@[^ @]*" placeholder="Email address" />
+		<input type='submit' class="submit btn btn-primary" value="{{ settings.tr_newsletter_button }}" />
+	</div>
+	{% endform %}
+	{% endif %}
+	{% endif %}
+
+</div>

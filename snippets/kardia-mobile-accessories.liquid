@@ -1,0 +1,60 @@
+<div class="kardia-mobile-accessories grid">
+  <div class="grid__item large--one-half right">
+    <h2>Add optional accessories</h2>
+    {% for product in collections.kardia-accessories.products %}
+      {% assign sold_out = true %}
+      {% if product.available %}
+        {% assign sold_out = false %}
+      {% endif %}
+
+      <div class="accessory-line-item">
+        <div class="grid__item large--one-half">
+          <div class="grid__image">
+            <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+          </div>
+        </div>
+
+        <div class="grid__item large--one-half">
+          <p class="h4">
+            {{ product.title }}
+          </p>
+
+          <form action="/cart/add" method="post"
+            enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+            {% comment %}
+              Note: forcing the variants and quantities to be hidden
+            {% endcomment %}
+            <div class="visually-hidden">
+              <select name="id" id="productSelect" class="product-single__variants">
+                {% for variant in product.variants %}
+                  {% if variant.available %}
+
+                    {% comment %}
+                      Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+                    {% endcomment %}
+                    <option {% if variant == product.selected_or_first_available_variant %}
+                      selected="selected" {% endif %}
+                      data-sku="{{ variant.sku }}"
+                      value="{{ variant.id }}">
+                      {{ variant.title }} - {{ variant.price | money_with_currency }}
+                    </option>
+
+                  {% else %}
+                    <option disabled="disabled">
+                      {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                    </option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+              <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+            </div>
+            <button type="submit" name="add" id="{{product.id}}" class="btn"
+              {% if sold_out %}disabled{% endif %}>
+                <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+              </button>
+            </form>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

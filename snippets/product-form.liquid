@@ -1,0 +1,49 @@
+    			<hr>
+				<form action="/cart/add" method="post"{% if settings.add_to_cart_position == 'top' %} class="no-bottom-margin"{% endif %}>
+					<div class="row-fluid">
+						{% if product.options.size > 1 %}
+						<div class="control-group span6">
+							<select id="product-select" name='id'>
+								{% for variant in product.variants %}
+								<option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+								{% endfor %}
+							</select>
+						</div>
+						{% elsif product.options.size == 1 and product.variants.size > 1 %}
+						<div class="control-group span6">
+							<label for="product-select" class="control-label">{{ product.options[0] }}</label>
+							<select id="product-select" name='id'>
+								{% for variant in product.variants %}
+								<option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                              	{% endfor %}
+							</select>
+						</div>
+						{% else %}
+						<input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+						{% endif %}
+					</div>
+					<div class="clearfix purchase-buy row-fluid">
+						<div id="price-field">
+                            <h3>
+                              {{ product.price | money }}
+                                {% if product.available %}
+                                    {% if product.compare_at_price > product.price %}&nbsp;
+                                    <span class='{{ settings.sale_icon }}'>{{ settings.sale_text }}</span>&nbsp;
+                                    <s><small>{{ product.compare_at_price_max | money }}</small></s>
+                                    {% endif %}   
+                                {% endif %}
+                            </h3>
+                        </div>
+                      	{% if settings.show_qty_field %}
+                      	<div id="qty-field">
+                          	<label for="quantity">Qty: </label> 
+							<input min="1" type="number" id="quantity" name="quantity" value="1" />
+                      	</div>
+                      	{% endif %}
+                        {% if product.available %}
+						    <button type="submit" class="btn btn-primary" id="addtocart">{{ settings.tr_add_to_cart }}</button>
+                        {% else %}
+                            <p class="alert">Sorry, <strong>the {{ product.title | replace_first: 'The ','' }}</strong> {{ settings.tr_sold_out }}.</p>
+                        {% endif %}
+					</div>
+				</form>

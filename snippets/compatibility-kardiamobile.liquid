@@ -1,0 +1,170 @@
+<div class="grid__item">
+  <p class="app-text">Since Kardia Mobile is a medical device that is regulated by the FDA, we must validate the smartphone/tablet with our product before we can claim compatibility.  Given this, if your smartphone/tablet is not listed, we currently do not support that smartphone/tablet at this time nor can we say whether it is compatible.</p>
+</div>
+<div class="grid__item large--one-half">
+  <h3>{{ 'compatibility.apple_compatibility' | t }}</h3>
+  <div class="device-icon">
+    <img src="{{ 'icon_iphone.png' | asset_url }}" alt=""/>
+  </div>
+  <ul class="compatibility-list">
+    <li>
+      <b>{{ 'compatibility.iphoneX' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.iphone8_plus' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.iphone8' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.iphone7_plus' | t }}</b>
+      ({{ 'compatibility.ios_10_0_2' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.iphone7' | t }}</b>
+      ({{ 'compatibility.ios_10_0_2' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.iphone6_plus_6s_plus' | t }}</b>
+      ({{ 'compatibility.ios_10_0_2' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.iphone6_6s' | t }}</b>
+      ({{ 'compatibility.ios_10_0_2' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.iphonese' | t }}</b>
+      ({{ 'compatibility.ios_10_0_2' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.iphone5_5s_5c' | t }}</b>
+      ({{ 'compatibility.ios_10_0_2' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.iphone4s' | t }}</b>
+      ({{ 'compatibility.ios_9_3_5' | t }})
+    </li>
+  </ul>
+  <div class="device-icon">
+    <img src="{{ 'icon_ipod.png' | asset_url }}" alt=""/>
+  </div>
+  <ul class="compatibility-list">
+    <li>
+      <b>{{ 'compatibility.ipod_touch' | t }}</b>
+      ({{ 'compatibility.ios_9_3_5' | t }})
+    </li>
+  </ul>
+  <div class="device-icon">
+    <img src="{{ 'icon_ipad.png' | asset_url }}" alt=""/>
+  </div>
+  <ul class="compatibility-list">
+    <li>
+      <b>{{ 'compatibility.ipad_air_air2' | t }}</b>
+      ({{ 'compatibility.ios_9_3_5' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.ipad_mini' | t }}</b>
+      ({{ 'compatibility.ios_9_3_5' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.ipad_mini_2_3' | t }}</b>
+      ({{ 'compatibility.ios_10_0_2' | t }})
+    </li>
+  </ul>
+  {% if shop.locale == 'en' %}
+    <p class="omron-compat-link">
+      <a href="https://omronhealthcare.com/kardiamobile/" target="_blank">
+        {{ 'compatibility.omron_compatibility' | t }}
+      </a>
+    </p>
+  {% endif %}
+</div>
+<div class="grid__item large--one-half">
+  <h3>{{ 'compatibility.android_compatibility' | t }}</h3>
+  <div class="device-icon">
+    <img src="{{ 'icon_android_phone.png' | asset_url }}" alt=""/>
+  </div>
+  <ul class="compatibility-list">
+    <li>
+      <b>{{ 'compatibility.galaxy_s8' | t }}</b>
+      ({{ 'compatibility.android_7_0' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.galaxy_s5_s6_s7' | t }}</b>
+      ({{ 'compatibility.android_6_0_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.galaxy_s4' | t }}</b>
+      ({{ 'compatibility.android_5_0_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.galaxy_s3' | t }}</b>
+      ({{ 'compatibility.android_4_3' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.samsung_note_3' | t }}</b>
+      ({{ 'compatibility.android_5_0' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.samsung_note_5' | t }}</b>
+      ({{ 'compatibility.android_6_0_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.galaxy_j1' | t }}</b>
+      ({{ 'compatibility.android_5_1_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.lg_nexus_5' | t }}</b>
+      ({{ 'compatibility.android_6_0_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.htc_one_m7' | t }}</b>
+      ({{ 'compatibility.android_4_3' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.jitterbug_touch_3' | t }}</b>
+      ({{ 'compatibility.android_4_3' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.google_pixel' | t }}</b>
+      ({{ 'compatibility.android_7_1_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.google_pixel_xl' | t }}</b>
+      ({{ 'compatibility.android_7_1_1' | t }})
+    </li>
+  </ul>
+  
+  {% comment %}new Date().getTime(){% endcomment %}
+  {% assign updated_date = '1510708800' | date: format: 'month_day_year'  %}
+  <p class="last-updated">{{ 'compatibility.last_updated_on' | t: date: updated_date}}</p>
+
+  {% comment %}
+    capture itunes and play urls for passing to the translation
+  {% endcomment %}
+  {% capture itunes_url %}
+    <a href="https://itunes.apple.com/app/aliveecg/id579769143">
+      {{ 'compatibility.app_store' | t }}
+    </a>
+  {% endcapture %}
+
+  {% capture play_url %}
+    <a href="https://play.google.com/store/apps/details?id=com.alivecor.aliveecg">
+      {{ 'compatibility.google_play' | t }}
+    </a>
+  {% endcapture %}
+
+  <h3>{{ 'compatibility.kardia_app' | t }}</h3>
+  <p class="app-text">
+  {{ 'compatibility.use_of_kardia_mobile_requires_html' | t: itunes_url: itunes_url, play_url: play_url }}
+  </p>
+
+  <div class="app-store-badges">
+    <a class="itunes-badge" href="https://itunes.apple.com/app/aliveecg/id579769143"><img src="https://alivecorcms.s3.amazonaws.com/sites/51b0fa1d9005a1000f00292e/theme/images/appstore-badge.svg" alt="link to AppStore"></a>
+    <a class="android-badge" href="https://play.google.com/store/apps/details?id=com.alivecor.aliveecg"><img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Android app on Google Play"></a>
+  </div>
+</div>
+

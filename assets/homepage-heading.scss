@@ -1,0 +1,36 @@
+.homepage-heading {
+  text-align: center;
+  font-family: 'Sanchez';
+    a {
+   color: #0072bc; 
+   text-decoration: underline;
+  }
+}
+
+.fancy {
+  line-height: 0.5;
+  text-align: center;
+  overflow: hidden;
+}
+.fancy h3 {
+  display: inline-block;
+  position: relative;
+  text-transform: uppercase;
+}
+.fancy h3:before,
+.fancy h3:after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  border-bottom: 1px solid #ededed;
+  top: 0;
+  width: 9000px;
+}
+.fancy h3:before {
+  right: 100%;
+  margin-right: 15px;
+}
+.fancy h3:after {
+  left: 100%;
+  margin-left: 15px;
+}

@@ -1,0 +1,25 @@
+<script type="text/javascript">
+  function promoAdd(event, form, id) {
+    var event = event || window.event;
+    var km_id = 3791664071;
+    var cp_var_id = 52407081427;
+  	
+//  if this is KM, show pop up
+//  on click of add CP to cart, do post below else just submit form
+    if (id === km_id) {
+      $('.pop-up').addClass('open');
+      event.preventDefault();
+      $('#carry-pod-add').on('click', function() {
+        jQuery.post('/cart/add.js', {
+          'quantity': 1,
+          'id': cp_var_id
+        }, function() {
+          form.submit();
+        });
+      });
+      $('#carry-pod-no').on('click', function() {
+        form.submit();
+      });
+    }
+  }
+</script>
