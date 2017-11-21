@@ -20,7 +20,6 @@
   {% assign current_variant = product.selected_or_first_available_variant %}
 
   {% include 'breadcrumb' %}
-
   <div class="grid product-single">
     <div class="grid__item large--one-half text-center">
       <div class="product-single__photos" id="ProductPhoto">
@@ -35,7 +34,7 @@
         <ul class="product-single__thumbnails grid-uniform" id="ProductThumbs">
 
           {% for image in product.images %}
-            <li class="grid__item one-quarter">
+            <li class="grid__item one-third">
               <a href="{{ image.src | img_url: 'large' }}" class="product-single__thumbnail">
                 <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
               </a>
@@ -47,75 +46,126 @@
     </div>
 
     <div class="grid__item large--one-half">
+      <h2 class="product-title" itemprop="name">{{ product.title }}</h2>
 
-      <h1 itemprop="name">{{ product.title }}</h1>
+      <!-- Price stuff ======================================================== -->
+      {% if product.compare_at_price_max > product.price %}
+        <span id="ProductPrice" class="h2" itemprop="price">
+          {{ product.price | money }}
+        </span>
+        <span class="strikeout">
+        {{ current_variant.compare_at_price | money }}
+        </span>
+      {% else %}
+        <span id="ProductPrice" class="h2 noFloat" itemprop="price">
+          {{ product.price | money }}
+        </span>
+      {% endif %}
 
+      <!-- Add to Cart
+      ======================================================== -->
       <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
         <meta itemprop="priceCurrency" content="{{ shop.currency }}">
-
         <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
 
+      {% comment %}
+        If there are variants, show the user a variant title
+      {% endcomment %}
+      {% if product.variants.size > 1 %}
+      <div class="h3">{{product.options.first | escape}}</div>
+      {% endif %}
+
+      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="promoAdd(event, this, {{product.id}})">
+        {% if product.variants.size > 1 %}
         {% comment %}
-          ID addToCartForm is a selector for the ajax cart plugin
+          If there are variants, show the user some choices via input controls, else we will hide the inputs
         {% endcomment %}
-        <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
 
-          {% comment %}
-            Add product variants as a dropdown.
-              - By default, each variant (or combination of variants) will display as its own <option>
-              - To separate these into multiple steps, which we suggest, use option_selection.js (see below)
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              {% assign add_price = variant.price | minus: product.price %}
+              <div class="variant-input-wrapper">
+                <label for="{{variant.id}}" class="form-control">
+                  <input type="radio"
+                         id="{{variant.id}}"
+                         name="id"
+                         data-sku="{{variant.sku}}"
+                         value="{{variant.id}}"
+                         class="variant-input"
+                         data-index="{{forloop.index0}}"
+                         {% if forloop.first == true %}
+                           checked="true"
+                         {% endif %}
+                         >
+                  <b>{{variant.title}}</b>
+                  {% if add_price > 0 %}
+                  &nbsp;(add {{add_price | money_with_currency}})
+                  {% endif %}
+                </label>
+              </div>
+            {% else %}
+              <div class="variant-input-wrapper">
+                <label class="form-control out-of-stock">
+                  <input type="radio"
+                         disabled>
+                  <b>{{ variant.title }}</b> ({{ 'products.product.sold_out' | t }})
+                </label>
+              </div>
+            {% endif %}
+          {% endfor %}
 
-            You can leverage jQuery to add a callback on page load and each time the select element changes:
-              - Include option_selection.js (as seen at the bottom of this file)
-              - This allows you to use JavaScript anytime the variant dropdown changes
-              - This also separates out your variant options (ie. size, color, etc.) to separate select elements
+        {% else %}
+          {% for variant in product.variants %}
+          <input type="hidden"
+                 id="{{variant.id}}"
+                 name="id"
+                 data-sku="{{variant.sku}}"
+                 value="{{variant.id}}"
+                 class="variant-input"
+                 data-index="{{forloop.index0}}"
+                 {% if forloop.first == true %}
+                   checked="true"
+                 {% endif %}
+                 >
+          {% endfor %}
+        {% endif %}
 
-            For more information on products with multiple options, visit:
-              - http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
-          {% endcomment %}
-          <select name="id" id="productSelect" class="product-single__variants">
-            {% for variant in product.variants %}
-              {% if variant.available %}
+        {% comment %}
+        <!-- removing quantities for now -->
+        <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
+        <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+        {% endcomment %}
 
-                {% comment %}
-                  Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
-                {% endcomment %}
-                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
-
-              {% else %}
-                <option disabled="disabled">
-                  {{ variant.title }} - {{ 'products.product.sold_out' | t }}
-                </option>
-              {% endif %}
-            {% endfor %}
-          </select>
-
-          <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
-          <!-- Price stuff ======================================================== -->
-          {% if product.compare_at_price_max > product.price %}
-            <span id="ProductPrice" class="h2" itemprop="price">
-              {{ product.price | money }}
-            </span>
-            <span class="strikeout">
-            {{ current_variant.compare_at_price | money }}
-            </span>
-          {% else %}
-            <span id="ProductPrice" class="h2 noFloat" itemprop="price">
-              {{ product.price | money }}
-            </span>
-          {% endif %}
-
-          <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
-          <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
-
-          <button type="submit" name="add" id="AddToCart" class="btn">
-            <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
-          </button>
-        </form>
+        <button type="submit" name="add" id="AddToCart" class="btn" {% if sold_out %}disabled{% endif %}>
+          <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+        </button>
+      </form>
 
       </div>
 
-      <div class="product-description rte" itemprop="description">
+      <!-- cool stuff! ======================================================== -->
+      <h3 class="cool-stuff">
+        {% if shop.locale == 'en' %}
+          {% include 'benefit-icons-product' %}
+        {% else %}
+          {{ 'main_product.guarantee' | t }}<br>
+          {{ 'main_product.warranty_2years' | t }}
+        {% endif %}
+      </h3>
+
+      <!-- Star rating ======================================================== -->
+      <div class="review-count">
+        <a href="#reviews" class="scroll-to-tab">
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+          <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
+        </a>
+      </div>
+
+      <!-- Product Description ====================================================== -->
+      <div class="product-description rte product" itemprop="description">
+        {% comment %}
+          Wrap description in a div and add another div into description in admin and use styles to show hide the correct one
+        {% endcomment %}
         {{ product.description }}
       </div>
 
@@ -144,47 +194,48 @@
   </div>
 
 </div>
+{% include 'product-tabs' product=product%}
 
-{% comment %}
-  To take advantage of a callback on the select dropdown, add option_selection.js
-  and customize the JS in timber.productPage as needed.
+{% if product.handle == "kardiamobile" %}
+  {% assign product_accessories = collections.kardiamobile-accessories %}
+{% endif %}
 
-  Currently, timber.productPage does the following:
-    - Hides your <select> tag from above
-    - Breaks out the product variants into separate product options, if more than one exists
-    - Generates a <select> tag for each product option
-    - Enables/disables elements based on variant availability
 
-  Callback notes:
-    - Keep the callback available to the global scope (window.selectCallback) so that advanced
-      addons can override it.
-      * E.g. multiple currencies http://docs.shopify.com/manual/configuration/store-customization/currencies-and-translations/currencies/how-to-toggle-between-two-currencies
-{% endcomment %}
-{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+{% if product_accessories.products.length > 0 %}
+  <div class="section">
+    <a name="accessories"></a>
+    <h3>{{ 'homepage.sections.frontpage_title' | t }}</h3>
+  </div>
+
+  <div class="grid-uniform">
+
+    {% comment %}
+      Loop through products in your KardiaMobile accessories collection.
+      This collection is created by default, but you must add products to it.
+    {% endcomment %}
+    {% for product in product_accessories.products limit:6 %}
+
+      {% comment %}
+        Change the grid item width by using classes from the grid in
+        the grid_item_width variable.
+      {% endcomment %}
+      {% if product_accessories.products.length <= 2 %}
+        {% assign grid_item_width = 'large--one-half medium--one-half small--one-half' %}
+      {% elsif product.accessories.products.length == 3 %}
+        {% assign grid_item_width = 'large--one-third medium--one-half small--one-half' %}
+      {% else %}
+    	{% assign grid_item_width = 'large--one-quarter medium--one-half small--one-half' %}
+      {% endif %}
+      {% include 'home-grid-item' %}
+    {% endfor %}
+
+  </div>
+{% endif %}
+
+
 <script>
-  var selectCallback = function(variant, selector) {
-    timber.productPage({
-      money_format: "{{ shop.money_format }}",
-      variant: variant,
-      selector: selector
-    });
-  };
-
-  jQuery(function($) {
-    new Shopify.OptionSelectors('productSelect', {
-      product: {{ product | json }},
-      onVariantSelected: selectCallback,
-      enableHistoryState: true
-    });
-
-    // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
-    {% if product.options.size == 1 and product.options.first != 'Title' %}
-      $('.selector-wrapper:eq(0)').prepend('<label for="productSelect-option-0">{{ product.options.first | escape }}</label>');
-    {% endif %}
-
-    // Hide selectors if we only have 1 variant and its title contains 'Default'.
-    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
-      $('.selector-wrapper').hide();
-    {% endif %}
-  });
+$('form').on('click', "input", function(e) {
+  var idx = $(this).data('index');
+  $('.product-single__thumbnails').find('a').eq(idx).click();
+});
 </script>

@@ -33,12 +33,14 @@
 
   <!-- CSS ================================================== -->
   {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
 
   <!-- Header hook for plugins ================================================== -->
   {{ content_for_header }}
+
   {% include 'oldIE-js' %}
 
-  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js' | script_tag }}
   {{ 'modernizr.min.js' | asset_url | script_tag }}
 
   {% comment %}
@@ -53,6 +55,14 @@
 
   <!-- Analytics ================================================= -->
   {% include 'analytics-scripts' %}
+  
+  <!-- Bold's Common Snippet -->
+  {% include 'bold-common' %}
+
+  <!-- Typekit fonts -->
+  {% include 'typekit' %}
+
+{% if product.metafields.inventory.ShappifyHidden == "true" %} {% endif %}
 
 </head>
 
@@ -61,258 +71,24 @@
 {% endcomment %}
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
   {% include 'discount-code-body' %}
-  {% if template contains 'cart' %}
+ {% if template contains 'cart' %}
     {% include 'tracking-pixels' %}
     {% include 'floodlight-cart' %}
   {% else %}
     {% include 'floodlight-main' %}
   {% endif %}
+  {% include 'navigation' %}
+  {% if shop.locale == 'en' and template == 'index' %}
+    {% include 'trust-banner' %}
+  {% endif %}
+  
   <div id="PageContainer" class="is-moved-by-drawer">
-    <header class="site-header" role="banner">
-      <div class="wrapper">
-
-        <div class="grid--full grid--table">
-          <div class="grid__item large--one-half">
-            {% comment %}
-              Use the uploaded logo from theme settings if enabled.
-              Site name gets precedence with H1 tag on homepage, div on other pages.
-            {% endcomment %}
-            {% if template == 'index' %}
-              <h1 class="site-header__logo large--left" itemscope itemtype="http://schema.org/Organization">
-            {% else %}
-              <div class="h1 site-header__logo large--left" itemscope itemtype="http://schema.org/Organization">
-            {% endif %}
-              {% if settings.logo_use_image %}
-                <a href="http://alivecor.com" itemprop="url" class="site-header__logo-link">
-                  <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo">
-                </a>
-              {% else %}
-                <a href="/" itemprop="url">{{ shop.name }}</a>
-              {% endif %}
-            {% if template == 'index' %}
-              </h1>
-            {% else %}
-              </div>
-            {% endif %}
-          </div>
-          <div class="grid__item large--one-half large--text-right medium-down--hide">
-            {% comment %}
-              Show number of items in the cart and total cost in the /cart link
-
-              Ajax Cart Notes:
-                - #cartCount updates the total number of items in the cart
-                - #cartCost updates the total cost of the cart
-                - Documentation:  http://shopify.com/timber#ajax-cart
-            {% endcomment %}
-            <div class="float">
-              <a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
-                <img src="{{ 'store_icon_cart@3x.png' | asset_url }}"/>
-                  <span id="CartCount">
-                    {% if cart.item_count > 0 %}
-                      {{ cart.item_count }}
-                    {% else %}
-                      &nbsp;
-                    {% endif %}
-                  </span>
-              </a>
-
-            </div>
-
-            {% comment %}
-              If customer accounts are enabled, provide login and create account links
-            {% endcomment %}
-            {% if shop.customer_accounts_enabled %}
-              <div class="float accountLinks">
-                {% if customer %}
-                  {% if customer.first_name != blank %}
-                    {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
-                    {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
-                  {% else %}
-                    <a href="/account">{{ 'layout.customer.account' | t }}</a>
-                  {% endif %}
-                  | {{ 'layout.customer.log_out' | t | customer_logout_link }}
-                {% else %}
-                  {{ 'layout.customer.log_in' | t | customer_login_link }}
-                  {% if shop.customer_accounts_optional %}
-                  | {{ 'layout.customer.create_account' | t | customer_register_link }}
-                  {% endif %}
-                {% endif %}
-              </div>
-            {% endif %}
-
-          </div>
-        </div>
-
-      </div>
-      {% comment %}      
-      <div class="site-title">
-        <h1 class="text-center">
-          <a href="/">
-            {{ shop.name }}
-          </a>
-        </h1>
-      </div>
-      {% endcomment %}
-
-    </header>
-
-    <nav class="nav-bar" role="navigation">
-      <div class="wrapper">
-        <div class="medium-down--hide">
-          {% comment %}
-            List out your main-menu linklist (default)
-
-            More info on linklists:
-              - http://docs.shopify.com/themes/liquid-variables/linklists
-          {% endcomment %}
-          <!-- begin site-nav -->
-          <ul class="site-nav" id="AccessibleNav">
-            {% for link in linklists.main-menu.links %}
-              {% comment %}
-                Create a dropdown menu by naming a linklist the same as a link in the parent nav
-
-                More info on dropdowns:
-                  - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
-              {% endcomment %}
-              {% assign child_list_handle = link.title | handleize %}
-              {% if linklists[child_list_handle].links != blank %}
-                <li class="site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
-                  <a href="{{ link.url }}" class="site-nav__link">
-                    {{ link.title }}
-                    <span class="icon icon-arrow-down" aria-hidden="true"></span>
-                  </a>
-                  <ul class="site-nav__dropdown">
-                    {% for childlink in linklists[child_list_handle].links %}
-                      <li{% if childlink.active %} class="site-nav--active"{% endif %}>
-                        <a href="{{ childlink.url }}" class="site-nav__link">{{ childlink.title | escape }}</a>
-                      </li>
-                    {% endfor %}
-                  </ul>
-                </li>
-              {% else %}
-                <li {% if link.active %}class="site-nav--active"{% endif %}>
-                  <a href="{{ link.url }}" class="site-nav__link">{{ link.title }}</a>
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-          <!-- //site-nav -->
-        </div>
-        <div class="large--hide medium-down--show">
-          <div class="grid">
-            <div class="text-right">
-              <div class="site-nav--mobile">
-                <a href="/cart" class="js-drawer-open-right site-nav__link" aria-controls="CartDrawer" aria-expanded="false">
-                  <span class="icon-fallback-text">
-                    <span class="icon icon-cart" aria-hidden="true"></span>
-                    <span>
-                      {% if cart.item_count > 0 %}
-                        {{ cart.item_count }}
-                      {% else %}
-                        &nbsp;
-                      {% endif %}
-                    </span>
-                    <span class="fallback-text">{{ 'layout.cart.title' | t }}</span>
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <main class="wrapper main-content" role="main">
-      {% comment %}
-      {% if template == 'index' %}
-        <nav class="fake-nav grid">
-          <ul>
-            <li class="grid__item medium--one-third large--one-third">
-              <a href="#kardia-mobile" class="scroll-to-tab">
-                <img src="{{ 'nav-k-mobile.jpg' | asset_url }}" alt="kardia mobile" class="small--left">
-                {{ 'general.fake_nav.shop_kardia_mobile' | t}}
-              </a>
-            </li>
-            <li class="grid__item medium--one-third large--one-third">
-              <a href="#kardia-band" class="scroll-to-tab">
-                <img src="{{ 'nav-k-band.jpg' | asset_url }}" alt="kardia mobile" class="small--left">
-                {{ 'general.fake_nav.shop_kardia_band' | t}}
-              </a>
-            </li>
-            <li class="grid__item medium--one-third large--one-third">
-              <a href="#accessories" class="scroll-to-tab">
-                <img src="{{ 'nav-k-accessories.jpg' | asset_url }}" alt="kardia mobile" class="small--left">
-                {{ 'general.fake_nav.shop_kardia_accessories' | t}}
-              </a>
-            </li>
-          </ul>
-        </nav>
-      {% endif %}
-      {% endcomment %}
+    <main class="{% if template != 'cart' %}wrapper {%else%}cart-wrapper {% endif %}main-content" role="main">
 
       {{ content_for_layout }}
 
     </main>
-
-    <!-- begin site-footer -->
-    <footer class="site-footer small--text-center" role="contentinfo">
-      <div class="wrapper">
-        <div class="grid">
-
-          <div class="grid__item large--one-half">
-
-            <h4>{{ 'layout.footer.keep_your_finger_on_the_pulse' | t }}</h4>
-            <p>{{ 'layout.footer.sign_up_for_the_latest_alivecor_news' | t }}</p>
-            {% if settings.footer_newsletter_enable %}
-              <div class="grid__item large--two-thirds medium--two-thirds small--one-whole newsletter-signup">
-                {% comment %}
-                  MailChimp is the go-to newsletter service for Shopify.
-                  Use the link below to find your MailChimp form action
-                  and insert it in your site settings.
-
-                  MailChimp newsletter integration and requirement:
-                   - http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action
-                {% endcomment %}
-                {% if settings.newsletter_form_action != blank %}
-                  {% assign form_action = settings.newsletter_form_action %}
-                {% else %}
-                  {% assign form_action = '#' %}
-                {% endif %}
-                <form action="{{ form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="input-group">
-                  <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="EMAIL" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
-                  <span class="input-group-btn">
-                    <input type="submit" class="btn" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | t }}">
-                  </span>
-                </form>
-              </div>
-            {% endif %}
-          </div>
-
-          <div class="grid__item large--one-half">
-            <a href="https://www.alivecor.com/resellers" class="outside-us">{{ 'general.header.purchase_outside_of' | t }}{{shop.address.country}}</a>
-            <h4>{{ 'layout.footer.need_help' | t }}</h4>
-            <p>{{ 'layout.footer.happy_to_help' | t }}</p>
-
-            {% if shop.locale == 'en-GB' %}
-            <p class="noMarg">{{ 'contact.form.phone' | t }}: 0333 301 0433</p>
-            <p>{{ 'contact.form.email' | t }}: <a href="mailto:uksupport@alivecor.com">uksupport@alivecor.com</a></p>
-            {% else %}
-            <p>{{ 'layout.footer.email_us_at' | t }} <a href="mailto:support@alivecor.com">support@alivecor.com</a></p>
-            {% endif %}
-          </div>
-
-        </div>
-      </div>
-
-      <div class="wrapper disclaimer">
-        <span>{{ 'layout.footer.all_rights_reserved' | t }}</span>
-        <a href="http://www.alivecor.com/warranty">{{ 'layout.footer.limited_warranty_and_returns' | t }}</a>
-      </div>
-
-
-
-    </footer>
-    <!-- //site-footer -->
+    {% include 'footer' %}
   </div>
 
   {{ 'fastclick.min.js' | asset_url | script_tag }}
@@ -387,6 +163,11 @@
     {% include 'zopim' %}
   {% endif %}
   {% include 'discount-code-notifier' %}
+  {% include 'promo-add' %}
+  {% include 'pop-up' %}
+  
+  <!-- RMFactory chat   -->
+  {% include 'live-person' %}
 
 </body>
 </html>

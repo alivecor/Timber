@@ -1,6 +1,18 @@
+{% assign compat_specs_product = false %}
+{% if product.handle == "kardiamobile" %}
+  {% assign compatibility_liquid = 'compatibility-kardiamobile' %}
+  {% assign techspecs_liquid = 'tech-specs-kardiamobile' %}
+  {% assign compat_specs_product = true %}
+{% endif %}
+{% if product.handle == "kardiaband" %}
+  {% assign compatibility_liquid = 'compatibility-kardiaband' %}
+  {% assign techspecs_liquid = 'tech-specs-kardiaband' %}
+  {% assign compat_specs_product = true %}
+{% endif %}
+
 <a name="tabs"></a>
 <div class="targets clearfix">
-
+  {% if compat_specs_product %}
   <a name="compatibility"></a>
   <div class="accordion" id="compatibility">
     <h3>{{ 'product_tabs.compatibility' | t }}
@@ -9,7 +21,7 @@
       </a>
     </h3>
     <div class="accordion-inner hidden">
-      {% include 'compatibility' %}
+      {% include compatibility_liquid %}
     </div>
   </div>
 
@@ -21,10 +33,10 @@
       </a>
     </h3>
     <div class="accordion-inner hidden">
-      {% include 'tech-specs' %}
+      {% include techspecs_liquid %}
     </div>
   </div>
-
+  {% endif %}
   <a name="reviews"></a>
   <div class="accordion" id="reviews">
     <h3>{{ 'product_tabs.reviews' | t }}

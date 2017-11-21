@@ -18,7 +18,7 @@
   Set the default grid_item_width if no variable is set
 {% endcomment %}
 {% unless grid_item_width %}
-  {% assign grid_item_width = 'large--one-third medium--one-half' %}
+  {% assign grid_item_width = 'large--one-third medium--one-half small--one-half' %}
 {% endunless %}
 
 {% comment %}
@@ -55,10 +55,10 @@
     <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
   </div>
 
-  <p class="h4">
-    {{ product.title }}
+  <p class="h4 title">
+    <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
   </p>
-  <p>
+  <p class="h4 price">
     {% comment %}
       You can show a leading 'from' or 'up to' by checking 'product.price_varies'
       if your variants have different prices.

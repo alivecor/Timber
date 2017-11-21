@@ -1,0 +1,156 @@
+
+
+/* Checkout CSS */
+body {
+    
+  	background-color: ;
+  	
+	color: ;
+}
+
+
+#header, #container.slim #header, #main, #container.slim #main, #footer, #container.slim #footer, #container {
+    padding:0;
+    margin:0;
+    background:none;
+}
+#header, #container.slim #header {
+    background-color: ;
+    width: 100%;
+    min-height: 60px;
+    margin-bottom: 30px;
+}
+#main, #footer, h1#tagline, #logo {
+    width:884px;
+    margin: 0 auto;
+}
+#container, #container.slim {
+    width: 100%;
+}
+#container.slim h1#tagline, #container.slim #main, #container.slim #footer {
+    width: 460px;
+    margin: 0 auto;
+}
+#container.slim .group {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+textarea:focus, 
+input[type="text"]:focus, 
+input[type="password"]:focus, 
+input[type="datetime"]:focus, 
+input[type="datetime-local"]:focus, 
+input[type="date"]:focus, 
+input[type="month"]:focus, 
+input[type="time"]:focus, 
+input[type="week"]:focus, 
+input[type="number"]:focus, 
+input[type="email"]:focus, 
+input[type="url"]:focus, 
+input[type="search"]:focus, 
+input[type="tel"]:focus, 
+input[type="color"]:focus, 
+.uneditable-input:focus {
+    border-color: ;
+	box-shadow: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+#cost, 
+#order-num,
+#steps,
+#overview h2,
+#thumbs h3, 
+.group h3, 
+.pgroup h3
+{
+	
+	font-family: '';
+	
+	font-weight: ;
+	text-transform: ;
+    color: ;
+}
+h1 {
+	font-size: ;
+	line-height: ;
+}
+h1#tagline, h1 span.subtitle {
+    color: ;
+}
+h1#tagline {
+    font-size: ;
+    line-height: 60px;
+}
+h2, #overview h2 {
+	font-size: ;
+	line-height: ;
+}
+h3, #thumbs h3, .group h3, .pgroup h3 {
+	font-size: ;
+	line-height: ;
+    font-weight: normal;
+  	text-shadow: none;
+}
+h4 {
+	font-size: ;
+	line-height: ;
+	margin-bottom: 1em;
+}
+#cost, #order-num { 
+  	font-size: 300%; text-shadow: none;
+}
+#steps { 
+  	font-size: 140%; 
+}
+#cost {
+  	margin-bottom: 0; 
+}
+a {
+	color: ;
+	text-decoration: none;
+}
+a:hover {
+	color:;
+	text-decoration: underline;
+}
+.form td input, #email input, input[type="text"], input[type="password"] {
+    line-height: 20px;
+}
+#products, #overview, #thumbs div {
+    border-color: ;
+}
+#thumbs span, label, #email input {
+    font-family: ;
+    line-height: 140%;
+}
+#thumbs span, label {
+    color: ;
+}
+#thumbs h3 span, #cost, #order-num, #overview .hint {
+    color: ;
+}
+#thumbs div {
+    background-color: #fff;
+}
+#email input {
+    font-size: 13px;
+}
+#email, #addresses, .group, #buttons, .group h3 {
+   background: none;
+   border: none;
+}
+#email, #payment, #payment-method {
+   border-bottom: 1px solid ;
+}
+#email {
+   padding-bottom: 30px;
+}
+#overview {
+   background: none; 
+}

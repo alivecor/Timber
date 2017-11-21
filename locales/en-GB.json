@@ -6,9 +6,10 @@
     },
     "404": {
       "title": "404 Page Not Found",
-      "subtext_html": "The page you requested does not exist. Click <a href=\"\/collections\/all\">here<\/a> to continue shopping."
+      "subtext_html": "The page you requested does not exist. Click <a href=\"/collections/all\">here</a> to continue shopping."
     },
     "breadcrumbs": {
+      "store": "Store",
       "home": "Home",
       "home_link_title": "Back to the frontpage"
     },
@@ -68,7 +69,7 @@
       "note": "Special instructions for seller",
       "subtotal": "Subtotal",
       "shipping_at_checkout": "Postage & packing calculated at checkout",
-      "discount": "If you have a discount code, it will be applied on the next page",
+      "discount": "If you have a promotional code, it will be applied on the next page",
       "update": "Update Cart",
       "checkout": "Checkout",
       "empty": "Your cart is currently empty.",
@@ -153,7 +154,7 @@
       "city": "City",
       "country": "Country",
       "province": "Province",
-      "zip": "Postal\/Zip Code",
+      "zip": "Postal/Zip Code",
       "phone": "Phone",
       "set_default": "Set as default address",
       "add": "Add Address",
@@ -234,10 +235,10 @@
     },
     "onboarding": {
       "modal_title": "Almost there...",
-      "no_products_html": "You have no products in your Frontpage collection. This placeholder will appear until you <a href=\"\/admin\/collections?tutorial=Frontpage\">add a product to this collection<\/a>.",
+      "no_products_html": "You have no products in your Frontpage collection. This placeholder will appear until you <a href=\"/admin/collections?tutorial=Frontpage\">add a product to this collection</a>.",
       "add_product": "Add a Product",
       "product_title": "Example Product Title",
-      "no_collections_html": "You don't have any collections to show here. <a href=\"\/admin\/custom_collections\">Add some collections<\/a> to go along with the default Frontpage.",
+      "no_collections_html": "You don't have any collections to show here. <a href=\"/admin/custom_collections\">Add some collections</a> to go along with the default Frontpage.",
       "add_collection": "Add a Collection",
       "collection_title": "Example Collection Title"
     }
@@ -289,7 +290,7 @@
     "product": {
       "sold_out": "Sold Out",
       "on_sale": "On Sale",
-      "on_sale_from_html": "<strong>On Sale<\/strong> from {{ price }}",
+      "on_sale_from_html": "<strong>On Sale</strong> from {{ price }}",
       "unavailable": "Unavailable",
       "compare_at": "Compare at",
       "quantity": "Quantity",
@@ -317,6 +318,10 @@
   "compatibility": {
     "compatibility": "Compatibility",
     "apple_compatibility": "Apple Compatibility",
+    "iphoneX": "iPhone X",
+    "iphone8_plus": "iPhone 8 Plus",
+    "iphone8": "iPhone 8",
+    "ios_11_1": "iOS 11.1",
     "iphone7_plus": "iPhone 7 Plus",
     "iphone7": "iPhone 7",
     "iphone6_plus_6s_plus": "iPhone 6 Plus / 6s Plus",
@@ -328,7 +333,9 @@
     "ipad_air_air2": "iPad Air / Air 2",
     "ipad_mini": "iPad Mini",
     "ipad_mini_2_3": "iPad Mini 2 / 3",
-    "watch1_2": "Apple Watch Series 1 and Series 2",
+    "watch1": "Apple Watch Series 1",
+    "watch2": "Apple Watch Series 2",
+    "watch3": "Apple Watch Series 3",
     "watch_os_3_1": "WatchOS 3.1",
     "ios_9_3_5": "iOS 9.3.5",
     "ios_10_0_2": "iOS 10.0.2",
@@ -338,6 +345,8 @@
     "lg_nexus_5": "LG Nexus 5",
     "samsung_note_5": "Samsung Note 5",
     "samsung_note_3": "Samsung Note 3",
+    "galaxy_s8": "Samsung Galaxy S8",
+    "android_7_0": "Android 7.0",
     "galaxy_s5_s6_s7": "Samsung Galaxy S5 / S6 / S7",
     "galaxy_s3": "Samsung Galaxy S3",
     "galaxy_s4": "Samsung Galaxy S4",
@@ -365,10 +374,10 @@
     "return_policy": "Return Policy"
   },
   "return_policy": {
-    "p1_html": "If you decide Kardia Mobile isn’t for you, AliveCor will issue you a full refund on your purchase if you contact us within 30 days of delivery.  To request a refund, contact AliveCor Support at <a href=\"mailto:support@alivecor.com\">support@alivecor.com<\/a>.  We will issue you an RMA number to include when you ship your device back to us and will process your refund upon receipt of your device.",
-    "p2_html": "If your device has stopped working and is still under warranty please contact us for troubleshooting assistance.  If we find that your device is in fact defective while within the <a href=\"https:\/\/www.alivecor.com\/warranty\">warranty period<\/a> we will issue a replacement upon receipt of the faulty device."
+    "p1_html": "If you decide Kardia Mobile isn’t for you, AliveCor will issue you a full refund on your purchase if you contact us within 30 days of delivery.  To request a refund, contact AliveCor Support at <a href=\"mailto:uksupport@alivecor.com\">uksupport@alivecor.com</a>.  We will issue you an RMA number to include when you ship your device back to us and will process your refund upon receipt of your device.",
+    "p2_html": "If your device has stopped working and is still under warranty please contact us for troubleshooting assistance.  If we find that your device is in fact defective while within the <a href=\"https://www.alivecor.com/warranty\">warranty period</a> we will issue a replacement upon receipt of the faulty device."
   },
-  "tech_specs": {
+  "tech_specs_kardiamobile": {
     "dimensions": "Dimensions",
     "product_dims": "8.2 cm x 3.2 cm x 0.35 cm",
     "electrode_dims": "2 3cm x 3cm stainless-steel electrodes",
@@ -378,7 +387,6 @@
     "power_source": "3V CR2016 coin cell battery (included)",
     "battery_life": "200 hours operational time",
     "battery_life_typical": "12 months typical use",
-
     "ekg_characteristics": "EKG Characteristics",
     "single_lead": "Single Lead ECG",
     "dynamic_range": "10 mV peak-to-peak input dynamic range",
@@ -391,6 +399,20 @@
     "user_manuals": "User Manuals",
     "ios_user_manual_link": "Kardia Mobile for iOS",
     "android_user_manual_link": "Kardia Mobile for Android"
+  },
+  "tech_specs_kardiaband": {
+    "dimensions": "Dimensions (Sensor Module only)",
+    "product_dims": "2.1 x 2.0 x 0.8 cm, 3 cm2 stainless-steel electrode",
+    "weight": "Weight (Sensor Module only)",
+    "product_weight": "30.6 grams",
+    "power_source": "CR1620 battery (included)",
+    "battery_life": "90 hours operational time",
+    "battery_life_typical": "2 years typical use",
+    "compatible_device": "Compatible Apple Watch",
+    "material": "Material",
+    "material_type": "TPU (Thermoplastic polyurethane)",
+    "sizing": "Sizing",
+    "size_spec1": "KardiaBand fits wrist circumference 15.5 - 23.5cm"
   },
   "main_product": {
     "guarantee": "30-day money back guarantee",

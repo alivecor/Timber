@@ -1,0 +1,617 @@
+
+/*  
+Font Awesome
+the iconic font designed for use with Twitter Bootstrap
+-------------------------------------------------------
+The full suite of pictographic icons, examples, and documentation
+can be found at: http://fortawesome.github.com/Font-Awesome/
+
+License
+-------------------------------------------------------
+The Font Awesome webfont, CSS, and LESS files are licensed under CC BY 3.0:
+http://creativecommons.org/licenses/by/3.0/ A mention of
+'Font Awesome - http://fortawesome.github.com/Font-Awesome' in human-readable
+source code is considered acceptable attribution (most common on the web).
+If human readable source code is not available to the end user, a mention in
+an 'About' or 'Credits' screen is considered acceptable (most common in desktop
+or mobile software).
+
+Contact
+-------------------------------------------------------
+Email: dave@davegandy.com
+Twitter: http://twitter.com/fortaweso_me
+Work: http://lemonwi.se co-founder
+*/
+
+@font-face {
+	font-family: "FontAwesome";
+	src: url('//cdn.shopify.com/s/files/1/0368/7037/t/13/assets/fontawesome-webfont.eot?8906591254109368243');
+	src: url('//cdn.shopify.com/s/files/1/0368/7037/t/13/assets/fontawesome-webfont.eot?%23iefix&8906591254109368243') format('eot'), url('//cdn.shopify.com/s/files/1/0368/7037/t/13/assets/fontawesome-webfont.woff?8906591254109368243') format('woff'), url('//cdn.shopify.com/s/files/1/0368/7037/t/13/assets/fontawesome-webfont.ttf?8906591254109368243') format('truetype'), url('//cdn.shopify.com/s/files/1/0368/7037/t/13/assets/fontawesome-webfont.svg%23FontAwesome?8906591254109368243') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* 	GENERAL STYLES */
+
+body {
+	
+	font-family: ;
+	font-size: ;
+	line-height: 140%;
+    
+  	background-color: ;
+  	
+	color: ;
+}
+
+iframe {
+	margin-bottom: 10px;
+}
+
+textarea:focus, 
+input[type="text"]:focus, 
+input[type="password"]:focus, 
+input[type="datetime"]:focus, 
+input[type="datetime-local"]:focus, 
+input[type="date"]:focus, 
+input[type="month"]:focus, 
+input[type="time"]:focus, 
+input[type="week"]:focus, 
+input[type="number"]:focus, 
+input[type="email"]:focus, 
+input[type="url"]:focus, 
+input[type="search"]:focus, 
+input[type="tel"]:focus, 
+input[type="color"]:focus, 
+.uneditable-input:focus {
+	border-color: ;
+	box-shadow: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	
+	font-family: '';
+	
+	font-weight: ;
+	text-transform: ;
+    
+}
+
+h1.title {
+  	margin-top: 0.3em;
+}
+h1 {
+	font-size: ;
+	line-height: ;
+}
+h2 {
+	font-size: ;
+	line-height: ;
+}
+h3 {
+	font-size: ;
+	line-height: ;
+}
+h4 {
+	font-size: ;
+	line-height: ;
+	margin-bottom: 1em;
+}
+
+a {
+	color: ;
+	text-decoration: none;
+}
+
+a:hover {
+	color:;
+	text-decoration: underline;
+}
+hr, .form-actions {
+	border-top-style: ;
+	
+	border-top-color: ;
+}
+.table th, .table td, .table tfoot {
+	border-top: 1px solid ;
+}
+.alert {
+	background-color: ;
+	color: ;
+	border: none;
+	font-style: italic;
+}
+.page-header {
+	border-bottom-style: ;
+	
+	margin-bottom: 20px;
+	padding-bottom: 15px;
+	
+}
+.softer, small {
+   color: ;
+}
+
+/* BUTTONS & LABELS */
+
+.btn-primary {
+	background-color: ;
+	color: ;
+	border-color: ;
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
+	color: ;
+	background-color: ;
+}
+
+.label-info, .badge-info {
+	background-color: ;
+}
+
+/* LOGO STYLES */
+
+.logo {
+	
+	font-family: '';
+	
+	font-weight: ;
+	text-transform: ;
+	font-size: ;
+	color: ;
+	margin-top: ;
+	line-height: 150%;
+}
+
+a.logo-body, a.logo-body:hover {
+	color: ;
+	text-decoration: none;
+}
+
+a.logo-header, a.logo-header:hover {
+	color: ;
+	line-height: 60px;
+	text-decoration: none;
+}
+
+a.logo-header, a.logo-header-image {
+	margin-right: 20px;
+}
+
+.logo.below_header {
+	text-align: center;
+	
+}
+.logo.below_header img {
+	padding-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.brand {
+	margin-top: ;
+	color:  !important;
+}
+
+
+/* NAVIGATION STYLES */
+
+.nav, .currency-picker {
+	
+	font-family: '';
+	
+	font-weight: ;
+	text-transform: ;
+	font-size: ;
+}
+
+
+.navbar-fixed-top {
+	position: static;
+	margin-bottom: 20px;
+}
+
+
+.navbar, 
+.navbar .nav > li > a, 
+.dropdown-menu a {
+	color: ;
+}
+.navbar .nav li.dropdown > .dropdown-toggle .caret, 
+.navbar .nav li.dropdown.open > .dropdown-toggle .caret, 
+.navbar .nav li.dropdown.active > .dropdown-toggle .caret, 
+.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
+	border-bottom-color: ;
+	border-top-color: ;
+    margin-top: 26px;
+}
+.navbar, .navbar .nav > li > a:hover, 
+.navbar, .navbar .nav > li > a:focus, .dropdown-menu a:hover, 
+.dropdown-menu a:focus {
+	color: ;
+}
+.navbar .nav li.dropdown.open > .dropdown-toggle, 
+.navbar .nav li.dropdown.active > .dropdown-toggle, 
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+	background-color: ;
+	color: ;
+}
+.navbar .nav > li > .dropdown-menu:after {
+	border-bottom-color: ;
+}
+.dropdown-menu {
+	background-color: ;
+}
+.dropdown-menu a,
+.nav-collapse .nav > li > a, 
+.nav-collapse .dropdown-menu a, 
+.selected-currency a {
+	color: ;
+}
+.dropdown-submenu:hover > a 
+.dropdown-menu li > a:hover,
+.dropdown-menu li > a:focus,
+.dropdown-submenu:hover > a,
+.dropdown-menu .active > a,
+.dropdown-menu .active > a:hover {
+	background-image: none;
+	background-color: ;
+	color: ;
+}
+.selected-currency a:hover {
+	color: ;
+}
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover,
+.navbar .nav > .active > a:focus {
+	background-color: ;
+	box-shadow: none;
+	color: ;
+}
+.navbar, 
+.navbar-fixed-top, 
+.navbar-fixed-top .navbar-inner, 
+.navbar .container {
+	box-shadow: none;
+	background-image: none;
+	background-color: ;
+	filter: none;
+}
+.nav-collapse .navbar-form, .nav-collapse .navbar-search {
+	border-bottom-color: ;
+	border-top-color: ;
+}
+.nav-collapse .nav > li > a, .nav-collapse .dropdown-menu a {
+	font-weight: normal;
+}
+.nav-collapse .nav > li > a:hover {
+	background-color: ;
+}
+.dropdown-menu li > a:hover,
+.dropdown-menu li > a:focus,
+.dropdown-submenu:hover > a, 
+.nav-collapse ul.dropdown-menu li a:hover {
+	background: none;
+	filter: none;
+	background-color: ;
+}
+.account-nav li, 
+.currency-picker {
+	border-right: 1px solid ;
+}
+.navbar .btn-navbar {
+	background-image: none;
+	background-color: ;
+}
+.navbar .btn-navbar:hover {
+	background-image: none;
+	background-color: ;
+}
+
+/* BREADCRUMBS */
+.breadcrumb {
+	border-radius: 0;
+	background-color: ;
+}
+.breadcrumb li, .breadcrumb li a {
+	text-shadow: none;
+	color : ;
+}
+.breadcrumb li a:hover {
+	color : ;
+}
+
+/* TAGS */
+.nav-pills > li > a {
+	color: ;
+}
+.nav-pills > li > a:hover {
+	color: ;
+	background-color: ;
+}	
+.nav-pills > .active > a, .nav-pills > .active > a:hover, .blog-tags a.active {
+	background-color: ;
+	color: ;
+}
+.blog-tags a.active {
+    padding: 2px 5px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 3px;
+}
+
+/* LABELS */
+.label {
+	padding: 7px 7px 5px 7px;
+}
+.label, .badge {
+	font-weight: normal;
+}
+.label-important, .badge-important {
+	background-color: ;
+	color: ;
+}
+/* THUMBNAILS */
+
+.thumbnail {
+	background-color: ;
+	box-shadow: none;
+	border-radius: 0;
+	border-color: ;
+	background-image: none;
+}
+.thumbnail img {
+	border: none;
+	box-shadow: none;
+	background: none;
+}
+.thumbnail .caption p {
+	line-height: 135%;
+}
+a.thumbnail:hover {
+	border-color: ;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* CAROUSEL */
+.carousel-control {
+	top:50%;
+	width: 30px;
+	height: 30px;
+	border: none;
+	background: none;
+	border-radius: 0;
+	margin-top: -15px;
+}
+.carousel-caption {
+	background: ;
+	
+	background: rgba();
+	
+}
+.carousel-caption h4, .carousel-caption p {
+	color: ;
+}
+.carousel img {
+	width: 100%;
+}
+
+/* FANCYBOX */
+
+#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+	background-image: url('//cdn.shopify.com/s/files/1/0368/7037/t/13/assets/fancybox_sprite.png?8906591254109368243');
+}
+#fancybox-loading div {
+	background: url('//cdn.shopify.com/s/files/1/0368/7037/t/13/assets/fancybox_loading.gif?8906591254109368243') center center no-repeat;
+}
+.fancybox-nav {
+	background: transparent url('//cdn.shopify.com/s/files/1/0368/7037/t/13/assets/blank.gif?8906591254109368243'); /* helps IE */
+}
+
+/* CREDIT CARDS */
+
+.credit-cards .cc {
+	background: url('//cdn.shopify.com/s/files/1/0368/7037/t/13/assets/credit_cards.png?8906591254109368243') no-repeat left top;
+}
+.cc.amex {
+  background-position: -66px;
+}
+.cc.mastercard {
+  background-position: -33px;
+}
+.cc.discover {
+  background-position: -165px;
+}
+.cc.paypal {
+  background-position: -231px;
+}
+.cc.wu {
+  background-position: -198px;
+}
+.cc.cirrus {
+  background-position: -99px;
+}
+.cc.delta {
+  background-position: -132px;
+}
+
+/* FOOTER */
+
+.footer {
+	margin-top: 35px;
+	background-color: ;
+}
+.footer .container {
+	padding: 30px 0 0 0;
+    
+}
+.footer .column h3 {
+	margin-top: 0;
+	color: ;
+}
+.footer ul.tweet_list, .footer .tweet p {
+	margin-left: 0;
+	color: ;
+}
+.footer .credits small, .footer .credits a {
+	color: ;
+}
+.footer a {
+	color: ;
+}
+.footer a:hover {
+	color: ;
+}
+
+
+/* * * * * * 
+Media Queries
+* * * * * * /
+
+/* PORTRAIT TABLET TO LANDSCAPE AND DESKTOP */
+@media (max-width: 979px) {
+	.account-nav li, .currency-picker {
+		border-right: none;
+	}
+	.navbar .currency-picker {
+		float: none;
+		width: 50%;
+		padding-left: 20px;
+		line-height: 100%;
+        
+		margin-bottom: 20px;
+        
+	}
+	#current-currency, #currency-picker-toggle {
+		padding-top: 9px;
+	}
+    #main.fixed-nav {
+		padding-top: 80px;
+	}
+    .navbar .nav.account-nav {
+        margin-right: 0;
+    }
+    .navbar .nav > li > a {
+        padding: 9px 15px 9px;
+        line-height: 100%;
+    }
+    .navbar .nav li.dropdown > .dropdown-toggle .caret, .navbar .nav li.dropdown.open > .dropdown-toggle .caret, .navbar .nav li.dropdown.active > .dropdown-toggle .caret, .navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
+        margin-top: 5px;
+    }
+	
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+	body { padding-top: 0; }
+	.account-nav li {
+		border-right: none;
+	}
+}
+
+/* PORTRAIT TABLET AND LARGER */
+@media (min-width: 768px) {
+	/*  
+	Sticky Footer Solution
+	by Steve Hatcher 
+	http://stever.ca
+	http://www.cssstickyfooter.com
+	*/
+	* {margin:0;padding:0;} 
+	/* must declare 0 margins on everything, also for main layout components use padding, not 
+	vertical margins (top and bottom) to add spacing, else those margins get added to total height 
+	and your footer gets pushed down a bit more, creating vertical scroll bars in the browser */
+
+	html, body {
+		height: 100%;
+	}
+	#container-wrap {
+		min-height: 100%;
+	}
+	#main {
+		overflow:auto;
+		padding-bottom: 270px;
+	}  /* must be same height as the footer */
+	.footer {
+		position: relative;
+		margin-top: -270px; /* negative value of footer height */
+		height: 270px;
+		clear:both;
+	} 
+	/*Opera Fix*/
+	body:before {/* thanks to Maleika (Kohoutec)*/
+		content:"";
+		height:100%;
+		float:left;
+		width:0;
+		margin-top:-32767px;/* thank you Erik J - negate effect of float*/
+	}
+}
+
+/* LANDSCAPE PHONE TO PORTRAIT TABLET */
+@media (min-width: 481px) and (max-width: 767px) {
+	body { padding: 0; }
+	.navbar-fixed-bottom p.navbar-text {
+		line-height: 18px;
+		padding-left: 10px;
+		margin-bottom: 10px;
+	}
+	.nav-list {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.left-margin, ul.tweet_list {
+		margin-left: 0px;
+	}
+	[class*="span"].pull-right, .row-fluid [class*="span"].pull-right, 
+	.footer .column .pull-right {
+		float: none;
+	}
+	.checkout-wrap, #note-wrap {
+		text-align: center; 
+	}
+	.tab-side-pad {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+    .credit-cards {
+        margin-bottom: 0px;
+    }
+	
+	ul#shipping-rates {
+  		list-style: none;
+  		margin: 0;
+	}
+}
+
+/* LANDSCAPE PHONES AND SMALLER */
+@media (max-width: 480px) {
+	body { padding-top: 0; }
+    .credit-cards {
+        margin-bottom: 0px;
+    }
+	
+	ul#shipping-rates {
+  		list-style: none;
+  		margin: 0;
+	}
+	.checkout-wrap, #note-wrap {
+		text-align: center; 
+	}
+	.row-fluid .pull-right.checkout-wrap {
+  		float: none;
+	}
+}
+
+/* RETINA */
+@media all and (-webkit-min-device-pixel-ratio : 1.5) {
+	.cc {
+		background-image: url(//cdn.shopify.com/s/files/1/0368/7037/t/13/assets/credit_cards_2x.png?8906591254109368243);
+		background-size: 264px 21px;
+	}
+	
+}
