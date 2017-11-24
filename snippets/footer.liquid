@@ -1,39 +1,35 @@
 <footer>
   <section class="footer">
     <div class="newsletter-signup">
-      <form class="newsletter-form" action="#" method="POST">
-        <span class="line"></span>
-        <h2>
-          Sign up to receive the <span>latest AliveCor news.</span>
-        </h2>
-        <div class="input-group">
-          {% comment %}
-            MailChimp is the go-to newsletter service for Shopify.
-            Use the link below to find your MailChimp form action
-            and insert it in your site settings.
+      <div class="newsletter-form">
+      <span class="line"></span>
+      <h2>
+        Sign up to receive the <span>latest AliveCor news.</span>
+      </h2>
+      {% if settings.footer_newsletter_enable %}
+      <div class="input-group">
+        {% comment %}
+          MailChimp is the go-to newsletter service for Shopify.
+          Use the link below to find your MailChimp form action
+          and insert it in your site settings.
 
-            MailChimp newsletter integration and requirement:
-             - http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action
-          {% endcomment %}
-          {% if settings.newsletter_form_action != blank %}
-            {% assign form_action = settings.newsletter_form_action %}
-          {% else %}
-            {% assign form_action = '#' %}
-          {% endif %}
-          <form action="{{ form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="input-group">
-            <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="EMAIL" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
-            <span class="input-group-btn">
-              <input type="submit" class="btn" name="subscribe" id="subscribe" value="Join">
-            </span>
-          </form>
-        </div>
-        <div class="thankyou">
-          {{ i18n "layout.footer.thanks" }}
-        </div>
-        <div class="not-valid">
-          {{ i18n "layout.footer.please_enter_a_valid_email" }}
-        </div>
-      </form>
+          MailChimp newsletter integration and requirement:
+           - http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action
+        {% endcomment %}
+        {% if settings.newsletter_form_action != blank %}
+          {% assign form_action = settings.newsletter_form_action %}
+        {% else %}
+          {% assign form_action = '#' %}
+        {% endif %}
+        <form action="{{ form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="input-group">
+          <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="EMAIL" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+          <span class="input-group-btn">
+            <input type="submit" class="btn" name="subscribe" id="subscribe" value="Join">
+          </span>
+        </form>
+      </div>
+      {% endif %}
+      </div>
       <div class="fastco-logo-small">
         <div class="fastco">
           <div class="fastco-img"></div>
@@ -52,11 +48,11 @@
         </li>
         <li>
           <a href="http://shop.alivecor.com/">
-            Kardia Mobile
+            KardiaMobile
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/how-it-works/#compatibility">
+          <a href="https://www.alivecor.com/#compatibility">
             Compatibility
           </a>
         </li>
@@ -93,7 +89,7 @@
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/support/#quickstart">
+          <a href="https://www.alivecor.com/quickstart">
             User Manual
           </a>
         </li>

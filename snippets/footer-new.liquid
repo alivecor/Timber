@@ -1,7 +1,7 @@
 <footer>
   <section class="footer">
     <div class="newsletter-signup">
-      <form class="newsletter-form" action="#" method="POST">
+      <div class="newsletter-form">
         <h2>
           Sign up to receive the <span>latest AliveCor news.</span>
         </h2>
@@ -17,7 +17,7 @@
           {% if settings.newsletter_form_action != blank %}
             {% assign form_action = settings.newsletter_form_action %}
           {% else %}
-            {% assign form_action = '#' %}
+            {% assign form_action = '//alivecor.us5.list-manage.com/subscribe/post?u=a596beb547be99ec121388a51&id=550f8baa8b' %}
           {% endif %}
           <form action="{{ form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="input-group">
             <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="EMAIL" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
@@ -26,13 +26,7 @@
             </span>
           </form>
         </div>
-        <div class="thankyou">
-          {{ i18n "layout.footer.thanks" }}
-        </div>
-        <div class="not-valid">
-          {{ i18n "layout.footer.please_enter_a_valid_email" }}
-        </div>
-      </form>
+      </div>
       <div class="download-info">
         <h2 class="nomarg">
           Looking for free information <span>to share with your doctor?</span>

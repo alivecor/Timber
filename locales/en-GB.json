@@ -29,7 +29,7 @@
       "purchase_outside_of": "Purchase outside of "
     },
     "fake_nav": {
-      "shop_kardia_mobile": "Shop Kardia Mobile",
+      "shop_kardia_mobile": "Shop KardiaMobile",
       "shop_kardia_band": "Shop Kardia Band",
       "shop_kardia_accessories": "Shop Kardia Accessories"
     }
@@ -361,7 +361,7 @@
     "android_7_1_1": "Android 7.1.1",
     "app_store": "App Store",
     "google_play": "Google Play",
-    "use_of_kardia_mobile_requires_html": "Use of Kardia Mobile requires the companion app Kardia, available for download in the {{itunes_url}} and {{play_url}}.",
+    "use_of_kardia_mobile_requires_html": "Use of KardiaMobile requires the companion app Kardia, available for download in the {{itunes_url}} and {{play_url}}.",
     "kardia_app": "Kardia App",
     "omron_compatibility": "Omron Blood Pressure Monitor Compatibility",
     "google_pixel": "Google Pixel",
@@ -374,7 +374,7 @@
     "return_policy": "Return Policy"
   },
   "return_policy": {
-    "p1_html": "If you decide Kardia Mobile isn’t for you, AliveCor will issue you a full refund on your purchase if you contact us within 30 days of delivery.  To request a refund, contact AliveCor Support at <a href=\"mailto:uksupport@alivecor.com\">uksupport@alivecor.com</a>.  We will issue you an RMA number to include when you ship your device back to us and will process your refund upon receipt of your device.",
+    "p1_html": "AliveCor will issue you a full refund on your purchase if you contact us within 30 days of delivery.  To request a refund, contact AliveCor Support at <a href=\"mailto:uksupport@alivecor.com\">uksupport@alivecor.com</a>.  We will issue you an RMA number to include when you ship your device back to us and will process your refund upon receipt of your device.",
     "p2_html": "If your device has stopped working and is still under warranty please contact us for troubleshooting assistance.  If we find that your device is in fact defective while within the <a href=\"https://www.alivecor.com/warranty\">warranty period</a> we will issue a replacement upon receipt of the faulty device."
   },
   "tech_specs_kardiamobile": {
@@ -397,8 +397,8 @@
     "compatible_device": "Compatible Apple or Android device",
     "kardia_app": "Kardia App",
     "user_manuals": "User Manuals",
-    "ios_user_manual_link": "Kardia Mobile for iOS",
-    "android_user_manual_link": "Kardia Mobile for Android"
+    "ios_user_manual_link": "KardiaMobile for iOS",
+    "android_user_manual_link": "KardiaMobile for Android"
   },
   "tech_specs_kardiaband": {
     "dimensions": "Dimensions (Sensor Module only)",

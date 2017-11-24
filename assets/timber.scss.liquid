@@ -2337,9 +2337,7 @@ label.error {
   background-color: $grey1;
   img {
     width: 100%;
-    @media (max-width: 1200px) {
-      max-width: 400px;
-    }
+    max-width: 400px;
   }
 }
 
@@ -2584,12 +2582,11 @@ input.quantity {
 }
 
 #AddToCart, .AddToCartAccessories {
-  margin: 20px 0;
+  margin: 10px 0 60px;
   width: 100%;
   @include at-query ($min, $small) {
   }
   @include at-query ($min, $medium) {
-    margin: 20px 0;
     width: initial;
   }
   #AddToCartText {
@@ -3073,7 +3070,12 @@ Accordion Styles
   & > h3 {
     padding: 10px 16px;
     margin: 0;
-    color: $grey3;
+    text-align: center;
+    color: $navy;
+  }
+  &#compatibility h3, &#specs b {
+    color: $navy;
+    font-size: 18px;
   }
   .toggler {
     position: absolute;
@@ -3414,8 +3416,19 @@ Accordion Styles
   @media (max-width: 768px) {
     margin-bottom: 80px;
   }
+  .product-description ul {
+    margin: 0;
+    li {
+      display: none;
+      &:first-child {
+        display: block;
+        font-size: 16px;
+        width: 75%;
+      }
+    }
+  }
   .grid__image {
-  	background-color: $grey1;
+    background-color: $grey1;
     margin-bottom: 40px;
     img {
       max-width: 70%;
@@ -3427,9 +3440,6 @@ Accordion Styles
   .h2.title {
     margin-bottom: 8px;
     line-height: 34px;
-  }
-  .home-page p {
-  	font-size: 16px;
   }
   .review-count {
     display: table;
@@ -3451,7 +3461,11 @@ Accordion Styles
 .home-grid-item.grid__item {
   margin-bottom: 80px;
   .grid__image {
+    background-color: $grey1;
     margin-bottom: 40px;
+    img {
+      max-width: 70%;
+    }
   }
   .h4.price {
     line-height: 30px;
@@ -3461,7 +3475,7 @@ Accordion Styles
     line-height: 30px;
   }
   &.large--one-quarter {
-  	.h4.title {
+    .h4.title {
       @media (min-width: 768px) {
         height: 65px;
       }
