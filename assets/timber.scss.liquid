@@ -109,16 +109,11 @@ $colorBtnSecondaryActive: lighten($colorBtnSecondaryHover, 10%);
 $colorBtnSecondaryText: #fff;
 
 // Button Vars
-/* $button-border-radius: 10px; */
-$button-border-radius: 5px;
-/* $button-padding: 16px; */
-$button-padding: 14px 16px;
-/* $button-font-weight: bold; */
-$button-font-weight: lighter;
-/* $button-text-transform: uppercase; */
-$button-text-transform: none;
-/* $button-font-size: 14px; */
-$button-font-size: 18px;
+$button-border-radius: 10px;
+$button-padding: 16px;
+$button-font-weight: bold;
+$button-text-transform: uppercase;
+$button-font-size: 14px;
 
 // Text link colors
 $colorLink: $colorPrimary;
@@ -843,7 +838,7 @@ h1 {
   line-height: 1;
   padding-top: 20px;
   @include at-query($min, $medium) {
-  	font-size: em(38px);
+    font-size: em(38px);
   }
 }
 
@@ -1581,6 +1576,8 @@ select::-ms-expand {
   display: none;
 }
 
+
+
 /*================ Form labels ================*/
 .hidden-label {
   position: absolute;
@@ -1604,6 +1601,38 @@ select::-ms-expand {
 
 label[for] {
   cursor: pointer;
+}
+.variant-input-wrapper {
+  float: left;
+  margin-left: 10px;
+}
+.variant-title {
+  float: left;
+  font-size: 14px;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+input[type="radio"].variant-input {
+  display: none !important;
+}
+.variant-input:checked + label {
+  border: 1px solid $teal;
+  background-color: $teal;
+  color: #fff;
+}
+.variant-input + label {
+  border: 1px solid $grey2;
+  border-radius: 10px;
+  padding: 4px 8px 6px;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1;
+}
+.variant-placeholder {
+  @media (min-width: 768px) {
+    height: 47px;
+  }
 }
 
 /*================ Horizontal Form ================*/
@@ -1885,18 +1914,19 @@ label.error {
   background-color: #f15757;
   border-radius: $button-border-radius;
   @media (min-width: 1200px) {
-  	line-height: 1.8em;
+    line-height: 1.8em;
   }
   img {
     max-width: 24px;
     vertical-align: middle;
     margin-top: -3px;
+    margin-right: 4px;
   }
 }
 
 #CartCount {
   color: #fff;
-  margin-left: 5px;
+  margin-left: 3px;
 }
 
 .site-header__search {
@@ -2337,7 +2367,9 @@ label.error {
   background-color: $grey1;
   img {
     width: 100%;
-    max-width: 400px;
+    @media (max-width: 768px) {
+      max-width: 400px;
+    }
   }
 }
 
@@ -2450,7 +2482,7 @@ label.error {
     margin: 0;
     a {
       color: $navy;
-  	}
+    }
   }
   img {
     width: 50%;
@@ -2878,6 +2910,7 @@ input.quantity {
 .product-title {
   margin: 0;
   line-height: 1.1em;
+  color: $navy;
 }
 
 .product-description {
@@ -3072,10 +3105,11 @@ Accordion Styles
     margin: 0;
     text-align: center;
     color: $navy;
+    font-size: 16px;
   }
   &#compatibility h3, &#specs b {
     color: $navy;
-    font-size: 18px;
+    font-size: 16px;
   }
   .toggler {
     position: absolute;
@@ -3084,6 +3118,9 @@ Accordion Styles
     font-size: 1.4em;
     line-height: 1em;
     color: $grey3;
+    .fa {
+      font-size: 16px;
+    }
   }
   .accordion-inner {
     overflow: auto;
@@ -3094,15 +3131,23 @@ Accordion Styles
     }
     li {
       font-weight: lighter;
+      font-size: 16px;
     }
   }
   &#compatibility {
     .grid__item {
       padding-left: 0;
       .app-text {
-      	@media (min-width: 768px) {
-          width: 75%;
-          margin: 0 auto 20px;
+        @media (min-width: 768px) {
+          width: 58%;
+          margin: 0 auto;
+          font-size: 16px;
+          &.requires {
+            width: 36%;
+          }
+          &.small {
+            width: 40%;
+          }
         }
       }
     }
@@ -3125,18 +3170,31 @@ Accordion Styles
 
 .omron-compat-link {
   margin: 1.5em auto;
-  border-bottom: 1px solid $teal;
+  text-decoration: underline;
   display: table;
+  font-size: 16px;
+  @media (min-width: 768px) {
+    border-bottom: 1px solid $teal;
+    text-decoration: none;
+  }
+}
+
+.return-policy {
+  p {
+    font-size: 16px;
+  }
 }
 
 .last-updated {
-  margin-top: .5em;
   clear: both;
+  font-style: italic;
+  font-size: 16px;
 }
 
 .itunes-badge img {
   height: 53px;
   padding: 3px 0 9px;
+  margin-top: 20px;
 }
 
 .android-badge img {
@@ -3247,9 +3305,8 @@ Accordion Styles
   float: right;
   &.accountLinks {
     margin-right: 20px;
-    color: $navy;
     a {
-      color: $teal !important;
+      color: #fff;
     }
   }
 }
@@ -3309,11 +3366,13 @@ Accordion Styles
   }
   span.spr-starrating {
     font-size: 18px;
-    position: absolute;
-    right: 20px;
-    top: 20px;
     color: $teal;
-    margin-top: 7px;
+    @media (min-width: 400px) {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      margin-top: 7px;
+    }
     @media (min-width: 1200px) {
       float: right;
     }
@@ -3330,14 +3389,14 @@ Accordion Styles
   display: inline-block;
   width: 33.333%;
   @media (max-width: 768px) {
-  	text-align: center;
+    text-align: center;
   }
   svg {
     width: 46px;
     height: 46px;
   }
   &.larger svg {
-  	width: 70px;
+    width: 70px;
   }
   p {
     font-family: $bodyFontStack;
@@ -3416,6 +3475,13 @@ Accordion Styles
   @media (max-width: 768px) {
     margin-bottom: 80px;
   }
+  .variant-input-wrapper {
+    margin-top: 20px;
+  }
+  .variant-title {
+    margin-top: 25px;
+    margin-bottom: 0;
+  }
   .product-description ul {
     margin: 0;
     li {
@@ -3430,8 +3496,24 @@ Accordion Styles
   .grid__image {
     background-color: $grey1;
     margin-bottom: 40px;
+    position: relative;
     img {
       max-width: 70%;
+    }
+    .promo-banner {
+      background-color: $red;
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+      padding: 6px 8px;
+      @media (min-width: 768px) {
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+      span {
+        font-weight: bold;
+      }
     }
   }
   .h2.price {
@@ -3503,6 +3585,7 @@ Accordion Styles
   }
   form .btn {
     float: left;
+    clear: left;
   }
   .btn {
     margin-top: 40px;
@@ -3527,7 +3610,7 @@ Accordion Styles
     padding-bottom: 24%;
   }
   .wrapper {
-  	padding-top: 50px;
+    padding-top: 50px;
     @media (min-width: 1200px) {
       padding-top: 115px;
     }
@@ -3610,36 +3693,6 @@ Accordion Styles
     }
   }
 }
-/* FOR PROMO */
-.cp-promo-ad {
-  margin-bottom: -30px;
-  &.mobile {
-    @media (min-width: 480px) {
-      display: none;
-    }
-  }
-  &.desktop {
-  	@media (max-width: 480px) {
-      display: none;
-    }
-    @media (max-width: 1200px) {
-      margin-right: 0;
-    }
-    float: right;
-    margin-right: 140px;
-    width: 48%;
-    max-width: 300px;
-    img {
-/*       max-width: 300px; */
-    }
-  }
-}
-.home-main-item {
-/*  TO DELETE WHEN 2 MAIN PRODUCTS  */
-  @media (min-width: 1200px) {
-    margin-left: 100px;
-  }
-}
 .pop-up {
   .screen {
     -webkit-transition: opacity 0.25s ease;
@@ -3672,6 +3725,9 @@ Accordion Styles
     @media (min-width: 520px) and (max-width: 560px) {
       background-size: 53%;
     }
+    @media (max-width: 400px) {
+      background-position: 127% 100%;
+    }
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -3694,9 +3750,12 @@ Accordion Styles
       margin-bottom: 20px;
     }
     .text {
-      width: 50%;
+      width: 60%;
       float: left;
       text-align: center;
+      @media (min-width: 400px) {
+        width: 50%;
+      }
     }
     img {
       width: 50%;

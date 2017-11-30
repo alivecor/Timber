@@ -52,6 +52,9 @@
 
   {% endcomment %}
   <a href="{{ product.url }}" class="grid__image">
+    {% if product.handle == 'kardiamobile' %}
+    <div class="promo-banner"><span>A GIFT FOR YOUR HEART</span>: Buy KardiaMobile, get a free Carry Pod</div>
+    {% endif %}
     <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
   </a>
 
@@ -95,23 +98,24 @@
     {% endunless %}
     <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="promoAdd(event, this, {{product.id}})">
       {% if product.variants.size > 1 %}
+      <div class="variant-title">{{product.options.first | escape}}</div>
         {% for variant in product.variants %}
           {% if variant.available %}
             {% assign add_price = variant.price | minus: product.price %}
             <div class="variant-input-wrapper">
+              <input type="radio"
+                 id="{{variant.id}}"
+                 name="id"
+                 data-sku="{{variant.sku}}"
+                 value="{{variant.id}}"
+                 class="variant-input"
+                 data-index="{{forloop.index0}}"
+                 {% if forloop.first == true %}
+                   checked="true"
+                 {% endif %}
+                 >
               <label for="{{variant.id}}" class="form-control">
-                <input type="radio"
-                       id="{{variant.id}}"
-                       name="id"
-                       data-sku="{{variant.sku}}"
-                       value="{{variant.id}}"
-                       class="variant-input"
-                       data-index="{{forloop.index0}}"
-                       {% if forloop.first == true %}
-                         checked="true"
-                       {% endif %}
-                       >
-                <b>{{variant.title}}</b>
+                {{variant.title}}
                 {% if add_price > 0 %}
                 &nbsp;(add {{add_price | money_with_currency}})
                 {% endif %}
@@ -127,10 +131,11 @@
             </div>
             {% endif %}
           {% endfor %}
-      	{% else %}
-      	  {% comment %}
-      		for only one variant, need to choose the id to add to cart
-      	  {% endcomment %}
+        {% else %}
+          {% comment %}
+          for only one variant, need to choose the id to add to cart
+          {% endcomment %}
+          <div class="variant-placeholder"></div>
           {% for variant in product.variants %}
           <input type="hidden"
                  id="{{variant.id}}"
@@ -150,7 +155,7 @@
         </div>
 
         {% comment %}
-      	  remove onclick function to stop auto adding item to cart
+          remove onclick function to stop auto adding item to cart
         {% endcomment %}
         <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
           <span id="AddToCartText">
@@ -162,7 +167,7 @@
           {% endif %}
           </span>
         </button>
-      	<a href="{{ product.url }}" class="view-details">
+        <a href="{{ product.url }}" class="view-details">
           View Details
         </a>
       </form>

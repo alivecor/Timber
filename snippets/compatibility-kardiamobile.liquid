@@ -1,11 +1,11 @@
 <div class="grid__item">
-  <p class="app-text">Since KardiaMobile is a medical device that is regulated by the FDA, we must validate the smartphone/tablet with our product before we can claim compatibility.  Given this, if your smartphone/tablet is not listed, we currently do not support that smartphone/tablet at this time nor can we say whether it is compatible.</p>
+  <p class="app-text">{{ 'compatibility.intro_mobile' | t }}</p>
+  {% comment %}new Date().getTime(){% endcomment %}
+  {% assign updated_date = '1512080000' | date: format: 'month_day_year'  %}
+  <p class="last-updated">({{ 'compatibility.last_updated_on' | t: date: updated_date}})</p>
 </div>
 <div class="grid__item large--one-half">
   <h3>{{ 'compatibility.apple_compatibility' | t }}</h3>
-  <div class="device-icon">
-    <img src="{{ 'icon_iphone.png' | asset_url }}" alt=""/>
-  </div>
   <ul class="compatibility-list">
     <li>
       <b>{{ 'compatibility.iphoneX' | t }}</b>
@@ -21,57 +21,59 @@
     </li>
     <li>
       <b>{{ 'compatibility.iphone7_plus' | t }}</b>
-      ({{ 'compatibility.ios_10_0_2' | t }})
+      ({{ 'compatibility.ios_11_1' | t }})
     </li>
     <li>
       <b>{{ 'compatibility.iphone7' | t }}</b>
       ({{ 'compatibility.ios_10_0_2' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.iphone6_plus_6s_plus' | t }}</b>
-      ({{ 'compatibility.ios_10_0_2' | t }})
+      <b>{{ 'compatibility.iphone6s_plus' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.iphone6_6s' | t }}</b>
-      ({{ 'compatibility.ios_10_0_2' | t }})
+      <b>{{ 'compatibility.iphone6s' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.iphone6_plus' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.iphone6' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
     </li>
     <li>
       <b>{{ 'compatibility.iphonese' | t }}</b>
-      ({{ 'compatibility.ios_10_0_2' | t }})
+      ({{ 'compatibility.ios_11_1' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.iphone5_5s_5c' | t }}</b>
-      ({{ 'compatibility.ios_10_0_2' | t }})
+      <b>{{ 'compatibility.iphone5s' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.iphone4s' | t }}</b>
-      ({{ 'compatibility.ios_9_3_5' | t }})
-    </li>
-  </ul>
-  <div class="device-icon">
-    <img src="{{ 'icon_ipod.png' | asset_url }}" alt=""/>
-  </div>
-  <ul class="compatibility-list">
-    <li>
-      <b>{{ 'compatibility.ipod_touch' | t }}</b>
-      ({{ 'compatibility.ios_9_3_5' | t }})
-    </li>
-  </ul>
-  <div class="device-icon">
-    <img src="{{ 'icon_ipad.png' | asset_url }}" alt=""/>
-  </div>
-  <ul class="compatibility-list">
-    <li>
-      <b>{{ 'compatibility.ipad_air_air2' | t }}</b>
-      ({{ 'compatibility.ios_9_3_5' | t }})
+      <b>{{ 'compatibility.iphone5c' | t }}</b>
+      ({{ 'compatibility.ios_10_3_3' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.ipad_mini' | t }}</b>
-      ({{ 'compatibility.ios_9_3_5' | t }})
+      <b>{{ 'compatibility.iphone5' | t }}</b>
+      ({{ 'compatibility.ios_10_3_3' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.ipad_mini_2_3' | t }}</b>
-      ({{ 'compatibility.ios_10_0_2' | t }})
+      <b>{{ 'compatibility.ipad_air2' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.ipad_air' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.ipad_mini_3' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.ipad_mini_2' | t }}</b>
+      ({{ 'compatibility.ios_11_1' | t }})
     </li>
   </ul>
   {% if shop.locale == 'en' %}
@@ -84,64 +86,60 @@
 </div>
 <div class="grid__item large--one-half">
   <h3>{{ 'compatibility.android_compatibility' | t }}</h3>
-  <div class="device-icon">
-    <img src="{{ 'icon_android_phone.png' | asset_url }}" alt=""/>
-  </div>
   <ul class="compatibility-list">
     <li>
-      <b>{{ 'compatibility.galaxy_s8' | t }}</b>
-      ({{ 'compatibility.android_7_0' | t }})
+      <b>{{ 'compatibility.google_pixel' | t }}</b>
+      ({{ 'compatibility.android_8_0' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.galaxy_s5_s6_s7' | t }}</b>
-      ({{ 'compatibility.android_6_0_1' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.galaxy_s4' | t }}</b>
-      ({{ 'compatibility.android_5_0_1' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.galaxy_s3' | t }}</b>
-      ({{ 'compatibility.android_4_3' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.samsung_note_3' | t }}</b>
-      ({{ 'compatibility.android_5_0' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.samsung_note_5' | t }}</b>
-      ({{ 'compatibility.android_6_0_1' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.galaxy_j1' | t }}</b>
-      ({{ 'compatibility.android_5_1_1' | t }})
+      <b>{{ 'compatibility.google_pixel_xl' | t }}</b>
+      ({{ 'compatibility.android_8_0' | t }})
     </li>
     <li>
       <b>{{ 'compatibility.lg_nexus_5' | t }}</b>
       ({{ 'compatibility.android_6_0_1' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.htc_one_m7' | t }}</b>
-      ({{ 'compatibility.android_4_3' | t }})
+      <b>{{ 'compatibility.motorola_moto_g_gen_2' | t }}</b>
+      ({{ 'compatibility.android_8_0' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.jitterbug_touch_3' | t }}</b>
-      ({{ 'compatibility.android_4_3' | t }})
+      <b>{{ 'compatibility.galaxy_s8' | t }}</b>
+      ({{ 'compatibility.android_7_0' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.google_pixel' | t }}</b>
-      ({{ 'compatibility.android_7_1_1' | t }})
+      <b>{{ 'compatibility.galaxy_s7' | t }}</b>
+      ({{ 'compatibility.android_6_0_1' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.google_pixel_xl' | t }}</b>
-      ({{ 'compatibility.android_7_1_1' | t }})
+      <b>{{ 'compatibility.galaxy_s6' | t }}</b>
+      ({{ 'compatibility.android_6_0_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.galaxy_s5' | t }}</b>
+      ({{ 'compatibility.android_6_0_1' | t }})
+    </li>
+    
+    <li>
+      <b>{{ 'compatibility.galaxy_s4' | t }}</b>
+      ({{ 'compatibility.android_5_0_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.galaxy_j1' | t }}</b>
+      ({{ 'compatibility.android_5_1_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.samsung_note_5' | t }}</b>
+      ({{ 'compatibility.android_6_0_1' | t }})
+    </li>
+    <li>
+      <b>{{ 'compatibility.samsung_note_3' | t }}</b>
+      ({{ 'compatibility.android_5_0' | t }})
     </li>
   </ul>
+</div>
+<div class="grid__item large--one-whole">
   
-  {% comment %}new Date().getTime(){% endcomment %}
-  {% assign updated_date = '1510708800' | date: format: 'month_day_year'  %}
-  <p class="last-updated">{{ 'compatibility.last_updated_on' | t: date: updated_date}}</p>
-
   {% comment %}
     capture itunes and play urls for passing to the translation
   {% endcomment %}
@@ -158,7 +156,7 @@
   {% endcapture %}
 
   <h3>{{ 'compatibility.kardia_app' | t }}</h3>
-  <p class="app-text">
+  <p class="app-text small">
   {{ 'compatibility.use_of_kardia_mobile_requires_html' | t: itunes_url: itunes_url, play_url: play_url }}
   </p>
 

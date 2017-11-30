@@ -8,6 +8,13 @@
     - http://schema.org/docs/gs.html
 
 {% endcomment %}
+{% if product.handle == "kardiamobile" %}
+  {% assign product_accessories = collections.kardiamobile-accessories %}
+  {% assign product_name = 'kardiamobile' %}
+{% endif %}
+{% if product.handle == "kardiaband" %}
+  {% assign product_name = 'kardiaband' %}
+{% endif %}
 
 <div itemscope itemtype="http://schema.org/Product">
 
@@ -34,11 +41,21 @@
         <ul class="product-single__thumbnails grid-uniform" id="ProductThumbs">
 
           {% for image in product.images %}
+            {% if product_name == 'kardiaband' %}
+              {% if forloop.first != true %}
+                <li class="grid__item one-third">
+                  <a href="{{ image.src | img_url: 'large' }}" class="product-single__thumbnail">
+                    <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+                  </a>
+                </li>
+              {% endif %}
+            {% else %}
             <li class="grid__item one-third">
               <a href="{{ image.src | img_url: 'large' }}" class="product-single__thumbnail">
                 <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
               </a>
             </li>
+          {% endif %}
           {% endfor %}
 
         </ul>
@@ -70,38 +87,39 @@
 
       {% comment %}
         If there are variants, show the user a variant title
-      {% endcomment %}
       {% if product.variants.size > 1 %}
       <div class="h3">{{product.options.first | escape}}</div>
       {% endif %}
+      {% endcomment %}
+      
 
       <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="promoAdd(event, this, {{product.id}})">
         {% if product.variants.size > 1 %}
         {% comment %}
           If there are variants, show the user some choices via input controls, else we will hide the inputs
         {% endcomment %}
-
+          <div class="variant-title">{{product.options.first | escape}}</div>
           {% for variant in product.variants %}
             {% if variant.available %}
               {% assign add_price = variant.price | minus: product.price %}
               <div class="variant-input-wrapper">
-                <label for="{{variant.id}}" class="form-control">
-                  <input type="radio"
-                         id="{{variant.id}}"
-                         name="id"
-                         data-sku="{{variant.sku}}"
-                         value="{{variant.id}}"
-                         class="variant-input"
-                         data-index="{{forloop.index0}}"
-                         {% if forloop.first == true %}
-                           checked="true"
-                         {% endif %}
-                         >
-                  <b>{{variant.title}}</b>
-                  {% if add_price > 0 %}
-                  &nbsp;(add {{add_price | money_with_currency}})
-                  {% endif %}
-                </label>
+                <input type="radio"
+                 id="{{variant.id}}"
+                 name="id"
+                 data-sku="{{variant.sku}}"
+                 value="{{variant.id}}"
+                 class="variant-input"
+                 data-index="{{forloop.index0}}"
+                 {% if forloop.first == true %}
+                   checked="true"
+                 {% endif %}
+                 >
+              <label for="{{variant.id}}" class="form-control">
+                {{variant.title}}
+                {% if add_price > 0 %}
+                &nbsp;(add {{add_price | money_with_currency}})
+                {% endif %}
+              </label>
               </div>
             {% else %}
               <div class="variant-input-wrapper">
@@ -196,11 +214,6 @@
 </div>
 {% include 'product-tabs' product=product%}
 
-{% if product.handle == "kardiamobile" %}
-  {% assign product_accessories = collections.kardiamobile-accessories %}
-{% endif %}
-
-
 {% if product_accessories.products.length > 0 %}
   <div class="section">
     <a name="accessories"></a>
@@ -224,7 +237,7 @@
       {% elsif product.accessories.products.length == 3 %}
         {% assign grid_item_width = 'large--one-third medium--one-half small--one-half' %}
       {% else %}
-    	{% assign grid_item_width = 'large--one-quarter medium--one-half small--one-half' %}
+      {% assign grid_item_width = 'large--one-quarter medium--one-half small--one-half' %}
       {% endif %}
       {% include 'home-grid-item' %}
     {% endfor %}
