@@ -1605,13 +1605,20 @@ label[for] {
 .variant-input-wrapper {
   float: left;
   margin-left: 10px;
+  margin-bottom: 12px;
+  @media (max-width: 1200px) {
+    margin: 0 10px 24px 0;
+  }
 }
 .variant-title {
   float: left;
   font-size: 14px;
   margin-right: 10px;
   margin-top: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 7px;
+  @media (max-width: 1200px) {
+    float: none;
+  }
 }
 input[type="radio"].variant-input {
   display: none !important;
@@ -1631,8 +1638,22 @@ input[type="radio"].variant-input {
 }
 .variant-placeholder {
   @media (min-width: 768px) {
-    height: 47px;
+    height: 80px;
   }
+  @media (min-width: 1200px) {
+    height: 39px;
+    /* DE 23px */
+    /* UK 48px */
+  }
+}
+#band-size-chart {
+  float: none;
+  clear: left;
+  display: table;
+  border-bottom: 1px solid $teal;
+  font-size: 14px;
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
 /*================ Horizontal Form ================*/
@@ -2612,8 +2633,10 @@ input.quantity {
     white-space: nowrap;
   }
 }
-
-#AddToCart, .AddToCartAccessories {
+#BIS_trigger.noshow {
+  display: none;
+}
+#AddToCart, .AddToCartAccessories, #BIS_trigger {
   margin: 10px 0 60px;
   width: 100%;
   @include at-query ($min, $small) {
@@ -2976,9 +2999,24 @@ input.quantity {
 }
 
 .review-count {
-  margin: 16px 0 40px;;
+  margin: 16px 0 12px;
   clear: left;
   overflow: hidden;
+  @media (min-width: 400px) {
+    float: left;
+    margin: 16px 0 40px;
+  }
+}
+.compat-link {
+  margin-bottom: 40px;
+  @media (min-width: 400px) {
+    float: right;
+    margin: 16px 0 40px;
+  }
+  a {
+    font-size: 16px;
+    border-bottom: 1px solid $teal;
+  }
 }
 
 .spr-review-content-body {
@@ -3001,7 +3039,7 @@ input.quantity {
 }
 
 .section {
-  margin-top: 100px;
+  margin-top: 80px;
   &.band {
     margin-top: 40px;
   }
@@ -3028,6 +3066,7 @@ input.quantity {
   }
   .h4 {
     font-size: 24px;
+    min-height: 50px;
   }
 }
 .spr-container {
@@ -3477,6 +3516,10 @@ Accordion Styles
   }
   .variant-input-wrapper {
     margin-top: 20px;
+    margin-bottom: 0;
+    @media (max-width: 768px) {
+      margin-top: 10px;
+    }
   }
   .variant-title {
     margin-top: 25px;
@@ -3510,6 +3553,10 @@ Accordion Styles
         position: absolute;
         top: 0;
         width: 100%;
+        font-size: 14px;
+      }
+      @media (min-width: 1200px) {
+        font-size: 16px;
       }
       span {
         font-weight: bold;
@@ -3589,6 +3636,7 @@ Accordion Styles
   }
   .btn {
     margin-top: 40px;
+    margin-bottom: 20px;
   }
 }
 /* Hero */
@@ -3716,6 +3764,37 @@ Accordion Styles
     visibility: visible;
   }
   .content {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+    background-color: #fff;
+    padding: 40px;
+    box-shadow: 0px 0px 15px $navy;
+    border-radius: 10px;
+    overflow: hidden;
+    h5 {
+      font-size: 20px;
+      font-weight: normal;
+      margin-bottom: 20px;
+    }
+    .close {
+      position: absolute;
+      right: 30px;
+      top: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+  &.promo .content {
+    padding: 40px 0 0 40px;
+    width: 500px;
     @media (max-width: 560px) {
       background-image: url({{ 'carryPodHand.jpg' | asset_url }});
       background-size: 61%;
@@ -3727,27 +3806,6 @@ Accordion Styles
     }
     @media (max-width: 400px) {
       background-position: 127% 100%;
-    }
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    margin-left: auto;
-    margin-right: auto;
-    width: 500px;
-    max-width: 90%;
-    background-color: #fff;
-    padding: 40px 0 0 40px;
-    box-shadow: 0px 0px 15px $navy;
-    border-radius: 10px;
-    overflow: hidden;
-    h5 {
-      font-size: 20px;
-      font-weight: normal;
-      margin-bottom: 20px;
     }
     .text {
       width: 60%;
@@ -3765,6 +3823,18 @@ Accordion Styles
       }
     }
   }
+  &.size-chart .content {
+    width: 70%;
+    table {
+      thead {
+        font-weight: bold;
+      }
+      font-size: 16px;
+      td {
+        padding: 10px;
+      }
+    }
+  }
   #carry-pod-no {
     cursor: pointer;
     border-bottom: 1px solid #2d9f86;
@@ -3772,5 +3842,27 @@ Accordion Styles
     display: block;
     display: table;
     margin: 40px auto 20px;
+  }
+}
+.bis-reset.bis-edge-left.bis-edge-top.bis-rotate-90 .bis-button {
+  font-family: $bodyFontStack;
+  letter-spacing: 1px;
+  font-weight: normal !important;
+  text-shadow: none;
+}
+.late-ship {
+  display: none;
+  clear: left;
+  margin-bottom: 40px;
+  p {
+    background-color: $light-blue;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 3px 10px;
+    display: table;
+  }
+  &.home {
+    margin-top: 40px;
+    margin-bottom: 0;
   }
 }

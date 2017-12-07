@@ -78,5 +78,14 @@
   {% endfor %}
 
 </div>
+<script>
+// PREORDER TEXT ON BUTTON CHANGE
+function variantPreorder(product) {
+  $('.late-ship.' + product).show();
+}
+function variantForSale(product) {
+  $('.late-ship.' + product).hide();
+}
+</script>
 
 

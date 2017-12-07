@@ -92,7 +92,7 @@
       {% endif %}
       {% endcomment %}
         
-      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="promoAdd(event, this, {{product.id}})">
         {% if product.variants.size > 1 %}
         {% comment %}
           If there are variants, show the user some choices via input controls, else we will hide the inputs
@@ -112,6 +112,7 @@
                    value="{{variant.id}}"
                    class="variant-input"
                    data-index="{{forloop.index0}}"
+                   onChange="variantPreorder()"
                    {% if product.selected_variant.id == variant.id %}
                      checked="true"
                    {% endif %}
@@ -133,6 +134,7 @@
                    value="{{variant.id}}"
                    class="variant-input"
                    data-index="{{forloop.index0}}"
+                   onChange="variantForSale()"
                    {% if has_checked == false or product.selected_variant.id == variant.id %}
                      checked="true"
                      {% assign has_checked = true %}
@@ -179,11 +181,9 @@
         <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
         {% endcomment %}
         
-        {% comment %}
         {% if product.handle == "kardiaband" and shop.locale == 'en' %}
           <a id="band-size-chart" onclick="showSizeChart()">Size chart</a>
         {% endif %}
-        {% endcomment %}
 
         <button type="submit" name="add" id="AddToCart" class="btn" {% if sold_out %}disabled{% endif %}>
           <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
@@ -291,5 +291,27 @@ $('form').on('click', "input", function(e) {
   var idx = $(this).data('index');
   $('.product-single__thumbnails').find('a').eq(idx).click();
 });
+  
+// PREORDER TEXT ON BUTTON CHANGE
+function variantPreorder() {
+  $('.late-ship').show();
+  $('#AddToCart').css('margin-bottom', '30px');
+  $('#free-ship-benefit').html("Free Shipping");
+}
+function variantForSale() {
+  $('.late-ship').hide();
+  $('#AddToCart').css('margin-bottom', '60px');
+  $('#free-ship-benefit').html("Free Shipping: <span>1-3 business days</span>");
+}
+  function showSizeChart() {
+    $('.pop-up.size-chart').addClass('open');
+    $('.pop-up.size-chart .screen, .pop-up.size-chart .close').on('click', function() {
+      $('.pop-up.size-chart').removeClass('open');
+    });
+    $('.pop-up.size-chart .content').on('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+  
 
 </script>

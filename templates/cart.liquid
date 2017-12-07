@@ -12,7 +12,7 @@
 
     <!-- DISCOUNT CODE script for checkout ================================================== -->
     {% include 'discount-code-cart' %}
-	<div class="cart-header">
+  <div class="cart-header">
       <div class="wrapper">
         <div class="cart-title">
           <h2 class="cart">{{ 'cart.general.title' | t }}</h2>
@@ -55,6 +55,9 @@
               {% unless item.variant.title contains 'Default' %}
                 <small>{{ item.variant.title }}</small>
               {% endunless %}
+              {% if item.variant.inventory_quantity <= 1 and item.product.handle == 'kardiaband' %}
+                <p><small>Please allow 4-6 weeks for delivery</small></p>
+              {% endif %}
 
               {% if settings.cart_vendor_enable %}
                 <p>{{ item.vendor }}</p>
@@ -104,7 +107,7 @@
               </span>
               {% if item.total_discount > 0 %}
                 <div class="discount_message">
-              	<s>{{ item.original_line_price | money }}</s>
+                <s>{{ item.original_line_price | money }}</s>
                 ({{ item.message }})
                 </div>
               {% endif %}
@@ -184,3 +187,5 @@ window.criteo_q.push(
 );
 </script>
 <!-- Criteo End -->
+<!-- RMFactory chat   -->
+{% include 'live-person' %}
