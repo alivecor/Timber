@@ -29,7 +29,8 @@
 
   <!-- FONTS =============================================== -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+  <!-- Typekit fonts -->
+  {% include 'typekit' %}
 
   <!-- CSS ================================================== -->
   {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
@@ -58,9 +59,6 @@
   
   <!-- Bold's Common Snippet -->
   {% include 'bold-common' %}
-
-  <!-- Typekit fonts -->
-  {% include 'typekit' %}
 
 {% if product.metafields.inventory.ShappifyHidden == "true" %} {% endif %}
 

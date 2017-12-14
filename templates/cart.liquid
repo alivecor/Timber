@@ -56,7 +56,7 @@
                 <small>{{ item.variant.title }}</small>
               {% endunless %}
               {% if item.variant.inventory_quantity <= 1 and item.product.handle == 'kardiaband' %}
-                <p><small>Please allow 4-6 weeks for delivery</small></p>
+                <p><small>Please allow 3-4 weeks for delivery</small></p>
               {% endif %}
 
               {% if settings.cart_vendor_enable %}
@@ -187,5 +187,3 @@ window.criteo_q.push(
 );
 </script>
 <!-- Criteo End -->
-<!-- RMFactory chat   -->
-{% include 'live-person' %}

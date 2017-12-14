@@ -1166,6 +1166,7 @@ html input[disabled] {
     cursor: default;
     color: $disabledBorder;
     background-color: $disabledGrey;
+    border-color: $disabledGrey;
   }
 }
 
@@ -1604,7 +1605,7 @@ label[for] {
 }
 .variant-input-wrapper {
   float: left;
-  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 12px;
   @media (max-width: 1200px) {
     margin: 0 10px 24px 0;
@@ -1613,11 +1614,15 @@ label[for] {
 .variant-title {
   float: left;
   font-size: 14px;
-  margin-right: 10px;
+  margin-right: 20px;
   margin-top: 5px;
   margin-bottom: 7px;
   @media (max-width: 1200px) {
     float: none;
+  }
+  &.oneline {
+    float: none;
+    margin-bottom: 10px;
   }
 }
 input[type="radio"].variant-input {
@@ -1642,6 +1647,7 @@ input[type="radio"].variant-input {
   }
   @media (min-width: 1200px) {
     height: 39px;
+    /* US 39px */
     /* DE 23px */
     /* UK 48px */
   }
@@ -3519,6 +3525,7 @@ Accordion Styles
     margin-bottom: 0;
     @media (max-width: 768px) {
       margin-top: 10px;
+      margin-bottom: 12px;
     }
   }
   .variant-title {
@@ -3532,7 +3539,9 @@ Accordion Styles
       &:first-child {
         display: block;
         font-size: 16px;
-        width: 75%;
+        @media (min-width: 768px) {
+          width: 75%;
+        }
       }
     }
   }

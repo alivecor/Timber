@@ -52,9 +52,19 @@
 
   {% endcomment %}
   {% assign show_promo = false %}
+  {% assign show_preorder = false %}
+  {% assign preorder-all = false %}
   {% for tag in product.tags %}
     {% if product.handle == 'kardiamobile' and tag == 'pop-up' and shop.locale == 'en' %}
       {% assign show_promo = true %}
+    {% endif %}
+    {% if product.handle == 'kardiaband' and shop.locale == 'en' %}
+      {% if tag == 'preorder' %}
+        {% assign show_preorder = true %}
+      {% endif %}
+      {% if tag == 'preorder-all' %}
+        {% assign preorder-all = true %}
+      {% endif %}
     {% endif %}
   {% endfor%}
   
@@ -107,7 +117,7 @@
   
     <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="{% if show_promo == true %}promoAdd(event, this, {{product.id}}){% endif %}">
       {% if product.variants.size > 1 %}
-      <div class="variant-title">{{product.options.first | escape}}</div>
+      <div class="variant-title {% if product.variants.size > 3 %}oneline{% endif %}">{{product.options.first | escape}}</div>
         {% assign has_checked = false %}
         {% for variant in product.variants %}
           {% if variant.inventory_policy == 'continue' and variant.inventory_quantity <= 1 %}
@@ -119,7 +129,13 @@
                    value="{{variant.id}}"
                    class="variant-input"
                    data-index="{{forloop.index0}}"
-                   onChange="variantPreorder('{{ product.handle }}')"
+                   {% if show_preorder == true %}
+                     onChange="variantPreorder('{{ product.handle }}')"
+                   {% endif %}
+                   {% if has_checked == false %}
+                     checked="true"
+                     {% assign has_checked = true %}
+                   {% endif %}
                    >
                 <label class="form-control" for="{{variant.id}}">
                   {{variant.title}}
@@ -138,7 +154,9 @@
                    value="{{variant.id}}"
                    class="variant-input"
                    data-index="{{forloop.index0}}"
-                   onChange="variantForSale('{{ product.handle }}')"
+                   {% if show_preorder == true %}
+                     onChange="variantForSale('{{ product.handle }}')"
+                   {% endif %}
                    {% if has_checked == false %}
                      checked="true"
                      {% assign has_checked = true %}
@@ -200,8 +218,8 @@
         <a href="{{ product.url }}" class="view-details">
           View Details
         </a>
-        <div class="late-ship home {{ product.handle }}">
-          <p>We can't make them fast enough! Please allow 4-6 weeks for delivery.</p>
+        <div class="late-ship home {{ product.handle }} {% if preorder-all == true %}show{% endif %}">
+          <p>We can't make them fast enough! Please allow 3-4 weeks for delivery.</p>
         </div>
       </form>
     {% if on_sale %}

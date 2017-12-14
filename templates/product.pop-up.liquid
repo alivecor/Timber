@@ -103,27 +103,7 @@
             {% assign has_checked = false %}
           {% endunless %}
           {% for variant in product.variants %}
-            {% if variant.inventory_policy == 'continue' and variant.inventory_quantity <= 1 %}
-              <div class="variant-input-wrapper">
-                <input type="radio"
-                   id="{{variant.id}}"
-                   name="id"
-                   data-sku="{{variant.sku}}"
-                   value="{{variant.id}}"
-                   class="variant-input"
-                   data-index="{{forloop.index0}}"
-                   {% if product.selected_variant.id == variant.id %}
-                     checked="true"
-                   {% endif %}
-                   >
-                <label class="form-control" for="{{variant.id}}">
-                  {{variant.title}}
-                  {% if add_price > 0 %}
-                  &nbsp;(add {{add_price | money_with_currency}})
-                  {% endif %}
-                </label>
-              </div>
-            {% elsif variant.available %}
+            {% if variant.available %}
               {% assign add_price = variant.price | minus: product.price %}
               <div class="variant-input-wrapper">
                 <input type="radio"
@@ -133,6 +113,7 @@
                    value="{{variant.id}}"
                    class="variant-input"
                    data-index="{{forloop.index0}}"
+                   data-img-url="{{variant.featured_image.src | img_url: 'large'}}"
                    {% if has_checked == false or product.selected_variant.id == variant.id %}
                      checked="true"
                      {% assign has_checked = true %}
@@ -288,8 +269,8 @@
 
 <script>
 $('form').on('click', "input", function(e) {
-  var idx = $(this).data('index');
-  $('.product-single__thumbnails').find('a').eq(idx).click();
+  var imgUrl = $(this).data().imgUrl;
+  $('#ProductPhoto img').attr('src', imgUrl);
 });
 
 </script>
