@@ -15,6 +15,10 @@
 {% if product.handle == "kardiaband" %}
   {% assign product_name = 'kardiaband' %}
 {% endif %}
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
 
 <div itemscope itemtype="http://schema.org/Product">
 
@@ -159,19 +163,16 @@
         <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
         <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
         {% endcomment %}
-        
-        {% comment %}
-        {% if product.handle == "kardiaband" and shop.locale == 'en' %}
-          <a id="band-size-chart" onclick="showSizeChart()">Size chart</a>
-        {% endif %}
-        {% endcomment %}
 
-        <button type="submit" name="add" id="AddToCart" class="btn" {% if sold_out %}disabled{% endif %}>
-          <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+        <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
+          <span id="AddToCartText">
+          {% if sold_out %}
+          {{ 'products.product.sold_out' | t }}
+          {% else %}
+          {{ 'products.product.add_to_cart' | t }}
+          {% endif %}
+          </span>
         </button>
-        <div class="late-ship">
-          <p>We can't make them fast enough! Please allow 4-6 weeks for delivery.</p>
-        </div>
       </form>
       </div>
 

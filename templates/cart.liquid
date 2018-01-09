@@ -55,9 +55,6 @@
               {% unless item.variant.title contains 'Default' %}
                 <small>{{ item.variant.title }}</small>
               {% endunless %}
-              {% if item.variant.inventory_quantity <= 1 and item.product.handle == 'kardiaband' %}
-                <p><small>Please allow 3-4 weeks for delivery</small></p>
-              {% endif %}
 
               {% if settings.cart_vendor_enable %}
                 <p>{{ item.vendor }}</p>
