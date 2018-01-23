@@ -19,7 +19,10 @@
       <a href="javascript:void(0)"
         class="navicon navigation-menu-button"
         id="js-mobile-menu">
-        Menu
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </a>
     </div>
     <nav role="navigation">
@@ -108,21 +111,3 @@
   {% endcomment %}
   </div>
 </header>
-
-<script>
-  $(document).ready(function() {
-    $('#js-navigation-menu').removeClass('show');
-
-    $('#js-mobile-menu').on('click', function() {
-      document.getElementById('mobile-overlay').style.height = "100%";
-      $('#js-navigation-menu').addClass('show');
-    });
-
-    $('#js-mobile-menu-close').on('click', function() {
-      document.getElementById('mobile-overlay').style.height = "0%";
-      $('#js-navigation-menu').removeAttr('style');
-      $('#js-navigation-menu').removeClass('show');
-    });
-  });
-  
-</script>
