@@ -64,11 +64,31 @@ $(document).ready(function() {
     $(hash + ' h3').click();
   });
 
+  // $('.accordion h3').on('click', function(evt) {
+  //   evt.preventDefault();
+  //   var _this = $(this).parent('.accordion');
+  //   _this.find('.accordion-inner').slideToggle();
+  //   _this.find('i').toggleClass('fa-plus fa-minus');
+  // });
+
   $('.accordion h3').on('click', function(evt) {
+    evt.preventDefault();
     var _this = $(this).parent('.accordion');
     _this.find('.accordion-inner').slideToggle();
-    _this.find('i').toggleClass('fa-plus fa-minus');
+    // var toggler = $(evt.target).parent().parent('.toggler');
+    // var topicBody = toggler.next('.topic-body');
+    // topicBody.slideToggle('fast');
+    _this.find('.rightarrow').toggle();
+    _this.find('.downarrow').toggle();
   });
+
+  // $('.heading-toggle').on('click', function(evt) {
+  //   var toggler = $(evt.target).next();
+  //   var topicBody = toggler.next('.topic-body');
+  //   topicBody.slideToggle('fast');
+  //   toggler.find('.rightarrow').toggle();
+  //   toggler.find('.downarrow').toggle();
+  // });
 
 });
 

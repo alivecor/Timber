@@ -255,11 +255,11 @@
         the grid_item_width variable.
       {% endcomment %}
       {% if product_accessories.products.length <= 2 %}
-        {% assign grid_item_width = 'large--one-half medium--one-half small--one-half' %}
+        {% assign grid_item_width = 'large--one-half medium--one-half' %}
       {% elsif product.accessories.products.length == 3 %}
-        {% assign grid_item_width = 'large--one-third medium--one-half small--one-half' %}
+        {% assign grid_item_width = 'large--one-third medium--one-half' %}
       {% else %}
-      {% assign grid_item_width = 'large--one-quarter medium--one-half small--one-half' %}
+      {% assign grid_item_width = 'large--one-quarter medium--one-half' %}
       {% endif %}
       {% include 'home-grid-item' %}
     {% endfor %}

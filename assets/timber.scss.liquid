@@ -3115,6 +3115,13 @@ input.quantity {
     list-style: none;
     margin: 0 0 25px 0;
   }
+  .app-store-badges img {
+    width: 135px;
+    margin-bottom: 24px;
+  }
+  a {
+    font-size: 16px;
+  }
 }
 
 .newsletter-signup {
@@ -3146,7 +3153,7 @@ Accordion Styles
   border-radius: 10px;
   cursor: pointer;
   & > h3 {
-    padding: 10px 16px;
+    padding: 12px 16px;
     margin: 0;
     text-align: center;
     color: $navy;
@@ -3166,6 +3173,13 @@ Accordion Styles
     .fa {
       font-size: 16px;
     }
+    .downarrow {
+      display: none;
+    }
+    svg {
+      width: 30px;
+      height: 30px;
+    }
   }
   .accordion-inner {
     overflow: auto;
@@ -3179,71 +3193,21 @@ Accordion Styles
       font-size: 16px;
     }
   }
-  &#compatibility {
-    .grid__item {
-      padding-left: 0;
-      .app-text {
-        @media (min-width: 768px) {
-          width: 58%;
-          margin: 0 auto;
-          font-size: 16px;
-          &.requires {
-            width: 36%;
-          }
-          &.small {
-            width: 40%;
-          }
-        }
-      }
-    }
-  }
   &#compatibility, &#specs {
     .accordion-inner {
       text-align: center;
     }
   }
 }
-.compatibility-list {
-  list-style: none;
-  margin: 4px 0 24px 0;
-  font-size: em(16px);
-  b {
-    color: $navy;
-    font-weight: normal;
-  }
-}
-
-.omron-compat-link {
-  margin: 1.5em auto;
-  text-decoration: underline;
-  display: table;
-  font-size: 16px;
-  @media (min-width: 768px) {
-    border-bottom: 1px solid $teal;
-    text-decoration: none;
-  }
-}
 
 .return-policy {
+  padding: 0;
+  @media (min-width: 768px) {
+    padding: 0 30px;
+  }
   p {
     font-size: 16px;
   }
-}
-
-.last-updated {
-  clear: both;
-  font-style: italic;
-  font-size: 16px;
-}
-
-.itunes-badge img {
-  height: 53px;
-  padding: 3px 0 9px;
-  margin-top: 20px;
-}
-
-.android-badge img {
-  height: 60px;
 }
 
 @mixin button($background-color, $color, $border-color) {

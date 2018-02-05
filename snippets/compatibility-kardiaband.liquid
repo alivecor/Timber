@@ -1,29 +1,86 @@
-<div class="grid__item">
-  <p class="app-text">{{ 'compatibility.intro_band' | t }}</p>
-  {% comment %}new Date().getTime(){% endcomment %}
-  {% assign updated_date = '1512080000' | date: format: 'month_day_year'  %}
-  <p class="last-updated">({{ 'compatibility.last_updated_on' | t: date: updated_date}})</p>
-  <p class="app-text requires">{{ 'compatibility.kb_requires' | t }}</p>
-</div>
-<div class="grid__item large--one-half">
-  <h3>{{ 'compatibility.watch' | t }}</h3>
-  <ul class="compatibility-list">
+<p>{{ 'compatibility.intro_band' | t }}
+{% comment %}new Date().getTime(){% endcomment %}
+{% assign updated_date = '1512080000' | date: format: 'month_day_year'  %}
+<br/><span class="italic">({{ 'compatibility.last_updated_on' | t: date: updated_date}})</span></p>
+<p class="italic">{{ 'compatibility.kb_requires' | t }}</p>
+<div class="kardiaband">
+<div class="content">
+  <div class="brand">
+    {% include 'icon-apple.svg' %}
+    <h3>{{ 'compatibility.watch' | t }}</h3>
+  </div>
+  <ul class="chart">
     <li>
-      <b>{{ 'compatibility.watch3' | t }}</b>
+      <span class="regular">{{ 'compatibility.watch3' | t }}</span>
       ({{ 'compatibility.watch_os_4_1' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.watch2' | t }}</b>
+      <span class="regular">{{ 'compatibility.watch2' | t }}</span>
       ({{ 'compatibility.watch_os_4_1' | t }})
     </li>
     <li>
-      <b>{{ 'compatibility.watch1' | t }}</b>
+      <span class="regular">{{ 'compatibility.watch1' | t }}</span>
       ({{ 'compatibility.watch_os_4_1' | t }})
     </li>
     <li>
       NOT compatible with the<br>original Apple Watch (Series 0)
     </li>
   </ul>
+</div>
+<div class="content">
+  <div class="brand">
+    {% include 'icon-apple.svg' %}
+    <h3>{{ 'compatibility.host_iphone' | t }}</h3>
+  </div>
+  <ul class="chart">
+    <li>
+      <span class="regular">{{ 'compatibility.iphoneX' | t }}</span>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.iphone8_plus' | t }}</span>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.iphone8' | t }}</span>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.iphone7_plus' | t }}</span>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.iphone7' | t }}</span>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.iphone6s_plus' | t }}</span>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.iphone6s' | t }}</span>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.iphone6_plus' | t }}</span>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.iphone6' | t }}</span>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.iphonese' | t }}</span>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.iphone5s' | t }}</span>
+      ({{ 'compatibility.ios_11_1' | t }})
+    </li>
+  </ul>
+</div>
+</div>
+<div class="downloads">
   {% comment %}
     capture itunes and play urls for passing to the translation
   {% endcomment %}
@@ -32,68 +89,14 @@
       {{ 'compatibility.app_store' | t }}
     </a>
   {% endcapture %}
+  <div class="content">
+    <h3>{{ 'compatibility.kardia_app' | t }}</h3>
+    <p>
+    {{ 'compatibility.use_of_kardia_band_requires_html' | t: itunes_url: itunes_url }}
+    </p>
 
-  {% capture play_url %}
-    <a href="https://play.google.com/store/apps/details?id=com.alivecor.aliveecg">
-      {{ 'compatibility.google_play' | t }}
-    </a>
-  {% endcapture %}
-
-  <h3>{{ 'compatibility.kardia_app' | t }}</h3>
-  <p class="app-text">
-  {{ 'compatibility.use_of_kardia_band_requires_html' | t: itunes_url: itunes_url, play_url: play_url }}
-  </p>
-
-  <div class="app-store-badges">
-    <a class="itunes-badge" href="https://itunes.apple.com/app/aliveecg/id579769143"><img src="https://alivecorcms.s3.amazonaws.com/sites/51b0fa1d9005a1000f00292e/theme/images/appstore-badge.svg" alt="link to AppStore"></a>
+    <div class="store-links">
+      <a class="itunes-badge" target="_blank" href="https://itunes.apple.com/app/aliveecg/id579769143"><img src="{{ 'apple-icon.png' | asset_url }}" alt="link to AppStore"></a>
+    </div>
   </div>
-</div>
-<div class="grid__item large--one-half">
-  <h3>{{ 'compatibility.host_iphone' | t }}</h3>
-  <ul class="compatibility-list">
-    <li>
-      <b>{{ 'compatibility.iphoneX' | t }}</b>
-      ({{ 'compatibility.ios_11_1' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.iphone8_plus' | t }}</b>
-      ({{ 'compatibility.ios_11_1' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.iphone8' | t }}</b>
-      ({{ 'compatibility.ios_11_1' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.iphone7_plus' | t }}</b>
-      ({{ 'compatibility.ios_11_1' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.iphone7' | t }}</b>
-      ({{ 'compatibility.ios_11_1' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.iphone6s_plus' | t }}</b>
-      ({{ 'compatibility.ios_11_1' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.iphone6s' | t }}</b>
-      ({{ 'compatibility.ios_11_1' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.iphone6_plus' | t }}</b>
-      ({{ 'compatibility.ios_11_1' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.iphone6' | t }}</b>
-      ({{ 'compatibility.ios_11_1' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.iphonese' | t }}</b>
-      ({{ 'compatibility.ios_11_1' | t }})
-    </li>
-    <li>
-      <b>{{ 'compatibility.iphone5s' | t }}</b>
-      ({{ 'compatibility.ios_11_1' | t }})
-    </li>
-  </ul>
 </div>
