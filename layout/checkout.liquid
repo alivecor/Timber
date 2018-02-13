@@ -38,8 +38,8 @@
             {{ breadcrumb }}
           </div>
           <div class="main__content">
-            {{ content_for_layout }}
             {{ alternative_payment_methods }}
+            {{ content_for_layout }}
           </div>
           <div class="main__footer">
             {{ content_for_footer }}
@@ -64,10 +64,6 @@
         discountSection.append(discountField);
         discountField.style.visibility = 'hidden';
       }
-      var altPayParent = document.getElementsByClassName('alternative-payment-separator')[0].parentNode;
-      var altPaySeparator = document.getElementsByClassName('alternative-payment-separator')[0];
-      var altPayContainer = document.getElementsByClassName('alt-payment-list-container')[0];
-      altPayParent.insertBefore(altPaySeparator, altPayContainer);
     </script>
   </body>
 </html>
