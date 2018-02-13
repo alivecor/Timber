@@ -21,6 +21,8 @@
   <meta name="description" content="{{ page_description | escape }}">
   {% endif %}
 
+  {% include 'gtm-head' %}
+
   <!-- Helpers ================================================== -->
   {% include 'social-meta-tags' %}
   <link rel="canonical" href="{{ canonical_url }}">
@@ -68,13 +70,8 @@
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+  {% include 'gtm-body' %}
   {% include 'discount-code-body' %}
- {% if template contains 'cart' %}
-    {% include 'tracking-pixels' %}
-    {% include 'floodlight-cart' %}
-  {% else %}
-    {% include 'floodlight-main' %}
-  {% endif %}
   {% include 'navigation' %}
   {% if shop.locale == 'en' and template == 'index' %}
     {% include 'trust-banner' %}

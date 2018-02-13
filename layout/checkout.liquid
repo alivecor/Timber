@@ -10,10 +10,13 @@
 
     {{ content_for_header }}
 
+    {% include 'gtm-head' %}
+
     {{ checkout_stylesheets }}
     {{ checkout_scripts }}
   </head>
   <body>
+    {% include 'gtm-body' %}
     <div class="banner" data-header>
       <div class="wrap">
         {{ content_for_logo }}
