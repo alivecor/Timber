@@ -65,7 +65,8 @@
       "checkout": "Finalizar pedido",
       "empty": "Su carrito actualmente está vacío.",
       "continue_browsing_html": "Continúe explorando aquí.",
-      "close_cart": "Cerrar carrito"
+      "close_cart": "Cerrar carrito",
+      "kb_premium": "*Premium membership is required for KardiaBand. One month of Premium is included with purchase. Premium membership can be purchased in the app."
     },
     "label": {
       "product": "Producto",

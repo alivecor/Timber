@@ -75,7 +75,8 @@
       "empty": "Ihr Einkaufswagen ist im Moment leer.",
       "continue_browsing_html": "Jetzt einkaufen bei AliveCor",
       "close_cart": "Einkaufswagen schließen",
-      "continue_shopping": "Mit dem Einkaufen fortfahren"
+      "continue_shopping": "Mit dem Einkaufen fortfahren",
+      "kb_premium": "*Premium membership is required for KardiaBand. One month of Premium is included with purchase. Premium membership can be purchased in the app for €9.99/mo or €99/year."
     },
     "label": {
       "product": "Artikel",
