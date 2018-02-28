@@ -73,6 +73,16 @@
       <div class="promo-banner"><span>A GIFT FOR YOUR HEART</span>: Buy KardiaMobile, get a free Carry Pod</div>
     {% endif %}
     <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+    {% if product.handle == 'kardiamobile' %}
+      <div class="ribbon">
+        Best Seller
+      </div>
+    {% endif %}
+    {% if product.handle == 'kardiaband' %}
+      <div class="ribbon">
+        For  Watch Only
+      </div>
+    {% endif %}
   </a>
 
   <p class="h2 title">
