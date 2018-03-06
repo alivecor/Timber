@@ -76,7 +76,7 @@
       "continue_browsing_html": "Shop AliveCor Now",
       "close_cart": "Close Cart",
       "continue_shopping": "Continue shopping",
-      "kb_premium": "*Premium membership is required for KardiaBand. One month of Premium is included with purchase. Premium membership can be purchased in the app for £9.99/mo or £99/year."
+      "kb_premium": "*Premium membership is required for KardiaBand. One month of Premium is included with purchase. Premium membership can be purchased in the app for £9.99/month or £99/year."
     },
     "label": {
       "product": "Product",
@@ -297,7 +297,9 @@
       "quantity": "Quantity",
       "add_to_cart": "Add to Cart",
       "preorder": "Preorder",
-      "preorder_date": "Product will be shipped pending CE Mark."
+      "preorder_date": "Product will be shipped pending CE Mark.",
+      "kb_premium1": "Also Requires Premium Membership",
+      "kb_premium2": "(available in Kardia app for £9.99/month or £99/year)"
     }
   },
   "gift_cards": {

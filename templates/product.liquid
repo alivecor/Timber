@@ -67,21 +67,30 @@
     </div>
 
     <div class="grid__item large--one-half">
-      <h2 class="product-title" itemprop="name">{{ product.title }}</h2>
+      <h2 class="h2Title product-title" itemprop="name">{{ product.title }}</h2>
 
       <!-- Price stuff ======================================================== -->
       {% if product.compare_at_price_max > product.price %}
-        <span id="ProductPrice" class="h2" itemprop="price">
+        <span id="ProductPrice" class="h2Price" itemprop="price">
           {{ product.price | money }}
         </span>
         <span class="strikeout">
         {{ current_variant.compare_at_price | money }}
         </span>
       {% else %}
-        <span id="ProductPrice" class="h2 noFloat" itemprop="price">
+        <span id="ProductPrice" class="h2Price noFloat" itemprop="price">
           {{ product.price | money }}
         </span>
       {% endif %}
+
+      <!-- For KB
+      ======================================================== -->
+      {% if product.handle == 'kardiaband' %}
+      <div class="disclaimer">
+        {{ 'products.product.kb_premium1' | t }}<br/>{{ 'products.product.kb_premium2' | t }}
+      </div>
+      {% endif %}
+      
 
       <!-- Add to Cart
       ======================================================== -->
@@ -267,3 +276,9 @@
   </div>
 {% endif %}
 
+<!-- DataLayer pushes -->
+<script type="text/javascript">
+  dataLayer.push({
+    productId: '{{ product.id }}'
+  });
+</script>

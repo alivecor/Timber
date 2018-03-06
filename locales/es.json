@@ -287,7 +287,9 @@
       "quantity": "Cantidad",
       "add_to_cart": "Agregar al carrito",
       "preorder": "Preorder",
-      "preorder_date": "Product will be shipped pending CE Mark."
+      "preorder_date": "Product will be shipped pending CE Mark.",
+      "kb_premium1": "Also Requires Premium Membership",
+      "kb_premium2": "(available in Kardia app)"
     }
   },
   "gift_cards": {

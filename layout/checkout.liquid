@@ -73,34 +73,25 @@
           discountSection.append(discountField);
           discountField.style.visibility = 'hidden';
         }
-        
       }
-      if (window.location.href.indexOf('thank_you') > -1) {
-        var productsArray = [],
-          product_idsArray = [],
-          productQuantityArray = [],
-          productsString = '{{checkout.line_items | map: "title" | join: ','}}',
-          product_idsString = '{{checkout.line_items | map: "product_id" | join: ','}}',
-          productQuantityString = '{{checkout.line_items | map: "quantity" | join: ','}}';
-        productsArray = productsString.split(',');
-        product_idsArray = product_idsString.split(',');
-        productQuantityArray = productQuantityString.split(',');
 
-        var combinedProducts = [];
-        for (var i = productsArray.length - 1; i >= 0; i--) {
-          var addProd = {
-            name: productsArray[i],
-            productId: product_idsArray[i],
-            quantity: productQuantityArray[i]
-          }
-          combinedProducts.push(addProd)
-        }
-        dataLayer.push({
-          orderId: '{{ checkout.order_number }}',
-          revenue: '{{ checkout.subtotal_price | money_without_currency }}',
-          products: combinedProducts
+      {% for discount in checkout.discounts %}
+        {% assign discountcode = discount.code %}
+      {% endfor %}
+      var productsArray = [];
+      {% for item in checkout.line_items %}
+        productsArray.push({
+          name: '{{ item.title }}',
+          productId: '{{ item.product_id }}',
+          quantity: '{{ item.quantity }}'
         });
-      }
+      {% endfor %}
+      dataLayer.push({
+        orderId: '{{ checkout.order_number }}',
+        revenue: '{{ checkout.subtotal_price | money_without_currency }}',
+        products: productsArray,
+        discountCode: '{{ discountcode }}'
+      });
     </script>
   </body>
 </html>

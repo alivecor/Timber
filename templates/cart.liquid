@@ -9,6 +9,7 @@
 
 {% if cart.item_count > 0 %}
 {% assign kb_in_cart = false %}
+{% assign km_in_cart = false %}
   <form action="/cart" method="post" novalidate class="cart table-wrap" id="cartform">
 
     <!-- DISCOUNT CODE script for checkout ================================================== -->
@@ -37,6 +38,9 @@
       </thead>
       <tbody>
         {% for item in cart.items %}
+          {% if item.product.handle == 'kardiamobile' %}
+            {% assign km_in_cart = true %}
+          {% endif %}
           <tr class="cart__row table__section">
             <td data-label="{{ 'customer.order.product' | t }}">
               <a href="{{ item.url }}">
@@ -122,9 +126,9 @@
     </table>
     <div class="wrapper grid cart__row">
       {% if kb_in_cart %}
-      <p><small>
+      <p class="kb_premium_message">
         {{ 'cart.general.kb_premium' | t}}
-      </small></p>
+      </p>
       {% endif %}
       <div class="grid__item one-whole text-right{% if settings.cart_notes_enable %} one-third small--one-whole{% endif %}">
         <p>
@@ -148,11 +152,13 @@
     </div>
 
   </form>
+  {% if km_in_cart %}
   <div class="wrapper">
     <div class="one-half medium--one-whole small--one-whole recommended-accessories">
       {% include 'recommended-accessories' %}
     </div>
   </div>
+  {% endif %}
 {% else %}
   {% comment %}
     The cart is empty
@@ -169,6 +175,22 @@
     </p>
   </div>
 {% endif %}
+<!-- DataLayer pushes -->
+<script type="text/javascript">
+  var productsArray = [];
+  {% for item in cart.items %}
+    productsArray.push({
+      name: '{{ item.title }}',
+      productId: '{{ item.product_id }}',
+      quantity: '{{ item.quantity }}'
+    });
+  {% endfor %}
+  dataLayer.push({
+    revenue: '{{ cart.total_price| money_without_currency }}',
+    products: productsArray
+  });
+</script>
+
   <!-- Omniconvert Start -->
 <script>
 document.onreadystatechange = function () {
@@ -188,16 +210,3 @@ document.onreadystatechange = function () {
 };
 </script>
 <!-- Omniconvert End -->
-{% if shop.locale == 'en' %}
-<!-- Criteo Start -->
-<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
-<script type="text/javascript"> window.criteo_q = window.criteo_q || [];
-var deviceType = /iPad/.test(navigator.userAgent) ? "t" : /Mobile|iP(hone|od)|Android |BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" : "d";
-window.criteo_q.push(
-{ event: "setAccount", account: 43826 },
-{ event: "setSiteType", type: deviceType },
-{ event: "viewBasket", item: [ { id: "1", price: {{ cart.total_price| money_without_currency }}, quantity: 1 } ]}
-);
-</script>
-<!-- Criteo End -->
-{% endif %}

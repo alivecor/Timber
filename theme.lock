@@ -12,21 +12,21 @@ assets/styles.scss:
 assets/styles.scss.liquid:
   development: 2018-02-06T00:56:31+01:00   cdfa2603f1228ea047d12628f6bfffcf
 assets/timber.scss.liquid:
-  development: 2018-02-28T12:24:07-08:00   3428acf1feb67f4f6b847e4cc6d4cb22
+  development: 2018-03-06T09:41:40-08:00   3c5c5eb40e34aa139f8bbe7bb5e72477
 layout/checkout.liquid:
-  development: 2018-02-28T19:44:32+00:00   126800692806a51cc9b07598423f0fbc
+  development: 2018-03-01T23:41:17+00:00   dee05dfe41c6409908a882f067bb214e
 layout/theme.liquid:
-  development: 2018-02-13T01:55:21+01:00   3a866a0d0a20aa38b92dc598aeca9cba
+  development: 2018-03-01T23:41:17+00:00   2450c7f964179a2a78f85c1ef3067e55
 locales/de.json:
-  development: 2018-02-22T13:15:54-08:00   ac90a3334c48a247760ddd1547b478c5
+  development: 2018-03-03T00:43:24+01:00   65b7658c1a443949297e2e28726a9a49
 locales/en-GB.json:
-  development: 2018-02-22T13:15:52-08:00   ddcfdc2606d63a45e1c729f920c6fa58
+  development: 2018-03-03T00:43:24+01:00   95a6b2869b91dcc6156e2d654a96b88c
 locales/en.default.json:
-  development: 2018-02-22T13:15:51-08:00   65a50a5cd246cb2d816691e32c513f81
+  development: 2018-03-03T00:43:23+01:00   72cbaa60f915cb37eb02e204b15b1787
 locales/es.json:
-  development: 2018-02-22T13:16:01-08:00   2c238c4e0ff32dde80a408f78b69346e
+  development: 2018-03-03T00:43:26+01:00   b9ee75a7b05c09b1cc4177877aec213e
 locales/fr.json:
-  development: 2018-02-22T13:16:02-08:00   bca6e967d7b644d47823889fbe3e856f
+  development: 2018-03-03T00:43:27+01:00   7c4ba16d8ee19acfce5ee5c053dba99e
 snippets/analytics-scripts.liquid:
   development: 2018-02-22T22:19:11+01:00   fca34c6ad6e25604dc2fb8cc5c511b82
 snippets/compatibility-kardiaband.liquid:
@@ -39,8 +39,10 @@ snippets/gtm-body.liquid:
   development: 2018-02-13T01:55:18+01:00   1876a91a5b83ef0eff814f03bbf3bce0
 snippets/gtm-head.liquid:
   development: 2018-02-13T01:55:17+01:00   070a3f94a05cd5945265a9f1bc717007
+snippets/home-grid-item.liquid:
+  development: 2018-03-03T00:43:22+01:00   2b3b58540da5b343c0c89099ba0fe267
 snippets/home-main-item.liquid:
-  development: 2018-02-28T21:18:55+01:00   eaecf7fa77e10e2caf536ace72223dba
+  development: 2018-03-04T18:02:31+01:00   32a74ac96ff87d19a22ea8903ee880a1
 snippets/icon-android.svg.liquid:
   development: 2018-02-06T00:56:32+01:00   0310f836bb7c5ddd5a51a0d3447080b2
 snippets/icon-apple.svg.liquid:
@@ -60,11 +62,11 @@ snippets/tech-specs-kardiaband.liquid:
 snippets/tech-specs-kardiamobile.liquid:
   development: 2018-02-06T00:56:25+01:00   a33b70ced8ce763faf804edef0fef1e6
 templates/cart.liquid:
-  development: 2018-02-22T13:23:52-08:00   c702103a49f4f43ad1e24a55c37cf554
+  development: 2018-03-06T19:44:59+01:00   be1ddf0972c6883c4de1db6efc0abddc
 templates/index.liquid:
   development: 2018-01-24T01:08:06+01:00   1b2e59e07960c0b01a7668a955f8dd3f
 templates/product.liquid:
-  development: 2018-02-06T00:56:34+01:00   f851abbcefe00925c2afa19c45562288
+  development: 2018-03-03T00:43:21+01:00   d752cf43d6379eaa998c6f972979b0d2
 templates/product.pop-up.liquid:
   development: 2018-01-22T23:03:19+01:00   19afcbbb8c09f8d70dd592e32240e6e1
 templates/product.product-pre-order.liquid:
