@@ -19,16 +19,31 @@
       <a href="javascript:void(0)"
         class="navicon navigation-menu-button"
         id="js-mobile-menu">
-        Menu
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </a>
     </div>
     <nav role="navigation">
     <div id="mobile-overlay">
       <div id="js-mobile-menu-close"></div>
       <ul id="js-navigation-menu" class="navigation-menu">
+        <li class="nav-link {% if template == 'index' %}active{% endif %}">
+          <a href="/">
+            Products
+          </a>
+        </li>
+
         <li class="nav-link">
-          <a href="https://www.alivecor.com">
-            Individuals
+          <a href="https://www.alivecor.com/how-it-works">
+            How it Works
+          </a>
+        </li>
+
+        <li class="nav-link">
+          <a href="https://www.alivecor.com/technology">
+            Technology
           </a>
         </li>
 
@@ -37,30 +52,49 @@
             Clinicians
           </a>
         </li>
-        
+
         <li class="nav-link">
-          <a href="https://www.alivecor.com/how-it-works">
-            How it Works
+          <a href="https://www.alivecor.com/support">
+            Support
           </a>
         </li>
 
         <li class="nav-link no-mobile">
           <a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
             <img src="{{ 'store_icon_cart@3x.png' | asset_url }}"/>
+              {% if cart.item_count > 0 %}
               <span id="CartCount">
-                {% if cart.item_count > 0 %}
-                  {{ cart.item_count }}
-                {% else %}
-                  &nbsp;
-                {% endif %}
+                {{ cart.item_count }}
               </span>
+              {% endif %}
           </a>
         </li>
 
         <li class="nav-link free-ship no-mobile">
-          {% if locale == 'en' %}
+          {% if shop.locale == 'en' %}
           FREE Shipping in the US
-          {%endif%}
+          {% endif %}
+          {% comment %}
+            If customer accounts are enabled, provide login and create account links
+          {% endcomment %}
+          {% if shop.customer_accounts_enabled %}
+            <div class="float accountLinks">
+              {% if customer %}
+                {% if customer.first_name != blank %}
+                  {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
+                  {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+                {% else %}
+                  <a href="/account">{{ 'layout.customer.account' | t }}</a>
+                {% endif %}
+                | {{ 'layout.customer.log_out' | t | customer_logout_link }}
+              {% else %}
+                {{ 'layout.customer.log_in' | t | customer_login_link }}
+                {% if shop.customer_accounts_optional %}
+                | {{ 'layout.customer.create_account' | t | customer_register_link }}
+                {% endif %}
+              {% endif %}
+            </div>
+          {% endif %}
         </li>
       </ul>
       </div>
@@ -75,45 +109,5 @@
       - #cartCost updates the total cost of the cart
       - Documentation:  http://shopify.com/timber#ajax-cart
   {% endcomment %}
-
-  {% comment %}
-    If customer accounts are enabled, provide login and create account links
-  {% endcomment %}
-  {% if shop.customer_accounts_enabled %}
-    <div class="float accountLinks">
-      {% if customer %}
-        {% if customer.first_name != blank %}
-          {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
-          {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
-        {% else %}
-          <a href="/account">{{ 'layout.customer.account' | t }}</a>
-        {% endif %}
-        | {{ 'layout.customer.log_out' | t | customer_logout_link }}
-      {% else %}
-        {{ 'layout.customer.log_in' | t | customer_login_link }}
-        {% if shop.customer_accounts_optional %}
-        | {{ 'layout.customer.create_account' | t | customer_register_link }}
-        {% endif %}
-      {% endif %}
-    </div>
-  {% endif %}
   </div>
 </header>
-
-<script>
-  $(document).ready(function() {
-    $('#js-navigation-menu').removeClass('show');
-
-    $('#js-mobile-menu').on('click', function() {
-      document.getElementById('mobile-overlay').style.height = "100%";
-      $('#js-navigation-menu').addClass('show');
-    });
-
-    $('#js-mobile-menu-close').on('click', function() {
-      document.getElementById('mobile-overlay').style.height = "0%";
-      $('#js-navigation-menu').removeAttr('style');
-      $('#js-navigation-menu').removeClass('show');
-    });
-  });
-  
-</script>

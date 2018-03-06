@@ -8,16 +8,22 @@
     - http://schema.org/docs/gs.html
 
 {% endcomment %}
+{% assign preorder-all = false %}
+{% assign selected-preorder = false %}
 {% if product.handle == "kardiamobile" %}
   {% assign product_accessories = collections.kardiamobile-accessories %}
   {% assign product_name = 'kardiamobile' %}
 {% endif %}
 {% if product.handle == "kardiaband" %}
   {% assign product_name = 'kardiaband' %}
-{% endif %}
-{% assign sold_out = true %}
-{% if product.available %}
-  {% assign sold_out = false %}
+  {% for tag in product.tags %}
+    {% if tag == 'preorder-all' and shop.locale == 'en'%}
+      {% assign preorder-all = true %}
+    {% endif %}
+  {% endfor%}
+  {% if product.selected_variant.inventory_policy == 'continue' and product.selected_variant.inventory_quantity <= 1 %}
+    {% assign selected-preorder = true %}
+  {% endif %}
 {% endif %}
 
 <div itemscope itemtype="http://schema.org/Product">
@@ -67,30 +73,21 @@
     </div>
 
     <div class="grid__item large--one-half">
-      <h2 class="h2Title product-title" itemprop="name">{{ product.title }}</h2>
+      <h2 class="product-title" itemprop="name">{{ product.title }}</h2>
 
       <!-- Price stuff ======================================================== -->
       {% if product.compare_at_price_max > product.price %}
-        <span id="ProductPrice" class="h2Price" itemprop="price">
+        <span id="ProductPrice" class="h2" itemprop="price">
           {{ product.price | money }}
         </span>
         <span class="strikeout">
         {{ current_variant.compare_at_price | money }}
         </span>
       {% else %}
-        <span id="ProductPrice" class="h2Price noFloat" itemprop="price">
+        <span id="ProductPrice" class="h2 noFloat" itemprop="price">
           {{ product.price | money }}
         </span>
       {% endif %}
-
-      <!-- For KB
-      ======================================================== -->
-      {% if product.handle == 'kardiaband' %}
-      <div class="disclaimer">
-        {{ 'products.product.kb_premium1' | t }}<br/>{{ 'products.product.kb_premium2' | t }}
-      </div>
-      {% endif %}
-      
 
       <!-- Add to Cart
       ======================================================== -->
@@ -104,19 +101,41 @@
       <div class="h3">{{product.options.first | escape}}</div>
       {% endif %}
       {% endcomment %}
-        
-      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="promoAdd(event, this, {{product.id}})">
         {% if product.variants.size > 1 %}
         {% comment %}
           If there are variants, show the user some choices via input controls, else we will hide the inputs
         {% endcomment %}
-          <div class="variant-title">{{product.options.first | escape}}</div>
+          <div class="variant-title {% if product.variants.size > 3 %}oneline{% endif %}">{{product.options.first | escape}}</div>
           {% assign has_checked = true %}
           {% unless product.selected_variant %}
             {% assign has_checked = false %}
           {% endunless %}
           {% for variant in product.variants %}
-            {% if variant.available %}
+            {% if variant.inventory_policy == 'continue' and variant.inventory_quantity <= 1 %}
+              <div class="variant-input-wrapper">
+                <input type="radio"
+                   id="{{variant.id}}"
+                   name="id"
+                   data-sku="{{variant.sku}}"
+                   value="{{variant.id}}"
+                   class="variant-input"
+                   data-index="{{forloop.index0}}"
+                   data-img-url="{{variant.featured_image.src | img_url: 'large'}}"
+                   onChange="variantPreorderProduct()"
+                   {% if has_checked == false or product.selected_variant.id == variant.id %}
+                     checked="true"
+                     {% assign has_checked = true %}
+                   {% endif %}
+                   >
+                <label class="form-control" for="{{variant.id}}">
+                  {{variant.title}}
+                  {% if add_price > 0 %}
+                  &nbsp;(add {{add_price | money_with_currency}})
+                  {% endif %}
+                </label>
+              </div>
+            {% elsif variant.available %}
               {% assign add_price = variant.price | minus: product.price %}
               <div class="variant-input-wrapper">
                 <input type="radio"
@@ -127,6 +146,7 @@
                    class="variant-input"
                    data-index="{{forloop.index0}}"
                    data-img-url="{{variant.featured_image.src | img_url: 'large'}}"
+                   onChange="variantForSaleProduct()"
                    {% if has_checked == false or product.selected_variant.id == variant.id %}
                      checked="true"
                      {% assign has_checked = true %}
@@ -173,15 +193,12 @@
         <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
         {% endcomment %}
 
-        <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
-          <span id="AddToCartText">
-          {% if sold_out %}
-          {{ 'products.product.sold_out' | t }}
-          {% else %}
-          {{ 'products.product.add_to_cart' | t }}
-          {% endif %}
-          </span>
+        <button type="submit" name="add" id="AddToCart" class="btn" {% if sold_out %}disabled{% endif %}>
+          <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
         </button>
+        <div class="late-ship">
+          <p>We can't make them fast enough! Please allow 3-4 weeks for delivery.</p>
+        </div>
       </form>
       </div>
 
@@ -264,11 +281,11 @@
         the grid_item_width variable.
       {% endcomment %}
       {% if product_accessories.products.length <= 2 %}
-        {% assign grid_item_width = 'large--one-half medium--one-half' %}
+        {% assign grid_item_width = 'large--one-half medium--one-half small--one-half' %}
       {% elsif product.accessories.products.length == 3 %}
-        {% assign grid_item_width = 'large--one-third medium--one-half' %}
+        {% assign grid_item_width = 'large--one-third medium--one-half small--one-half' %}
       {% else %}
-      {% assign grid_item_width = 'large--one-quarter medium--one-half' %}
+      {% assign grid_item_width = 'large--one-quarter medium--one-half small--one-half' %}
       {% endif %}
       {% include 'home-grid-item' %}
     {% endfor %}
@@ -276,9 +293,9 @@
   </div>
 {% endif %}
 
-<!-- DataLayer pushes -->
-<script type="text/javascript">
-  dataLayer.push({
-    productId: '{{ product.id }}'
-  });
+
+<script>
+{% if selected-preorder or preorder-all %}
+  variantPreorderProduct();
+{% endif %}
 </script>

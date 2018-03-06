@@ -10,10 +10,18 @@
 
     {{ content_for_header }}
 
+    <script>
+      dataLayer = [];
+    </script>
+
+    {% include 'gtm-head' %}
+    {% include 'omniconvert' %}
+
     {{ checkout_stylesheets }}
     {{ checkout_scripts }}
   </head>
   <body>
+    {% include 'gtm-body' %}
     <div class="banner" data-header>
       <div class="wrap">
         {{ content_for_logo }}
@@ -36,9 +44,9 @@
           <div class="main__header">
             {{ content_for_logo }}
             {{ breadcrumb }}
-            {{ alternative_payment_methods }}
           </div>
           <div class="main__content">
+            {{ alternative_payment_methods }}
             {{ content_for_layout }}
           </div>
           <div class="main__footer">
@@ -53,17 +61,37 @@
       if (window.innerWidth > 999) {
         var discountField = document.getElementsByClassName('order-summary__section--discount')[0];
         var discountSection = document.getElementsByClassName('order-summary__sections')[0];
-        var link = document.createElement('a');
-        link.className = 'promoShowLink';
-        link.onclick = function() {
-          discountField.style.visibility = 'visible';
-          link.style.display = 'none';
+        if (discountField && discountSection) {
+          var link = document.createElement('a');
+          link.className = 'promoShowLink';
+          link.onclick = function() {
+            discountField.style.visibility = 'visible';
+            link.style.display = 'none';
+          }
+          link.append('Promotional Code');
+          discountSection.append(link);
+          discountSection.append(discountField);
+          discountField.style.visibility = 'hidden';
         }
-        link.append('Promotional Code');
-        discountSection.append(link);
-        discountSection.append(discountField);
-        discountField.style.visibility = 'hidden';
       }
+
+      {% for discount in checkout.discounts %}
+        {% assign discountcode = discount.code %}
+      {% endfor %}
+      var productsArray = [];
+      {% for item in checkout.line_items %}
+        productsArray.push({
+          name: '{{ item.title }}',
+          productId: '{{ item.product_id }}',
+          quantity: '{{ item.quantity }}'
+        });
+      {% endfor %}
+      dataLayer.push({
+        orderId: '{{ checkout.order_number }}',
+        revenue: '{{ checkout.subtotal_price | money_without_currency }}',
+        products: productsArray,
+        discountCode: '{{ discountcode }}'
+      });
     </script>
   </body>
 </html>

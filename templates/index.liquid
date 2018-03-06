@@ -22,14 +22,10 @@
       Example:
         - {% assign grid_item_width = 'large--one-third medium--one-half' %}
     {% endcomment %}
-    {% assign grid_item_width = 'large--one-half medium--one-half' %}
+    {% assign grid_item_width = 'large--one-half' %}
     {% include 'home-main-item' %}
 
   {% endfor %}
-  
-  <div class="cp-promo-ad desktop">
-  {{ 'CarryPod_ad.jpg' | asset_url | img_tag }}
-</div>
 
 </div>
 
@@ -61,11 +57,11 @@
       Example:
         - {% assign grid_item_width = 'large--one-third medium--one-half' %}
     {% endcomment %}
-  	{% if collections.frontpage.products.length <= 2 %}
+    {% if collections.frontpage.products.length <= 2 %}
       {% assign grid_item_width = 'large--one-half medium--one-half' %}
-  	{% else %}
-  		{% assign grid_item_width = 'large--one-third medium--one-half' %}
-  	{% endif %}
+    {% else %}
+      {% assign grid_item_width = 'large--one-third medium--one-half' %}
+    {% endif %}
     {% include 'home-grid-item' %}
 
   {% else %}
@@ -82,5 +78,6 @@
   {% endfor %}
 
 </div>
+
 
 

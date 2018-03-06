@@ -15,10 +15,6 @@
 {% if product.handle == "kardiaband" %}
   {% assign product_name = 'kardiaband' %}
 {% endif %}
-{% assign sold_out = true %}
-{% if product.available %}
-  {% assign sold_out = false %}
-{% endif %}
 
 <div itemscope itemtype="http://schema.org/Product">
 
@@ -67,30 +63,21 @@
     </div>
 
     <div class="grid__item large--one-half">
-      <h2 class="h2Title product-title" itemprop="name">{{ product.title }}</h2>
+      <h2 class="product-title" itemprop="name">{{ product.title }}</h2>
 
       <!-- Price stuff ======================================================== -->
       {% if product.compare_at_price_max > product.price %}
-        <span id="ProductPrice" class="h2Price" itemprop="price">
+        <span id="ProductPrice" class="h2" itemprop="price">
           {{ product.price | money }}
         </span>
         <span class="strikeout">
         {{ current_variant.compare_at_price | money }}
         </span>
       {% else %}
-        <span id="ProductPrice" class="h2Price noFloat" itemprop="price">
+        <span id="ProductPrice" class="h2 noFloat" itemprop="price">
           {{ product.price | money }}
         </span>
       {% endif %}
-
-      <!-- For KB
-      ======================================================== -->
-      {% if product.handle == 'kardiaband' %}
-      <div class="disclaimer">
-        {{ 'products.product.kb_premium1' | t }}<br/>{{ 'products.product.kb_premium2' | t }}
-      </div>
-      {% endif %}
-      
 
       <!-- Add to Cart
       ======================================================== -->
@@ -105,7 +92,7 @@
       {% endif %}
       {% endcomment %}
         
-      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="promoAdd(event, this, {{product.id}})">
         {% if product.variants.size > 1 %}
         {% comment %}
           If there are variants, show the user some choices via input controls, else we will hide the inputs
@@ -172,16 +159,19 @@
         <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
         <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
         {% endcomment %}
+        
+        {% comment %}
+        {% if product.handle == "kardiaband" and shop.locale == 'en' %}
+          <a id="band-size-chart" onclick="showSizeChart()">Size chart</a>
+        {% endif %}
+        {% endcomment %}
 
-        <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
-          <span id="AddToCartText">
-          {% if sold_out %}
-          {{ 'products.product.sold_out' | t }}
-          {% else %}
-          {{ 'products.product.add_to_cart' | t }}
-          {% endif %}
-          </span>
+        <button type="submit" name="add" id="AddToCart" class="btn" {% if sold_out %}disabled{% endif %}>
+          <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
         </button>
+        <div class="late-ship">
+          <p>We can't make them fast enough! Please allow 4-6 weeks for delivery.</p>
+        </div>
       </form>
       </div>
 
@@ -264,11 +254,11 @@
         the grid_item_width variable.
       {% endcomment %}
       {% if product_accessories.products.length <= 2 %}
-        {% assign grid_item_width = 'large--one-half medium--one-half' %}
+        {% assign grid_item_width = 'large--one-half medium--one-half small--one-half' %}
       {% elsif product.accessories.products.length == 3 %}
-        {% assign grid_item_width = 'large--one-third medium--one-half' %}
+        {% assign grid_item_width = 'large--one-third medium--one-half small--one-half' %}
       {% else %}
-      {% assign grid_item_width = 'large--one-quarter medium--one-half' %}
+      {% assign grid_item_width = 'large--one-quarter medium--one-half small--one-half' %}
       {% endif %}
       {% include 'home-grid-item' %}
     {% endfor %}
@@ -276,9 +266,3 @@
   </div>
 {% endif %}
 
-<!-- DataLayer pushes -->
-<script type="text/javascript">
-  dataLayer.push({
-    productId: '{{ product.id }}'
-  });
-</script>

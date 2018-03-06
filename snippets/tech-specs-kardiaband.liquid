@@ -20,7 +20,7 @@
     <li><b>{{ 'tech_specs_kardiamobile.ekg_characteristics' | t }}</b></li>
     <li>{{ 'tech_specs_kardiamobile.single_lead' | t }}</li>
     <li>{{ 'tech_specs_kardiamobile.dynamic_range' | t }}</li>
-    <li>{{ 'tech_specs_kardiamobile.recording_length' | t }}</li>
+    <li>{{ 'tech_specs_kardiaband.recording_length' | t }}</li>
     <li>{{ 'tech_specs_kardiamobile.sample_rate' | t }}</li>
     <li>{{ 'tech_specs_kardiamobile.bit_depth' | t }}</li>
   </ul>
@@ -32,21 +32,14 @@
     <li>{{ 'tech_specs_kardiaband.size_spec1' | t }}</li>
   </ul>
   <ul>
-    <li><b>{{ 'tech_specs_kardiaband.material' | t }}</b></li>
-    <li>{{ 'tech_specs_kardiaband.material_type' | t }}</li>
-  </ul>
-  <ul>
     <li><b>{{ 'tech_specs_kardiamobile.requirements' | t }}</b></li>
     <li>{{ 'tech_specs_kardiaband.compatible_device' | t }}</li>
     <li>{{ 'tech_specs_kardiamobile.kardia_app' | t }}</li>
   </ul>
   <div class="app-store-badges">
-    <a class="itunes-badge" href="https://itunes.apple.com/app/aliveecg/id579769143"><img src="https://alivecorcms.s3.amazonaws.com/sites/51b0fa1d9005a1000f00292e/theme/images/appstore-badge.svg" alt="link to AppStore"></a>
-    <a class="android-badge" href="https://play.google.com/store/apps/details?id=com.alivecor.aliveecg"><img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Android app on Google Play"></a>
-
+    <a class="itunes-badge" href="https://itunes.apple.com/app/aliveecg/id579769143"><img src="{{ 'apple-icon.png' | asset_url }}" alt="link to AppStore"></a>
   </div>
+  
+  <a href="https://www.alivecor.com/quickstart">{{ 'tech_specs_kardiamobile.user_manuals' | t }}</a>
 
-  <a href="https://www.alivecor.com/quickstart">
-    <h3>{{ 'tech_specs_kardiamobile.user_manuals' | t }}</h3>
-  </a>
 </div>

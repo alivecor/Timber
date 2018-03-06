@@ -7,7 +7,7 @@
 //  if this is KM, show pop up
 //  on click of add CP to cart, do post below else just submit form
     if (id === km_id) {
-      $('.pop-up').addClass('open');
+      $('.pop-up.promo').addClass('open');
       event.preventDefault();
       $('#carry-pod-add').on('click', function() {
         jQuery.post('/cart/add.js', {
