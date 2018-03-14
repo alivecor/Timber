@@ -3,6 +3,8 @@ assets/apple-icon.png:
   development: 2018-02-06T00:57:37+01:00   c0ffb4f7573c200e79874a1e89e03222
 assets/checkout.scss.liquid:
   development: 2018-02-13T14:01:12-08:00   bac3c9824bc2f70ed2b70904bc5fa1c3
+assets/fastco-logo.png:
+  development: 2018-03-14T23:10:30+01:00   ed1e4b450f32757513302c4006f229fb
 assets/google-icon.png:
   development: 2018-02-06T00:57:38+01:00   b2698d080d93d34aec411745f264fa17
 assets/main.js.liquid:
@@ -10,7 +12,7 @@ assets/main.js.liquid:
 assets/styles.scss:
   development: 2018-01-16T13:38:09-08:00   b605bf76f2dddeec843de79175c45271
 assets/styles.scss.liquid:
-  development: 2018-02-06T00:56:31+01:00   cdfa2603f1228ea047d12628f6bfffcf
+  development: 2018-03-14T23:10:25+01:00   c9e858b32f3d0b214cf9f11c4eb1d213
 assets/timber.scss.liquid:
   development: 2018-03-06T09:41:40-08:00   3c5c5eb40e34aa139f8bbe7bb5e72477
 layout/checkout.liquid:
@@ -18,23 +20,23 @@ layout/checkout.liquid:
 layout/theme.liquid:
   development: 2018-03-01T23:41:17+00:00   2450c7f964179a2a78f85c1ef3067e55
 locales/de.json:
-  development: 2018-03-03T00:43:24+01:00   65b7658c1a443949297e2e28726a9a49
+  development: 2018-03-07T19:47:53+01:00   f7fd679ab9a166b6143b8675d1189003
 locales/en-GB.json:
-  development: 2018-03-03T00:43:24+01:00   95a6b2869b91dcc6156e2d654a96b88c
+  development: 2018-03-07T19:47:52+01:00   da4db4dd543145976f826226028bdb03
 locales/en.default.json:
-  development: 2018-03-03T00:43:23+01:00   72cbaa60f915cb37eb02e204b15b1787
+  development: 2018-03-07T19:47:51+01:00   8634500f864600c695aa824d3069e8b4
 locales/es.json:
-  development: 2018-03-03T00:43:26+01:00   b9ee75a7b05c09b1cc4177877aec213e
+  development: 2018-03-07T19:47:51+01:00   63be5a61ee89e01a6518cdd69953e524
 locales/fr.json:
-  development: 2018-03-03T00:43:27+01:00   7c4ba16d8ee19acfce5ee5c053dba99e
+  development: 2018-03-07T19:47:59+01:00   9210fca638b15aa4f7303d2d33c41013
 snippets/analytics-scripts.liquid:
   development: 2018-02-22T22:19:11+01:00   fca34c6ad6e25604dc2fb8cc5c511b82
 snippets/compatibility-kardiaband.liquid:
   development: 2018-02-06T00:56:29+01:00   7215466d37b8c14e044cf1fe8e05a838
 snippets/compatibility-kardiamobile.liquid:
-  development: 2018-02-06T00:56:44+01:00   daedf2d26330772fe68ac4f460f5f13b
+  development: 2018-03-12T23:56:08+00:00   778044d2f3d2d366a809ea9c872988c4
 snippets/footer.liquid:
-  development: 2018-02-28T00:50:40+01:00   977fedca696504b4a6f1c177c33601dc
+  development: 2018-03-14T23:11:46+01:00   09b5b6d3af3e2431720ae0726d69c11e
 snippets/gtm-body.liquid:
   development: 2018-02-13T01:55:18+01:00   1876a91a5b83ef0eff814f03bbf3bce0
 snippets/gtm-head.liquid:
@@ -66,7 +68,7 @@ templates/cart.liquid:
 templates/index.liquid:
   development: 2018-01-24T01:08:06+01:00   1b2e59e07960c0b01a7668a955f8dd3f
 templates/product.liquid:
-  development: 2018-03-03T00:43:21+01:00   d752cf43d6379eaa998c6f972979b0d2
+  development: 2018-03-06T23:21:51+01:00   875563c764f0857879cac06a0b3e0006
 templates/product.pop-up.liquid:
   development: 2018-01-22T23:03:19+01:00   19afcbbb8c09f8d70dd592e32240e6e1
 templates/product.product-pre-order.liquid:
