@@ -90,6 +90,9 @@
     {% include 'footer' %}
   </div>
 
+  {% comment %} Modal for videos {% endcomment %}
+  {% include 'modal' %}
+
   {{ 'fastclick.min.js' | asset_url | script_tag }}
   {{ 'timber.js' | asset_url | script_tag }}
   {{ 'main.js' | asset_url | script_tag }}
@@ -164,5 +167,9 @@
   {% endif %}
   {% include 'discount-code-notifier' %}
 
+<!-- Load vimeo api -->
+{% if template == 'product' %}
+<script src="https://player.vimeo.com/api/player.js"></script>
+{% endif %}
 </body>
 </html>

@@ -64,33 +64,96 @@ $(document).ready(function() {
     $(hash + ' h3').click();
   });
 
-  // $('.accordion h3').on('click', function(evt) {
-  //   evt.preventDefault();
-  //   var _this = $(this).parent('.accordion');
-  //   _this.find('.accordion-inner').slideToggle();
-  //   _this.find('i').toggleClass('fa-plus fa-minus');
-  // });
-
   $('.accordion h3').on('click', function(evt) {
     evt.preventDefault();
     var _this = $(this).parent('.accordion');
     _this.find('.accordion-inner').slideToggle();
-    // var toggler = $(evt.target).parent().parent('.toggler');
-    // var topicBody = toggler.next('.topic-body');
-    // topicBody.slideToggle('fast');
     _this.find('.rightarrow').toggle();
     _this.find('.downarrow').toggle();
   });
 
-  // $('.heading-toggle').on('click', function(evt) {
-  //   var toggler = $(evt.target).next();
-  //   var topicBody = toggler.next('.topic-body');
-  //   topicBody.slideToggle('fast');
-  //   toggler.find('.rightarrow').toggle();
-  //   toggler.find('.downarrow').toggle();
-  // });
+  //some old modal bullshit
+  // videos
+  $('.play-video').on('click', function(evt) {
+    evt.preventDefault();
+    var videoId = $(this).data().videoid;
+    openModal('video');
+    vimeoPlayer(videoId);
+  });
+
+  // closing modal
+  $('.modal-fade-screen, .modal-close').on('click', function() {
+    closeModal();
+    if (player) {
+      stopVideo();
+    }
+  });
+
+  $(".modal-inner").on("click", function(e) {
+    e.stopPropagation();
+  });
 
 });
+
+// video functions
+var player;
+
+function vimeoPlayer(id) {
+  // player was already initialized
+  if (player) {
+    player.loadVideo(id).then(function() {
+      playVideo();
+      player.setColor('#2D9F86');
+    });    
+  } else {
+    // first time playing a video
+    player = new Vimeo.Player('video-player', {
+      id: id
+    });
+    player.ready().then(function() {
+      playVideo();
+      player.setColor('#2D9F86');
+    });
+    
+  }
+  player.on('ended', function() {
+    // close player when video ends
+    player.unload();
+    setTimeout(function() {
+      closeModal();
+    }, 500);
+  });
+}
+
+function playVideo() {
+  var isNotMobile = window.matchMedia("only screen and (min-width: 760px)");
+  if (isNotMobile.matches) {
+    player.play();
+  }
+}
+
+function stopVideo() {
+  player.pause();
+  player.unload();
+}
+
+//global modal functions
+function openModal(type) {
+  $('body').addClass("modal-open");
+  $('.modal-fade-screen').addClass('open');
+
+  if (type === 'video') {
+    $('.modal-inner.video').show();
+    $('.modal-inner.premium').hide();
+    $('.modal-inner.report').hide();
+  }
+}
+
+function closeModal() {
+  $('body').removeClass("modal-open");
+  $('.modal-fade-screen').removeClass('open');
+  $('.modal-inner').hide();
+}
 
 // Product-pre-order template
 // PREORDER TEXT ON BUTTON CHANGE

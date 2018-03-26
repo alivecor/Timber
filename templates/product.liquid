@@ -8,17 +8,25 @@
     - http://schema.org/docs/gs.html
 
 {% endcomment %}
-{% if product.handle == "kardiamobile" %}
+{% if product.handle == 'kardiamobile' %}
   {% assign product_accessories = collections.kardiamobile-accessories %}
   {% assign product_name = 'kardiamobile' %}
 {% endif %}
-{% if product.handle == "kardiaband" %}
+{% if product.handle == 'kardiaband' %}
   {% assign product_name = 'kardiaband' %}
 {% endif %}
 {% assign sold_out = true %}
 {% if product.available %}
   {% assign sold_out = false %}
 {% endif %}
+{% assign isKmAccessory = false %}
+{% for kmAccessoryProduct in collections.kardiamobile-accessories.products %}
+  {% if product.handle == kmAccessoryProduct.handle %}
+    {% assign isKmAccessory = true %}
+  {% endif %}
+{% endfor %}
+{% assign kmHowItWorksVideoId = '251698484' %}
+{% assign kbHowItWorksVideoId = '251698954' %}
 
 <div itemscope itemtype="http://schema.org/Product">
 
@@ -61,6 +69,30 @@
             </li>
           {% endif %}
           {% endfor %}
+
+          {% comment %} Add How it works video for KM and KB {% endcomment %}
+          {% if product_name == 'kardiamobile' %}
+          <li class="grid__item one-third">
+            <a class="play-video ga-tracker"
+              data-videoid="{{ kmHowItWorksVideoId }}"
+              data-category="Video"
+              data-action="KardiaMobile How it works"
+              data-label="/products/{{ handle }}">
+              <img src="{{ 'KM_video.jpg' | asset_img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+            </a>
+          </li>
+          {% endif %}
+          {% if product_name == 'kardiaband' %}
+          <li class="grid__item one-third">
+            <a class="play-video ga-tracker"
+              data-videoid="{{ kbHowItWorksVideoId }}"
+              data-category="Video"
+              data-action="KardiaBand How it works"
+              data-label="/products/{{ handle }}">
+              <img src="{{ 'KB_video.jpg' | asset_img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+            </a>
+          </li>
+          {% endif %}
 
         </ul>
       {% endif %}
@@ -203,12 +235,14 @@
         </a>
       </div>
       
+      {% if product_name == 'kardiamobile' or product_name == 'kardiaband' %}
       <!-- Compat link ======================================================== -->
       <div class="compat-link">
         <a href="#compatibility" class="scroll-to-tab">
           See compatibility
         </a>
       </div>
+      {% endif %}
 
       <!-- Product Description ====================================================== -->
       <div class="product-description rte product" itemprop="description">
@@ -272,6 +306,20 @@
       {% include 'home-grid-item' %}
     {% endfor %}
 
+  </div>
+{% endif %}
+
+{% if isKmAccessory %}
+  <div class="section">
+    <h3>Use with</h3>
+  </div>
+  <div class="grid-uniform">
+  {% for product in collections.main-product.products %}
+    {% if product.handle == 'kardiamobile' %}
+      {% assign grid_item_width = 'large--one-third medium--one-half' %}
+      {% include 'home-grid-item' %}
+    {% endif %}
+  {% endfor %}
   </div>
 {% endif %}
 

@@ -892,3 +892,139 @@ footer {
   }
 }
 
+/* Modal styles */
+.modal {
+  .modal-fade-screen { // overlay
+    -webkit-transition: opacity 0.25s ease;
+    -moz-transition: opacity 0.25s ease;
+    transition: opacity 0.25s ease;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba($navy, 0.9);
+    opacity: 0;
+    padding-top: 0.6em;
+    text-align: left;
+    visibility: hidden;
+    z-index: 99999999999;
+    height: 100%;
+    @media(min-width: 1200px) {
+      padding-top: 3em;
+    }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1px;
+    right: 2px;
+    height: 1.5em;
+    width: 1.5em;
+    cursor: pointer;
+
+    @media(min-width: 768px) {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    &:after,
+    &:before {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      bottom: 0;
+      left: 50%;
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+      height: 20px;
+      width: 2px;
+      background: #fff;
+      content: '';
+      display: block;
+      margin: -3px 0 0 -1px;
+      @media(min-width: 768px) {
+        height: 25px;
+      }
+    }
+
+    &:hover:after,
+    &:hover:before {
+      background: $teal;
+    }
+
+    &:before {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+  }
+
+  .modal-inner {
+    width: 90%;
+    top: 50%;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .modal-inner.video {
+    -webkit-transition: opacity 0.25s ease;
+    -moz-transition: opacity 0.25s ease;
+    transition: opacity 0.25s ease;
+    border-radius: 3px;
+    max-height: 95%;
+    overflow: auto;
+    padding: 1.5em 1em;
+    @media(min-width: 768px) {
+      max-height: 100%;
+      padding: 3em;
+      width: 95%;
+    }
+    @media(min-width: 1200px) {
+      width: 80%;
+    }
+  }
+
+  .modal-fade-screen {
+    &.open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.video-wrapper {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%; // For ratio 16:9. 75% if ratio is 4:3
+  position: relative;
+
+  embed,
+  object,
+  iframe {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+a.play-video {
+  cursor: pointer;
+}
