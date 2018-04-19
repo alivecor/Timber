@@ -35,6 +35,8 @@ locales/fr.json:
   development: 2018-03-07T19:47:59+01:00   9210fca638b15aa4f7303d2d33c41013
 snippets/analytics-scripts.liquid:
   development: 2018-02-22T22:19:11+01:00   fca34c6ad6e25604dc2fb8cc5c511b82
+snippets/benefit-icons-product.liquid:
+  development: 2018-04-19T10:57:22-07:00   2bf91dcb41537735dda59a75618991f1
 snippets/compatibility-kardiaband.liquid:
   development: 2018-02-06T00:56:29+01:00   7215466d37b8c14e044cf1fe8e05a838
 snippets/compatibility-kardiamobile.liquid:
