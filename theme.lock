@@ -42,7 +42,7 @@ snippets/compatibility-kardiaband.liquid:
 snippets/compatibility-kardiamobile.liquid:
   development: 2018-04-05T19:47:12+02:00   2ccebd3e24f98a645b30d93748bef547
 snippets/footer.liquid:
-  development: 2018-03-27T23:23:23+02:00   affa7891255f483537acabeb84f42db8
+  development: 2018-04-27T01:07:04+02:00   cb249c853e59c457b4f9ab976314d36d
 snippets/gtm-body.liquid:
   development: 2018-02-13T01:55:18+01:00   1876a91a5b83ef0eff814f03bbf3bce0
 snippets/gtm-head.liquid:
@@ -62,7 +62,7 @@ snippets/icon-rightarrow.svg.liquid:
 snippets/modal.liquid:
   development: 2018-03-26T23:42:26+02:00   f3d3a7b3aff90e44dd0d120738f63e01
 snippets/navigation.liquid:
-  development: 2018-01-22T23:03:22+01:00   8d245f69dd9fd5a234423463397cd07b
+  development: 2018-04-27T01:07:03+02:00   6d00bfbe18abdbb33a56b50e6147c17b
 snippets/omniconvert.liquid:
   development: 2018-02-22T22:19:10+01:00   de7b5d0e26f66aae5373200c1d32334c
 snippets/product-tabs.liquid:
