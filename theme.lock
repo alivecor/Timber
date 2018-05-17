@@ -12,13 +12,13 @@ assets/fastco-logo.png:
 assets/google-icon.png:
   development: 2018-02-06T00:57:38+01:00   b2698d080d93d34aec411745f264fa17
 assets/main.js.liquid:
-  development: 2018-03-26T23:42:27+02:00   1b94b1c6c27bf5554f9925b6a96ede81
+  development: 2018-05-16T14:47:31-07:00   31ecf31e8666ad61558c7e46b6a619f8
 assets/styles.scss:
   development: 2018-01-16T13:38:09-08:00   b605bf76f2dddeec843de79175c45271
 assets/styles.scss.liquid:
-  development: 2018-03-26T23:42:27+02:00   8a8c506deaa7c9b22723be9cbe2d6933
+  development: 2018-05-15T11:26:55-07:00   cd355917cb9f19cf420097c8920b6209
 assets/timber.scss.liquid:
-  development: 2018-03-06T09:41:40-08:00   3c5c5eb40e34aa139f8bbe7bb5e72477
+  development: 2018-05-17T13:47:50-07:00   b3fb6ea906bcb4183c76b61abd4d4e54
 layout/checkout.liquid:
   development: 2018-03-01T23:41:17+00:00   dee05dfe41c6409908a882f067bb214e
 layout/theme.liquid:
@@ -36,19 +36,19 @@ locales/fr.json:
 snippets/analytics-scripts.liquid:
   development: 2018-02-22T22:19:11+01:00   fca34c6ad6e25604dc2fb8cc5c511b82
 snippets/benefit-icons-product.liquid:
-  development: 2018-04-19T10:57:22-07:00   2bf91dcb41537735dda59a75618991f1
+  development: 2018-05-15T11:26:56-07:00   3aac378f55276019a45bedae12fb1111
 snippets/compatibility-kardiaband.liquid:
   development: 2018-02-06T00:56:29+01:00   7215466d37b8c14e044cf1fe8e05a838
 snippets/compatibility-kardiamobile.liquid:
   development: 2018-04-05T19:47:12+02:00   2ccebd3e24f98a645b30d93748bef547
 snippets/footer.liquid:
-  development: 2018-04-27T01:07:04+02:00   cb249c853e59c457b4f9ab976314d36d
+  development: 2018-05-02T22:17:22+01:00   9cd68a4387b51af5716335427f356db1
 snippets/gtm-body.liquid:
   development: 2018-02-13T01:55:18+01:00   1876a91a5b83ef0eff814f03bbf3bce0
 snippets/gtm-head.liquid:
   development: 2018-02-13T01:55:17+01:00   070a3f94a05cd5945265a9f1bc717007
 snippets/home-grid-item.liquid:
-  development: 2018-03-03T00:43:22+01:00   2b3b58540da5b343c0c89099ba0fe267
+  development: 2018-05-17T13:32:42-07:00   4d2c01276ff3708ed1b0a70b2495e8f9
 snippets/home-main-item.liquid:
   development: 2018-03-04T18:02:31+01:00   32a74ac96ff87d19a22ea8903ee880a1
 snippets/icon-android.svg.liquid:
@@ -57,12 +57,14 @@ snippets/icon-apple.svg.liquid:
   development: 2018-02-06T00:56:33+01:00   7803be7d9f1093ab9c89486cbdb5957b
 snippets/icon-downarrow.svg.liquid:
   development: 2018-02-06T00:56:41+01:00   fb94ba6da7877013e1e9073ad4af3b86
+snippets/icon-five-stars.svg.liquid:
+  development: 2018-05-15T11:26:54-07:00   c97894c1ccea3a2aab5e1ad65f501271
 snippets/icon-rightarrow.svg.liquid:
   development: 2018-02-06T00:56:41+01:00   14b4c382d4ebb1d9a701db3cf7b459d2
 snippets/modal.liquid:
   development: 2018-03-26T23:42:26+02:00   f3d3a7b3aff90e44dd0d120738f63e01
 snippets/navigation.liquid:
-  development: 2018-04-27T01:07:03+02:00   6d00bfbe18abdbb33a56b50e6147c17b
+  development: 2018-05-02T22:17:23+01:00   bd916aa90a279a3e21e8add451e1c5d1
 snippets/omniconvert.liquid:
   development: 2018-02-22T22:19:10+01:00   de7b5d0e26f66aae5373200c1d32334c
 snippets/product-tabs.liquid:
@@ -76,7 +78,7 @@ templates/cart.liquid:
 templates/index.liquid:
   development: 2018-01-24T01:08:06+01:00   1b2e59e07960c0b01a7668a955f8dd3f
 templates/product.liquid:
-  development: 2018-03-26T23:42:28+02:00   89c67c9c659efeb742e3119ce1be19e2
+  development: 2018-05-17T13:46:27-07:00   5c9d278ef2b80df8f5a5935178c4c9ae
 templates/product.pop-up.liquid:
   development: 2018-01-22T23:03:19+01:00   19afcbbb8c09f8d70dd592e32240e6e1
 templates/product.product-pre-order.liquid:

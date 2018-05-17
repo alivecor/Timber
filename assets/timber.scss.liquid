@@ -750,8 +750,11 @@ body {
 
 .main-content {
   display: block;
-  margin-top: 70px;
+  margin-top: 40px;
   padding-bottom: $gutter * 2;
+  @media (min-width: 768px) {
+    margin-top: 70px;
+  }
 }
 
 /*============================================================================
@@ -1186,6 +1189,12 @@ html input[disabled] {
     color: $disabledBorder;
     background-color: $disabledGrey;
     border-color: $disabledGrey;
+  }
+}
+
+.btn.addToCart {
+  @media (max-width: 768px) {
+    width: 100%;
   }
 }
 
@@ -2414,10 +2423,47 @@ label.error {
 .product-single__photos {
   margin-bottom: $gutter;
   background-color: $grey1;
+  position: relative;
   img {
     width: 100%;
     @media (max-width: 768px) {
       max-width: 400px;
+    }
+  }
+  .img-caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(241,245,243,0.6);
+    font-size: 16px;
+    line-height: 18px;
+    padding: 10px;
+    color: $grey3;
+    @media (min-width: 1200px) {
+      font-size: 18px;
+      line-height: 24px;
+      padding: 10px 24px;
+    }
+    &.kardiaband {
+      text-align: left;
+      @media (min-width: 400px) {
+        background-color: transparent;
+        width: inherit;
+      }
+      @media (min-width: 1200px) {
+        top: 50%;
+        transform: translateY(-50%);
+        bottom: inherit;
+      }
+      span {
+        display: block;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    }
+    &.kardiamobile {
+      display: none;
     }
   }
 }
@@ -2433,10 +2479,30 @@ label.error {
     margin-bottom: $gutter;
   }
 }
-.product-single {
-  margin-bottom: 80px;
+@media (max-width: 768px) {
+  .product-single__thumbnails {
+    padding-left: 12px;
+    li {
+      padding-left: 18px;
+    }
+  }
 }
 
+.flex-order {
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    .product-description {
+      order: 1;
+    }
+    .cool-stuff {
+      order: 2;
+    }
+  }
+  #AddToCartForm button {
+    margin: 30px 0;
+  }
+}
 /*============================================================================
   #Notes and Form Feedback
 ==============================================================================*/
@@ -2973,7 +3039,7 @@ input.quantity {
   clear: both;
   font-size: em(16px);
   font-weight: 400;
-  margin-bottom: em(30px);
+  margin-bottom: em(80px);
   ul {
     margin-bottom: 0;
     margin-left: 21px;
@@ -3060,8 +3126,7 @@ input.quantity {
 }
 
 .targets {
-  p {
-  }
+  margin-top: 40px;
 }
 
 .target {
@@ -3366,17 +3431,39 @@ Accordion Styles
   padding: 20px;
   position: relative;
   overflow: hidden;
-  margin-bottom: 30px;
+  margin-top: 30px;
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
+  @media (min-width: 768px) {
+    margin-bottom: 30px;
+  }
   @media (min-width: 1200px) {
     display: block;
   }
+  &.desktop {
+    display: none;
+    @media (min-width: 768px) {
+      display: block;
+      margin-top: 40px;
+      text-align: left;
+    }
+  }
+  &.mobile {
+    display: block;
+    margin-top: 40px;
+    @media (min-width: 768px) {
+      display: none;
+      margin: 0;
+    }
+  }
   h2 {
-    font-size: 28px;
+    font-size: 25px;
     margin: 0;
     color: $navy;
+    @media (min-width: 768px) {
+      font-size: 28px;
+    }
     @media (min-width: 1200px) {
       float: left;
     }
@@ -3404,14 +3491,14 @@ Accordion Styles
       order: unset;
     }
   }
-  span.spr-starrating {
-    font-size: 18px;
-    color: $teal;
-    @media (min-width: 400px) {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      margin-top: 7px;
+  svg {
+    height: 30px;
+    width: 121px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    @media (max-width: 340px) {
+      position: static;
     }
     @media (min-width: 1200px) {
       float: right;
@@ -3422,7 +3509,9 @@ Accordion Styles
 .icons {
   margin-top: 20px;
   overflow: hidden;
-  margin-bottom: 40px;
+  @media (min-width: 768px) {
+    margin-bottom: 40px;
+  }
 }
 .icon-block {
   float: left;
@@ -3432,24 +3521,35 @@ Accordion Styles
     text-align: center;
   }
   svg {
-    width: 46px;
-    height: 46px;
+    width: 32px;
+    height: 32px;
+    @media (min-width: 768px) {
+      width: 46px;
+      height: 46px;
+    }
   }
   &.larger svg {
-    width: 70px;
+    width: 50px;
+    @media (min-width: 768px) {
+      width: 70px;
+    }
   }
   p {
     font-family: $bodyFontStack;
     position: relative;
     margin: 0;
     padding: 5px;
-    font-size: 16px;
-    font-weight: bold;
     color: $navy;
+    font-size: 13px;
+    font-weight: normal;
+    @media (min-width: 768px) {
+      font-size: 15px;
+      font-weight: bold;
+    }
     span {
-      @media (min-width: 768px) {
+      // @media (min-width: 768px) {
         display: block;
-      }
+      // }
     }
   }
 }
@@ -3472,6 +3572,7 @@ Accordion Styles
       padding-top: 0;
       font-weight: normal;
       line-height: 16px;
+      font-size: 15px;
     }
   }
   @media (max-width: 768px) {
@@ -3527,15 +3628,18 @@ Accordion Styles
     margin-top: 25px;
     margin-bottom: 0;
   }
-  .product-description ul {
+  .product-description {
     margin: 0;
-    li {
-      display: none;
-      &:first-child {
-        display: block;
-        font-size: 16px;
-        @media (min-width: 768px) {
-          width: 75%;
+    ul {
+      margin: 0;
+      li {
+        display: none;
+        &:first-child {
+          display: block;
+          font-size: 16px;
+          @media (min-width: 768px) {
+            width: 75%;
+          }
         }
       }
     }
@@ -3638,8 +3742,23 @@ Accordion Styles
   .grid__image {
     background-color: $grey1;
     margin-bottom: 40px;
+    position: relative;
     img {
       max-width: 70%;
+    }
+    .img-caption {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      background-color: rgba(241, 245, 243, 0.6);
+      font-size: 14px;
+      line-height: 16px;
+      padding: 10px 24px;
+      color: $grey3;
+      @media (min-width: 1200px) {
+        font-size: 16px;
+      }
     }
   }
   .price {
@@ -3656,6 +3775,11 @@ Accordion Styles
       }
     }
   }
+  &.kardiamobile_accessory {
+    .img-caption {
+      display: none;
+    }
+  }
 }
 .grid__item {
   .title a {
@@ -3667,7 +3791,10 @@ Accordion Styles
     color: $grey3;
   }
   .product-description {
-    margin-bottom: 0;
+    margin: 0 0 18px 0;
+    @media (min-width: 768px) {
+      margin: 0 0 80px 0;
+    }
   }
   .view-details {
     border-bottom: 2px solid $teal;

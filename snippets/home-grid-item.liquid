@@ -37,7 +37,7 @@
   {% assign sold_out = false %}
 {% endif %}
 
-<div class="home-grid-item grid__item {{ grid_item_width }}">
+<div class="home-grid-item grid__item {{ grid_item_width }} {{ product_name }}">
 
   {% comment %}
     Link to your product with the 'within: collection' filter for the link to be aware of the collection.
@@ -51,8 +51,10 @@
       - http://docs.shopify.com/support/your-store/collections/how-to-navigate-within-a-collection
 
   {% endcomment %}
-  <a href="{{ product.url }}" class="grid__image">
+  {% assign home_grid_img_id = "home-grid-" | append: product.handle %}
+  <a href="{{ product.url }}" class="grid__image" id="{{ home_grid_img_id }}">
     <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+    <div class="img-caption"></div>
   </a>
 
   <p class="h4Title title">

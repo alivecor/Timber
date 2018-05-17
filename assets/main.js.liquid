@@ -29,6 +29,12 @@ $(document).ready(function() {
     $('#js-navigation-menu').removeClass('show');
   });
 
+  // store home add captions
+  $('#home-grid-carrypod .img-caption').html('KardiaMobile in Carry Pod, closed & open');
+  $('#home-grid-iphone-8-7-case .img-caption').html('KardiaMobile in iPhone 8/7 case');
+  $('#home-grid-phoneclip .img-caption').html('Phone Clip adheres to back of phone or phone case. KardiaMobile snaps right in.');
+  $('#home-grid-iphone-5-5s-case .img-caption').html('Empty iPhone 5 / 5s / SE case');
+
   // product page change image on size change
   $('form').on('click', "input", function(e) {
     var imgUrl = $(this).data().imgUrl;
@@ -135,6 +141,7 @@ function playVideo() {
 function stopVideo() {
   player.pause();
   player.unload();
+  player.off('ended');
 }
 
 //global modal functions

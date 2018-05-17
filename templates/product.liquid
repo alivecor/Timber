@@ -37,13 +37,13 @@
     Get first variant, or deep linked one
   {% endcomment %}
   {% assign current_variant = product.selected_or_first_available_variant %}
-
   {% include 'breadcrumb' %}
   <div class="grid product-single">
     <div class="grid__item large--one-half text-center">
       <div class="product-single__photos" id="ProductPhoto">
         {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
         <img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
+        <div class="img-caption {{ product_name }}"></div>
       </div>
 
       {% comment %}
@@ -55,14 +55,14 @@
           {% for image in product.images %}
             {% if product_name == 'kardiaband' %}
               {% if forloop.first != true %}
-                <li class="grid__item one-third">
+                <li class="grid__item one-third medium--one-fifth small--one-quarter">
                   <a href="{{ image.src | img_url: 'large' }}" class="product-single__thumbnail">
                     <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
                   </a>
                 </li>
               {% endif %}
             {% else %}
-            <li class="grid__item one-third">
+            <li class="grid__item one-third medium--one-fifth small--one-quarter">
               <a href="{{ image.src | img_url: 'large' }}" class="product-single__thumbnail">
                 <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
               </a>
@@ -72,7 +72,7 @@
 
           {% comment %} Add How it works video for KM and KB {% endcomment %}
           {% if product_name == 'kardiamobile' %}
-          <li class="grid__item one-third">
+          <li class="grid__item one-third medium--one-fifth small--one-quarter">
             <a class="play-video ga-tracker"
               data-videoid="{{ kmHowItWorksVideoId }}"
               data-category="Video"
@@ -83,7 +83,7 @@
           </li>
           {% endif %}
           {% if product_name == 'kardiaband' %}
-          <li class="grid__item one-third">
+          <li class="grid__item one-third medium--one-fifth small--one-quarter">
             <a class="play-video ga-tracker"
               data-videoid="{{ kbHowItWorksVideoId }}"
               data-category="Video"
@@ -96,9 +96,17 @@
 
         </ul>
       {% endif %}
+
+      {% if product.handle == "kardiaband" and shop.locale == 'en' %}
+      <div class="review desktop">
+        <h2>Worth the Price and Peace of Mind</h2>
+        <span class="name">Mike on February 1, 2018</span>
+        <p>I had an AFib incident recently which the watch detected, recorded, and alerted me. It alerts you if it sees an irregular pattern and you can take the ekg trace on the spot. My cardiologist loves the reports it produces. What makes the band easy is if it occurs at night you get the alert.</p>
+      </div>
+      {% endif %}
     </div>
 
-    <div class="grid__item large--one-half">
+    <div class="grid__item large--one-half {% if shop.locale == 'en' %}flex-order{% endif %}">
       <h2 class="h2Title product-title" itemprop="name">{{ product.title }}</h2>
 
       <!-- Price stuff ======================================================== -->
@@ -205,7 +213,7 @@
         <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
         {% endcomment %}
 
-        <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
+        <button type="submit" name="add" id="{{product.id}}" class="btn addToCart" {% if sold_out %}disabled{% endif %}>
           <span id="AddToCartText">
           {% if sold_out %}
           {{ 'products.product.sold_out' | t }}
@@ -227,22 +235,24 @@
         {% endif %}
       </h3>
 
-      <!-- Star rating ======================================================== -->
-      <div class="review-count">
-        <a href="#reviews" class="scroll-to-tab">
-          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-          <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
-        </a>
+      <div>
+        <!-- Star rating ======================================================== -->
+        <div class="review-count">
+          <a href="#reviews" class="scroll-to-tab">
+            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+            <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
+          </a>
+        </div>
+
+        {% if product_name == 'kardiamobile' or product_name == 'kardiaband' %}
+        <!-- Compat link ======================================================== -->
+        <div class="compat-link">
+          <a href="#compatibility" class="scroll-to-tab">
+            See compatibility
+          </a>
+        </div>
+        {% endif %}
       </div>
-      
-      {% if product_name == 'kardiamobile' or product_name == 'kardiaband' %}
-      <!-- Compat link ======================================================== -->
-      <div class="compat-link">
-        <a href="#compatibility" class="scroll-to-tab">
-          See compatibility
-        </a>
-      </div>
-      {% endif %}
 
       <!-- Product Description ====================================================== -->
       <div class="product-description rte product" itemprop="description">
@@ -278,6 +288,14 @@
 
 </div>
 {% include 'product-tabs' product=product%}
+
+{% if product.handle == "kardiaband" and shop.locale == 'en' %}
+  <div class="review mobile">
+    <h2>Worth the Price and Peace of Mind</h2>
+    <span class="name">Mike on February 1, 2018</span>
+    <p>I had an AFib incident recently which the watch detected, recorded, and alerted me. It alerts you if it sees an irregular pattern and you can take the ekg trace on the spot. My cardiologist loves the reports it produces. What makes the band easy is if it occurs at night you get the alert.</p>
+  </div>
+{% endif %}
 
 {% if product_accessories.products.length > 0 %}
   <div class="section">
@@ -317,6 +335,7 @@
   {% for product in collections.main-product.products %}
     {% if product.handle == 'kardiamobile' %}
       {% assign grid_item_width = 'large--one-third medium--one-half' %}
+      {% assign product_name = 'kardiamobile_accessory' %}
       {% include 'home-grid-item' %}
     {% endif %}
   {% endfor %}
@@ -327,5 +346,57 @@
 <script type="text/javascript">
   dataLayer.push({
     productId: '{{ product.id }}'
+  });
+
+  // adding caption to photos
+  var currentProduct = '{{ product.handle }}',
+      currentCaption = '',
+      showCaption = false;
+  switch (currentProduct) {
+    case 'kardiamobile':
+      showCaption = false;
+      break;
+    case 'kardiaband':
+      currentCaption = '<span>Apple Watch Size</span>42mm / 38mm';
+      showCaption = true;
+      break;
+    case 'carrypod':
+      currentCaption = 'KardiaMobile in Carry Pod, closed & open';
+      showCaption = true;
+      break;
+    case 'phoneclip':
+      currentCaption = 'Phone Clip adheres to back of phone or phone case. KardiaMobile snaps right in.';
+      showCaption = true;
+      break;
+    case 'iphone-8-7-case':
+      currentCaption = 'KardiaMobile in iPhone 8/7 case';
+      showCaption = true;
+      break;
+    case 'iphone-5-5s-case':
+      currentCaption = 'Empty iPhone 5 / 5s / SE case';
+      showCaption = true;
+      break;
+    default:
+      break;
+  }
+  $(document).ready(function() {
+    // showing captions on product pages
+    var firstImg;
+
+    if (showCaption) {
+      $('#ProductPhoto .img-caption').html(currentCaption);
+      firstImg = $('.product-single__thumbnails li:first-child a').attr('href');
+      $('#ProductPhotoImg').on('load', function () {
+        // when changing images, check if first one
+        checkImg(firstImg);
+      });
+    }
+    var checkImg = function(firstImg) {
+      if (firstImg === $('#ProductPhotoImg').attr('src')) {
+        $('#ProductPhoto .img-caption').html(currentCaption);
+      } else {
+        $('#ProductPhoto .img-caption').html('');
+      }
+    }
   });
 </script>
