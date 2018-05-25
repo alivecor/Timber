@@ -1031,3 +1031,45 @@ footer {
 a.play-video {
   cursor: pointer;
 }
+
+#cookies-message {
+  font-weight: normal;
+  font-size: 14px;
+  background: $navy;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 9001;
+  &.hideBanner {
+    display: none;
+  }
+  .container {
+    position: relative;
+    background-color: transparent;
+  }
+  p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0 30px;
+    color: #fff;
+  }
+  a {
+    font-weight: bold;
+    color: #fff;
+    margin-left: 2px;
+  }
+  #cookies-ok {
+    color: #fff;
+    margin-left: 2px;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 36px;
+    position: absolute;
+    top: -2px;
+    right: 20px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+

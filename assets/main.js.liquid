@@ -99,6 +99,40 @@ $(document).ready(function() {
     e.stopPropagation();
   });
 
+  //Cookies stuff
+  var acceptsCookies,
+      closeCookieMsgBtn,
+      cookiesMsg,
+      disableKey,
+      setCookie;
+
+  // get cookie named accepts_cookies
+  acceptsCookies = Cookies.get('accepts_cookies');
+
+  closeCookieMsgBtn = $('#cookies-ok');
+
+  cookiesMsg = $('#cookies-message');
+
+  closeCookieMsgBtn.on('click', function(e) {
+    return cookiesMsg.remove();
+  });
+
+  // cookie will expire after a year
+  setCookie = function(value) {
+    Cookies.set('accepts_cookies', value, {
+      expires: 365
+    });
+  };
+
+  // accepts_cookies cookie exists
+  if (acceptsCookies !== undefined) {
+    // remove banner
+    cookiesMsg.remove();
+  } else {
+    cookiesMsg.removeClass('hideBanner');
+    setCookie(true);
+  }
+
 });
 
 // video functions
