@@ -124,13 +124,13 @@
         {% endfor %}
       </tbody>
     </table>
-    <div class="wrapper grid cart__row">
+    <div class="wrapper grid cart__row splitRowTest">
       {% if kb_in_cart %}
       <p class="kb_premium_message">
         {{ 'cart.general.kb_premium' | t}}
       </p>
       {% endif %}
-      <div class="grid__item one-whole text-right{% if settings.cart_notes_enable %} one-third small--one-whole{% endif %}">
+      <div class="grid__item one-whole text-right splitRowCheckout{% if settings.cart_notes_enable %} one-third small--one-whole{% endif %}">
         <p>
           <span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
           <span class="h3 cart__subtotal">{{ cart.total_price | money }}</span>
@@ -145,7 +145,7 @@
         <input id="mktz_custom" name="attributes[mktz_custom]" type="hidden" value="" />
         <!-- marketizator end -->
         <input type="submit" name="update" class="btn--secondary update-cart" value="{{ 'cart.general.update' | t }}">
-        <input type="submit" name="checkout" class="btn" value="{{ 'cart.general.checkout' | t }}">
+        <input type="submit" name="checkout" class="btn cartCheckout" value="{{ 'cart.general.checkout' | t }}">
         <div class="clearfix"></div>
         <a href="/" class="continue_shopping">&lt; {{ 'cart.general.continue_shopping' | t }}</a>
       </div>
@@ -153,7 +153,7 @@
 
   </form>
   {% if km_in_cart %}
-  <div class="wrapper">
+  <div class="km-accessories wrapper">
     <div class="one-half medium--one-whole small--one-whole recommended-accessories">
       {% include 'recommended-accessories' %}
     </div>
@@ -175,6 +175,12 @@
     </p>
   </div>
 {% endif %}
+
+{% if shop.locale == 'en' %}
+<!-- Amp script -->
+{% include 'amp-script' %}
+{% endif %}
+
 <!-- DataLayer pushes -->
 <script type="text/javascript">
   var productsArray = [];
@@ -191,7 +197,7 @@
   });
 </script>
 
-  <!-- Omniconvert Start -->
+<!-- Omniconvert Start -->
 <script>
 document.onreadystatechange = function () {
   if (document.readyState == 'complete') {

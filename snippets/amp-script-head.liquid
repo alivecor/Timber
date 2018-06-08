@@ -1,0 +1,18 @@
+<script type="text/javascript">
+  window.ampConfig = {
+    sessionTTL: 30 * 60 * 1000
+  };
+</script>
+<!-- prod -->
+<script src="https://amp.ai/libs/49d088aea9955c6e.js"></script>
+{% comment %}<!-- dev -->
+<script src="https://amp.ai/libs/84d1bf42f64b1a67.js"></script>
+{% endcomment %}
+<script type="text/javascript">
+  var decision = amp.decide("Cart", { location: ["control", "variation"]}, { ttl: 30 * 60 * 1000 });
+</script>
+<style type="text/css">
+  .cart-wrapper {
+    visibility: hidden;
+  }
+</style>
