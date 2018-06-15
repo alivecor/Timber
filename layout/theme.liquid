@@ -161,5 +161,9 @@
 <script src="https://player.vimeo.com/api/player.js"></script>
 {% endif %}
 
+{% if template == 'index' and shop.locale == 'en' %}
+{{ 'compat-detect.js' | asset_url | script_tag }}
+{% endif %}
+
 </body>
 </html>

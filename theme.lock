@@ -7,6 +7,8 @@ assets/apple-icon.png:
   development: 2018-02-06T00:57:37+01:00   c0ffb4f7573c200e79874a1e89e03222
 assets/checkout.scss.liquid:
   development: 2018-02-13T14:01:12-08:00   bac3c9824bc2f70ed2b70904bc5fa1c3
+assets/compat-detect.js.liquid:
+  development: 2018-06-15T15:51:04-07:00   8d8a03ce0be7adf8b65f6348bbe22188
 assets/fastco-logo.png:
   development: 2018-03-14T23:10:30+01:00   ed1e4b450f32757513302c4006f229fb
 assets/google-icon.png:
@@ -16,13 +18,13 @@ assets/main.js.liquid:
 assets/styles.scss:
   development: 2018-01-16T13:38:09-08:00   b605bf76f2dddeec843de79175c45271
 assets/styles.scss.liquid:
-  development: 2018-05-25T01:21:25+02:00   16888df5d3e56288b7f933ac0f662ff2
+  development: 2018-06-12T10:47:11-07:00   595510e8667d2244b82efa6417a4d0be
 assets/timber.scss.liquid:
-  development: 2018-06-08T11:56:41-07:00   5bc48a5ffdc430dde31016eb6fb4b49a
+  development: 2018-06-15T15:51:06-07:00   3df11860ef38e42cfb4f0ed149a59b21
 layout/checkout.liquid:
   development: 2018-03-01T23:41:17+00:00   dee05dfe41c6409908a882f067bb214e
 layout/theme.liquid:
-  development: 2018-06-08T23:13:14+02:00   a1ee18b57b16ebb61104ef19ff2b97ed
+  development: 2018-06-15T15:51:09-07:00   3be62f9254ca3c7ecf826b4d959a44c5
 locales/de.json:
   development: 2018-03-07T19:47:53+01:00   f7fd679ab9a166b6143b8675d1189003
 locales/en-GB.json:
@@ -36,7 +38,7 @@ locales/fr.json:
 snippets/amp-script-head.liquid:
   development: 2018-06-08T14:15:25-07:00   d2e1311aaa979c2c3608a4a2b21d2700
 snippets/amp-script.liquid:
-  development: 2018-06-08T23:13:10+02:00   e3e5defa6c564d5476f448c48811fe87
+  development: 2018-06-15T14:44:37-07:00   2e149b7ed54b831e3f21ffe422452e9b
 snippets/analytics-scripts.liquid:
   development: 2018-06-08T14:15:28-07:00   1951bcaa30cf60f490f0573d3628ce7f
 snippets/benefit-icons-product.liquid:
@@ -56,7 +58,7 @@ snippets/gtm-head.liquid:
 snippets/home-grid-item.liquid:
   development: 2018-05-25T09:58:41-07:00   4d2c01276ff3708ed1b0a70b2495e8f9
 snippets/home-main-item.liquid:
-  development: 2018-03-04T18:02:31+01:00   32a74ac96ff87d19a22ea8903ee880a1
+  development: 2018-06-15T15:51:07-07:00   98a9f68be696648c0864817e2059fb2b
 snippets/icon-android.svg.liquid:
   development: 2018-02-06T00:56:32+01:00   0310f836bb7c5ddd5a51a0d3447080b2
 snippets/icon-apple.svg.liquid:

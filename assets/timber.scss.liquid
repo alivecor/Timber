@@ -3743,6 +3743,9 @@ Accordion Styles
       min-height: 36px;
     }
   }
+  #AddToCartForm {
+    position: relative;
+  }
 }
 .home-grid-item.grid__item {
   margin-bottom: 80px;
@@ -4101,5 +4104,21 @@ Accordion Styles
   &.cartCheckout {
     margin-top: 20px;
     padding: 16px 38px;
+  }
+}
+// compatibility detector
+#deviceNameCompat {
+  display: none;
+  font-size: 11px;
+  color: $grey3;
+  clear: left;
+  padding-left: 6px;
+  text-transform: uppercase;
+  .link {
+    text-transform: capitalize;
+    a {
+      text-decoration: underline;
+      color: $grey3;
+    }
   }
 }
