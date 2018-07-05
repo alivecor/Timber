@@ -8,27 +8,27 @@ assets/apple-icon.png:
 assets/checkout.scss.liquid:
   development: 2018-02-13T14:01:12-08:00   bac3c9824bc2f70ed2b70904bc5fa1c3
 assets/compat-detect.js.liquid:
-  development: 2018-06-15T15:51:04-07:00   8d8a03ce0be7adf8b65f6348bbe22188
+  development: 2018-06-19T01:42:01+02:00   8d8a03ce0be7adf8b65f6348bbe22188
 assets/fastco-logo.png:
   development: 2018-03-14T23:10:30+01:00   ed1e4b450f32757513302c4006f229fb
 assets/google-icon.png:
   development: 2018-02-06T00:57:38+01:00   b2698d080d93d34aec411745f264fa17
 assets/main.js.liquid:
-  development: 2018-05-25T01:21:26+02:00   c4603b6915350ad77d63af97c7020e80
+  development: 2018-06-21T22:19:25+02:00   a73818f472c35e94c808a157935f7d68
 assets/styles.scss:
   development: 2018-01-16T13:38:09-08:00   b605bf76f2dddeec843de79175c45271
 assets/styles.scss.liquid:
-  development: 2018-06-12T10:47:11-07:00   595510e8667d2244b82efa6417a4d0be
+  development: 2018-06-21T22:19:23+02:00   9bce57d55aa3062f1d82291e073a7839
 assets/timber.scss.liquid:
-  development: 2018-06-15T15:51:06-07:00   3df11860ef38e42cfb4f0ed149a59b21
+  development: 2018-07-05T13:41:42-07:00   e3b8afa002735b5b814af59e15a430e8
 layout/checkout.liquid:
-  development: 2018-03-01T23:41:17+00:00   dee05dfe41c6409908a882f067bb214e
+  development: 2018-06-28T19:32:11+01:00   e39cedce017f5c0ff9f1ed3adaa72717
 layout/theme.liquid:
-  development: 2018-06-15T15:51:09-07:00   3be62f9254ca3c7ecf826b4d959a44c5
+  development: 2018-06-19T01:42:02+02:00   3be62f9254ca3c7ecf826b4d959a44c5
 locales/de.json:
   development: 2018-03-07T19:47:53+01:00   f7fd679ab9a166b6143b8675d1189003
 locales/en-GB.json:
-  development: 2018-03-07T19:47:52+01:00   da4db4dd543145976f826226028bdb03
+  development: 2018-07-05T13:41:41-07:00   ac1bec1897f0c11c52d463c66644eeb7
 locales/en.default.json:
   development: 2018-03-07T19:47:51+01:00   8634500f864600c695aa824d3069e8b4
 locales/es.json:
@@ -38,7 +38,7 @@ locales/fr.json:
 snippets/amp-script-head.liquid:
   development: 2018-06-08T14:15:25-07:00   d2e1311aaa979c2c3608a4a2b21d2700
 snippets/amp-script.liquid:
-  development: 2018-06-15T14:44:37-07:00   2e149b7ed54b831e3f21ffe422452e9b
+  development: 2018-06-19T11:08:25-07:00   b2e277a44ae5e1e8a59f588b7e13598f
 snippets/analytics-scripts.liquid:
   development: 2018-06-08T14:15:28-07:00   1951bcaa30cf60f490f0573d3628ce7f
 snippets/benefit-icons-product.liquid:
@@ -49,6 +49,8 @@ snippets/compatibility-kardiamobile.liquid:
   development: 2018-04-05T19:47:12+02:00   2ccebd3e24f98a645b30d93748bef547
 snippets/cookie-banner.liquid:
   development: 2018-05-25T01:21:25+02:00   9f1d81800a88d98e508e01de3176d4c5
+snippets/discount-code-head-script.liquid:
+  development: 2018-06-21T13:00:31-07:00   c1f248729bf6f25742c13b5ba225feaf
 snippets/footer.liquid:
   development: 2018-05-02T22:17:22+01:00   9cd68a4387b51af5716335427f356db1
 snippets/gtm-body.liquid:
@@ -58,7 +60,7 @@ snippets/gtm-head.liquid:
 snippets/home-grid-item.liquid:
   development: 2018-05-25T09:58:41-07:00   4d2c01276ff3708ed1b0a70b2495e8f9
 snippets/home-main-item.liquid:
-  development: 2018-06-15T15:51:07-07:00   98a9f68be696648c0864817e2059fb2b
+  development: 2018-07-05T13:41:43-07:00   34d6d71a9f60d941469291944514cbaa
 snippets/icon-android.svg.liquid:
   development: 2018-02-06T00:56:32+01:00   0310f836bb7c5ddd5a51a0d3447080b2
 snippets/icon-apple.svg.liquid:
@@ -70,7 +72,7 @@ snippets/icon-five-stars.svg.liquid:
 snippets/icon-rightarrow.svg.liquid:
   development: 2018-02-06T00:56:41+01:00   14b4c382d4ebb1d9a701db3cf7b459d2
 snippets/modal.liquid:
-  development: 2018-03-26T23:42:26+02:00   f3d3a7b3aff90e44dd0d120738f63e01
+  development: 2018-07-05T21:44:40+01:00   d91bd7dab10146a1da937022cfb5e158
 snippets/navigation.liquid:
   development: 2018-05-02T22:17:23+01:00   bd916aa90a279a3e21e8add451e1c5d1
 snippets/omniconvert.liquid:
@@ -82,11 +84,11 @@ snippets/tech-specs-kardiaband.liquid:
 snippets/tech-specs-kardiamobile.liquid:
   development: 2018-02-06T00:56:25+01:00   a33b70ced8ce763faf804edef0fef1e6
 templates/cart.liquid:
-  development: 2018-06-08T23:13:12+02:00   9f400be09bf65b243f174953165aa915
+  development: 2018-06-21T11:07:22-07:00   971f61bd77e5b42daa565888f5917ed8
 templates/index.liquid:
   development: 2018-01-24T01:08:06+01:00   1b2e59e07960c0b01a7668a955f8dd3f
 templates/product.liquid:
-  development: 2018-05-25T09:58:39-07:00   a5e612f3dd94225823428161bf961d72
+  development: 2018-07-05T13:41:41-07:00   1d252e9a4436f98dc56fc36cf06f7a2b
 templates/product.pop-up.liquid:
   development: 2018-01-22T23:03:19+01:00   19afcbbb8c09f8d70dd592e32240e6e1
 templates/product.product-pre-order.liquid:

@@ -38,7 +38,9 @@
         break;
     }
   }
-  makeDecision();
+  if (decision) {
+    makeDecision();
+  }
   var cart = document.querySelector('.cart-wrapper');
   cart.style.visibility = 'visible';
 </script>

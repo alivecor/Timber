@@ -222,9 +222,17 @@
           {% endif %}
           </span>
         </button>
+        {% if product.handle == 'kardiamobile' and shop.currency == 'GBP' and sold_out %}
+        <a href="https://www.amazon.co.uk/Kardia-Mobile-AliveCor-Black-0-6oz/dp/B01A4W8AUK/" class="btn amazon-sold-out" target="_blank">
+          Buy From Amazon
+        </a>
+        {% elsif product.handle == 'kardiamobile' and shop.currency == 'EUR' and sold_out %}
+        <a href="https://www.mindtecstore.com/AliveCor-Kardia-Mobile-ECG-Heart-Monitor" class="btn amazon-sold-out" target="_blank">
+          Buy From MindTec
+        </a>
+        {% endif %}
       </form>
       </div>
-
       <!-- cool stuff! ======================================================== -->
       <h3 class="cool-stuff">
         {% if shop.locale == 'en' %}

@@ -3813,6 +3813,10 @@ Accordion Styles
     float: left;
     margin-left: 28px;
     font-weight: bold;
+    @media (max-width: 380px) {
+      clear: left;
+      margin: 0;
+    }
   }
   form .btn {
     float: left;
@@ -4120,5 +4124,22 @@ Accordion Styles
       text-decoration: underline;
       color: $grey3;
     }
+  }
+}
+
+.btn.amazon-sold-out {
+  clear: none !important;
+  margin-left: 10px;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 0 0 40px 0;
+  }
+}
+
+.btn.amazon-sold-out-home {
+  margin: 0;
+  @media (min-width: 370px) {
+    clear: none !important;
+    margin: 40px 0 20px 10px;
   }
 }
