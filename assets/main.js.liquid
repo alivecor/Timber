@@ -147,9 +147,10 @@ function vimeoPlayer(id) {
     });    
   } else {
     // first time playing a video
-    player = new Vimeo.Player('video-player', {
-      id: id
-    });
+    var iframe = document.querySelector('#video-player iframe');
+    iframe.src = 'https://player.vimeo.com/video/' + id;
+    iframe.setAttribute('style', 'display: block');
+    player = new Vimeo.Player(iframe);
     player.ready().then(function() {
       playVideo();
       player.setColor('#2D9F86');
