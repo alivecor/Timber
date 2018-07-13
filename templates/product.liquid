@@ -27,6 +27,13 @@
 {% endfor %}
 {% assign kmHowItWorksVideoId = '251698484' %}
 {% assign kbHowItWorksVideoId = '251698954' %}
+{% assign kb-promo = false %}
+{% for tag in product.tags %}
+  {% if product.handle == 'kardiaband' and shop.locale == 'en' and tag == 'kb-promo' %}
+    {% assign kb-promo = true %}
+  {% endif %}
+{% endfor%}
+
 
 <div itemscope itemtype="http://schema.org/Product">
 
@@ -37,18 +44,28 @@
     Get first variant, or deep linked one
   {% endcomment %}
   {% assign current_variant = product.selected_or_first_available_variant %}
+
   {% include 'breadcrumb' %}
   <div class="grid product-single">
     <div class="grid__item large--one-half text-center">
       <div class="product-single__photos" id="ProductPhoto">
+        {% if kb-promo == true %}
+          <div class="ribbon nocaps">
+            Save $100. Two days only!*
+          </div>
+        {% endif %}
         {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
         <img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
         <div class="img-caption {{ product_name }}"></div>
       </div>
-
       {% comment %}
         Create thumbnails if we have more than one product image
       {% endcomment %}
+      {% if kb-promo == true %}
+      <div class="discount-disclaimer-product">
+        *Offer ends July 17, 2018 11:59pm PDT
+      </div>
+      {% endif %}
       {% if product.images.size > 1 %}
         <ul class="product-single__thumbnails grid-uniform" id="ProductThumbs">
 
@@ -99,8 +116,8 @@
 
       {% if product.handle == "kardiaband" and shop.locale == 'en' %}
       <div class="review desktop">
-        <h2>Worth the Price and Peace of Mind</h2>
-        <span class="name">Mike on Feb 1, 2018</span>
+        <div class="h2 fullWidth">Worth the Price and Peace of Mind</div>
+        <span class="name">Mike on February 1, 2018</span>
         <p>I had an AFib incident recently which the watch detected, recorded, and alerted me. It alerts you if it sees an irregular pattern and you can take the ekg trace on the spot. My cardiologist loves the reports it produces. What makes the band easy is if it occurs at night you get the alert.</p>
       </div>
       {% endif %}
@@ -111,12 +128,14 @@
 
       <!-- Price stuff ======================================================== -->
       {% if product.compare_at_price_max > product.price %}
-        <span id="ProductPrice" class="h2Price" itemprop="price">
-          {{ product.price | money }}
-        </span>
-        <span class="strikeout">
-        {{ current_variant.compare_at_price | money }}
-        </span>
+        <div>
+          <span id="ProductPrice" class="h2Price red" itemprop="price">
+            {{ product.price | money }}
+          </span>
+          <span class="strikeout">
+          {{ current_variant.compare_at_price | money }}
+          </span>
+        </div>
       {% else %}
         <span id="ProductPrice" class="h2Price noFloat" itemprop="price">
           {{ product.price | money }}
@@ -233,6 +252,7 @@
         {% endif %}
       </form>
       </div>
+
       <!-- cool stuff! ======================================================== -->
       <h3 class="cool-stuff">
         {% if shop.locale == 'en' %}
@@ -299,8 +319,8 @@
 
 {% if product.handle == "kardiaband" and shop.locale == 'en' %}
   <div class="review mobile">
-    <h2>Worth the Price and Peace of Mind</h2>
-    <span class="name">Mike on Feb 1, 2018</span>
+    <div class="h2 fullWidth">Worth the Price and Peace of Mind</div>
+    <span class="name">Mike on February 1, 2018</span>
     <p>I had an AFib incident recently which the watch detected, recorded, and alerted me. It alerts you if it sees an irregular pattern and you can take the ekg trace on the spot. My cardiologist loves the reports it produces. What makes the band easy is if it occurs at night you get the alert.</p>
   </div>
 {% endif %}

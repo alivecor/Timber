@@ -923,6 +923,9 @@ sub {
 .h2Price {
   font-size: 24px;
   font-family: $bodyFontStack;
+  &.red {
+    color: $red;
+  }
 }
 .h4Title {
   font-size: 24px;
@@ -1672,15 +1675,25 @@ input[type="radio"].variant-input {
 .variant-placeholder {
   @media (min-width: 768px) {
     height: 114px;
-    /* US 114px */
-    /* DE 64px */
-    /* UK 89px */
   }
   @media (min-width: 1200px) {
     height: 48px;
-    /* US 48px */
-    /* DE 23px */
-    /* UK 48px */
+  }
+}
+.variant-placeholder-de {
+  @media (min-width: 768px) {
+    height: 64px;
+  }
+  @media (min-width: 1200px) {
+    height: 23px;
+  }
+}
+.variant-placeholder-gb {
+  @media (min-width: 768px) {
+    height: 89px;
+  }
+  @media (min-width: 1200px) {
+    height: 48px;
   }
 }
 #band-size-chart {
@@ -2466,6 +2479,31 @@ label.error {
       display: none;
     }
   }
+  .ribbon {
+    position: absolute;
+    top: 20px;
+    background-color: $red;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 0px 8px;
+    box-shadow: $grey2 0px 1px 4px 0px;
+    &.nocaps {
+        text-transform: none;
+      }
+    &:after {
+      right: -10px;
+      border-color: $red transparent;
+      border-width: 25px 10px 0 0;
+      content: '';
+      position: absolute;
+      height: 0;
+      width: 0;
+      top: 0;
+      border-style: solid;
+    }
+  }
 }
 
 .product-single__photos,
@@ -3076,7 +3114,7 @@ input.quantity {
 
 #ProductPrice {
   font-weight: lighter;
-  margin-right: 20px;
+  margin-right: 10px;
   line-height: 1.1em;
   float: left;
 }
@@ -3085,7 +3123,8 @@ input.quantity {
   font-family: $headerFontStack;
   text-decoration: line-through;
   font-size: 1.25em;
-  vertical-align: -webkit-baseline-middle;
+  line-height: 1.1em;
+  font-weight: lighter;
 }
 
 .preorder {
@@ -3447,28 +3486,47 @@ Accordion Styles
   &.desktop {
     display: none;
     @media (min-width: 768px) {
-      display: block;
+      display: flex;
+      display: -webkit-flex;
       margin-top: 40px;
       text-align: left;
     }
+    @media (min-width: 1200px) {
+      display: block;
+    }
   }
   &.mobile {
-    display: block;
+    display: flex;
+    display: -webkit-flex;
     margin-top: 40px;
     @media (min-width: 768px) {
       display: none;
       margin: 0;
     }
   }
-  h2 {
+  .h2 {
     font-size: 25px;
     margin: 0;
     color: $navy;
+    width: calc(100% - 125px);
     @media (min-width: 768px) {
       font-size: 28px;
     }
     @media (min-width: 1200px) {
       float: left;
+      width: auto;
+    }
+    @media (max-width: 340px) {
+      -webkit-order: 1;
+      -moz-order: 1;
+      -ms-order: 1;
+      -o-order: 1;
+      order: 1;
+      width: 100%;
+      margin-top: 10px;
+    }
+    &.fullWidth {
+      width: 100%;
     }
   }
   p {
@@ -3480,6 +3538,13 @@ Accordion Styles
     @media (min-width: 768px) {
       font-size: 16px;
     }
+    @media (max-width: 340px) {
+      -webkit-order: 2;
+      -moz-order: 2;
+      -ms-order: 2;
+      -o-order: 2;
+      order: 2;
+    }
   }
   .name {
     font-size: 13px;
@@ -3489,9 +3554,16 @@ Accordion Styles
     order: 1;
     font-weight: normal;
     @media (min-width: 1200px) {
-      float: left;
-      padding: 9px 0 0 20px;
+      clear: left;
+      padding: 0;
       order: unset;
+    }
+    @media (max-width: 340px) {
+      -webkit-order: 3;
+      -moz-order: 3;
+      -ms-order: 3;
+      -o-order: 3;
+      order: 3;
     }
   }
   svg {
@@ -3505,6 +3577,14 @@ Accordion Styles
     }
     @media (min-width: 1200px) {
       float: right;
+    }
+    @media (max-width: 340px) {
+      position: static;
+      -webkit-order: 0;
+      -moz-order: 0;
+      -ms-order: 0;
+      -o-order: 0;
+      order: 0;
     }
   }
 }
@@ -3687,6 +3767,9 @@ Accordion Styles
       font-size: 16px;
       padding: 0px 8px;
       box-shadow: $grey2 0px 1px 4px 0px;
+      &.nocaps {
+        text-transform: none;
+      }
       &:after {
         right: -10px;
         border-color: $red transparent;
@@ -3709,9 +3792,65 @@ Accordion Styles
         }
       }
     }
+    .watch-only-overlay {
+      color: $grey3;
+      font-size: 14px;
+      position: absolute;
+      bottom: 1px;
+      right: 10px;
+      text-align: center;
+      line-height: 21px;
+      svg {
+        height: 16px;
+        width: 16px;
+        path {
+          fill: $grey3;
+        }
+        &>g {
+          transform: translateY(2px);
+        }
+      }
+      span {
+        display: block;
+      }
+      @media (min-width: 450px) {
+        font-size: 16px;
+        line-height: 18px;
+        bottom: 5px;
+        span {
+          display: inline;
+        }
+      }
+    }
+
+    .discount-disclaimer {
+      font-size: 13px;
+      position: absolute;
+      bottom: 1px;
+      left: 5px;
+      color: $grey3;
+      width: 90px;
+      @media (min-width: 450px) {
+        font-size: 14px;
+        bottom: 2px;
+        left: 10px;
+        width: 100%;
+      }
+      @media (min-width: 768px) and (max-width: 875px) {
+        font-size: 13px;
+        bottom: 1px;
+        left: 5px;
+        width: 90px;
+      }
+    }
   }
   .price {
     line-height: 20px;
+    .strikeout {
+      font-size: 24px;
+      line-height: inherit;
+      margin-left: 5px;
+    }
   }
   .title {
     margin-bottom: 8px;
@@ -3815,7 +3954,7 @@ Accordion Styles
     font-weight: bold;
     @media (max-width: 380px) {
       clear: left;
-      margin: 0;
+      margin: 0 0 0 6px;
     }
   }
   form .btn {
@@ -4118,6 +4257,9 @@ Accordion Styles
   clear: left;
   padding-left: 6px;
   text-transform: uppercase;
+  @media (max-width: 380px) {
+    padding-top: 20px;
+  }
   .link {
     text-transform: capitalize;
     a {
@@ -4135,11 +4277,16 @@ Accordion Styles
     margin: 0 0 40px 0;
   }
 }
-
 .btn.amazon-sold-out-home {
   margin: 0;
   @media (min-width: 370px) {
     clear: none !important;
     margin: 40px 0 20px 10px;
   }
+}
+.discount-disclaimer-product {
+  font-size: 13px;
+  margin-top: -24px;
+  margin-bottom: 7px;
+  text-align: left;
 }
