@@ -3830,17 +3830,28 @@ Accordion Styles
       left: 5px;
       color: $grey3;
       width: 90px;
-      @media (min-width: 450px) {
+      @media (min-width: 575px) {
         font-size: 14px;
         bottom: 2px;
         left: 10px;
         width: 100%;
       }
-      @media (min-width: 768px) and (max-width: 875px) {
+      @media (min-width: 768px) and (max-width: 1140px) {
         font-size: 13px;
         bottom: 1px;
         left: 5px;
         width: 90px;
+      }
+      @media (max-width: 400px) {
+        width: 100%;
+        bottom: -24px;
+        left: 0px;
+      }
+      @media (max-width: 366px) {
+        width: 100%;
+        bottom: -32px;
+        left: 0px;
+        line-height: 14px;
       }
     }
   }
