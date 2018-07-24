@@ -22,7 +22,7 @@ assets/styles.scss.liquid:
 assets/timber.scss.liquid:
   development: 2018-07-15T13:11:05-07:00   c4cac4b5f9376f7635001c8902f7a5ec
 layout/checkout.liquid:
-  development: 2018-07-23T22:30:00-07:00   d4c1bb4fa79cde7a680866882f397f15
+  development: 2018-07-24T09:27:37-07:00   9c4070e26a290fa8f0883b95a4e06a9a
 layout/theme.liquid:
   development: 2018-06-19T01:42:02+02:00   3be62f9254ca3c7ecf826b4d959a44c5
 locales/de.json:
