@@ -2641,9 +2641,12 @@ label.error {
     margin: 0 auto;
   }
   h4 {
+    font-family: $bodyFontStack;
+    font-weight: bold;
+    font-size: 22px;
     margin: 0;
     a {
-      color: $navy;
+      color: $colorTextBody;
     }
   }
   img {
@@ -2766,6 +2769,7 @@ input.quantity {
   margin-top: 15px;
   .price {
     white-space: nowrap;
+    font-weight: normal;
   }
 }
 
@@ -2777,6 +2781,7 @@ input.quantity {
   }
   h3 {
     white-space: nowrap;
+    font-weight: normal;
   }
 }
 #BIS_trigger.noshow {
@@ -4309,4 +4314,19 @@ Accordion Styles
   margin-top: -24px;
   margin-bottom: 7px;
   text-align: left;
+}
+
+.mobile-add-to-cart-btn {
+  &.kardiaband {
+    border-top: 1px solid $grey2;
+    border-bottom: 1px solid $grey2;
+    margin-top: 14px;
+    padding: 20px 0;
+  }
+  button {
+    margin-top: 30px;
+  }
+  @media (min-width: 768px) {
+    display: none;
+  }
 }

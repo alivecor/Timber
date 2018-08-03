@@ -1,0 +1,87 @@
+<form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm2" class="form-vertical">
+  {% if product.variants.size > 1 %}
+  {% comment %}
+    If there are variants, show the user some choices via input controls, else we will hide the inputs
+  {% endcomment %}
+    <div class="variant-title">{{product.options.first | escape}}</div>
+    {% assign has_checked = true %}
+    {% unless product.selected_variant %}
+      {% assign has_checked = false %}
+    {% endunless %}
+    {% for variant in product.variants %}
+      {% if variant.available %}
+        {% assign add_price = variant.price | minus: product.price %}
+        <div class="variant-input-wrapper">
+          <input type="radio"
+             id="{{variant.id}}2"
+             name="id"
+             data-sku="{{variant.sku}}"
+             value="{{variant.id}}"
+             class="variant-input"
+             data-index="{{forloop.index0}}"
+             data-img-url="{{variant.featured_image.src | img_url: 'large'}}"
+             {% if has_checked == false or product.selected_variant.id == variant.id %}
+               checked="true"
+               {% assign has_checked = true %}
+             {% endif %}
+             >
+          <label for="{{variant.id}}2" class="form-control">
+            {{variant.title}}
+            {% if add_price > 0 %}
+            &nbsp;(add {{add_price | money_with_currency}})
+            {% endif %}
+          </label>
+        </div>
+      {% else %}
+        <div class="variant-input-wrapper">
+        <input type="radio"
+             class="variant-input"
+             disabled>
+        <label class="form-control out-of-stock">
+          {{ variant.title }} ({{ 'products.product.sold_out' | t }})
+        </label>
+      </div>
+      {% endif %}
+    {% endfor %}
+
+  {% else %}
+    {% for variant in product.variants %}
+    <input type="hidden"
+           id="{{variant.id}}2"
+           name="id"
+           data-sku="{{variant.sku}}"
+           value="{{variant.id}}"
+           class="variant-input"
+           data-index="{{forloop.index0}}"
+           {% if forloop.first == true %}
+             checked="true"
+           {% endif %}
+           >
+    {% endfor %}
+  {% endif %}
+
+  {% comment %}
+  <!-- removing quantities for now -->
+  <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
+  <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+  {% endcomment %}
+
+  <button type="submit" name="add" id="{{product.id}}" class="btn addToCart" {% if sold_out %}disabled{% endif %}>
+    <span id="AddToCartText2">
+    {% if sold_out %}
+    {{ 'products.product.sold_out' | t }}
+    {% else %}
+    {{ 'products.product.add_to_cart' | t }}
+    {% endif %}
+    </span>
+  </button>
+  {% if product.handle == 'kardiamobile' and shop.currency == 'GBP' and sold_out %}
+  <a href="https://www.amazon.co.uk/Kardia-Mobile-AliveCor-Black-0-6oz/dp/B01A4W8AUK/" class="btn amazon-sold-out" target="_blank">
+    Buy From Amazon
+  </a>
+  {% elsif product.handle == 'kardiamobile' and shop.currency == 'EUR' and sold_out %}
+  <a href="https://www.mindtecstore.com/AliveCor-Kardia-Mobile-ECG-Heart-Monitor" class="btn amazon-sold-out" target="_blank">
+    Buy From MindTec
+  </a>
+  {% endif %}
+</form>
