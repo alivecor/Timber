@@ -113,14 +113,6 @@
 
         </ul>
       {% endif %}
-
-      {% if product.handle == "kardiaband" and shop.locale == 'en' %}
-      <div class="review desktop">
-        <div class="h2 fullWidth">Worth the Price and Peace of Mind</div>
-        <span class="name">Mike on February 1, 2018</span>
-        <p>I had an AFib incident recently which the watch detected, recorded, and alerted me. It alerts you if it sees an irregular pattern and you can take the ekg trace on the spot. My cardiologist loves the reports it produces. What makes the band easy is if it occurs at night you get the alert.</p>
-      </div>
-      {% endif %}
     </div>
 
     <div class="grid__item large--one-half {% if shop.locale == 'en' %}flex-order{% endif %}">
@@ -310,20 +302,10 @@
           </p>
         {% endif %}
       {% endif %}
-
     </div>
   </div>
-
 </div>
 {% include 'product-tabs' product=product%}
-
-{% if product.handle == "kardiaband" and shop.locale == 'en' %}
-  <div class="review mobile">
-    <div class="h2 fullWidth">Worth the Price and Peace of Mind</div>
-    <span class="name">Mike on February 1, 2018</span>
-    <p>I had an AFib incident recently which the watch detected, recorded, and alerted me. It alerts you if it sees an irregular pattern and you can take the ekg trace on the spot. My cardiologist loves the reports it produces. What makes the band easy is if it occurs at night you get the alert.</p>
-  </div>
-{% endif %}
 
 {% if product_accessories.products.length > 0 %}
   <div class="section">
@@ -382,7 +364,8 @@
       showCaption = false;
   switch (currentProduct) {
     case 'kardiamobile':
-      showCaption = false;
+      currentCaption = 'Check<br/>compatible<br/>devices';
+      showCaption = true;
       break;
     case 'kardiaband':
       currentCaption = '<span>Apple Watch Size</span>42mm / 38mm';

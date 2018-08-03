@@ -1682,10 +1682,10 @@ input[type="radio"].variant-input {
 }
 .variant-placeholder-de {
   @media (min-width: 768px) {
-    height: 64px;
+    height: 89px;
   }
   @media (min-width: 1200px) {
-    height: 23px;
+    height: 48px;
   }
 }
 .variant-placeholder-gb {
@@ -2476,7 +2476,16 @@ label.error {
       }
     }
     &.kardiamobile {
-      display: none;
+      left: 0;
+      border-top-right-radius: 10px;
+      width: auto;
+      padding: 10px;
+      font-size: 12px;
+      line-height: 16px;
+      @media (min-width: 1200px) {
+        font-size: 14px;
+        line-height: 18px;
+      }
     }
   }
   .ribbon {

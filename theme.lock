@@ -18,9 +18,9 @@ assets/main.js.liquid:
 assets/styles.scss:
   development: 2018-01-16T13:38:09-08:00   b605bf76f2dddeec843de79175c45271
 assets/styles.scss.liquid:
-  development: 2018-06-21T22:19:23+02:00   9bce57d55aa3062f1d82291e073a7839
+  development: 2018-08-03T19:48:42+02:00   4397dec744c5ebec5e8449d2fbfc4529
 assets/timber.scss.liquid:
-  development: 2018-07-15T13:11:05-07:00   c4cac4b5f9376f7635001c8902f7a5ec
+  development: 2018-08-03T20:18:39+02:00   9abf3d5779051c482adf99492169a5ed
 layout/checkout.liquid:
   development: 2018-07-24T09:27:37-07:00   9c4070e26a290fa8f0883b95a4e06a9a
 layout/theme.liquid:
@@ -42,11 +42,11 @@ snippets/amp-script.liquid:
 snippets/analytics-scripts.liquid:
   development: 2018-06-08T14:15:28-07:00   1951bcaa30cf60f490f0573d3628ce7f
 snippets/benefit-icons-product.liquid:
-  development: 2018-07-12T01:26:11+02:00   e3e5a3d85204056fb2bf583ad025f6dd
+  development: 2018-08-03T19:48:43+02:00   39587294d08006dce933bcf4b81db7d8
 snippets/compatibility-kardiaband.liquid:
-  development: 2018-07-21T00:57:30+02:00   93fd4180208031e20e2295d43eaaf358
+  development: 2018-07-26T23:42:53+02:00   9153410d4c49f8f9b29ea2818ddc7255
 snippets/compatibility-kardiamobile.liquid:
-  development: 2018-07-21T00:59:45+02:00   afde1f00e0507e1554d50946aca90dd7
+  development: 2018-07-26T23:42:54+02:00   a82a8231dc964e78565f4ad42f84f9bb
 snippets/cookie-banner.liquid:
   development: 2018-05-25T01:21:25+02:00   9f1d81800a88d98e508e01de3176d4c5
 snippets/discount-code-head-script.liquid:
@@ -65,6 +65,8 @@ snippets/icon-android.svg.liquid:
   development: 2018-02-06T00:56:32+01:00   0310f836bb7c5ddd5a51a0d3447080b2
 snippets/icon-apple.svg.liquid:
   development: 2018-02-06T00:56:33+01:00   7803be7d9f1093ab9c89486cbdb5957b
+snippets/icon-checkmark.svg.liquid:
+  development: 2018-08-03T19:48:45+02:00   3c99fc7b61e03cbc28125763083211f4
 snippets/icon-downarrow.svg.liquid:
   development: 2018-02-06T00:56:41+01:00   fb94ba6da7877013e1e9073ad4af3b86
 snippets/icon-five-stars.svg.liquid:
@@ -77,18 +79,26 @@ snippets/navigation.liquid:
   development: 2018-05-02T22:17:23+01:00   bd916aa90a279a3e21e8add451e1c5d1
 snippets/omniconvert.liquid:
   development: 2018-02-22T22:19:10+01:00   de7b5d0e26f66aae5373200c1d32334c
+snippets/premium-table-kardiaband.liquid:
+  development: 2018-08-03T19:48:40+02:00   5d3410a6774f2146be1619b45299f93d
+snippets/premium-table-kardiamobile.liquid:
+  development: 2018-08-03T19:48:41+02:00   9d08f245f195e0fa5a4392c9278f74e1
+snippets/product-add-to-cart-2.liquid:
+  development: 2018-08-01T09:57:51-07:00   ef6b4c5518ed95d8442c2899d862f38b
+snippets/product-add-to-cart.liquid:
+  development: 2018-07-31T16:35:51-07:00   0a6142f2444d6268e1745f2c4f953c49
 snippets/product-tabs.liquid:
-  development: 2018-02-06T00:56:43+01:00   20c79527dd7d2cba258b0ed2f1667c54
+  development: 2018-08-03T11:19:06-07:00   82ebfc5c10d1d6d101a4299f75dc14c5
 snippets/tech-specs-kardiaband.liquid:
   development: 2018-02-06T00:56:28+01:00   4c3745e2622b5f26ebe50b083c6d4d3b
 snippets/tech-specs-kardiamobile.liquid:
-  development: 2018-02-06T00:56:25+01:00   a33b70ced8ce763faf804edef0fef1e6
+  development: 2018-02-05T15:45:37-08:00   a33b70ced8ce763faf804edef0fef1e6
 templates/cart.liquid:
   development: 2018-06-21T11:07:22-07:00   971f61bd77e5b42daa565888f5917ed8
 templates/index.liquid:
   development: 2018-07-13T19:46:48+02:00   e2e4175495e604fcccee881c273b522e
 templates/product.liquid:
-  development: 2018-07-17T17:11:57-07:00   294ea223482f9f070d9a2c52d3bed71a
+  development: 2018-08-03T19:48:44+02:00   f18346a40109a01819e78b7255f46a8e
 templates/product.pop-up.liquid:
   development: 2018-01-22T23:03:19+01:00   19afcbbb8c09f8d70dd592e32240e6e1
 templates/product.product-pre-order.liquid:
