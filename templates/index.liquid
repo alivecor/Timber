@@ -13,6 +13,12 @@
     Loop through products in your Frontpage collection.
     This collection is created by default, but you must add products to it.
   {% endcomment %}
+
+  {% assign kb-promo = false %}
+  {% if collections.main-product.all_tags contains 'kb-promo' %}
+    {% assign kb-promo = true %}
+  {% endif %}
+
   {% for product in collections.main-product.products limit:4 %}
 
     {% comment %}

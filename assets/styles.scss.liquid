@@ -386,9 +386,12 @@ footer {
     @media (min-width: 768px) {
       float: left;
       display: block;
-      margin-right: 16px;
+      margin-right: 2%;
       margin-left: 0;
-      width: 212px;
+      width: 32%;
+      &:last-of-type {
+        margin-right: 0;
+      }
     }
     @media (min-width: 1200px) {
       float: left;
@@ -499,6 +502,7 @@ footer {
   }
   .input-group {
     width: 100%;
+    margin-bottom: 3px;
   }
   .input-group-btn {
     height: 46px;
@@ -632,6 +636,7 @@ footer {
       font-size: 20px;
       color: $grey3;
       line-height: 25px;
+      padding-bottom: 8px;
       span {
         display: block;
         text-align: right;
@@ -640,8 +645,8 @@ footer {
     .fastco-img {
       background-image: url({{ 'fastco-logo.png' | asset_url }});
       height: 100px;
-      width: 87px;
-      background-size: 87px 100px;
+      width: 141px;
+      background-size: 141px 100px;
       float: right;
       margin: 10px 0;
     }
@@ -789,7 +794,7 @@ footer {
       padding: 0;
       @media (min-width: 768px) {
         text-align: left;
-        height: 183px;
+        height: 210px;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -830,7 +835,7 @@ footer {
     .content:first-of-type {
       .chart {
         @media (min-width: 768px) {
-          height: 280px;
+          height: 286px;
         }
         @media (min-width: 1200px) {
           height: 183px;
@@ -886,6 +891,312 @@ footer {
     }
     .omron-link {
       margin-top: 32px;
+    }
+  }
+}
+
+/* Modal styles */
+.modal {
+  .modal-fade-screen { // overlay
+    -webkit-transition: opacity 0.25s ease;
+    -moz-transition: opacity 0.25s ease;
+    transition: opacity 0.25s ease;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba($navy, 0.9);
+    opacity: 0;
+    padding-top: 0.6em;
+    text-align: left;
+    visibility: hidden;
+    z-index: 99999999999;
+    height: 100%;
+    @media(min-width: 1200px) {
+      padding-top: 3em;
+    }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1px;
+    right: 2px;
+    height: 1.5em;
+    width: 1.5em;
+    cursor: pointer;
+
+    @media(min-width: 768px) {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    &:after,
+    &:before {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      bottom: 0;
+      left: 50%;
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+      height: 20px;
+      width: 2px;
+      background: #fff;
+      content: '';
+      display: block;
+      margin: -3px 0 0 -1px;
+      @media(min-width: 768px) {
+        height: 25px;
+      }
+    }
+
+    &:hover:after,
+    &:hover:before {
+      background: $teal;
+    }
+
+    &:before {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+  }
+
+  .modal-inner {
+    width: 90%;
+    top: 50%;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .modal-inner.video {
+    -webkit-transition: opacity 0.25s ease;
+    -moz-transition: opacity 0.25s ease;
+    transition: opacity 0.25s ease;
+    border-radius: 3px;
+    max-height: 95%;
+    overflow: auto;
+    padding: 1.5em 1em;
+    @media(min-width: 768px) {
+      max-height: 100%;
+      padding: 3em;
+      width: 95%;
+    }
+    @media(min-width: 1200px) {
+      width: 80%;
+    }
+  }
+
+  .modal-fade-screen {
+    &.open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.video-wrapper {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%; // For ratio 16:9. 75% if ratio is 4:3
+  position: relative;
+
+  embed,
+  object,
+  iframe {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+  }
+  iframe {
+    display: none;
+  }
+}
+
+a.play-video {
+  cursor: pointer;
+}
+
+#cookies-message {
+  font-weight: normal;
+  font-size: 14px;
+  background: $navy;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 9001;
+  &.hideBanner {
+    display: none;
+  }
+  .container {
+    position: relative;
+    background-color: transparent;
+  }
+  p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0 30px;
+    color: #fff;
+  }
+  a {
+    font-weight: bold;
+    color: #fff;
+    margin-left: 2px;
+  }
+  #cookies-ok {
+    color: #fff;
+    margin-left: 2px;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 36px;
+    position: absolute;
+    top: -2px;
+    right: 20px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+/* Premium Table */
+#premium {
+  .accordion-inner > p {
+    font-size: 16px;
+    color: $grey3;
+    margin: 0 auto 32px;
+    padding: 0 20px;
+    text-align: center;
+    @media (min-width: 768px) {
+      width: 75%;
+    }
+    @media (min-width: 1200px) {
+      width: 910px;
+    }
+  }
+  table {
+    margin: 0 0 8px;
+    width: 100%;
+    color: $navy;
+    @media (min-width: 1200px) {
+      width: 80%;
+      margin: 0 auto 8px;
+    }
+    td {
+      border: none;
+      padding: 12px 20px;
+      font-weight: 300;
+      font-size: 14px;
+      @media(min-width: 1200px) {
+        font-size: 16px;
+      }
+      &.head {
+        width: 60px;
+        padding: 0 0 8px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 14px;
+        vertical-align: top;
+        @media(min-width: 768px) {
+          width: 160px;
+        }
+        @media(min-width: 1200px) {
+          font-size: 16px;
+          width: 133px;
+          padding: 0 0 15px;
+        }
+        &.wide {
+          width: 80px;
+          @media(min-width: 768px) {
+            width: 160px;
+          }
+          @media(min-width: 1200px) {
+            width: 185px;
+          }
+        }
+        span {
+          font-size: 13px;
+          font-weight: normal;
+          display: block;
+          line-height: 16px;
+          @media(min-width: 1200px) {
+            font-size: 14px;
+          }
+        }
+      }
+      &.basic {
+        width: 60px;
+        text-align: center;
+        @media(min-width: 1200px) {
+          width: 147px;
+        }
+      }
+      &.premium {
+        text-align: center;
+        width: 60px;
+        border-left: 1px solid $grey2;
+        @media(min-width: 1200px) {
+          width: 147px;
+        }
+      }
+      &.desc {
+        padding: 24px 35px;
+        text-align: center;
+        @media(min-width: 1200px) {
+          padding: 40px 90px;
+        }
+      }
+      svg {
+        width: 20px;
+        height: 16px;
+      }
+    }
+    tbody {
+      background-color: #EAEEEB;
+      tr:nth-of-type(even) {
+        background-color: #E2E7E3;
+      }
+    }
+    tbody tr:first-child td:first-child {
+      border-radius: 10px 0 0 0;
+    }
+    tbody tr:first-child td:last-child{
+      border-radius: 0 10px 0 0;
+    }
+    tbody tr:last-child td:first-child {
+      border-radius: 0 0 0 10px;
+    }
+    tbody tr:last-child td:last-child{
+      border-radius: 0 0 10px 0;
+    }
+  }
+  .footnotes {
+    margin-top: 28px;
+    p {
+      font-size: 12px;
+      line-height: 1.5;
+      margin: 0 20px 20px;
+      @media(min-width: 1200px) {
+        margin: 0 auto 20px;
+        width: 60%;
+      }
     }
   }
 }

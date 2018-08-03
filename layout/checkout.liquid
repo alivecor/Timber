@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
     <meta name="referrer" content="origin">
 
-    <title>{{ shop.name }} - {{ page_title }}</title>
+    {% if settings.favicon_enable %}
+    <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
+    {% endif %}
+
+    <title>{{ page_title }}</title>
 
     {{ content_for_header }}
 
@@ -22,6 +26,7 @@
   </head>
   <body>
     {% include 'gtm-body' %}
+    {{ skip_to_content_link }}
     <div class="banner" data-header>
       <div class="wrap">
         {{ content_for_logo }}
@@ -32,6 +37,19 @@
 
     <div class="content" data-content>
       <div class="wrap">
+        <div class="main" role="main">
+          <div class="main__header">
+            {{ content_for_logo }}
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </div>
+          <div class="main__content">
+            {{ content_for_layout }}
+          </div>
+          <div class="main__footer">
+            {{ content_for_footer }}
+          </div>
+        </div>
         <div class="sidebar" role="complementary">
           <div class="sidebar__header">
             {{ content_for_logo }}
@@ -40,24 +58,35 @@
             {{ content_for_order_summary }}
           </div>
         </div>
-        <div class="main" role="main">
-          <div class="main__header">
-            {{ content_for_logo }}
-            {{ breadcrumb }}
-          </div>
-          <div class="main__content">
-            {{ alternative_payment_methods }}
-            {{ content_for_layout }}
-          </div>
-          <div class="main__footer">
-            {{ content_for_footer }}
-          </div>
-        </div>
       </div>
     </div>
 
     {{ tracking_code }}
     <script>
+      // append polyfill
+      // Source: https://github.com/jserz/js_piece/blob/master/DOM/ParentNode/append()/append().md
+      (function (arr) {
+        arr.forEach(function (item) {
+          if (item.hasOwnProperty('append')) {
+            return;
+          }
+          Object.defineProperty(item, 'append', {
+            configurable: true,
+            enumerable: true,
+            writable: true,
+            value: function append() {
+              var argArr = Array.prototype.slice.call(arguments),
+                docFrag = document.createDocumentFragment();
+              argArr.forEach(function (argItem) {
+                var isNode = argItem instanceof Node;
+                docFrag.appendChild(isNode ? argItem : document.createTextNode(String(argItem)));
+              });
+              this.appendChild(docFrag);
+            }
+          });
+        });
+      })([Element.prototype, Document.prototype, DocumentFragment.prototype]);
+
       if (window.innerWidth > 999) {
         var discountField = document.getElementsByClassName('order-summary__section--discount')[0];
         var discountSection = document.getElementsByClassName('order-summary__sections')[0];

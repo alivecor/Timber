@@ -8,17 +8,32 @@
     - http://schema.org/docs/gs.html
 
 {% endcomment %}
-{% if product.handle == "kardiamobile" %}
+{% if product.handle == 'kardiamobile' %}
   {% assign product_accessories = collections.kardiamobile-accessories %}
   {% assign product_name = 'kardiamobile' %}
 {% endif %}
-{% if product.handle == "kardiaband" %}
+{% if product.handle == 'kardiaband' %}
   {% assign product_name = 'kardiaband' %}
 {% endif %}
 {% assign sold_out = true %}
 {% if product.available %}
   {% assign sold_out = false %}
 {% endif %}
+{% assign isKmAccessory = false %}
+{% for kmAccessoryProduct in collections.kardiamobile-accessories.products %}
+  {% if product.handle == kmAccessoryProduct.handle %}
+    {% assign isKmAccessory = true %}
+  {% endif %}
+{% endfor %}
+{% assign kmHowItWorksVideoId = '251698484' %}
+{% assign kbHowItWorksVideoId = '251698954' %}
+{% assign kb-promo = false %}
+{% for tag in product.tags %}
+  {% if product.handle == 'kardiaband' and shop.locale == 'en' and tag == 'kb-promo' %}
+    {% assign kb-promo = true %}
+  {% endif %}
+{% endfor%}
+
 
 <div itemscope itemtype="http://schema.org/Product">
 
@@ -34,27 +49,37 @@
   <div class="grid product-single">
     <div class="grid__item large--one-half text-center">
       <div class="product-single__photos" id="ProductPhoto">
+        {% if kb-promo == true %}
+          <div class="ribbon nocaps">
+            Save $100. Extended through July 18!*
+          </div>
+        {% endif %}
         {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
         <img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
+        <div class="img-caption {{ product_name }}"></div>
       </div>
-
       {% comment %}
         Create thumbnails if we have more than one product image
       {% endcomment %}
+      {% if kb-promo == true %}
+      <div class="discount-disclaimer-product">
+        *Offer ends July 18, 2018 11:59pm PDT. Limit 2 per order.
+      </div>
+      {% endif %}
       {% if product.images.size > 1 %}
         <ul class="product-single__thumbnails grid-uniform" id="ProductThumbs">
 
           {% for image in product.images %}
             {% if product_name == 'kardiaband' %}
               {% if forloop.first != true %}
-                <li class="grid__item one-third">
+                <li class="grid__item one-third medium--one-fifth small--one-quarter">
                   <a href="{{ image.src | img_url: 'large' }}" class="product-single__thumbnail">
                     <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
                   </a>
                 </li>
               {% endif %}
             {% else %}
-            <li class="grid__item one-third">
+            <li class="grid__item one-third medium--one-fifth small--one-quarter">
               <a href="{{ image.src | img_url: 'large' }}" class="product-single__thumbnail">
                 <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
               </a>
@@ -62,21 +87,47 @@
           {% endif %}
           {% endfor %}
 
+          {% comment %} Add How it works video for KM and KB {% endcomment %}
+          {% if product_name == 'kardiamobile' %}
+          <li class="grid__item one-third medium--one-fifth small--one-quarter">
+            <a class="play-video ga-tracker"
+              data-videoid="{{ kmHowItWorksVideoId }}"
+              data-category="Video"
+              data-action="KardiaMobile How it works"
+              data-label="/products/{{ handle }}">
+              <img src="{{ 'KM_video.jpg' | asset_img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+            </a>
+          </li>
+          {% endif %}
+          {% if product_name == 'kardiaband' %}
+          <li class="grid__item one-third medium--one-fifth small--one-quarter">
+            <a class="play-video ga-tracker"
+              data-videoid="{{ kbHowItWorksVideoId }}"
+              data-category="Video"
+              data-action="KardiaBand How it works"
+              data-label="/products/{{ handle }}">
+              <img src="{{ 'KB_video.jpg' | asset_img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+            </a>
+          </li>
+          {% endif %}
+
         </ul>
       {% endif %}
     </div>
 
-    <div class="grid__item large--one-half">
+    <div class="grid__item large--one-half {% if shop.locale == 'en' %}flex-order{% endif %}">
       <h2 class="h2Title product-title" itemprop="name">{{ product.title }}</h2>
 
       <!-- Price stuff ======================================================== -->
       {% if product.compare_at_price_max > product.price %}
-        <span id="ProductPrice" class="h2Price" itemprop="price">
-          {{ product.price | money }}
-        </span>
-        <span class="strikeout">
-        {{ current_variant.compare_at_price | money }}
-        </span>
+        <div>
+          <span id="ProductPrice" class="h2Price red" itemprop="price">
+            {{ product.price | money }}
+          </span>
+          <span class="strikeout">
+          {{ current_variant.compare_at_price | money }}
+          </span>
+        </div>
       {% else %}
         <span id="ProductPrice" class="h2Price noFloat" itemprop="price">
           {{ product.price | money }}
@@ -105,84 +156,7 @@
       {% endif %}
       {% endcomment %}
         
-      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
-        {% if product.variants.size > 1 %}
-        {% comment %}
-          If there are variants, show the user some choices via input controls, else we will hide the inputs
-        {% endcomment %}
-          <div class="variant-title">{{product.options.first | escape}}</div>
-          {% assign has_checked = true %}
-          {% unless product.selected_variant %}
-            {% assign has_checked = false %}
-          {% endunless %}
-          {% for variant in product.variants %}
-            {% if variant.available %}
-              {% assign add_price = variant.price | minus: product.price %}
-              <div class="variant-input-wrapper">
-                <input type="radio"
-                   id="{{variant.id}}"
-                   name="id"
-                   data-sku="{{variant.sku}}"
-                   value="{{variant.id}}"
-                   class="variant-input"
-                   data-index="{{forloop.index0}}"
-                   data-img-url="{{variant.featured_image.src | img_url: 'large'}}"
-                   {% if has_checked == false or product.selected_variant.id == variant.id %}
-                     checked="true"
-                     {% assign has_checked = true %}
-                   {% endif %}
-                   >
-                <label for="{{variant.id}}" class="form-control">
-                  {{variant.title}}
-                  {% if add_price > 0 %}
-                  &nbsp;(add {{add_price | money_with_currency}})
-                  {% endif %}
-                </label>
-              </div>
-            {% else %}
-              <div class="variant-input-wrapper">
-              <input type="radio"
-                   class="variant-input"
-                   disabled>
-              <label class="form-control out-of-stock">
-                {{ variant.title }} ({{ 'products.product.sold_out' | t }})
-              </label>
-            </div>
-            {% endif %}
-          {% endfor %}
-
-        {% else %}
-          {% for variant in product.variants %}
-          <input type="hidden"
-                 id="{{variant.id}}"
-                 name="id"
-                 data-sku="{{variant.sku}}"
-                 value="{{variant.id}}"
-                 class="variant-input"
-                 data-index="{{forloop.index0}}"
-                 {% if forloop.first == true %}
-                   checked="true"
-                 {% endif %}
-                 >
-          {% endfor %}
-        {% endif %}
-
-        {% comment %}
-        <!-- removing quantities for now -->
-        <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
-        <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
-        {% endcomment %}
-
-        <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
-          <span id="AddToCartText">
-          {% if sold_out %}
-          {{ 'products.product.sold_out' | t }}
-          {% else %}
-          {{ 'products.product.add_to_cart' | t }}
-          {% endif %}
-          </span>
-        </button>
-      </form>
+      {% include 'product-add-to-cart' %}
       </div>
 
       <!-- cool stuff! ======================================================== -->
@@ -195,19 +169,23 @@
         {% endif %}
       </h3>
 
-      <!-- Star rating ======================================================== -->
-      <div class="review-count">
-        <a href="#reviews" class="scroll-to-tab">
-          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-          <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
-        </a>
-      </div>
-      
-      <!-- Compat link ======================================================== -->
-      <div class="compat-link">
-        <a href="#compatibility" class="scroll-to-tab">
-          See compatibility
-        </a>
+      <div>
+        <!-- Star rating ======================================================== -->
+        <div class="review-count">
+          <a href="#reviews" class="scroll-to-tab">
+            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+            <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
+          </a>
+        </div>
+
+        {% if product_name == 'kardiamobile' or product_name == 'kardiaband' %}
+        <!-- Compat link ======================================================== -->
+        <div class="compat-link">
+          <a href="#compatibility" class="scroll-to-tab">
+            See compatibility
+          </a>
+        </div>
+        {% endif %}
       </div>
 
       <!-- Product Description ====================================================== -->
@@ -238,12 +216,15 @@
           </p>
         {% endif %}
       {% endif %}
-
     </div>
   </div>
-
 </div>
-{% include 'product-tabs' product=product%}
+
+<div class="mobile-add-to-cart-btn {{product.handle}}">
+  {% include 'product-add-to-cart-2' %}
+</div>
+
+{% include 'product-tabs' %}
 
 {% if product_accessories.products.length > 0 %}
   <div class="section">
@@ -258,14 +239,13 @@
       This collection is created by default, but you must add products to it.
     {% endcomment %}
     {% for product in product_accessories.products limit:6 %}
-
       {% comment %}
         Change the grid item width by using classes from the grid in
         the grid_item_width variable.
       {% endcomment %}
       {% if product_accessories.products.length <= 2 %}
         {% assign grid_item_width = 'large--one-half medium--one-half' %}
-      {% elsif product.accessories.products.length == 3 %}
+      {% elsif product_accessories.products.length == 3 %}
         {% assign grid_item_width = 'large--one-third medium--one-half' %}
       {% else %}
       {% assign grid_item_width = 'large--one-quarter medium--one-half' %}
@@ -276,9 +256,77 @@
   </div>
 {% endif %}
 
+{% if isKmAccessory %}
+  <div class="section">
+    <h3>Use with</h3>
+  </div>
+  <div class="grid-uniform">
+  {% for product in collections.main-product.products %}
+    {% if product.handle == 'kardiamobile' %}
+      {% assign grid_item_width = 'large--one-third medium--one-half' %}
+      {% assign product_name = 'kardiamobile_accessory' %}
+      {% include 'home-grid-item' %}
+    {% endif %}
+  {% endfor %}
+  </div>
+{% endif %}
+
 <!-- DataLayer pushes -->
 <script type="text/javascript">
   dataLayer.push({
     productId: '{{ product.id }}'
+  });
+
+  // adding caption to photos
+  var currentProduct = '{{ product.handle }}',
+      currentCaption = '',
+      showCaption = false;
+  switch (currentProduct) {
+    case 'kardiamobile':
+      currentCaption = 'Check<br/>compatible<br/>devices';
+      showCaption = true;
+      break;
+    case 'kardiaband':
+      currentCaption = '<span>Apple Watch Size</span>42mm / 38mm';
+      showCaption = true;
+      break;
+    case 'carrypod':
+      currentCaption = 'KardiaMobile in Carry Pod, closed & open';
+      showCaption = true;
+      break;
+    case 'phoneclip':
+      currentCaption = 'Phone Clip adheres to back of phone or phone case. KardiaMobile snaps right in.';
+      showCaption = true;
+      break;
+    case 'iphone-8-7-case':
+      currentCaption = 'KardiaMobile in iPhone 8/7 case';
+      showCaption = true;
+      break;
+    case 'iphone-5-5s-case':
+      currentCaption = 'Empty iPhone 5 / 5s / SE case';
+      showCaption = true;
+      break;
+    default:
+      break;
+  }
+  $(document).ready(function() {
+    // showing captions on product pages
+    var firstImg;
+
+    if (showCaption) {
+      $('#ProductPhoto .img-caption').html(currentCaption);
+      firstImg = $('.product-single__thumbnails li:first-child a').attr('href');
+      $('#ProductPhotoImg').on('load', function () {
+        // when changing images, check if first one
+        checkImg(firstImg);
+      });
+    }
+    var checkImg = function(firstImg) {
+      if (firstImg === $('#ProductPhotoImg').attr('src')) {
+        $('#ProductPhoto .img-caption').html(currentCaption);
+      } else {
+        $('#ProductPhoto .img-caption').html('');
+      }
+    }
   });
 </script>

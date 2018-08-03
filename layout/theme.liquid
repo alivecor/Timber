@@ -89,6 +89,11 @@
     </main>
     {% include 'footer' %}
   </div>
+  {% include 'cookie-banner' %}
+  {% comment %} Modal for videos {% endcomment %}
+  {% include 'modal' %}
+
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
   {{ 'fastclick.min.js' | asset_url | script_tag }}
   {{ 'timber.js' | asset_url | script_tag }}
@@ -97,19 +102,6 @@
   {% comment %}
     Template-specific js
   {% endcomment %}
-  
-  {% unless settings.limit == 'No limit' %}
-  {{ 'jquery.limit.min.js' | asset_url | script_tag }}
-  <script>
-  Shopify.Cart.setProductHandle('{{ product.handle }}');
-  Shopify.Cart.limit( {
-      limitPer: '{{ settings.limit_per }}',
-      limitQuantity: {{ settings.limit_quantity }}{% if settings.limit == 'Enabled for products listed' %},
-      limitProductHandles: jQuery.trim("{{ settings.limit_product_handles }}").split(/[\s,;]+/){% endif %}{% if settings.limit_per == 'cart' and settings.limit_quantity == '1' %},
-      limitSkipCartPage: {% if settings.limit_skip_cart_page %}true{% else %}false{% endif %}{% endif %}
-      } );
-  </script>
-  {% endunless %}
   
   <script>
     //if there's a promo banner add a class to the body so we can pad it
@@ -163,6 +155,15 @@
     {% include 'zopim' %}
   {% endif %}
   {% include 'discount-code-notifier' %}
+
+<!-- Load vimeo api -->
+{% if template == 'product' %}
+<script src="https://player.vimeo.com/api/player.js"></script>
+{% endif %}
+
+{% if template == 'index' and shop.locale == 'en' %}
+{{ 'compat-detect.js' | asset_url | script_tag }}
+{% endif %}
 
 </body>
 </html>

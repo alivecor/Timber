@@ -1,11 +1,6 @@
 {% include 'omniconvert' %}
 
-{% if shop.locale == 'en' %}
-  <script type="text/javascript">
-    window.ampConfig = {
-      sessionTTL: 30 * 60 * 1000
-    };
-  </script>
-  <!-- Scaled Interference-->
-  <!-- <script src="https://amp.ai/libs/49d088aea9955c6e.js"></script> -->
+{% if template == 'cart' and shop.locale == 'en' %}
+<!-- Amp script -->
+{% include 'amp-script-head' %}
 {% endif %}
