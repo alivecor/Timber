@@ -134,7 +134,11 @@
       </div>
     <div class="review-count">
       <a href="{{ product.url }}/#reviews">
-        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        {% if shop.locale == 'en' %}
+          <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
+        {% else %}
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        {% endif %}
         <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
       </a>
     </div>

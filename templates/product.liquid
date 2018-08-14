@@ -173,8 +173,12 @@
         <!-- Star rating ======================================================== -->
         <div class="review-count">
           <a href="#reviews" class="scroll-to-tab">
-            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-            <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
+            {% if shop.locale == 'en' %}
+              <span class=" stamped-product-reviews-badge" data-id="{{ product.id }}" style="display:block;">{{ product.metafields.stamped.badge }}</span>
+            {% else %}
+              <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+              <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
+            {% endif %}
           </a>
         </div>
 
