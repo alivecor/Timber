@@ -121,7 +121,7 @@
       <!-- Price stuff ======================================================== -->
       {% if product.compare_at_price_max > product.price %}
         <div>
-          <span id="ProductPrice" class="h2Price red" itemprop="price">
+          <span id="ProductPrice" class="h2Price red">
             {{ product.price | money }}
           </span>
           <span class="strikeout">
@@ -129,7 +129,7 @@
           </span>
         </div>
       {% else %}
-        <span id="ProductPrice" class="h2Price noFloat" itemprop="price">
+        <span id="ProductPrice" class="h2Price noFloat">
           {{ product.price | money }}
         </span>
       {% endif %}
@@ -147,6 +147,7 @@
       ======================================================== -->
       <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
         <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+        <meta itemprop="price" content="{{ product.price | money_without_currency }}">
         <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
 
       {% comment %}

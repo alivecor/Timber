@@ -100,7 +100,7 @@ templates/cart.liquid:
 templates/index.liquid:
   development: 2018-07-13T19:46:48+02:00   e2e4175495e604fcccee881c273b522e
 templates/product.liquid:
-  development: 2018-08-14T10:35:15-07:00   3a4c1c20fde3a2595987c68e8bc51838
+  development: 2018-08-16T09:40:29-07:00   1734ccf0ace93b11a5dcadb139c58394
 templates/product.pop-up.liquid:
   development: 2018-01-22T23:03:19+01:00   19afcbbb8c09f8d70dd592e32240e6e1
 templates/product.product-pre-order.liquid:
