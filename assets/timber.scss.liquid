@@ -1228,7 +1228,8 @@ html input[disabled] {
   text-transform: none;
   border-bottom: 1px solid transparent;
   padding: 0;
-  margin-right: 16px
+  margin-right: 16px;
+  line-height: 1.6;
 }
 .update-cart:hover, .update-cart:active, .update-cart:focus {
   line-height: 1.6;
@@ -3708,7 +3709,7 @@ Accordion Styles
     float: none;
     clear: both;
     margin: -20px auto;
-    width: 65%;
+    width: 80%;
   }
 }
 
@@ -4230,50 +4231,6 @@ Accordion Styles
   margin-bottom: 24px;
 }
 
-.splitRowTest {
-  display: flex;
-  flex-direction: column;
-  @media (min-width: 768px) {
-    display: block;
-  }
-}
-.iconTest {
-  .benefit-icons-cart {
-    @media (max-width: 768px) {
-      display: none;
-    }
-    display: block;
-    width: 100%;
-    margin: 20px 0 0 0;
-  }
-  &.cart-header {
-    padding: 5px 10px;
-    font-size: 14px;
-    background-color: $navy;
-    color: #fff;
-    text-align: center;
-    @media (min-width: 768px) {
-      display: none;
-    }
-  }
-  &.recommended-accessories {
-    @media (min-width: 768px) {
-      margin-top: 0;
-    }
-  }
-  &.secure-btn {
-    float: none;
-    display: block;
-    margin: 24px 0 0;
-    img {
-      width: 102px;
-    }
-  }
-  &.cartCheckout {
-    margin-top: 20px;
-    padding: 16px 38px;
-  }
-}
 // compatibility detector
 #deviceNameCompat {
   display: none;
@@ -4478,5 +4435,51 @@ Accordion Styles
     .stamped-badge-caption {
       display: none !important;
     }
+  }
+}
+
+/* Amp test styles */
+.splitRowTest {
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+.iconTest {
+  .benefit-icons-cart {
+    @media (max-width: 768px) {
+      display: none;
+    }
+    display: block;
+    width: 100%;
+    margin: 20px 0 0 0;
+  }
+  &.cart-header {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: $navy;
+    color: #fff;
+    text-align: center;
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+  &.recommended-accessories {
+    @media (min-width: 768px) {
+      margin-top: 0;
+    }
+  }
+  &.secure-btn {
+    float: none;
+    display: block;
+    margin: 24px 0 0;
+    img {
+      width: 102px;
+    }
+  }
+  &.cartCheckout {
+    margin-top: 20px;
+    padding: 16px 38px;
   }
 }
