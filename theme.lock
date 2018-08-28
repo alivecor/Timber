@@ -20,7 +20,7 @@ assets/styles.scss:
 assets/styles.scss.liquid:
   development: 2018-08-23T00:32:39+02:00   40e98c2af72b444f68c8574740a44717
 assets/timber.scss.liquid:
-  development: 2018-08-22T15:52:57-07:00   930b604f22c2ffdc45f34bbc3aed53de
+  development: 2018-08-22T16:33:39-07:00   930b604f22c2ffdc45f34bbc3aed53de
 layout/checkout.liquid:
   development: 2018-07-24T09:27:37-07:00   9c4070e26a290fa8f0883b95a4e06a9a
 layout/theme.liquid:
@@ -40,7 +40,7 @@ snippets/amp-script-head.liquid:
 snippets/amp-script.liquid:
   development: 2018-08-22T15:48:34-07:00   b2e277a44ae5e1e8a59f588b7e13598f
 snippets/analytics-scripts.liquid:
-  development: 2018-08-22T15:51:04-07:00   1f3dd89480588dfcb20bf4021cd048ba
+  development: 2018-08-22T16:33:36-07:00   1f3dd89480588dfcb20bf4021cd048ba
 snippets/benefit-icons-product.liquid:
   development: 2018-08-03T19:48:43+02:00   39587294d08006dce933bcf4b81db7d8
 snippets/compatibility-kardiaband.liquid:
@@ -60,7 +60,7 @@ snippets/gtm-head.liquid:
 snippets/home-grid-item.liquid:
   development: 2018-05-25T09:58:41-07:00   4d2c01276ff3708ed1b0a70b2495e8f9
 snippets/home-main-item.liquid:
-  development: 2018-08-23T00:32:34+02:00   27f735f7c58c6ca7b14bbb9889c25208
+  development: 2018-08-22T16:33:37-07:00   edd62d24ec7aead2b56d6b3431261bcb
 snippets/icon-android.svg.liquid:
   development: 2018-02-06T00:56:32+01:00   0310f836bb7c5ddd5a51a0d3447080b2
 snippets/icon-apple.svg.liquid:
@@ -96,11 +96,11 @@ snippets/tech-specs-kardiaband.liquid:
 snippets/tech-specs-kardiamobile.liquid:
   development: 2018-02-05T15:45:37-08:00   a33b70ced8ce763faf804edef0fef1e6
 templates/cart.liquid:
-  development: 2018-08-22T15:50:25-07:00   58cef6d014b2bf091dd01fbd67051c83
+  development: 2018-08-22T16:33:37-07:00   58cef6d014b2bf091dd01fbd67051c83
 templates/index.liquid:
   development: 2018-07-13T19:46:48+02:00   e2e4175495e604fcccee881c273b522e
 templates/product.liquid:
-  development: 2018-08-23T00:32:35+02:00   1734ccf0ace93b11a5dcadb139c58394
+  development: 2018-08-27T19:10:08+01:00   d86ff2f405ed70ba0b548871b7b099b8
 templates/product.pop-up.liquid:
   development: 2018-01-22T23:03:19+01:00   19afcbbb8c09f8d70dd592e32240e6e1
 templates/product.product-pre-order.liquid:

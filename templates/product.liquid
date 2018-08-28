@@ -40,6 +40,14 @@
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
   <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
 
+  {% if product.metafields.stamped.reviews_count and product.metafields.stamped.reviews_count != "0" %}
+  <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+  <span itemprop="itemReviewed" content="{{ product.title }}"></span>
+  <span itemprop="ratingValue" content="{{ product.metafields.stamped.reviews_average | round:2 }}"></span>
+  <span itemprop="ratingCount" content="{{ product.metafields.stamped.reviews_count }}"></span>
+  </div>
+  {% endif %}
+
   {% comment %}
     Get first variant, or deep linked one
   {% endcomment %}
