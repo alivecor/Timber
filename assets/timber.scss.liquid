@@ -4418,6 +4418,18 @@ Accordion Styles
   .stamped-sort-select {
     background-image: url("//cdn.shopify.com/s/files/1/0368/7037/t/16/assets/ico-select.svg?1400682090820275061");
   }
+  .stamped-button-primary {
+    background: $colorBtnPrimary;
+    border: 2px solid $colorBtnPrimary;
+    padding: 10px 12px;
+    &:hover {
+      background: lighten($colorBtnPrimary, 10%);
+      border: 2px solid lighten($colorBtnPrimary, 10%);
+    }
+  }
+  .stamped-form-label {
+    font-size: 16px;
+  }
 }
 .stamped-product-reviews-badge {
   .stamped-badge-starrating, .fa-star, .fa-star-checked, .fa-star-half-o, .fa-star-o, .stamped-fa-star, .stamped-fa-star-checked, .stamped-fa-star-half-o, .stamped-fa-star-o {
