@@ -7,8 +7,8 @@
   data-description="{{ product.description | escape }}"
   data-product-sku="{{product.handle}}"
   data-limit-words="50"
-  data-take-reviews="20">
-  {{ product.metafields.stamped.reviews }}
+  data-take-reviews="20"
+  data-sort="most-votes">
   </div>
 {% else %}
   <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>

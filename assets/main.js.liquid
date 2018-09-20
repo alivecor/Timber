@@ -220,3 +220,10 @@ function variantPreorder(product) {
 function variantForSale(product) {
   $('.late-ship.' + product).hide();
 }
+
+$(document).on('stamped:reviews:loaded', function(){
+  $('.stamped-sort-select option[value="most-votes"]').html('Most Helpful');
+});
+$(document).on('stamped:reviews:loaded', function(){
+  $('.stamped-sort-select option[value="least-votes"]').html('Least Helpful');
+});
