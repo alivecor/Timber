@@ -1,18 +1,83 @@
 <script type="text/javascript">
-  window.ampConfig = {
-    sessionTTL: 30 * 60 * 1000
-  };
+  function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+  }
+  var session_id = null,
+  user_id = null;
+  try {
+    session_id = getCookie("amp_session_id");
+    user_id = getCookie("amp_user_id");
+  }
+  catch (e) {
+    console.log(e)
+  }
+
+  if (session_id) {
+    window.ampConfig = {
+      sessionTTL: 30 * 60 * 1000,
+      amp: false,
+      builtinEvents: [
+        'AmpConnectionLatency1',
+        'AmpConnectionLatency2',
+        'AmpPageEnd',
+        'AmpSession',
+        'AmpClick',
+        'AmpScroll',
+        'AmpFocus',
+        'AmpHooks'
+      ],
+      id: session_id,
+      userId: user_id
+    }
+  }
+
 </script>
 <!-- prod -->
 <script src="https://amp.ai/libs/49d088aea9955c6e.js"></script>
 {% comment %}<!-- dev -->
-<script src="https://amp.ai/libs/84d1bf42f64b1a67.js"></script>
-{% endcomment %}
+<script src="https://amp.ai/libs/84d1bf42f64b1a67.js"></script>{% endcomment %}
+{% if product %}
+  {% assign productName = product.handle %}
+{% endif %}
+
 <script type="text/javascript">
-  var decision = amp.decide("Cart", { location: ["control", "variation"]}, { ttl: 30 * 60 * 1000 });
-</script>
-<style type="text/css">
-  .cart-wrapper {
-    visibility: hidden;
+  // only load if cookie exists
+  if (ampConfig.id) {
+    window.amp = new Amp(ampConfig);
+    amp.session = new amp.Session({id: ampConfig.id, userId: ampConfig.userId});
+
+    var pageName = '{{ template }}';
+    var productName = '{{ productName }}';
+    var observeType;
+    switch (pageName) {
+      case 'index':
+        observeType = 'StoreHomeView';
+        break;
+      case 'cart':
+        observeType = 'CartView';
+        break;
+      case 'product':
+        if (productName && productName === 'kardiamobile') {
+          observeType = 'KMProductPageView';
+        }
+        break;
+      default:
+        break;
+    }
+
+    if (amp) {
+      amp.session.observe(observeType);
+    }
   }
-</style>
+
+  function observeAmp(event, form, type) {
+    var event = event || window.event;
+    if (ampConfig && ampConfig.id && amp) {
+      event.preventDefault();
+      amp.session.observe(type);
+      form.submit()
+    }
+  }
+</script>

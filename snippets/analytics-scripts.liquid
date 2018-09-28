@@ -1,8 +1,8 @@
 {% include 'omniconvert' %}
 
-{% comment %}
-{% if template == 'cart' and shop.locale == 'en' %}
-<!-- Amp script -->
-{% include 'amp-script-head' %}
+{% if shop.locale == 'en' %}
+  {% if template == 'cart' or template == 'product' or template == 'index' %}
+  <!-- Amp script -->
+  {% include 'amp-script-head' %}
+  {% endif %}
 {% endif %}
-{% endcomment %}
