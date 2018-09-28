@@ -153,9 +153,7 @@
   {% endif %}
 
   <img src="{{ 'icon_shipping.png' | asset_url }}" alt="free shipping icon" class="hidden shipping-icon">
-  {% if shop.locale == 'en' %}
-    {% include 'zopim' %}
-  {% endif %}
+
   {% include 'discount-code-notifier' %}
 
 <!-- Load vimeo api -->
