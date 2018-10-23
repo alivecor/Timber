@@ -315,6 +315,8 @@
     "ios": "iOS",
     "android": "Android",
     "apple_compatibility": "Apple Compatibility",
+    "iphoneXs": "iPhone Xs",
+    "iphoneXsMax": "iPhone Xs Max",
     "iphoneX": "iPhone X",
     "iphone8_plus": "iPhone 8 Plus",
     "iphone8": "iPhone 8",
