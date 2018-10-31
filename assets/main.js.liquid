@@ -120,7 +120,8 @@ $(document).ready(function() {
   // cookie will expire after a year
   setCookie = function(value) {
     Cookies.set('accepts_cookies', value, {
-      expires: 365
+      expires: 365,
+      domain: 'alivecor.com'
     });
   };
 
