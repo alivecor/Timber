@@ -236,7 +236,7 @@ header.navigation {
     &.show {
       display: block;
       position: relative;
-      top: 15%;
+      top: 10%;
       width: 100%;
       text-align: center;
       overflow: hidden;
@@ -256,11 +256,14 @@ header.navigation {
     text-align: center;
     width: 100%;
     z-index: 9999;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     &.active {
       a {
         color: #2d9f86;
       }
+    }
+    @media (max-height: 420px) {
+      margin-bottom: 0;
     }
     @media (min-width: 1200px) {
       text-transform: uppercase;
