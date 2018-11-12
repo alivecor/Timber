@@ -6,7 +6,7 @@
     },
     "404": {
       "title": "404 Página no encontrada",
-      "subtext_html": "La página que ha solicitado no existe. Haga clic <a href=\"/collections/all\">aquí</a> para continuar la compra."
+      "subtext_html": "La página que ha solicitado no existe. Haga clic <a href=\"\/collections\/all\">aquí<\/a> para continuar la compra."
     },
     "breadcrumbs": {
       "store": "Store",
@@ -226,10 +226,10 @@
     },
     "onboarding": {
       "modal_title": "Casi allí...",
-      "no_products_html": "No tiene productos en su colección de portada. Este indicador aparecerá hasta que <a href=\"/admin/collections?tutorial=Frontpage\">agregue un producto a esta colección</a>.",
+      "no_products_html": "No tiene productos en su colección de portada. Este indicador aparecerá hasta que <a href=\"\/admin\/collections?tutorial=Frontpage\">agregue un producto a esta colección<\/a>.",
       "add_product": "Añadir un producto",
       "product_title": "Ejemplo título de producto",
-      "no_collections_html": "No tiene colecciones para mostrar aquí. <a href=\"/admin/custom_collections\">Agregue algunas colecciones</a> que acompañen a la Portada por defecto.",
+      "no_collections_html": "No tiene colecciones para mostrar aquí. <a href=\"\/admin\/custom_collections\">Agregue algunas colecciones<\/a> que acompañen a la Portada por defecto.",
       "add_collection": "Añadir una colección",
       "collection_title": "Ejemplo título de colección"
     }
@@ -281,7 +281,7 @@
     "product": {
       "sold_out": "Agotado",
       "on_sale": "En oferta",
-      "on_sale_from_html": "<strong>En oferta</strong> desde {{ price }}",
+      "on_sale_from_html": "<strong>En oferta<\/strong> desde {{ price }}",
       "unavailable": "No disponible",
       "compare_at": " Comparar en",
       "quantity": "Cantidad",
@@ -315,8 +315,9 @@
     "ios": "iOS",
     "android": "Android",
     "apple_compatibility": "Apple Compatibility",
-    "iphoneXs": "iPhone Xs",
-    "iphoneXsMax": "iPhone Xs Max",
+    "iphoneXr": "iPhone XR",
+    "iphoneXs": "iPhone XS",
+    "iphoneXsMax": "iPhone XS Max",
     "iphoneX": "iPhone X",
     "iphone8_plus": "iPhone 8 Plus",
     "iphone8": "iPhone 8",
@@ -344,8 +345,10 @@
     "watch1": "Apple Watch Series 1",
     "watch2": "Apple Watch Series 2",
     "watch3": "Apple Watch Series 3",
+    "watch4": "Apple Watch Series 4",
     "watch_os_4_1": "watchOS 4.1",
     "watch_os_4_3": "watchOS 4.3",
+    "watch_os_5_1": "watchOS 5.1",
     "ios_9_3_5": "iOS 9.3.5",
     "ios_10_0_2": "iOS 10.0.2",
     "last_updated_on": "Last updated on {{ date }}",
@@ -363,10 +366,12 @@
     "galaxy_s7": "Samsung Galaxy S7",
     "galaxy_s4": "Samsung Galaxy S4",
     "galaxy_j1": "Samsung Galaxy J1",
+    "google_pixel_3": "Google Pixel 3",
+    "google_pixel_3xl": "Google Pixel 3 XL",
     "google_pixel": "Google Pixel",
     "google_pixel_xl": "Google Pixel XL",
     "google_pixel_2": "Google Pixel 2",
-    "google_pixel_2xl": "Google Pixel 2XL",
+    "google_pixel_2xl": "Google Pixel 2 XL",
     "motorola_moto_g_gen_2": "Motorola Moto G Gen 2",
     "huawei_mate_10": "Huawei Mate 10",
     "android_6_0": "Android 6.0",
@@ -397,8 +402,8 @@
     "return_policy": "Return Policy"
   },
   "return_policy": {
-    "p1_html": "AliveCor will issue you a full refund on your purchase if you contact us within 30 days of delivery.  To request a refund, contact AliveCor Support at <a href=\"mailto:uksupport@alivecor.com\">uksupport@alivecor.com</a> or (855) 338-8800.  We will issue you an RMA number to include when you ship your device back to us and will process your refund upon receipt of your device.",
-    "p2_html": "If your device has stopped working and is still under warranty please contact us for troubleshooting assistance.  If we find that your device is in fact defective while within the <a href=\"https://www.alivecor.com/warranty\">warranty period</a> we will issue a replacement upon receipt of the faulty device."
+    "p1_html": "AliveCor will issue you a full refund on your purchase if you contact us within 30 days of delivery.  To request a refund, contact AliveCor Support at <a href=\"mailto:uksupport@alivecor.com\">uksupport@alivecor.com<\/a> or (855) 338-8800.  We will issue you an RMA number to include when you ship your device back to us and will process your refund upon receipt of your device.",
+    "p2_html": "If your device has stopped working and is still under warranty please contact us for troubleshooting assistance.  If we find that your device is in fact defective while within the <a href=\"https:\/\/www.alivecor.com\/warranty\">warranty period<\/a> we will issue a replacement upon receipt of the faulty device."
   },
   "tech_specs_kardiamobile": {
     "dimensions": "Dimensions",

@@ -1,6 +1,6 @@
 <p>{{ 'compatibility.intro_band' | t }}
 {% comment %}new Date().getTime(){% endcomment %}
-{% assign updated_date = '1541440000' | date: format: 'month_day_year'  %}
+{% assign updated_date = '1541775600' | date: format: 'month_day_year'  %}
 <br/><span class="italic">({{ 'compatibility.last_updated_on' | t: date: updated_date}})</span></p>
 <p class="italic">{{ 'compatibility.kb_requires' | t }}</p>
 <div class="kardiaband">
@@ -11,16 +11,20 @@
   </div>
   <ul class="chart">
     <li>
+      <span class="regular">{{ 'compatibility.watch4' | t }}</span>
+      ({{ 'compatibility.watch_os_5_1' | t }})
+    </li>
+    <li>
       <span class="regular">{{ 'compatibility.watch3' | t }}</span>
-      ({{ 'compatibility.watch_os_4_3' | t }})
+      ({{ 'compatibility.watch_os_5_1' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.watch2' | t }}</span>
-      ({{ 'compatibility.watch_os_4_3' | t }})
+      ({{ 'compatibility.watch_os_5_1' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.watch1' | t }}</span>
-      ({{ 'compatibility.watch_os_4_3' | t }})
+      ({{ 'compatibility.watch_os_5_1' | t }})
     </li>
     <li>
       NOT compatible with the<br>original Apple Watch (Series 0)
