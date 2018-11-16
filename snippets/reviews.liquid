@@ -1,1 +1,15 @@
-<div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+{% if shop.locale == 'en' %}
+  <div id="stamped-main-widget"
+  data-product-id="{{ product.id }}"
+  data-name="{{ product.title | escape }}"
+  data-url="{{ shop.url }}{{ product.url }}"
+  data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}"
+  data-description="{{ product.description | escape }}"
+  data-product-sku="{{product.handle}}"
+  data-limit-words="50"
+  data-take-reviews="20"
+  data-sort="most-votes">
+  </div>
+{% else %}
+  <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+{% endif %}

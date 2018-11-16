@@ -6,7 +6,7 @@
     },
     "404": {
       "title": "404 Seite nicht gefunden",
-      "subtext_html": "Die von Ihnen angeforderte Seite existiert nicht. Klicken Sie <a href=\"\">hier</a>, um den Einkauf fortzusetzen."
+      "subtext_html": "Die von Ihnen angeforderte Seite existiert nicht. Klicken Sie <a href=\"\">hier<\/a>, um den Einkauf fortzusetzen."
     },
     "breadcrumbs": {
       "store": "Store",
@@ -25,7 +25,7 @@
       "submit": "Suchen"
     },
     "header": {
-      "not_in_the": "Nicht in der/im ",
+      "not_in_the": "Nicht in der\/im ",
       "purchase_outside_of": "Kauf außerhalb von  "
     },
     "fake_nav": {
@@ -76,7 +76,7 @@
       "continue_browsing_html": "Jetzt einkaufen bei AliveCor",
       "close_cart": "Einkaufswagen schließen",
       "continue_shopping": "Mit dem Einkaufen fortfahren",
-      "kb_premium": "*Premium membership is required for KardiaBand. One month of Premium is included with purchase. Premium membership can be purchased in the app for €9.99/month or €99/year."
+      "kb_premium": "*Premium membership is required for KardiaBand. One month of Premium is included with purchase. Premium membership can be purchased in the app for €9.99\/month or €99\/year."
     },
     "label": {
       "product": "Artikel",
@@ -236,10 +236,10 @@
     },
     "onboarding": {
       "modal_title": "Fast fertig...",
-      "no_products_html": "Sie haben keine Artikel in Ihrer Startseiten-Zusammenstellung. Dieser Platzhalter wird entfernt, wenn Sie <a href=\"/admin/collections?tutorial=Frontpage\">dieser Zusammenstellung einen Artikel hinzufügen</a>.",
+      "no_products_html": "Sie haben keine Artikel in Ihrer Startseiten-Zusammenstellung. Dieser Platzhalter wird entfernt, wenn Sie <a href=\"\/admin\/collections?tutorial=Frontpage\">dieser Zusammenstellung einen Artikel hinzufügen<\/a>.",
       "add_product": "Fügen Sie einen Artikel hinzu",
       "product_title": "Titel des Beispielartikels",
-      "no_collections_html": "Sie haben hier keine Zusammenstellungen zum Anzeigen. <a href=\"/admin/custom_collections\">Fügen Sie ein paar Zusammenstellungen</a> zur Standard-Startseite hinzu.",
+      "no_collections_html": "Sie haben hier keine Zusammenstellungen zum Anzeigen. <a href=\"\/admin\/custom_collections\">Fügen Sie ein paar Zusammenstellungen<\/a> zur Standard-Startseite hinzu.",
       "add_collection": "Fügen Sie eine Sammlung hinzu",
       "collection_title": "Beispielhafter Zusammenstellungstitel"
     }
@@ -291,7 +291,7 @@
     "product": {
       "sold_out": "Ausverkauft",
       "on_sale": "Im Angebot",
-      "on_sale_from_html": "<strong>Im Angebot</strong> ab {{ price }}",
+      "on_sale_from_html": "<strong>Im Angebot<\/strong> ab {{ price }}",
       "unavailable": "Nicht verfügbar",
       "compare_at": "Vergleichen bei",
       "quantity": "Menge",
@@ -299,7 +299,7 @@
       "preorder": "Vorbestellung",
       "preorder_date": "Product will be shipped pending CE Mark.",
       "kb_premium1": "Also Requires Premium Membership",
-      "kb_premium2": "(available in Kardia app for €9.99/month or €99/year)"
+      "kb_premium2": "(available in Kardia app for €9.99\/month or €99\/year)"
     }
   },
   "gift_cards": {
@@ -325,11 +325,16 @@
     "ios": "iOS",
     "android": "Android",
     "apple_compatibility": "Apple Kompatibilität",
+    "iphoneXr": "iPhone XR",
+    "iphoneXs": "iPhone XS",
+    "iphoneXsMax": "iPhone XS Max",
     "iphoneX": "iPhone X",
     "iphone8_plus": "iPhone 8 Plus",
     "iphone8": "iPhone 8",
     "ios_11_1": "iOS 11.1",
     "ios_11_4": "iOS 11.4",
+    "ios_12_0": "iOS 12.0",
+    "ios_12_1": "iOS 12.1",
     "ios_10_3_3": "iOS 10.3.3",
     "iphone7_plus": "iPhone 7 Plus",
     "iphone7": "iPhone 7",
@@ -350,27 +355,33 @@
     "watch1": "Apple Watch Series 1",
     "watch2": "Apple Watch Series 2",
     "watch3": "Apple Watch Series 3",
+    "watch4": "Apple Watch Series 4",
     "watch_os_4_1": "watchOS 4.1",
     "watch_os_4_3": "watchOS 4.3",
+    "watch_os_5_1": "watchOS 5.1",
     "ios_9_3_5": "iOS 9.3.5",
     "ios_10_0_2": "iOS 10.0.2",
     "last_updated_on": "Zuletzt aktualisiert am {{ date }}",
     "android_compatibility": "Android Kompatibilität",
     "tested_for_compatibility": "Auf Kompatibilität mit den folgenden Android-Geräten geprüft:",
     "lg_nexus_5": "LG Nexus 5",
+    "samsung_note_9": "Samsung Note 9",
+    "samsung_note_8": "Samsung Note 8",
     "samsung_note_5": "Samsung Note 5",
     "samsung_note_3": "Samsung Note 3",
     "galaxy_s8": "Samsung Galaxy S8",
-    "android_7_0": "Android 7.0",
+    "galaxy_s9": "Samsung Galaxy S9",
     "galaxy_s5": "Samsung Galaxy S5",
     "galaxy_s6": "Samsung Galaxy S6",
     "galaxy_s7": "Samsung Galaxy S7",
     "galaxy_s4": "Samsung Galaxy S4",
     "galaxy_j1": "Samsung Galaxy J1",
+    "google_pixel_3": "Google Pixel 3",
+    "google_pixel_3xl": "Google Pixel 3 XL",
     "google_pixel": "Google Pixel",
     "google_pixel_xl": "Google Pixel XL",
     "google_pixel_2": "Google Pixel 2",
-    "google_pixel_2xl": "Google Pixel 2XL",
+    "google_pixel_2xl": "Google Pixel 2 XL",
     "motorola_moto_g_gen_2": "Motorola Moto G Gen 2",
     "huawei_mate_10": "Huawei Mate 10",
     "android_6_0": "Android 6.0",
@@ -379,8 +390,11 @@
     "android_5_0_1": "Android 5.0.1",
     "android_5_1_1": "Android 5.1.1",
     "android_4_3": "Android 4.3",
+    "android_7_0_0": "Android 7.0.0",
     "android_7_1_1": "Android 7.1.1",
     "android_8_0_0": "Android 8.0.0",
+    "android_8_1_0": "Android 8.1.0",
+    "android_9_0_0": "Android 9.0.0",
     "app_store": "App Store",
     "google_play": "Google Play",
     "use_of_kardia_mobile_requires_html": "Zur Verwendung des KardiaMobile ist die Begleit-App Kardia erforderlich, die Sie im {{itunes_url}} und im {{play_url}} herunterladen können.",
@@ -398,8 +412,8 @@
     "return_policy": "Rücksendevorschriften"
   },
   "return_policy": {
-    "p1_html": "Wenn Sie nicht zufrieden sind, erhalten Sie eine volle Rückerstattung des Kaufpreises, wenn Sie uns innerhalb von 30 Tagen nach Erhalt der Ware kontaktieren.  Kontaktieren Sie den AliveCor Kundendienst unter <a href=\"mailto:uksupport@alivecor.com\">uksupport@alivecor.com</a> um eine Erstattung zu beantragen.  Wir generieren eine Rücksendenummer für Sie, die Sie beilegen müssen, wenn Sie uns das Gerät zurücksenden, und wir bearbeiten Ihre Erstattung ab Eingang des Geräts.",
-    "p2_html": "Wenn Ihr Gerät nicht mehr funktioniert, jedoch noch unter Garantie steht, kontaktieren Sie uns bitte, damit wir Ihnen bei der Fehlersuche helfen können.  Wenn wir feststellen, dass Ihr Gerät tatsächlich defekt ist und es noch von der <a href=\"https://www.alivecor.com/warranty\">Garantiezeit</a> abgedeckt wird, schicken wir Ihnen nach Eingang der fehlerhaften Ware Ersatz."
+    "p1_html": "Wenn Sie nicht zufrieden sind, erhalten Sie eine volle Rückerstattung des Kaufpreises, wenn Sie uns innerhalb von 30 Tagen nach Erhalt der Ware kontaktieren.  Kontaktieren Sie den AliveCor Kundendienst unter <a href=\"mailto:uksupport@alivecor.com\">uksupport@alivecor.com<\/a> um eine Erstattung zu beantragen.  Wir generieren eine Rücksendenummer für Sie, die Sie beilegen müssen, wenn Sie uns das Gerät zurücksenden, und wir bearbeiten Ihre Erstattung ab Eingang des Geräts.",
+    "p2_html": "Wenn Ihr Gerät nicht mehr funktioniert, jedoch noch unter Garantie steht, kontaktieren Sie uns bitte, damit wir Ihnen bei der Fehlersuche helfen können.  Wenn wir feststellen, dass Ihr Gerät tatsächlich defekt ist und es noch von der <a href=\"https:\/\/www.alivecor.com\/warranty\">Garantiezeit<\/a> abgedeckt wird, schicken wir Ihnen nach Eingang der fehlerhaften Ware Ersatz."
   },
   "tech_specs_kardiamobile": {
     "dimensions": "Maße",
@@ -446,7 +460,7 @@
     "see_all_reviews": "Alle Bewertungen anzeigen"
   },
   "not_for_sale": {
-    "sign_up": "Melden Sie sich an und erfahren Sie als Erste/r, wenn Kardia Band erhältlich ist.",
+    "sign_up": "Melden Sie sich an und erfahren Sie als Erste\/r, wenn Kardia Band erhältlich ist.",
     "let_me_know": "Ich möchte mehr erfahren",
     "email_address": "E-Mail-Adresse"
   },

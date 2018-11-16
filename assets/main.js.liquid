@@ -120,7 +120,8 @@ $(document).ready(function() {
   // cookie will expire after a year
   setCookie = function(value) {
     Cookies.set('accepts_cookies', value, {
-      expires: 365
+      expires: 365,
+      domain: 'alivecor.com'
     });
   };
 
@@ -208,7 +209,7 @@ function variantPreorderProduct() {
 function variantForSaleProduct() {
   $('.late-ship').hide();
   $('#AddToCart').css('margin-bottom', '60px');
-  $('#free-ship-benefit').html("Free Shipping: <span>1-3 business days</span>");
+  $('#free-ship-benefit').html("Free Shipping: <span>2-5 business days</span>");
   $('.product-description ul li:last-of-type').show();
 }
 
@@ -220,3 +221,10 @@ function variantPreorder(product) {
 function variantForSale(product) {
   $('.late-ship.' + product).hide();
 }
+
+$(document).on('stamped:reviews:loaded', function(){
+  $('.stamped-sort-select option[value="most-votes"]').html('Most Helpful');
+});
+$(document).on('stamped:reviews:loaded', function(){
+  $('.stamped-sort-select option[value="least-votes"]').html('Least Helpful');
+});

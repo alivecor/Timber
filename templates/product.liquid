@@ -40,6 +40,14 @@
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
   <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
 
+  {% if product.metafields.stamped.reviews_count and product.metafields.stamped.reviews_count != "0" %}
+  <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+  <span itemprop="itemReviewed" content="{{ product.title }}"></span>
+  <span itemprop="ratingValue" content="{{ product.metafields.stamped.reviews_average | round:2 }}"></span>
+  <span itemprop="ratingCount" content="{{ product.metafields.stamped.reviews_count }}"></span>
+  </div>
+  {% endif %}
+
   {% comment %}
     Get first variant, or deep linked one
   {% endcomment %}
@@ -121,7 +129,7 @@
       <!-- Price stuff ======================================================== -->
       {% if product.compare_at_price_max > product.price %}
         <div>
-          <span id="ProductPrice" class="h2Price red" itemprop="price">
+          <span id="ProductPrice" class="h2Price red">
             {{ product.price | money }}
           </span>
           <span class="strikeout">
@@ -129,7 +137,7 @@
           </span>
         </div>
       {% else %}
-        <span id="ProductPrice" class="h2Price noFloat" itemprop="price">
+        <span id="ProductPrice" class="h2Price noFloat">
           {{ product.price | money }}
         </span>
       {% endif %}
@@ -147,6 +155,7 @@
       ======================================================== -->
       <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
         <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+        <meta itemprop="price" content="{{ product.price | money_without_currency }}">
         <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
 
       {% comment %}
@@ -173,8 +182,12 @@
         <!-- Star rating ======================================================== -->
         <div class="review-count">
           <a href="#reviews" class="scroll-to-tab">
-            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-            <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
+            {% if shop.locale == 'en' %}
+              <span class=" stamped-product-reviews-badge" data-id="{{ product.id }}" style="display:block;">{{ product.metafields.stamped.badge }}</span>
+            {% else %}
+              <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+              <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
+            {% endif %}
           </a>
         </div>
 

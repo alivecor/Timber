@@ -236,7 +236,7 @@ header.navigation {
     &.show {
       display: block;
       position: relative;
-      top: 15%;
+      top: 10%;
       width: 100%;
       text-align: center;
       overflow: hidden;
@@ -256,11 +256,14 @@ header.navigation {
     text-align: center;
     width: 100%;
     z-index: 9999;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     &.active {
       a {
         color: #2d9f86;
       }
+    }
+    @media (max-height: 420px) {
+      margin-bottom: 0;
     }
     @media (min-width: 1200px) {
       text-transform: uppercase;
@@ -794,7 +797,7 @@ footer {
       padding: 0;
       @media (min-width: 768px) {
         text-align: left;
-        height: 210px;
+        height: 278px;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -804,7 +807,7 @@ footer {
       @media (min-width: 1200px) {
         float: left;
         width: 75%;
-        height: 153px;
+        height: 184px;
         clear: none;
         margin: 0;
       }
@@ -835,10 +838,10 @@ footer {
     .content:first-of-type {
       .chart {
         @media (min-width: 768px) {
-          height: 286px;
+          height: 398px;
         }
         @media (min-width: 1200px) {
-          height: 183px;
+          height: 274px;
         }
       }
     }
@@ -850,7 +853,7 @@ footer {
     .content:first-of-type {
       .chart {
         @media (min-width: 768px) {
-          height: 85px;
+          height: 95px;
         }
         @media (min-width: 1200px) {
           height: 63px;
@@ -859,10 +862,10 @@ footer {
     }
     .chart {
       @media (min-width: 768px) {
-        height: 185px;
+        height: 218px;
       }
       @media (min-width: 1200px) {
-        height: 123px;
+        height: 154px;
       }
     }
   }
