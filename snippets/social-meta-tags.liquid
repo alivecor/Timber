@@ -37,10 +37,10 @@
 {% else %}
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ page_title | escape }}">
-  {% if settings.logo_use_image %}
-  <meta property="og:image" content="http:{{ 'logo.png' | asset_url }}">
-  <meta property="og:image:secure_url" content="https:{{ 'logo.png' | asset_url }}">
-  {% endif %}
+  <meta property="og:image" content="http:{{ 'social.png' | asset_url }}">
+  <meta property="og:image:secure_url" content="https:{{ 'social.png' | asset_url }}">
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 {% endif %}
 {% if page_description %}
   <meta property="og:description" content="{{ page_description | escape }}">
@@ -86,4 +86,8 @@
   <meta property="twitter:image" content="{{ src }}">
     {% endif %}
   {% endif %}
+{% else %}
+  <meta name="twitter:image" content="https:{{ 'social-small.png' | asset_url }}">
+  <meta name="twitter:image:width" content="640">
+  <meta name="twitter:image:height" content="360">
 {% endif %}
