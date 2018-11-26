@@ -1,1 +1,11 @@
 {% include 'omniconvert' %}
+
+{% comment %}
+  script only called on cart, product page, or home page
+{% endcomment %}
+{% if shop.locale == 'en' %}
+  {% if template == 'cart' or template == 'product' or template == 'index' %}
+  <!-- Amp script -->
+  {% include 'amp-script-head' %}
+  {% endif %}
+{% endif %}

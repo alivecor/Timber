@@ -154,7 +154,7 @@
     </div>
     {% endunless %}
   
-    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="{% if show_promo == true %}promoAdd(event, this, {{product.id}}){% endif %}">
+    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="{% if show_promo == true %}promoAdd(event, this, {{product.id}}){% endif %}{% if product.handle == 'kardiamobile' and shop.locale == 'en' %}observeAmp(event, this, 'HomePageKMAddToCart'){% endif %}">
       {% if product.variants.size > 1 %}
       <div class="variant-title {% if product.variants.size > 3 %}oneline{% endif %}">{{product.options.first | escape}}</div>
         {% assign has_checked = false %}
