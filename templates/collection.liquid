@@ -53,7 +53,7 @@
       {% endcomment %}
       {% for product in collection.products %}
 
-        {% include 'product-grid-item' %}
+        {% include 'product-grid-item', no_description: true  %}
 
       {% else %}
 
