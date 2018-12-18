@@ -52,11 +52,17 @@
 
   {% endcomment %}
   {% assign show_promo = false %}
+  {% assign km-oos = false %}
   {% assign show_preorder = false %}
   {% assign preorder-all = false %}
   {% for tag in product.tags %}
-    {% if product.handle == 'kardiamobile' and tag == 'pop-up' and shop.locale == 'en' %}
-      {% assign show_promo = true %}
+    {% if product.handle == 'kardiamobile' and shop.locale == 'en' %}
+      {% if tag == 'pop-up' %}
+        {% assign show_promo = true %}
+      {% endif %}
+      {% if tag == 'oos' %}
+        {% assign km-oos = true %}
+      {% endif %}
     {% endif %}
     {% if product.handle == 'kardiaband' and shop.locale == 'en' %}
       {% if tag == 'preorder' %}
@@ -153,7 +159,7 @@
       {{product.description}}
     </div>
     {% endunless %}
-  
+
     <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="{% if show_promo == true %}promoAdd(event, this, {{product.id}}){% endif %}{% if product.handle == 'kardiamobile' and shop.locale == 'en' %}observeAmp(event, this, 'HomePageKMAddToCart'){% endif %}">
       {% if product.variants.size > 1 %}
       <div class="variant-title {% if product.variants.size > 3 %}oneline{% endif %}">{{product.options.first | escape}}</div>
@@ -273,6 +279,11 @@
         {% if preorder-all == true %}
           <div class="late-ship home {{ product.handle }} show">
             <p>We can't make them fast enough! Please allow 3-4 weeks for delivery.</p>
+          </div>
+        {% endif %}
+        {% if km-oos %}
+          <div style="clear: left">
+            {% include 'oos-message', nomargin: false %}
           </div>
         {% endif %}
       </form>

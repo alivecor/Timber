@@ -28,9 +28,12 @@
 {% assign kmHowItWorksVideoId = '251698484' %}
 {% assign kbHowItWorksVideoId = '251698954' %}
 {% assign kb-promo = false %}
+{% assign km-oos = false %}
 {% for tag in product.tags %}
   {% if product.handle == 'kardiaband' and shop.locale == 'en' and tag == 'kb-promo' %}
     {% assign kb-promo = true %}
+  {% elsif product.handle == 'kardiamobile' and shop.locale == 'en' and tag == 'oos' %}
+    {% assign km-oos = true %}
   {% endif %}
 {% endfor%}
 
@@ -167,6 +170,11 @@
         
       {% include 'product-add-to-cart' %}
       </div>
+      {% if km-oos %}
+        <div style="clear: left">
+          {% include 'oos-message', nomargin: true %}
+        </div>
+      {% endif %}
 
       <!-- cool stuff! ======================================================== -->
       <h3 class="cool-stuff">

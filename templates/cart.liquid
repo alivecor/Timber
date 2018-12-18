@@ -10,6 +10,7 @@
 {% if cart.item_count > 0 %}
 {% assign kb_in_cart = false %}
 {% assign km_in_cart = false %}
+{% assign km-oos = false %}
   <form action="/cart" method="post" novalidate class="cart table-wrap" id="cartform">
 
     <!-- DISCOUNT CODE script for checkout ================================================== -->
@@ -40,6 +41,11 @@
         {% for item in cart.items %}
           {% if item.product.handle == 'kardiamobile' %}
             {% assign km_in_cart = true %}
+            {% for tag in item.product.tags %}
+              {% if shop.locale == 'en' and tag == 'oos' %}
+                {% assign km-oos = true %}
+              {% endif %}
+            {% endfor%}
           {% endif %}
           <tr class="cart__row table__section">
             <td data-label="{{ 'customer.order.product' | t }}">
@@ -138,7 +144,12 @@
         <div class="cart-text">
           <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
           {% if shop.locale == 'en' %}
-          <p>Shipping: 2-5 business days <span class="mobile">(USPS First Class)</span></p>
+            {% if km_in_cart and km-oos %}
+              <p>Shipping: USPS First Class</p>
+              {% include 'oos-message', nomargin: false %}
+            {% else %}
+              <p>Shipping: 2-5 business days <span class="mobile">(USPS First Class)</span></p>
+            {% endif %}
           {% endif %}
         </div>
         <!-- marketizator start -->

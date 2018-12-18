@@ -6,7 +6,11 @@
   </div>
   <div class="icon-block larger">
     {% include 'icon-shipping.svg' %}
-    <p id="free-ship-benefit">Free Shipping: <span>2-5 business days</span></p>
+    {% if km-oos %}
+      <p id="free-ship-benefit">Free Shipping</p>
+    {% else %}
+      <p id="free-ship-benefit">Free Shipping: <span>2-5 business days</span></p>
+    {% endif %}
   </div>
   <div class="icon-block">
     {% include 'icon-warranty.svg' %}
