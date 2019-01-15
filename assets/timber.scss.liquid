@@ -1351,20 +1351,19 @@ th, td {
       padding: 15px;
     }
 
-    td:before {
-      content: attr(data-label);
+    td[data-label]:before {
+      content: attr(data-label) ":";
       float: left;
       text-align: center;
       padding-right: 10px;
     }
 
     &.cart-table {
-      img {
+  /* img {
         margin: 0 auto 15px;
         clear: both;
         max-width: 300px;
-      }
-
+      } */
       .js-qty {
         float: right;
       }
@@ -2650,9 +2649,57 @@ label.error {
       color: $colorTextBody;
     }
   }
-  img {
-    width: 50%;
-    @include at-query($min, $large) {
+  @include at-query($max, $small) {
+    td {
+      float: right;
+      width: calc(100% - 150px);
+      clear: none;
+      text-align: left;
+      font-size: 16px;
+      input {
+        height: 30px;
+        padding: 0px 10px;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    td[data-layout="mobile-column"] {
+      float: left;
+      width: 150px;
+      &:before {
+        content: "";
+      }
+    }
+  }
+  @include at-query($small, $medium) {
+    td {
+      float: right;
+      width: 66%;
+      clear: none;
+      text-align: left;
+      font-size: 16px;
+      input {
+        height: 30px;
+        padding: 0px 10px;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    td[data-layout="mobile-column"] {
+      float: left;
+      width: 33%;
+      &:before {
+        content: "";
+      }
+    }
+    .cart_variant {
+      font-size: 16px;
+    }
+  }
+  @include at-query($min, $large) {
+    img {
       width: 108px;
     }
   }
@@ -2717,7 +2764,21 @@ input.quantity {
 }
 
 .cart__remove {
-  display: block;
+  display: none;
+  @include at-query ($min, $large) {
+    display: block;
+  }
+  &.mobile {
+    display: block;
+    text-align: center;
+    margin-top: 8px;
+    @include at-query ($min, $large) {
+      display: none;
+    }
+    small {
+      font-size: 16px;
+    }
+  }
 }
 .secure-btn {
   float: left;
@@ -2775,7 +2836,7 @@ input.quantity {
 }
 
 .total-cell {
-  margin-top: 15px;
+  margin-top: 6px;
   @include at-query($min, $medium) {
     margin-top: 0;
     text-align: right;

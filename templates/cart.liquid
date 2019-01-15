@@ -48,13 +48,16 @@
             {% endfor%}
           {% endif %}
           <tr class="cart__row table__section">
-            <td data-label="{{ 'customer.order.product' | t }}">
+            <td data-label="{{ 'customer.order.product' | t }}" data-layout="mobile-column">
               <a href="{{ item.url }}">
               {% comment %}
                 More image size options at:
                   - http://docs.shopify.com/themes/filters/product-img-url
               {% endcomment %}
               <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+              </a>
+              <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__remove mobile">
+                <small>{{ 'cart.general.remove' | t }}</small>
               </a>
             </td>
             <td>
@@ -64,7 +67,7 @@
                 </a>
               </h4>
               {% unless item.variant.title contains 'Default' %}
-                <small>{{ item.variant.title }}</small>
+                <small class="cart_variant">{{ item.variant.title }}</small>
               {% endunless %}
               {% comment %}
                 Add extra copy for KB
@@ -113,7 +116,7 @@
               </span>
             </td>
             <td data-label="{{ 'cart.label.quantity' | t }}">
-              <input class="quantity" type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0">
+              <input onchange="this.form.submit();" class="quantity" type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" pattern="[0-9]*">
             </td>
             <td data-label="{{ 'cart.label.total' | t }}" class="total-cell">
               <span class="h3">
