@@ -2751,6 +2751,9 @@ input.quantity {
 .cart__subtotal {
   margin: 0 0 0 ($gutter / 3);
   display: inline;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 26px;
 }
 
 .cart__mini-labels {
@@ -2784,7 +2787,7 @@ input.quantity {
   float: left;
   margin-bottom: 20px;
   margin-left: 20px;
-  @media (min-width: 768px) {
+  @include at-query($min, $medium) {
     margin-top: 4px;
   }
 }
@@ -2814,17 +2817,32 @@ input.quantity {
   float: right;
   border-bottom: 1px solid $teal;
 }
-.cart-text {
+.ous-cart-text {
   font-size: 16px;
-  margin-bottom: 20px;
-  p {
-    margin-bottom: 0;
-  }
-  .mobile {
-    @media (max-width: 768px) {
-      display: block;
+  margin-bottom: 50px;
+}
+.mobile-left {
+  float: left;
+  @include at-query($min, $medium) {
+    float: none;
+    &:after {
+      content: ":";
     }
   }
+}
+.cart-totals {
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 4px;
+  .right {
+    margin-left: 10px;
+  }
+}
+.shipping-desc {
+  font-size: 14px;
+  clear: both;
+  display: block;
+  margin-bottom: 50px;
 }
 
 .price-cell {
@@ -2882,14 +2900,14 @@ input.quantity {
 .cart-header {
   padding: 40px 0;
   background-color: $grey1;
-  @media (min-width: 768px) {
+  @include at-query($min, $medium) {
     padding: 60px 0 40px;
     margin-bottom: 60px;
   }
 }
 .cart-title {
   float: left;
-  @media (max-width: 768px) {
+  @include at-query($max, $medium) {
     margin-bottom: 40px;
   }
   h2 {

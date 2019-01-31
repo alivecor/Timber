@@ -133,28 +133,34 @@
         {% endfor %}
       </tbody>
     </table>
-    <div class="wrapper grid cart__row splitRowTest">
+    <div class="wrapper grid cart__row">
       {% if kb_in_cart %}
       <p class="kb_premium_message">
         {{ 'cart.general.kb_premium' | t}}
       </p>
       {% endif %}
-      <div class="grid__item one-whole text-right splitRowCheckout{% if settings.cart_notes_enable %} one-third small--one-whole{% endif %}">
-        <p>
-          <span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
-          <span class="h3 cart__subtotal">{{ cart.total_price | money }}</span>
+      <div class="text-right">
+        <p class="cart-totals">
+          <span class="{% if shop.locale == 'en' %}mobile-left {% endif %}cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
+          <span class="right cart__subtotal">{{ cart.total_price | money }}</span>
         </p>
-        <div class="cart-text">
-          <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
-          {% if shop.locale == 'en' %}
-            {% if km_in_cart and km-oos %}
-              <p>Shipping: USPS First Class</p>
-              {% include 'oos-message', nomargin: false %}
-            {% else %}
-              <p>Shipping: 2-5 business days <span class="mobile">(USPS First Class)</span></p>
-            {% endif %}
+        {% if shop.locale == 'en' %}
+          <p class="cart-totals">
+            <span class="mobile-left">Taxes</span>
+            <span class="right">Calculated at checkout</span>
+          </p>
+          <p class="cart-totals">
+            <span class="mobile-left">Shipping</span>
+            <span class="right">FREE</span>
+          </p>
+          {% if km_in_cart and km-oos %}
+            {% include 'oos-message', nomargin: false %}
+          {% else %}
+            <span class="shipping-desc">2-5 business days (USPS First Class)</span>
           {% endif %}
-        </div>
+        {% else %}
+          <p class="ous-cart-text">{{ 'cart.general.shipping_at_checkout' | t }}</p>
+        {% endif %}
         <!-- marketizator start -->
         <input id="mktz_custom" name="attributes[mktz_custom]" type="hidden" value="" />
         <!-- marketizator end -->
