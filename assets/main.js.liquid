@@ -134,6 +134,45 @@ $(document).ready(function() {
     setCookie(true);
   }
 
+  //Newsletter signup
+  var isEmail = function(email) {
+    var regex;
+    regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
+  };
+
+  $("#mc-embedded-subscribe").on('click', function(e) {
+    var email;
+    $("footer .not-valid").hide();
+    email = $("#mce-EMAIL").val();
+    if (isEmail(email)) {
+      var url = $("#mc-embedded-subscribe-form").prop('action');
+      $.ajax({
+        type: "GET",
+        url: url,
+        data: $("#mc-embedded-subscribe-form").serialize(),
+        dataType: "json",
+        crossDomain: true,
+        success: function(data) {
+          if (data.result == 'success') {
+            $("footer .thankyou").fadeIn();
+            var newsletterSubmitURL = window.location.protocol + '//' + window.location.host + window.location.pathname + '#newsletter-submit';
+            window.location.href = newsletterSubmitURL;
+          }
+        }
+      })
+      .done(function(data) {
+        if (data.result === 'error') {
+          $("footer .error").html(data.msg).fadeIn();
+        }
+      });
+    } else {
+      $("footer .bad-email").fadeIn();
+      return false;
+    }
+    e.preventDefault();
+  });
+
 });
 
 // video functions
