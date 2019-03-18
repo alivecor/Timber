@@ -138,7 +138,14 @@
           Works with most smartphones & tablets<br/>(Android & iOS)
         {% endif %}
         {% if product.handle == 'kardiaband' %}
-          {{ 'products.product.kb_premium1' | t }}<br/>{{ 'products.product.kb_premium2' | t }}
+          {{ 'products.product.kb_premium1' | t }}}<br/>
+          {% if shop.currency == 'GBP' %}
+            (available in Kardia app for £9.99/month or £99/year)
+          {% elsif shop.currency == 'EUR' %}
+            (available in Kardia app for €9.99/month or €99/year)
+          {% else %}
+            (available in Kardia app for $9.99/month or $99/year)
+          {% endif %}
         {% endif %}
       </div>
     <div class="review-count">
@@ -160,7 +167,7 @@
     </div>
     {% endunless %}
 
-    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="{% if show_promo == true %}promoAdd(event, this, {{product.id}}){% endif %}{% if product.handle == 'kardiamobile' and shop.locale == 'en' %}observeAmp(event, this, 'HomePageKMAddToCart'){% endif %}">
+    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="{% if show_promo == true %}promoAdd(event, this, {{product.id}}){% endif %}">
       {% if product.variants.size > 1 %}
       <div class="variant-title {% if product.variants.size > 3 %}oneline{% endif %}">{{product.options.first | escape}}</div>
         {% assign has_checked = false %}
