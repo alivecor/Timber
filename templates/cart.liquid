@@ -136,7 +136,11 @@
     <div class="wrapper grid cart__row">
       {% if kb_in_cart %}
       <p class="kb_premium_message">
-        {{ 'cart.general.kb_premium' | t}}
+        {% if shop.currency == 'EUR' %}
+          *Premium membership is required for KardiaBand. One month of Premium is included with purchase. Premium membership can be purchased in the app for €9.99/month or €99/year.
+        {% else %}
+          {{ 'cart.general.kb_premium' | t}}
+        {% endif %}
       </p>
       {% endif %}
       <div class="text-right">
