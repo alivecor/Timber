@@ -1,14 +1,15 @@
 <p>{{ 'compatibility.intro_mobile' | t }}
 {% comment %}new Date().getTime(){% endcomment %}
-{% assign updated_date = '1542024000' | date: format: 'month_day_year'  %}
+For a list of previously compatible devices please see <a href="https://alivecor.zendesk.com/hc/en-us/articles/115015935767" target="_blank">this article</a>.
+{% assign updated_date = '1553700000' | date: format: 'month_day_year'  %}
 <br/><span class="italic">({{ 'compatibility.last_updated_on' | t: date: updated_date}})</span></p>
 <div class="kardiamobile">
-<div class="content">
+<div class="content underline">
   <div class="brand">
     {% include 'icon-apple.svg' %}
-    <h3>{{ 'compatibility.ios' | t }}</h3>
+    <h3>iPhone</h3>
   </div>
-  <ul class="chart">
+  <ul class="chart iphone">
     <li>
       <span class="regular">{{ 'compatibility.iphoneXr' | t }}</span>
       ({{ 'compatibility.ios_12_1' | t }})
@@ -73,16 +74,28 @@
       <span class="regular">{{ 'compatibility.iphone5' | t }}</span>
       ({{ 'compatibility.ios_10_3_3' | t }})
     </li>
-    <li>
-      <span class="regular">{{ 'compatibility.ipad_air2' | t }}</span>
+  </ul>
+</div>
+<div class="content underline">
+  <div class="brand">
+    {% include 'icon-apple.svg' %}
+    <h3>iPad</h3>
+  </div>
+  <ul class="chart ipad">
+    <li><span class="regular">iPad Pro 12" (2nd Gen)</span>
+      ({{ 'compatibility.ios_12_1' | t }})
+    </li>
+    <li><span class="regular">iPad Pro 10.5" (2nd Gen)</span>
+      ({{ 'compatibility.ios_12_1' | t }})
+    </li>
+    <li><span class="regular">iPad Pro 12"</span>
+      ({{ 'compatibility.ios_12_1' | t }})
+    </li>
+    <li><span class="regular">iPad Pro 9"</span>
       ({{ 'compatibility.ios_12_1' | t }})
     </li>
     <li>
-      <span class="regular">{{ 'compatibility.ipad_air' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
-    </li>
-    <li>
-      <span class="regular">iPad (2017)</span>
+      <span class="regular">iPad 9.7" (2017)</span>
       ({{ 'compatibility.ios_12_1' | t }})
     </li>
     <li>
@@ -97,16 +110,12 @@
       <span class="regular">{{ 'compatibility.ipad_mini_2' | t }}</span>
       ({{ 'compatibility.ios_12_1' | t }})
     </li>
-    <li><span class="regular">iPad Pro 12"</span>
+    <li>
+      <span class="regular">{{ 'compatibility.ipad_air2' | t }}</span>
       ({{ 'compatibility.ios_12_1' | t }})
     </li>
-    <li><span class="regular">iPad Pro 9"</span>
-      ({{ 'compatibility.ios_12_1' | t }})
-    </li>
-    <li><span class="regular">iPad Pro (2nd Gen) 12"</span>
-      ({{ 'compatibility.ios_12_1' | t }})
-    </li>
-    <li><span class="regular">iPad Pro (2nd Gen) 10.5"</span>
+    <li>
+      <span class="regular">{{ 'compatibility.ipad_air' | t }}</span>
       ({{ 'compatibility.ios_12_1' | t }})
     </li>
   </ul>
@@ -116,13 +125,21 @@
     {% include 'icon-android.svg' %}
     <h3>{{ 'compatibility.android' | t }}</h3>
   </div>
-  <ul class="chart">
+  <ul class="chart android">
     <li>
       <span class="regular">{{ 'compatibility.google_pixel_3' | t }}</span>
       ({{ 'compatibility.android_9_0_0' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.google_pixel_3xl' | t }}</span>
+      ({{ 'compatibility.android_9_0_0' | t }})
+    </li>
+    <li>
+      <span class="regular">Google Pixel 2</span>
+      ({{ 'compatibility.android_9_0_0' | t }})
+    </li>
+    <li>
+      <span class="regular">Google Pixel 2 XL</span>
       ({{ 'compatibility.android_9_0_0' | t }})
     </li>
     <li>

@@ -777,7 +777,7 @@ footer {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
-      &:first-of-type {
+      &.underline {
         border-bottom: 1px solid $teal;
         margin-bottom: 32px;
         padding-bottom: 24px;
@@ -800,7 +800,6 @@ footer {
       padding: 0;
       @media (min-width: 768px) {
         text-align: left;
-        height: 278px;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -810,7 +809,6 @@ footer {
       @media (min-width: 1200px) {
         float: left;
         width: 75%;
-        height: 184px;
         clear: none;
         margin: 0;
       }
@@ -838,14 +836,28 @@ footer {
     }
   }
   .kardiamobile {
-    .content:first-of-type {
-      .chart {
-        @media (min-width: 768px) {
-          height: 398px;
-        }
-        @media (min-width: 1200px) {
-          height: 274px;
-        }
+    .chart.iphone {
+      @media (min-width: 768px) {
+        height: 248px;
+      }
+      @media (min-width: 1200px) {
+        height: 188px;
+      }
+    }
+    .chart.ipad {
+      @media (min-width: 768px) {
+        height: 158px;
+      }
+      @media (min-width: 1200px) {
+        height: 128px;
+      }
+    }
+    .chart.android {
+      @media (min-width: 768px) {
+        height: 308px;
+      }
+      @media (min-width: 1200px) {
+        height: 218px;
       }
     }
   }
@@ -853,22 +865,20 @@ footer {
     &>h3 {
       margin-bottom: 18px;
     }
-    .content:first-of-type {
-      .chart {
-        @media (min-width: 768px) {
-          height: 95px;
-        }
-        @media (min-width: 1200px) {
-          height: 63px;
-        }
+    .chart.watch {
+      @media (min-width: 768px) {
+        height: 95px;
+      }
+      @media (min-width: 1200px) {
+        height: 63px;
       }
     }
-    .chart {
+    .chart.phone {
       @media (min-width: 768px) {
         height: 218px;
       }
       @media (min-width: 1200px) {
-        height: 154px;
+        height: 158px;
       }
     }
   }
