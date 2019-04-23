@@ -3,7 +3,11 @@
   {% assign compatibility_liquid = 'compatibility-kardiamobile' %}
   {% assign techspecs_liquid = 'tech-specs-kardiamobile' %}
   {% assign compat_specs_product = true %}
-  {% assign premium_liquid = 'premium-table-kardiamobile' %}
+  {% if shop.currency == "USD" %}
+    {% assign premium_liquid = 'premium-table-kardiamobile-us' %}
+  {% else %}
+    {% assign premium_liquid = 'premium-table-kardiamobile' %}
+  {% endif %}
 {% endif %}
 {% if product.handle == "kardiaband" %}
   {% assign compatibility_liquid = 'compatibility-kardiaband' %}
