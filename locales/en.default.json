@@ -296,7 +296,7 @@
       "compare_at": "Compare at",
       "quantity": "Quantity",
       "add_to_cart": "Add to Cart",
-      "preorder": "Preorder",
+      "preorder": "Pre-order",
       "preorder_date": "Product will be shipped pending CE Mark.",
       "kb_premium1": "Also Requires Premium Membership",
       "kb_premium2": "(available in Kardia app for $9.99\/month or $99\/year)"
@@ -319,7 +319,7 @@
     "month_day_year": "%B %d, %Y"
   },
   "compatibility": {
-    "intro_mobile": "KardiaMobile is a medical device that is regulated per federal and international regulations; we rigorously test and validate devices with smartphones and tablets to meet or exceed these regulations before we claim compatibility. We routinely add support for new phones and tablets. Check back if your device is not listed below.",
+    "intro_mobile": "{{ product_title }} is a medical device that is regulated per federal and international regulations; we rigorously test and validate devices with smartphones and tablets to meet or exceed these regulations before we claim compatibility. We routinely add support for new phones and tablets. Check back if your device is not listed below.",
     "intro_band": "KardiaBand is a medical device that is regulated per federal and international regulations; we rigorously test and validate devices with smartphones and tablets to meet or exceed these regulations before we claim compatibility. We routinely add support for new phones and tablets. Check back if your device is not listed below.",
     "compatibility": "Compatibility",
     "ios": "iOS",
@@ -418,7 +418,7 @@
   "tech_specs_kardiamobile": {
     "dimensions": "Dimensions",
     "product_dims": "8.2 cm x 3.2 cm x 0.35 cm",
-    "electrode_dims": "2 3cm x 3cm stainless-steel electrodes",
+    "electrode_dims": "Two 3 cm x 3 cm stainless steel electrodes",
     "weight": "Weight",
     "product_weight": "18 grams",
     "power": "Power",
@@ -437,6 +437,17 @@
     "user_manuals": "User Manuals",
     "ios_user_manual_link": "KardiaMobile for iOS",
     "android_user_manual_link": "KardiaMobile for Android"
+  },
+  "tech_specs_kardiamobile6l": {
+    "product_dims": "9.0 cm x 3.0 cm x 0.72 cm",
+    "electrode_dims": "Three 3 cm x 3 cm stainless steel electrodes",
+    "product_weight": "24 grams",
+    "ekg_characteristics": "EKG Characteristics",
+    "six_lead": "Six Lead ECG",
+    "bit_depth": "14 bit resolution",
+    "connection": "Connectivity",
+    "bluetooth": "Bluetooth Low Energy technology",
+    "range": "1m wireless range"
   },
   "tech_specs_kardiaband": {
     "dimensions": "Dimensions (Sensor Module only)",

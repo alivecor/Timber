@@ -145,20 +145,6 @@
         </span>
       {% endif %}
 
-      <!-- For KB
-      ======================================================== -->
-      {% if product.handle == 'kardiaband' %}
-      <div class="disclaimer">
-        {{ 'products.product.kb_premium1' | t }}<br/>
-        {% if shop.currency == 'GBP' %}
-          (available in Kardia app for £9.99/month or £99/year)
-        {% elsif shop.currency == 'EUR' %}
-          (available in Kardia app for €9.99/month or €99/year)
-        {% else %}
-          (available in Kardia app for $9.99/month or $99/year)
-        {% endif %}
-      </div>
-      {% endif %}
 
       <!-- Add to Cart
       ======================================================== -->
@@ -174,46 +160,16 @@
       {% endif %}
       {% endcomment %}
         
-      {% include 'product-add-to-cart' %}
+      {% include 'product-add-to-cart', preorder: true t%}
       </div>
-      {% if km-oos %}
-        <div style="clear: left">
-          {% include 'oos-message', nomargin: true %}
-        </div>
-      {% endif %}
 
-      <!-- cool stuff! ======================================================== -->
-      <h3 class="cool-stuff">
-        {% if shop.locale == 'en' %}
-          {% include 'benefit-icons-product' %}
-        {% else %}
-          {{ 'main_product.guarantee' | t }}<br>
-          {{ 'main_product.warranty_2years' | t }}
-        {% endif %}
-      </h3>
+      <div style="clear: left">
+        <p class="km6l-preorder-message">
+        Please allow 6-8 weeks for delivery.
+        </p>
+      </div>
 
       <div>
-        <!-- Star rating ======================================================== -->
-        <div class="review-count">
-          <a href="#reviews" class="scroll-to-tab">
-            {% if shop.locale == 'en' %}
-              <span class=" stamped-product-reviews-badge" data-id="{{ product.id }}" style="display:block;">{{ product.metafields.stamped.badge }}</span>
-            {% else %}
-              <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-              <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
-            {% endif %}
-          </a>
-        </div>
-
-        {% if product_name == 'kardiamobile' or product_name == 'kardiaband' %}
-        <!-- Compat link ======================================================== -->
-        <div class="compat-link">
-          <a href="#compatibility" class="scroll-to-tab">
-            See compatibility
-          </a>
-        </div>
-        {% endif %}
-      </div>
 
       <!-- Product Description ====================================================== -->
       <div class="product-description rte product" itemprop="description">
@@ -248,7 +204,7 @@
 </div>
 
 <div class="mobile-add-to-cart-btn {{product.handle}}">
-  {% include 'product-add-to-cart-2' %}
+  {% include 'product-add-to-cart-2', preorder: true %}
 </div>
 
 {% include 'product-tabs' %}
@@ -313,6 +269,10 @@
       currentCaption = 'Check<br/>compatible<br/>devices';
       showCaption = true;
       break;
+//     case 'kardiamobile6l':
+//       currentCaption = 'Check compatible devices';
+//       showCaption = true;
+//       break;
     case 'kardiaband':
       currentCaption = '<span>Apple Watch Size</span>42mm / 38mm';
       showCaption = true;
@@ -355,5 +315,20 @@
         $('#ProductPhoto .img-caption').html('');
       }
     }
+    
+    $('#kardiamobile-6l #ProductThumbs li').on('click', function() {
+      if ($(this).index() === 3) {
+        $('#ProductPhoto .img-caption').show();
+        $('#ProductPhoto .img-caption').html('1-lead EKG recording with fingers');
+      } else if ($(this).index() === 4) {
+        $('#ProductPhoto .img-caption').show();
+        $('#ProductPhoto .img-caption').html('6-lead EKG recording with left knee');
+      } else if ($(this).index() === 5) {
+        $('#ProductPhoto .img-caption').show();
+        $('#ProductPhoto .img-caption').html('6-lead EKG recording with left ankle');
+      } else {
+        $('#ProductPhoto .img-caption').hide();
+      }
+    })
   });
 </script>

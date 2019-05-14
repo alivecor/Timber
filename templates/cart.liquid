@@ -10,6 +10,7 @@
 {% if cart.item_count > 0 %}
 {% assign kb_in_cart = false %}
 {% assign km_in_cart = false %}
+{% assign km6l_in_cart = false %}
 {% assign km-oos = false %}
   <form action="/cart" method="post" novalidate class="cart table-wrap" id="cartform">
 
@@ -75,6 +76,10 @@
               {% if item.product.handle == 'kardiaband' %}
                 {% assign kb_in_cart = true %}
                 <p><small>Requires Premium membership*</small></p>
+              {% endif %}
+              {% if item.product.handle == 'kardiamobile6l' %}
+                {% assign km6l_in_cart = true %}
+              <p><small>Please allow 6-8 weeks for delivery</small></p>
               {% endif %}
               {% if settings.cart_vendor_enable %}
                 <p>{{ item.vendor }}</p>
@@ -159,6 +164,8 @@
           </p>
           {% if km_in_cart and km-oos %}
             {% include 'oos-message', nomargin: false %}
+          {% elsif km6l_in_cart %}
+            <div class="shipping-spacer"></div>
           {% else %}
             <span class="shipping-desc">2-5 business days (USPS First Class)</span>
           {% endif %}

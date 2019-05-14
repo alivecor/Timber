@@ -70,6 +70,8 @@
     <span id="AddToCartText2">
     {% if sold_out %}
     {{ 'products.product.sold_out' | t }}
+    {% elsif preorder %}
+    {{ 'products.product.preorder' | t }}
     {% else %}
     {{ 'products.product.add_to_cart' | t }}
     {% endif %}

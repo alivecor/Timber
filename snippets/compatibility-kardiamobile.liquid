@@ -1,4 +1,5 @@
-<p>{{ 'compatibility.intro_mobile' | t }}
+{% assign product_title = product.title %}
+<p>{{ 'compatibility.intro_mobile' | t: product_title: product_title }}
 {% comment %}new Date().getTime(){% endcomment %}
 For a list of previously compatible devices please see <a href="https://alivecor.zendesk.com/hc/en-us/articles/115015935767" target="_blank">this article</a>.
 {% assign updated_date = '1553700000' | date: format: 'month_day_year'  %}

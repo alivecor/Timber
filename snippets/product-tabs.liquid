@@ -15,6 +15,12 @@
   {% assign compat_specs_product = true %}
   {% assign premium_liquid = 'premium-table-kardiaband' %}
 {% endif %}
+{% if product.handle == "kardiamobile6l" %}
+  {% assign compatibility_liquid = 'compatibility-kardiamobile' %}
+  {% assign techspecs_liquid = 'tech-specs-6l' %}
+  {% assign compat_specs_product = true %}
+  {% assign premium_liquid = 'premium-table-kardiamobile-us' %}
+{% endif %}
 {% if shop.currency == "GBP" %}
   {% assign premium_price = '£9.99/month or £99/year (£20 savings)' %}
 {% elsif shop.currency == "EUR" %}
@@ -77,6 +83,7 @@
     </div>
   </div>
   {% endif %}
+  {% if product.handle != "kardiamobile6l" %}
   <a name="reviews"></a>
   <div class="accordion" id="reviews">
     <h3>{{ 'product_tabs.reviews' | t }}
@@ -93,7 +100,7 @@
       {% include 'reviews' product=product %}
     </div>
   </div>
-
+  {% endif %}
   <a name="return_policy"></a>
   <div class="accordion" id="specs">
     <h3>{{ 'product_tabs.return_policy' | t }}

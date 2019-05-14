@@ -1111,8 +1111,8 @@ a.play-video {
     }
   }
   table {
-    margin: 0 0 8px;
-    width: 100%;
+    margin: 0 auto 8px;
+    width: calc(100% - 30px);
     color: $navy;
     @media (min-width: 1200px) {
       width: 80%;
@@ -1144,6 +1144,25 @@ a.play-video {
         &.bold {
           font-weight: bold;
           color: $teal;
+        }
+        &.wide {
+          font-weight: bold;
+          width: 80px;
+          @media(min-width: 768px) {
+            width: 160px;
+          }
+          @media(min-width: 1200px) {
+            width: 185px;
+          }
+          span {
+            font-size: 13px;
+            font-weight: normal;
+            display: block;
+            line-height: 16px;
+            @media(min-width: 1200px) {
+              font-size: 14px;
+            }
+          }
         }
       }
       &.basic {
