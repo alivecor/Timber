@@ -309,7 +309,8 @@
     "month_day_year": "%d %B, %Y"
   },
   "compatibility": {
-    "intro_mobile": "{{ product_title }} is a medical device that is regulated per federal and international regulations; we rigorously test and validate devices with smartphones and tablets to meet or exceed these regulations before we claim compatibility. We routinely add support for new phones and tablets. Check back if your device is not listed below.",
+    "intro_mobile_new": "{{ product_title }} is a medical device that is regulated per federal and international regulations; we rigorously test and validate devices with smartphones and tablets to meet or exceed these regulations before we claim compatibility. We routinely add support for new phones and tablets. Check back if your device is not listed below.",
+    "intro_mobile": "KardiaMobile is a medical device that is regulated per federal and international regulations; we rigorously test and validate devices with smartphones and tablets to meet or exceed these regulations before we claim compatibility. We routinely add support for new phones and tablets. Check back if your device is not listed below.",
     "intro_band": "KardiaBand is a medical device that is regulated per federal and international regulations; we rigorously test and validate devices with smartphones and tablets to meet or exceed these regulations before we claim compatibility. We routinely add support for new phones and tablets. Check back if your device is not listed below.",
     "compatibility": "Compatibility",
     "ios": "iOS",
@@ -325,6 +326,7 @@
     "ios_11_4": "iOS 11.4",
     "ios_12_0": "iOS 12.0",
     "ios_12_1": "iOS 12.1",
+    "ios_12_2": "iOS 12.2",
     "ios_10_3_3": "iOS 10.3.3",
     "iphone7_plus": "iPhone 7 Plus",
     "iphone7": "iPhone 7",
@@ -349,6 +351,7 @@
     "watch_os_4_1": "watchOS 4.1",
     "watch_os_4_3": "watchOS 4.3",
     "watch_os_5_1": "watchOS 5.1",
+    "watch_os_5_2": "watchOS 5.2",
     "ios_9_3_5": "iOS 9.3.5",
     "ios_10_0_2": "iOS 10.0.2",
     "last_updated_on": "Last updated on {{ date }}",
