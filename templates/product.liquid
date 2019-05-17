@@ -145,21 +145,6 @@
         </span>
       {% endif %}
 
-      <!-- For KB
-      ======================================================== -->
-      {% if product.handle == 'kardiaband' %}
-      <div class="disclaimer">
-        {{ 'products.product.kb_premium1' | t }}<br/>
-        {% if shop.currency == 'GBP' %}
-          (available in Kardia app for £9.99/month or £99/year)
-        {% elsif shop.currency == 'EUR' %}
-          (available in Kardia app for €9.99/month or €99/year)
-        {% else %}
-          (available in Kardia app for $9.99/month or $99/year)
-        {% endif %}
-      </div>
-      {% endif %}
-
       <!-- Add to Cart
       ======================================================== -->
       <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">

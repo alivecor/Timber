@@ -8,7 +8,6 @@
 {% endcomment %}
 
 {% if cart.item_count > 0 %}
-{% assign kb_in_cart = false %}
 {% assign km_in_cart = false %}
 {% assign km6l_in_cart = false %}
 {% assign km-oos = false %}
@@ -71,12 +70,8 @@
                 <small class="cart_variant">{{ item.variant.title }}</small>
               {% endunless %}
               {% comment %}
-                Add extra copy for KB
+                Add extra copy for preorder
               {% endcomment %}
-              {% if item.product.handle == 'kardiaband' %}
-                {% assign kb_in_cart = true %}
-                <p><small>Requires Premium membership*</small></p>
-              {% endif %}
               {% if item.product.handle == 'kardiamobile6l' %}
                 {% assign km6l_in_cart = true %}
               <p><small>Please allow 6-8 weeks for delivery</small></p>
@@ -139,15 +134,6 @@
       </tbody>
     </table>
     <div class="wrapper grid cart__row">
-      {% if kb_in_cart %}
-      <p class="kb_premium_message">
-        {% if shop.currency == 'EUR' %}
-          *Premium membership is required for KardiaBand. One month of Premium is included with purchase. Premium membership can be purchased in the app for €9.99/month or €99/year.
-        {% else %}
-          {{ 'cart.general.kb_premium' | t}}
-        {% endif %}
-      </p>
-      {% endif %}
       <div class="text-right">
         <p class="cart-totals">
           <span class="{% if shop.locale == 'en' %}mobile-left {% endif %}cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
