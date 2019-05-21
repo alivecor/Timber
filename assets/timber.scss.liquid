@@ -3349,6 +3349,9 @@ input.quantity {
 }
 
 .tech-specs {
+  @include at-query($max, $medium) {
+    padding-left: 0;
+  }
   ul {
     list-style: none;
     margin: 0 0 25px 0;
@@ -4524,10 +4527,13 @@ Accordion Styles
     margin-right: 35px;
   }
   .stamped-review-footer {
-    position: absolute;
-    right: 0;
-    bottom: 0px;
-    width: 100%;
+    margin-top: 12px;
+    @include at-query($min, $medium) {
+      position: absolute;
+      right: 0;
+      bottom: 0px;
+      width: 100%;
+    }
   }
   .stamped-pagination {
     width: 100%;
