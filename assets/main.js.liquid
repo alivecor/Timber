@@ -5,10 +5,18 @@ $(document).ready(function() {
     scrollTop = $(window).scrollTop();
 
     // nav bar resize
-    if (scrollTop >= 50) {
-      $('.navigation').addClass('scrolled-nav');
-    } else if (scrollTop < 50) {
-      $('.navigation').removeClass('scrolled-nav');
+    if ($('.navigation').hasClass('home-banner')) {
+      if (scrollTop >= 100) {
+        $('.navigation').addClass('scrolled-nav');
+      } else if (scrollTop < 100) {
+        $('.navigation').removeClass('scrolled-nav');
+      }
+    } else {
+      if (scrollTop >= 50) {
+        $('.navigation').addClass('scrolled-nav');
+      } else if (scrollTop < 50) {
+        $('.navigation').removeClass('scrolled-nav');
+      }
     }
   });
 

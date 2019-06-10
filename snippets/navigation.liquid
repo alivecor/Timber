@@ -1,4 +1,13 @@
-<header class="navigation" role="banner">
+<header class="navigation {% if template == 'index' and shop.locale == 'en' %}home-banner{% endif %}" role="banner">
+  {% if template == 'index' and shop.locale == 'en' %}
+    <a href="https://store.alivecor.com/products/kardiamobile/?discount=HEART10">
+      <div class="banner red">
+        <div>
+            $10 off KardiaMobile for World Heart Rhythm Week. Enter HEART10 at checkout. <span>(US only. Expires 6/9/19)</span>
+        </div>
+      </div>
+    </a>
+  {% endif %}
   <div class="navigation-wrapper">
     <a href="https://www.alivecor.com" class="logo">
       {% include "alivecor-logo-teal.svg" %}

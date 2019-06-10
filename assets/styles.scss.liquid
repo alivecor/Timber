@@ -20,6 +20,16 @@ $button-text-transform: uppercase;
 $button-font-size: 14px;
 $button-height: 46px;
 
+// Nav and body height/spacing
+$promo-height-desktop: 50px;
+$promo-height-mobile: 65px;
+$navigation-height-home: 55px + $promo-height-mobile;
+$navigation-height-tablet-home: 55px + $promo-height-desktop;
+$navigation-height-horizontal-home: 120px + $promo-height-desktop;
+$navigation-height: 55px;
+$navigation-height-tablet: 55px;
+$navigation-height-horizontal: 120px;
+
 body {
   padding-top: 55px;
   -webkit-overflow-scrolling: touch;
@@ -34,6 +44,15 @@ body {
   margin: 0 auto;
   @media (min-width: 1200px) {
     padding-top: 120px;
+  }
+  &.homepage {
+    padding-top: $navigation-height-home;
+    @media (min-width: 768px) {
+      padding-top: $navigation-height-tablet-home;
+    }
+    @media (min-width: 1200px) {
+      padding-top: $navigation-height-horizontal-home;
+    }
   }
 }
 body.omni-37138 {
@@ -64,10 +83,22 @@ header.navigation {
   -webkit-box-flex: 0;
   -webkit-flex: none;
   flex: none;
-
-  @media (min-width: 1200px) {
-    height: 120px;
+  &.home-banner {
+    height: $navigation-height-home;
   }
+  @media (min-width: 768px) {
+    height: $navigation-height-tablet;
+    &.home-banner {
+      height: $navigation-height-tablet-home;
+    }
+  }
+  @media (min-width: 1200px) {
+    height: $navigation-height-horizontal;
+    &.home-banner {
+      height: $navigation-height-horizontal-home;
+    }
+  }
+  
   &.scrolled-nav {
     border-bottom: 1px solid #dcdfde;
     height: 55px;
@@ -87,6 +118,12 @@ header.navigation {
     ul li.nav-link.free-ship {
       visibility: hidden;
       opacity: 0;
+    }
+    .banner, .banner.red {
+      visibility: hidden;
+      opacity: 0;
+      height: 0;
+      padding: 0;
     }
   }
   .navigation-wrapper {
@@ -1413,5 +1450,98 @@ a.play-video {
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+.banner {
+  background-color: $teal; 
+  height: 65px;
+  opacity: 100;
+  visibility: visible;
+  text-align: center;
+  padding: 13px 20px;
+  position: relative;
+  @media (min-width: 768px) {
+    height: 50px;
+  }
+  &.red {
+    background-color: $red;
+    padding: 4px 10px;
+    @media (min-width: 367px) {
+      padding: 13px 10px;
+    }
+    @media (min-width: 768px) {
+      padding: 4px 20px;
+    }
+    @media (min-width: 950px) {
+      padding: 13px 20px;
+    }
+    div {
+      font-size: 14px;
+      overflow: all;
+      white-space: normal;
+      @media (min-width: 768px) {
+        font-size: 18px;
+        white-space: nowrap;
+      }
+      span {
+        font-weight: normal;
+        font-size: 14px;
+        @media (min-width: 610px) {
+          display: block;
+        }
+        @media (min-width: 768px) {
+          font-size: 16px;
+        }
+        @media (min-width: 950px) {
+          display: inline;
+        }
+      }
+    }
+  }
+  div {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    @media (min-width: 768px) {
+      font-size: 16px;
+    }
+    &#message-1 {
+      display: block;
+      position: absolute;
+      width: calc(100% - 40px);
+      animation: showup1 14s infinite;
+    }
+    &#message-2 {
+      display: block;
+      position: absolute;
+      width: calc(100% - 40px);
+      animation: showup2 14s infinite;
+    }
+    span.mobile-break {
+      display: block;
+      @media (min-width: 768px) {
+        display: inline;
+      }
+    }
+  }
+}
+
+@keyframes showup1 {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  40% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes showup2 {
+  0% { opacity: 0; }
+  50% { opacity: 0; }
+  60% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
