@@ -4,7 +4,7 @@
 For a list of previously compatible devices please see <a href="https://alivecor.zendesk.com/hc/en-us/articles/115015935767" target="_blank">this article</a>.
 {% assign updated_date = '1559668830' | date: format: 'month_day_year'  %}
 <br/><span class="italic">({{ 'compatibility.last_updated_on' | t: date: updated_date}})</span></p>
-<div class="kardiamobile">
+<div class="kardiamobile{% if product.handle == 'kardiamobile6l' %} kardiamobile6l{% endif %}">
 <div class="content underline">
   <div class="brand">
     {% include 'icon-apple.svg' %}
@@ -67,6 +67,7 @@ For a list of previously compatible devices please see <a href="https://alivecor
       <span class="regular">{{ 'compatibility.iphone5s' | t }}</span>
       ({{ 'compatibility.ios_12_3' | t }})
     </li>
+    {% if product.handle != 'kardiamobile6l' %}
     <li>
       <span class="regular">{{ 'compatibility.iphone5c' | t }}</span>
       ({{ 'compatibility.ios_10_3_3' | t }})
@@ -75,6 +76,7 @@ For a list of previously compatible devices please see <a href="https://alivecor
       <span class="regular">{{ 'compatibility.iphone5' | t }}</span>
       ({{ 'compatibility.ios_10_3_3' | t }})
     </li>
+    {% endif %}
   </ul>
 </div>
 <div class="content underline">
