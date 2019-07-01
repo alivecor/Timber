@@ -4,6 +4,7 @@ $teal-hover: $light-teal;
 $grey1: #F1F5F3;
 $grey2: #BABFBD;
 $grey3: #536062;
+$light-grey: #E8E8E9;
 $lighter-teal: #E2E7E3;
 $red: #F15757;
 $navy: #142A39;
@@ -68,11 +69,6 @@ header.navigation {
   height: 55px;
   margin: 0 auto;
   z-index: 1002;
-  /*//transitions for resize nav*/
-  -webkit-transition: height 0.3s;
-  -moz-transition: height 0.3s;
-  -ms-transition: height 0.3s;
-  -o-transition: height 0.3s;
   transition: height 0.3s;
   /*//sticky styles*/
   position: fixed;
@@ -135,11 +131,8 @@ header.navigation {
       position: relative;
       width: 1200px;
       padding-top: 56px;
-      -webkit-transition: padding 0.3s;
-      -moz-transition: padding 0.3s;
-      -ms-transition: padding 0.3s;
-      -o-transition: padding 0.3s;
       transition: padding 0.3s;
+      background-color: #fff;
     }
   }
   .logo {
@@ -150,10 +143,6 @@ header.navigation {
     svg {
       width: 110px;
       height: 20px;
-      -webkit-transition: margin 0.3s;
-      -moz-transition: margin 0.3s;
-      -ms-transition: margin 0.3s;
-      -o-transition: margin 0.3s;
       transition: margin 0.3s;
       position: absolute;
       left: 0;
@@ -212,12 +201,13 @@ header.navigation {
     top: 0;
     left: 0;
     background-color: #142a39;
-    overflow-y: hidden;
+    overflow: hidden;
     transition: 0.4s;
     @media (min-width: 1200px) {
       position: static;
       background-color: transparent;
       transition: none;
+      overflow: visible;
     }
   }
   #js-mobile-menu-close {
@@ -265,11 +255,15 @@ header.navigation {
     clear: both;
     display: none;
     margin: 0 auto;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     padding: 0;
     width: 100%;
     z-index: 9999;
-
+  @media (min-width: 1200px) {
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
     &.show {
       display: block;
       position: relative;
@@ -277,28 +271,24 @@ header.navigation {
       width: 100%;
       text-align: center;
       overflow: hidden;
+      @media (min-width: 1200px) {
+        position: static;
+        overflow: visible;
+        text-align: left;
+      }
     }
 
-    @media (min-width: 1200px) {
-      display: inline;
-      margin: 0;
-      padding: 0;
-    }
+    
   }
   /*// The nav items*/
   ul li.nav-link {
     display: block;
     line-height: 36px;
-    overflow: hidden;
     text-align: center;
     width: 100%;
     z-index: 9999;
     margin-bottom: 18px;
-    &.active {
-      a {
-        color: #2d9f86;
-      }
-    }
+    position: relative;
     @media (max-height: 420px) {
       margin-bottom: 0;
     }
@@ -314,18 +304,20 @@ header.navigation {
         padding-right: 0;
       }
     }
+    &.active {
+      a {
+        color: $teal;
+      }
+    }
     &.free-ship {
       margin-top: 20px;
       opacity: 100;
       visibility: visible;
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      -ms-transition: all 0.3s;
-      -o-transition: all 0.3s;
       transition: all 0.3s;
       color: #f15757;
       font-weight: 600;
       font-size: 14px;
+      position: static;
       &:focus,
       &:hover {
         color: #f15757;
@@ -364,6 +356,67 @@ header.navigation {
       &.buy-now {
         color: #fff;
         font-size: 12px;
+      }
+    }
+    &#products-menu > a {
+      display: none;
+      @media (min-width: 1200px) {
+        display: inline-block;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .dropdown {
+      @media (min-width: 1200px) {
+        display: none;
+        position: absolute;
+        left: -21px;
+        text-align: left;
+        background-color: #fff;
+        padding: 0 20px 3px;
+        border-radius: 4px;
+        min-width: 220px;
+        top: 30px;
+        margin-top: 13px;
+        -webkit-box-shadow: 0px 6px 15px 6px rgba(0,0,0,0.08);
+        -moz-box-shadow: 0px 6px 15px 6px rgba(0,0,0,0.08);
+        box-shadow: 0px 6px 15px 6px rgba(0,0,0,0.08);
+      }
+      &.show {
+        display: block;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        li {
+          padding: 0;
+          margin-bottom: 18px;
+          line-height: 36px;
+          @media (min-width: 1200px) {
+            margin: 0;
+            line-height: 30px;
+            text-transform: none;
+            border-bottom: 1px solid #EAEEEB;
+            padding: 5px 0;
+          }
+          &:last-child {
+            border-bottom: none;
+          }
+          &.active a {
+            color: $teal;
+          }
+          a {
+            @media (min-width: 1200px) {
+              color: $navy;
+              letter-spacing: 0;
+            }
+            &:hover, &:focus {
+              color: $teal;
+            }
+          }
+        }
       }
     }
   }

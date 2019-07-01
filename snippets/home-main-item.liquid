@@ -84,12 +84,12 @@
       <div class="promo-banner">
         <span>Pre-order now!</span>
       </div>
-    {% endif %}
-    {% if product.handle == 'kardiamobile' %}
-      <div class="badge">
-        Best<br>Seller!
-      </div>
-    {% endif %}
+      {% endif %}
+      {% if product.handle == 'kardiamobile' %}
+        <div class="badge">
+          Best<br>Seller!
+        </div>
+      {% endif %}
     {% else %}
       {% comment %}
         Pre preorder ribbons for all stores
@@ -167,10 +167,14 @@
         {% comment %}
         Wrap description in a div and add another div into description in admin and use styles to show hide the correct one
         {% endcomment %}
-        {% if product.handle != 'kardiamobile6l' %}
-          {{product.description}}
+        {% if product.handle == 'kardiamobile' and shop.locale == 'en' %}
+          The best‑selling FDA‑cleared <strong>single‑lead</strong> personal EKG.<span class="break">
+        Detect Atrial Fibrillation or Normal heart rhythm with a medical-grade EKG anytime, anywhere.</span>
+        {% elsif product.handle == 'kardiamobile6l' and shop.locale == 'en' %}
+          The first and only FDA‑cleared <strong>six‑lead</strong> personal EKG.<span class="break">
+        Detect Atrial Fibrillation or Normal heart rhythm anytime, anywhere. 6‑lead EKG data gives your doctor a more complete view of your heart, and the ability to identify other cardiac arrhythmias.</span>
         {% else %}
-          KardiaMobile 6L is the only FDA-cleared personal six-lead EKG device in the world.
+          {{product.description}}
         {% endif %}
       </div>
     {% endunless %}
@@ -244,11 +248,11 @@
         {% comment %}
           for only one variant, need to choose the id to add to cart
         {% endcomment %}
-        {% if product.handle == 'kardiamobile' %}
-          <div class="disclaimer">
-            Works with most smartphones & tablets<br/>(Android & iOS)
-          </div>
-        {% endif %}
+        <div class="disclaimer">
+          <a href="{{ product.url }}/#compatibility">
+          Works with most smartphones & tablets<br/>(Android & iOS)
+          </a>
+        </div>
         {% for variant in product.variants %}
           <input type="hidden"
              id="{{variant.id}}"

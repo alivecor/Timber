@@ -74,7 +74,11 @@
               {% endcomment %}
               {% if item.product.handle == 'kardiamobile6l' %}
                 {% assign km6l_in_cart = true %}
-              <p><small>Please allow 3-4 weeks for delivery</small></p>
+                <p><small>Please allow 3-4 weeks for delivery</small></p>
+              {% endif %}
+              {% if item.product.handle == 'kardiamobile6l-phoneclip' %}
+                {% assign km6l_in_cart = true %}
+                <p><small>Please allow 2-3 weeks for delivery</small></p>
               {% endif %}
               {% if settings.cart_vendor_enable %}
                 <p>{{ item.vendor }}</p>
@@ -170,7 +174,7 @@
   </form>
   {% if km_in_cart %}
   <div class="km-accessories wrapper">
-    <div class="one-half medium--one-whole small--one-whole recommended-accessories">
+    <div class="one-half medium--one-whole small--one-whole cart-recommended-accessories">
       {% include 'recommended-accessories' %}
     </div>
   </div>

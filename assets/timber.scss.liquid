@@ -1050,7 +1050,7 @@ hr {
   }
 }
 .section h1 {
-  margin-bottom: 90px;
+  margin-bottom: 40px;
 }
 
 .collection-view {
@@ -1648,12 +1648,18 @@ label[for] {
   margin-right: 20px;
   margin-top: 5px;
   margin-bottom: 7px;
-  @media (max-width: 1200px) {
+  @media (max-width: 735px) {
     float: none;
   }
   &.oneline {
     float: none;
     margin-bottom: 10px;
+  }
+  span::after {
+    content: ' / ';
+  }
+  span:last-of-type::after {
+    content: '';
   }
 }
 input[type="radio"].variant-input {
@@ -1672,14 +1678,16 @@ input[type="radio"].variant-input {
   font-weight: normal;
   line-height: 1;
 }
-.variant-placeholder {
-  @media (min-width: 768px) {
-    height: 114px;
+/* .variant-placeholder {
+  &.kardiamobile-carrypod {
+    @media (min-width: 481px) {
+      height: 81px;
+    }
+    @media (min-width: 1200px) {
+      height: 40px;
+    }
   }
-  @media (min-width: 1200px) {
-    height: 48px;
-  }
-}
+} */
 .variant-placeholder-de {
   @media (min-width: 768px) {
     height: 89px;
@@ -2882,12 +2890,12 @@ input.quantity {
     font-size: em(18px);
   }
 }
-.recommended-accessories, .AddToCartAccessories {
+.cart-recommended-accessories, .AddToCartAccessories {
   @include at-query ($min, $medium) {
     margin: 20px 0;
   }
 }
-.recommended-accessories {
+.cart-recommended-accessories {
   margin-top: 40px;
   margin-bottom: 80px;
 }
@@ -3292,11 +3300,11 @@ input.quantity {
 }
 
 @include at-query($min, $medium) {
-  .recommended-accessories {
+  .cart-recommended-accessories {
     margin-top: -190px;
   }
 }
-.recommended-accessories {
+.cart-recommended-accessories {
   .grid__item form .btn {
     display: block;
     float: none;
@@ -3820,6 +3828,9 @@ Accordion Styles
   }
   .product-description {
     margin: 0;
+    @include at-query($max, 1200px) {
+      max-width: 550px;
+    }
     ul {
       margin: 0;
       li {
@@ -3828,6 +3839,11 @@ Accordion Styles
           display: block;
           font-size: 16px;
         }
+      }
+    }
+    span.break {
+      @include at-query($min, $small) {
+        display: block;
       }
     }
   }
@@ -4038,9 +4054,73 @@ Accordion Styles
     @include at-query($max, 380px) {
       margin-left: 6px;
     }
+    a {
+      color: $colorTextBody;
+    }
   }
   #AddToCartForm {
     position: relative;
+  }
+}
+.home-page-accessories-filter {
+  margin-bottom: 80px;
+  ul {
+    margin: 0;
+  }
+  li {
+    display: inline-block;
+    font-weight: bold;
+    margin: 0 24px 20px 0;
+    &:last-child {
+      margin: 0;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    &.active {
+      border-bottom: 1px solid $teal;
+    }
+  }
+}
+.accessory-title {
+  h1 {
+    text-align: center;
+  }
+  .line.center {
+    margin: 0 auto;
+  }
+}
+.home-accessories {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.home-grid-item.frontpage {
+  padding: 0 15px;
+  .variant-placeholder {
+    &.kardiamobile-carrypod {
+      @media (min-width: 481px) {
+        height: 81px;
+      }
+      @media (min-width: 735px) {
+        height: 52px;
+      }
+      @media (min-width: 1200px) {
+        height: 40px;
+      }
+    }
+  }
+}
+.home-grid-item.kardiamobile6l {
+  .variant-placeholder {
+    @media (min-width: 481px) {
+      height: 81px;
+    }
+    @media (min-width: 735px) and (max-width: 1200px) {
+      height: 52px;
+    }
+    @media (min-width: 1200px) {
+      height: 40px;
+    }
   }
 }
 .home-grid-item.grid__item {
@@ -4057,7 +4137,7 @@ Accordion Styles
       bottom: 0;
       width: 100%;
       text-align: center;
-      background-color: rgba(241, 245, 243, 0.6);
+/*       background-color: rgba(241, 245, 243, 0.6); */
       font-size: 14px;
       line-height: 16px;
       padding: 10px 24px;
@@ -4073,6 +4153,9 @@ Accordion Styles
   .title {
     margin-bottom: 6px;
     line-height: 30px;
+    @media (min-width: 481px) and (max-width: 735px) {
+      min-height: 60px;
+    }
   }
   &.large--one-quarter {
     .h4.title {
@@ -4109,9 +4192,17 @@ Accordion Styles
     float: left;
     margin-left: 28px;
     font-weight: bold;
-    @include at-query($max, 380px) {
+    @include at-query($max, 606px) {
       clear: left;
       margin: 0 0 20px 6px;
+    }
+  }
+  &.large--one-third {
+    .view-details {
+      @include at-query($medium, 860px) {
+        clear: left;
+        margin: 0 0 20px 6px;
+      }
     }
   }
   form .btn {
@@ -4581,52 +4672,6 @@ Accordion Styles
     .stamped-badge-caption {
       display: none !important;
     }
-  }
-}
-
-/* Amp test styles */
-.splitRowTest {
-  display: flex;
-  flex-direction: column;
-  @media (min-width: 768px) {
-    display: block;
-  }
-}
-.iconTest {
-  .benefit-icons-cart {
-    @media (max-width: 768px) {
-      display: none;
-    }
-    display: block;
-    width: 100%;
-    margin: 20px 0 0 0;
-  }
-  &.cart-header {
-    padding: 5px 10px;
-    font-size: 14px;
-    background-color: $navy;
-    color: #fff;
-    text-align: center;
-    @media (min-width: 768px) {
-      display: none;
-    }
-  }
-  &.recommended-accessories {
-    @media (min-width: 768px) {
-      margin-top: 0;
-    }
-  }
-  &.secure-btn {
-    float: none;
-    display: block;
-    margin: 24px 0 0;
-    img {
-      width: 102px;
-    }
-  }
-  &.cartCheckout {
-    margin-top: 20px;
-    padding: 16px 38px;
   }
 }
 
