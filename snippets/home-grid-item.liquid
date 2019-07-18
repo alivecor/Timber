@@ -160,8 +160,6 @@
       <span id="AddToCartText">
       {% if sold_out %}
       {{ 'products.product.sold_out' | t }}
-      {% elsif product.handle == 'kardiamobile6l-phoneclip' %}
-          {{ 'products.product.preorder' | t }}
       {% else %}
       {{ 'products.product.add_to_cart' | t }}
       {% endif %}
@@ -170,10 +168,5 @@
     <a href="{{ product.url }}" class="view-details">
       View Details
     </a>
-    {% if product.handle == 'kardiamobile6l-phoneclip' %}
-      <div class="late-ship home {{ product.handle }} show disclaimer">
-        Please allow 2-3 weeks for delivery.
-      </div>
-    {% endif %}
   </form>
 </div>

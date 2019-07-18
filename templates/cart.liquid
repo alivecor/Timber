@@ -46,6 +46,8 @@
                 {% assign km-oos = true %}
               {% endif %}
             {% endfor%}
+          {% elsif item.product.handle == 'kardiamobile6l' %}
+            {% assign km6l_in_cart = true %}
           {% endif %}
           <tr class="cart__row table__section">
             <td data-label="{{ 'customer.order.product' | t }}" data-layout="mobile-column">
@@ -70,16 +72,8 @@
                 <small class="cart_variant">{{ item.variant.title }}</small>
               {% endunless %}
               {% comment %}
-                Add extra copy for preorder
+                Add extra copy under product name
               {% endcomment %}
-              {% if item.product.handle == 'kardiamobile6l' %}
-                {% assign km6l_in_cart = true %}
-                <p><small>Please allow 3-4 weeks for delivery</small></p>
-              {% endif %}
-              {% if item.product.handle == 'kardiamobile6l-phoneclip' %}
-                {% assign km6l_in_cart = true %}
-                <p><small>Please allow 2-3 weeks for delivery</small></p>
-              {% endif %}
               {% if settings.cart_vendor_enable %}
                 <p>{{ item.vendor }}</p>
               {% endif %}
@@ -154,8 +148,6 @@
           </p>
           {% if km_in_cart and km-oos %}
             {% include 'oos-message', nomargin: false %}
-          {% elsif km6l_in_cart %}
-            <div class="shipping-spacer"></div>
           {% else %}
             <span class="shipping-desc">2-5 business days (USPS First Class)</span>
           {% endif %}

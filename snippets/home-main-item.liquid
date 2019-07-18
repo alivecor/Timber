@@ -53,7 +53,6 @@
   {% endcomment %}
   {% assign show_promo = false %}
   {% assign km-oos = false %}
-  {% assign show_preorder = false %}
   {% assign preorder-all = false %}
   {% for tag in product.tags %}
     {% if product.handle == 'kardiamobile' and shop.locale == 'en' %}
@@ -64,57 +63,31 @@
         {% assign km-oos = true %}
       {% endif %}
     {% endif %}
-    {% if product.handle == 'kardiaband' and shop.locale == 'en' %}
-      {% if tag == 'preorder' %}
-        {% assign show_preorder = true %}
-      {% endif %}
-      {% if tag == 'preorder-all' %}
-        {% assign preorder-all = true %}
-      {% endif %}
-    {% endif %}
   {% endfor%}
   
   <a href="{{ product.url }}" class="grid__image">
-    {% if show_promo == true %}
-      <div class="promo-banner"><span>A GIFT FOR YOUR HEART</span>: Buy KardiaMobile, get a free Carry Pod</div>
-    {% endif %}
+    
     <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+    {% comment %}
+      Banners/Badges for US
+    {% endcomment %}
     {% if shop.currency == 'USD' %}
-      {% if product.handle == 'kardiamobile6l' %}
-      <div class="promo-banner">
-        <span>Pre-order now!</span>
-      </div>
-      {% endif %}
       {% if product.handle == 'kardiamobile' %}
         <div class="badge">
           Best<br>Seller!
         </div>
+        {% if show_promo == true %}
+          <div class="promo-banner"><span>A GIFT FOR YOUR HEART</span>: Buy KardiaMobile, get a free Carry Pod</div>
+        {% endif %}
       {% endif %}
     {% else %}
       {% comment %}
-        Pre preorder ribbons for all stores
+        Ribbons for GB/DE stores
       {% endcomment %}
-      {% if product.handle == 'kardiamobile' and kb-promo == false %}
+      {% if product.handle == 'kardiamobile' %}
         <div class="ribbon">
           Best Seller
         </div>
-      {% endif %}
-      {% if product.handle == 'kardiaband' %}
-        {% if kb-promo == false %}
-        <div class="ribbon">
-          For {% include 'icon-apple.svg' %} Watch Only
-        </div>
-        {% else %}
-        <div class="ribbon nocaps">
-          Save $100. Extended through July 18!*
-        </div>
-        <div class="watch-only-overlay">
-          For <span>{% include 'icon-apple.svg' %} Watch</span> Only
-        </div>
-        <div class="discount-disclaimer">
-          *Offer ends July 18, 2018 11:59pm PDT. Limit 2 per order.
-        </div>
-        {% endif %}
       {% endif %}
     {% endif %}
   </a>
@@ -148,24 +121,20 @@
         {% endif %}
       {% endif %}
     </p>
-    {% if product.handle != 'kardiamobile6l' %}
-      <div class="review-count">
-        <a href="{{ product.url }}/#reviews">
-          {% if shop.locale == 'en' %}
-            <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
-          {% else %}
-            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-          {% endif %}
-          <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
-        </a>
-      </div>
-    {% else %}
-      <div class="review-spacer"></div>
-    {% endif %}
+    <div class="review-count">
+      <a href="{{ product.url }}/#reviews">
+        {% if shop.locale == 'en' %}
+          <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
+        {% else %}
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        {% endif %}
+        <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
+      </a>
+    </div>
     {% unless no_description %}
       <div class="product-description rte home" itemprop="description">
         {% comment %}
-        Wrap description in a div and add another div into description in admin and use styles to show hide the correct one
+          Custom descriptions for main products. Default is to use first bullet point.
         {% endcomment %}
         {% if product.handle == 'kardiamobile' and shop.locale == 'en' %}
           The best‑selling FDA‑cleared <strong>single‑lead</strong> personal EKG.<span class="break">
@@ -179,7 +148,14 @@
       </div>
     {% endunless %}
 
-    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="{% if show_promo == true %}promoAdd(event, this, {{product.id}}){% endif %}">
+    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+      {% if product.handle == 'kardiamobile' or product.handle == 'kardiamobile6l' %}
+      <div class="disclaimer">
+        <a href="{{ product.url }}/#compatibility">
+        Works with most smartphones & tablets<br/>(Android & iOS)
+        </a>
+      </div>
+      {% endif %}
       {% if product.variants.size > 1 %}
       <div class="variant-title {% if product.variants.size > 3 %}oneline{% endif %}">{{product.options.first | escape}}</div>
         {% assign has_checked = false %}
@@ -193,9 +169,6 @@
                  value="{{variant.id}}"
                  class="variant-input"
                  data-index="{{forloop.index0}}"
-                 {% if show_preorder == true %}
-                   onChange="variantPreorder('{{ product.handle }}')"
-                 {% endif %}
                  {% if has_checked == false %}
                    checked="true"
                    {% assign has_checked = true %}
@@ -218,9 +191,6 @@
                  value="{{variant.id}}"
                  class="variant-input"
                  data-index="{{forloop.index0}}"
-                 {% if show_preorder == true %}
-                   onChange="variantForSale('{{ product.handle }}')"
-                 {% endif %}
                  {% if has_checked == false %}
                    checked="true"
                    {% assign has_checked = true %}
@@ -248,11 +218,6 @@
         {% comment %}
           for only one variant, need to choose the id to add to cart
         {% endcomment %}
-        <div class="disclaimer">
-          <a href="{{ product.url }}/#compatibility">
-          Works with most smartphones & tablets<br/>(Android & iOS)
-          </a>
-        </div>
         {% for variant in product.variants %}
           <input type="hidden"
              id="{{variant.id}}"
@@ -270,21 +235,18 @@
       <div class="visually-hidden">
         <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
       </div>
-
-      {% comment %}
-        remove onclick function to stop auto adding item to cart
-      {% endcomment %}
       <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
         <span id="AddToCartText">
         {% if sold_out %}
           {{ 'products.product.sold_out' | t }}
-        {% elsif product.handle == 'kardiamobile6l' %}
-          {{ 'products.product.preorder' | t }}
         {% else %}
           {{ 'products.product.add_to_cart' | t }}
         {% endif %}
         </span>
       </button>
+      {% comment %}
+        International solutions for sold out
+      {% endcomment %}
       {% if product.handle == 'kardiamobile' and shop.currency == 'GBP' and sold_out %}
         <a href="https://www.amazon.co.uk/Kardia-Mobile-AliveCor-Black-0-6oz/dp/B01A4W8AUK/" class="btn amazon-sold-out-home" target="_blank">
           Buy From Amazon
@@ -298,22 +260,23 @@
           View Details
         </a>
       {% endif %}
+      {% comment %}
+        Show phone compatibility on mobile
+      {% endcomment %}
       {% if product.handle == 'kardiamobile' and shop.locale == 'en' %}
         <div id="deviceNameCompat"></div>
       {% endif %}
+      {% comment %}
+        Late ship/preorder messaging by tags
+      {% endcomment %}
       {% if preorder-all == true %}
-        <div class="late-ship home {{ product.handle }} show">
-          <p>We can't make them fast enough! Please allow 3-4 weeks for delivery.</p>
+        <div class="late-ship home {{ product.handle }} show disclaimer">
+          Please allow 1-2 weeks for delivery.
         </div>
       {% endif %}
       {% if km-oos %}
         <div style="clear: left">
           {% include 'oos-message', nomargin: false %}
-        </div>
-      {% endif %}
-      {% if product.handle == 'kardiamobile6l' %}
-        <div class="late-ship home {{ product.handle }} show disclaimer">
-          Please allow 3-4 weeks for delivery.
         </div>
       {% endif %}
     </form>

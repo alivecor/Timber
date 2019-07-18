@@ -9,12 +9,6 @@
     {% assign premium_liquid = 'premium-table-kardiamobile' %}
   {% endif %}
 {% endif %}
-{% if product.handle == "kardiaband" %}
-  {% assign compatibility_liquid = 'compatibility-kardiaband' %}
-  {% assign techspecs_liquid = 'tech-specs-kardiaband' %}
-  {% assign compat_specs_product = true %}
-  {% assign premium_liquid = 'premium-table-kardiaband' %}
-{% endif %}
 {% if product.handle == "kardiamobile6l" %}
   {% assign compatibility_liquid = 'compatibility-kardiamobile' %}
   {% assign techspecs_liquid = 'tech-specs-6l' %}
@@ -83,7 +77,7 @@
     </div>
   </div>
   {% endif %}
-  {% if product.handle != "kardiamobile6l" %}
+
   <a name="reviews"></a>
   <div class="accordion" id="reviews">
     <h3>{{ 'product_tabs.reviews' | t }}
@@ -100,7 +94,7 @@
       {% include 'reviews' product=product %}
     </div>
   </div>
-  {% endif %}
+
   <a name="return_policy"></a>
   <div class="accordion" id="specs">
     <h3>{{ 'product_tabs.return_policy' | t }}

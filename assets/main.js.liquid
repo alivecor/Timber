@@ -20,12 +20,6 @@ $(document).ready(function() {
     }
   });
 
-  $('#products-menu').hover(function() {
-    $('#products-menu .dropdown').addClass('show');
-  }, function() {
-    $('#products-menu .dropdown').removeClass('show');
-  });
-
   // if landing in the middle of the page, change nav to scrolled
   if ($(window).scrollTop() > 50) {
     $('.navigation').addClass('scrolled-nav');
@@ -42,12 +36,6 @@ $(document).ready(function() {
     $('#js-navigation-menu').removeAttr('style');
     $('#js-navigation-menu').removeClass('show');
   });
-
-  // store home add captions
-  // $('#home-grid-kardiamobile-carrypod .img-caption').html('KardiaMobile in Carry Pod, closed & open');
-  // $('#home-grid-kardiamobile-iphone-8-7-case .img-caption').html('KardiaMobile in iPhone 8/7 case');
-  // $('#home-grid-kardiamobile-phoneclip .img-caption').html('Phone Clip adheres to back of phone or phone case. KardiaMobile snaps right in.');
-  // $('#home-grid-iphone-5-5s-case .img-caption').html('Empty iPhone 5 / 5s / SE case');
 
   // product page change image on size change
   $('form').on('click', "input", function(e) {
@@ -194,34 +182,6 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
-//   // home page accessories filter
-//   $('.home-page-accessories-filter #all').addClass('active');
-//   $('.home-page-accessories-filter #all').on('click', function() {
-//     $('.home-grid-item.frontpage').slideDown();
-//     $('.home-page-accessories-filter li').removeClass('active');
-//     $('.home-page-accessories-filter #all').addClass('active');
-//   });
-//   $('.home-page-accessories-filter #km').on('click', function() {
-//     if ($('.home-grid-item.kardiamobile-accessories').is(':hidden')) {
-//       $('.home-grid-item.frontpage').slideUp();
-//       $('.home-grid-item.kardiamobile-accessories').slideDown();
-//     } else {
-//       $('.home-grid-item.frontpage:not(.kardiamobile-accessories)').slideUp();
-//     }
-//     $('.home-page-accessories-filter li').removeClass('active');
-//     $('.home-page-accessories-filter #km').addClass('active');
-//   });
-//   $('.home-page-accessories-filter #km6l').on('click', function() {
-//     if ($('.home-grid-item.kardiamobile6l-accessories').is(':hidden')) {
-//       $('.home-grid-item.frontpage').slideUp();
-//       $('.home-grid-item.kardiamobile6l-accessories').slideDown();
-//     } else {
-//       $('.home-grid-item.frontpage:not(.kardiamobile6l-accessories)').slideUp();
-//     }
-//     $('.home-page-accessories-filter li').removeClass('active');
-//     $('.home-page-accessories-filter #km6l').addClass('active');
-//   });
-
 });
 
 // video functions
@@ -301,15 +261,7 @@ function variantForSaleProduct() {
   $('.product-description ul li:last-of-type').show();
 }
 
-// for main store page
-// PREORDER TEXT ON BUTTON CHANGE
-function variantPreorder(product) {
-  $('.late-ship.' + product).show();
-}
-function variantForSale(product) {
-  $('.late-ship.' + product).hide();
-}
-
+// Change default sort of stamped reviews
 $(document).on('stamped:reviews:loaded', function(){
   $('.stamped-sort-select option[value="most-votes"]').html('Most Helpful');
 });
