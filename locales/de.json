@@ -413,7 +413,8 @@
     "omron_compatibility": "Omron Blood Pressure Monitor Compatibility",
     "watch": "Watch",
     "host_iphone": "Host iPhone",
-    "kb_requires": "KardiaBand requires a paired iPhone and Apple Watch, each of which must be in the list below:"
+    "kb_requires": "KardiaBand requires a paired iPhone and Apple Watch, each of which must be in the list below:",
+    "works_with_most": "Funktioniert mit vielen Smartphones und Tablets"
   },
   "product_tabs": {
     "compatibility": "Kompatibilität",
@@ -498,5 +499,11 @@
   },
   "discount_notification": {
     "message": "Discount code will be applied at checkout:"
+  },
+  "kardiamobile_home": {
+    "message_html": "The best‑selling FDA‑cleared <strong>single‑lead</strong> personal EKG.<span class=\"break\">Detect Atrial Fibrillation or Normal heart rhythm with a medical-grade EKG anytime, anywhere.</span>"
+  },
+  "kardiamobile6l_home": {
+    "message_html": "KardiaMobile 6L von AliveCor – das weltweit erste und einzige von der amerikanischen FDA freigegebene und CE-zertifizierte persönliche EKG Gerät mit sechs Ableitungen.<span class=\"break\">Erkennen Sie Vorhofflimmern oder einen normalen Herzrhythmus, wo auch immer Sie sich befinden. Ein 6-Kanal-EKG gibt Ihrem Arzt mehr Möglichkeiten, Ihren Herzrhythmus zu beurteilen.</span>"
   }
 }

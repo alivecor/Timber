@@ -137,11 +137,9 @@
           Custom descriptions for main products. Default is to use first bullet point.
         {% endcomment %}
         {% if product.handle == 'kardiamobile' and shop.locale == 'en' %}
-          The best‑selling FDA‑cleared <strong>single‑lead</strong> personal EKG.<span class="break">
-        Detect Atrial Fibrillation or Normal heart rhythm with a medical-grade EKG anytime, anywhere.</span>
-        {% elsif product.handle == 'kardiamobile6l' and shop.locale == 'en' %}
-          The first and only FDA‑cleared <strong>six‑lead</strong> personal EKG.<span class="break">
-        Detect Atrial Fibrillation or Normal heart rhythm anytime, anywhere. 6‑lead EKG data gives your doctor a more complete view of your heart, and the ability to identify other cardiac arrhythmias.</span>
+          {{ 'kardiamobile_home.message_html' | t }}
+        {% elsif product.handle == 'kardiamobile6l' %}
+          {{ 'kardiamobile6l_home.message_html' | t }}
         {% else %}
           {{product.description}}
         {% endif %}
@@ -152,7 +150,7 @@
       {% if product.handle == 'kardiamobile' or product.handle == 'kardiamobile6l' %}
       <div class="disclaimer">
         <a href="{{ product.url }}/#compatibility">
-        Works with most smartphones & tablets<br/>(Android & iOS)
+        {{ 'compatibility.works_with_most' | t }}<br/>(Android & iOS)
         </a>
       </div>
       {% endif %}

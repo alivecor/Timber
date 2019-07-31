@@ -403,7 +403,8 @@
     "omron_compatibility": "Omron Blood Pressure Monitor Compatibility",
     "watch": "Watch",
     "host_iphone": "Host iPhone",
-    "kb_requires": "KardiaBand requires a paired iPhone and Apple Watch, each of which must be in the list below:"
+    "kb_requires": "KardiaBand requires a paired iPhone and Apple Watch, each of which must be in the list below:",
+    "works_with_most": "Works with most smartphones & tablets"
   },
   "product_tabs": {
     "compatibility": "Compatibility",
@@ -489,5 +490,11 @@
   },
   "discount_notification": {
     "message": "Discount code will be applied at checkout:"
+  },
+  "kardiamobile_home": {
+    "message_html": "The best‑selling FDA‑cleared <strong>single‑lead</strong> personal EKG.<span class=\"break\">Detect Atrial Fibrillation or Normal heart rhythm with a medical-grade EKG anytime, anywhere.</span>"
+  },
+  "kardiamobile6l_home": {
+    "message_html": "The first and only FDA‑cleared and CE-marked <strong>six‑lead</strong> personal ECG.<span class=\"break\">Detect Atrial Fibrillation or Normal heart rhythm anytime, anywhere. 6‑lead EKG data gives your doctor a more complete view of your heart, and the ability to identify other cardiac arrhythmias.</span>"
   }
 }
