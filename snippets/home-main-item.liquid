@@ -136,7 +136,7 @@
         {% comment %}
           Custom descriptions for main products. Default is to use first bullet point.
         {% endcomment %}
-        {% if product.handle == 'kardiamobile' and shop.locale == 'en' %}
+        {% if product.handle == 'kardiamobile' %}
           {{ 'kardiamobile_home.message_html' | t }}
         {% elsif product.handle == 'kardiamobile6l' %}
           {{ 'kardiamobile6l_home.message_html' | t }}
