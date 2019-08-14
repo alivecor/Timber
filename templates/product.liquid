@@ -266,7 +266,7 @@
   </div>
   <div class="grid-uniform">
   {% for product in collections.main-product.products %}
-    {% if product_name == 'kardiamobile' %}
+    {% if product.handle == 'kardiamobile' %}
       {% assign grid_item_width = 'large--one-third medium--one-half' %}
       {% assign product_name = 'kardiamobile_accessory' %}
       {% include 'home-grid-item' %}
@@ -281,7 +281,7 @@
   </div>
   <div class="grid-uniform">
   {% for product in collections.main-product.products %}
-    {% if product_name == 'kardiamobile6l' %}
+    {% if product.handle == 'kardiamobile6l' %}
       {% assign grid_item_width = 'large--one-third medium--one-half' %}
       {% assign product_name = 'kardiamobile_accessory' %}
       {% include 'home-grid-item' %}
