@@ -37,6 +37,16 @@
   {% assign sold_out = false %}
 {% endif %}
 
+{% comment %}
+  Check tags
+{% endcomment %}
+{% assign lateship = false %}
+  {% for tag in product.tags %}
+    {% if tag == 'lateship' %}
+      {% assign lateship = true %}
+    {% endif %}
+  {% endfor%}
+
 <div class="home-grid-item grid__item {{ grid_item_width }} {{ product_name }} {{ product_collection }}">
 
   {% comment %}
@@ -132,9 +142,7 @@
       {% comment %}
         for only one variant, need to choose the id to add to cart
       {% endcomment %}
-      {% if shop.locale == 'en' %}
-        <div class="variant-placeholder {{product.handle}}"></div>
-      {% endif %}
+      <div class="variant-placeholder {{product.handle}}"></div>
       {% for variant in product.variants %}
         <input type="hidden"
            id="{{variant.id}}"
@@ -168,5 +176,10 @@
     <a href="{{ product.url }}" class="view-details">
       View Details
     </a>
+    {% if lateship == true %}
+      <div class="late-ship home {{ product.handle }} show disclaimer">
+        Please allow 1-2 weeks for delivery.
+      </div>
+    {% endif %}
   </form>
 </div>

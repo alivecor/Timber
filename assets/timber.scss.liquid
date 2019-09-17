@@ -2927,7 +2927,8 @@ Accordion Styles
   }
   @include at-query($min, $large) {
     img {
-      width: 108px;
+      display: block;
+      width: 136px;
     }
   }
 }
@@ -3127,16 +3128,23 @@ input.quantity {
   .grid__item form .btn {
     display: block;
     float: none;
-    @media (max-width: 768px) {
+    margin-top: 20px;
+    @include at-query($max, $medium) {
       padding: 16px 12px;
     }
+    @include at-query($min, $medium) {
+      padding: 16px 11px;
+    }
   }
-  .h4 {
+  .h4Title {
     font-size: 18px;
     min-height: 40px;
-    font-family: $bodyFontStack;
-    &.title {
-      font-weight: bold; 
+    line-height: 24px;
+  }
+  img {
+    @include at-query($min, $large) {
+      width: 136px;
+      margin: 0;
     }
   }
 }
@@ -4436,7 +4444,7 @@ input.quantity {
 }
 
 // Preorder messaging
-.cart-message, .km6l-preorder-message {
+.cart-message, .km6l-preorder-message, .product-late-ship {
   background-color: $light-blue;
   border-radius: 3px;
   font-size: 16px;
@@ -4457,7 +4465,7 @@ input.quantity {
     text-decoration: underline;
   }
 }
-.km6l-preorder-message {
+.km6l-preorder-message, .product-late-ship {
   margin-bottom: 40px;
 }
 

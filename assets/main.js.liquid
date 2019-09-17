@@ -44,7 +44,7 @@ $(document).ready(function() {
   });
 
   // home page change image on variant change
-  $('.home-grid-item form').on('click', "input", function(e) {
+  $('.home-grid-item form, .cart-recommended-accessories form').on('click', "input", function(e) {
     var imgUrl = $(this).data().imgUrl;
     var imgId = $(this).data().imgId;
     $('#' + imgId + ' img').attr('src', imgUrl);

@@ -39,6 +39,12 @@
       </thead>
       <tbody>
         {% for item in cart.items %}
+          {% assign lateship = false %}
+          {% for tag in item.product.tags %}
+            {% if tag == 'lateship' %}
+              {% assign lateship = true %}
+            {% endif %}
+          {% endfor %}
           {% if item.product.handle == 'kardiamobile' %}
             {% assign km_in_cart = true %}
             {% for tag in item.product.tags %}
@@ -74,6 +80,9 @@
               {% comment %}
                 Add extra copy under product name
               {% endcomment %}
+              {% if lateship %}
+                <p><small>Please allow 1-2 weeks for delivery.</small></p>
+              {% endif %}
               {% if settings.cart_vendor_enable %}
                 <p>{{ item.vendor }}</p>
               {% endif %}
@@ -167,6 +176,7 @@
   {% if km_in_cart %}
   <div class="km-accessories wrapper">
     <div class="one-half medium--one-whole small--one-whole cart-recommended-accessories">
+      {% assign grid_item_width = 'large--one-third medium--one-quarter small--one-half' %}
       {% include 'recommended-accessories' %}
     </div>
   </div>

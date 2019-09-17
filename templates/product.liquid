@@ -35,9 +35,13 @@
 {% assign kmHowItWorksVideoId = '251698484' %}
 {% assign km6lHowItWorksVideoId = '335613884' %}
 {% assign km-oos = false %}
+{% assign lateship = false %}
 {% for tag in product.tags %}
   {% if product.handle == 'kardiamobile' and shop.locale == 'en' and tag == 'oos' %}
     {% assign km-oos = true %}
+  {% endif %}
+  {% if tag == 'lateship' %}
+    {% assign lateship = true %}
   {% endif %}
 {% endfor%}
 
@@ -159,6 +163,13 @@
         <div style="clear: left">
           {% include 'oos-message', nomargin: true %}
         </div>
+      {% endif %}
+      {% if lateship %}
+      <div style="clear: left">
+        <p class="product-late-ship">
+          Please allow 1-2 weeks for delivery.
+        </p>
+      </div>
       {% endif %}
 
       <!-- cool stuff! ======================================================== -->
