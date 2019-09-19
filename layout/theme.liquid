@@ -79,7 +79,7 @@
   {% include 'gtm-body' %}
   {% include 'discount-code-body' %}
   {% include 'navigation' %}
-  {% if shop.locale == 'en' and template == 'index' %}
+  {% if (template == 'index' or template == 'product') and shop.locale == 'en'  %}
     {% include 'trust-banner' %}
   {% endif %}
   

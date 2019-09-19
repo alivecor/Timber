@@ -54,6 +54,7 @@
   {% assign show_promo = false %}
   {% assign km-oos = false %}
   {% assign preorder-all = false %}
+  {% assign fsa = false %}
   {% for tag in product.tags %}
     {% if product.handle == 'kardiamobile' and shop.locale == 'en' %}
       {% if tag == 'pop-up' %}
@@ -62,6 +63,9 @@
       {% if tag == 'oos' %}
         {% assign km-oos = true %}
       {% endif %}
+    {% endif %}
+    {% if product.handle == 'kardiamobile' or product.handle == 'kardiamobile6l') and shop.locale == 'en' and tag == 'fsa' %}
+      {% assign fsa = true %}
     {% endif %}
   {% endfor%}
   
@@ -121,6 +125,9 @@
         {% endif %}
       {% endif %}
     </p>
+    {% if fsa %}
+      {% include 'hsa-fsa-badge' %}
+    {% endif %}
     <div class="review-count">
       <a href="{{ product.url }}/#reviews">
         {% if shop.locale == 'en' %}

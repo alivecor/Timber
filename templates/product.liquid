@@ -36,6 +36,7 @@
 {% assign km6lHowItWorksVideoId = '335613884' %}
 {% assign km-oos = false %}
 {% assign lateship = false %}
+{% assign fsa = false %}
 {% for tag in product.tags %}
   {% if product.handle == 'kardiamobile' and shop.locale == 'en' and tag == 'oos' %}
     {% assign km-oos = true %}
@@ -43,8 +44,10 @@
   {% if tag == 'lateship' %}
     {% assign lateship = true %}
   {% endif %}
+  {% if product.handle == 'kardiamobile' or product.handle == 'kardiamobile6l') and shop.locale == 'en' and tag == 'fsa' %}
+    {% assign fsa = true %}
+  {% endif %}
 {% endfor%}
-
 
 <div itemscope itemtype="http://schema.org/Product">
 
@@ -76,29 +79,19 @@
         Create thumbnails if we have more than one product image
       {% endcomment %}
       {% if product.images.size > 1 %}
-        <ul class="product-single__thumbnails grid-uniform" id="ProductThumbs">
+        <ul class="product-single__thumbnails grid-uniform{% if product_name == 'kardiamobile6l' %} km6l-caption{% endif %}" id="ProductThumbs">
 
           {% for image in product.images %}
-            {% if product_name == 'kardiaband' %}
-              {% if forloop.first != true %}
-                <li class="grid__item one-third medium--one-fifth small--one-quarter">
-                  <a href="{{ image.src | img_url: '800x' }}" class="product-single__thumbnail">
-                    <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
-                  </a>
-                </li>
-              {% endif %}
-            {% else %}
-            <li class="grid__item one-third medium--one-fifth small--one-quarter">
+            <li class="grid__item one-fifth medium--one-fifth small--one-quarter">
               <a href="{{ image.src | img_url: '800x' }}" class="product-single__thumbnail">
                 <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
               </a>
             </li>
-          {% endif %}
           {% endfor %}
 
-          {% comment %} Add How it works video for KM and KB {% endcomment %}
+          {% comment %} Add How it works video for KM and 6L {% endcomment %}
           {% if product_name == 'kardiamobile' %}
-            <li class="grid__item one-third medium--one-fifth small--one-quarter">
+            <li class="grid__item one-fifth medium--one-fifth small--one-quarter">
               <a class="play-video ga-tracker"
                 data-videoid="{{ kmHowItWorksVideoId }}"
                 data-category="Video"
@@ -109,7 +102,7 @@
             </li>
           {% endif %}
           {% if product_name == 'kardiamobile6l' %}
-            <li class="grid__item one-third medium--one-fifth small--one-quarter">
+            <li class="grid__item one-fifth medium--one-fifth small--one-quarter">
               <a class="play-video ga-tracker"
                 data-videoid="{{ km6lHowItWorksVideoId }}"
                 data-category="Video"
@@ -156,7 +149,14 @@
       <div class="h3">{{product.options.first | escape}}</div>
       {% endif %}
       {% endcomment %}
-        
+
+      {% comment %}
+        For FSA eligible items -- tagged 'fsa'
+      {% endcomment %}
+      {% if fsa %}
+        {% include 'hsa-fsa-badge' %}
+      {% endif %}
+
       {% include 'product-add-to-cart' %}
       </div>
       {% if km-oos %}
@@ -164,6 +164,10 @@
           {% include 'oos-message', nomargin: true %}
         </div>
       {% endif %}
+
+      {% comment %}
+        For late ship items -- tagged 'lateship'
+      {% endcomment %}
       {% if lateship %}
       <div style="clear: left">
         <p class="product-late-ship">
@@ -347,7 +351,7 @@
       }
     }
 
-    $('#kardiamobile-6l #ProductThumbs li').on('click', function() {
+    $('#ProductThumbs.km6l-caption li').on('click', function() {
       if ($(this).index() === 3) {
         $('#ProductPhoto .img-caption').show();
         $('#ProductPhoto .img-caption').html('1-lead EKG recording with fingers');
