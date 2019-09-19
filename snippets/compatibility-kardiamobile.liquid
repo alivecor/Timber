@@ -1,70 +1,73 @@
-<p>{{ 'compatibility.intro_mobile' | t }}
+{% assign product_title = product.title %}
+<p>{{ 'compatibility.intro_mobile' | t: product_title: product_title }}
 {% comment %}new Date().getTime(){% endcomment %}
-{% assign updated_date = '1542024000' | date: format: 'month_day_year'  %}
+For a list of previously compatible devices please see <a href="https://alivecor.zendesk.com/hc/en-us/articles/115015935767" target="_blank">this article</a>.
+{% assign updated_date = '1559668830' | date: format: 'month_day_year'  %}
 <br/><span class="italic">({{ 'compatibility.last_updated_on' | t: date: updated_date}})</span></p>
-<div class="kardiamobile">
-<div class="content">
+<div class="kardiamobile{% if product.handle == 'kardiamobile6l' %} kardiamobile6l{% endif %}">
+<div class="content underline">
   <div class="brand">
     {% include 'icon-apple.svg' %}
-    <h3>{{ 'compatibility.ios' | t }}</h3>
+    <h3>iPhone</h3>
   </div>
-  <ul class="chart">
+  <ul class="chart iphone">
     <li>
       <span class="regular">{{ 'compatibility.iphoneXr' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.iphoneXs' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.iphoneXsMax' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.iphoneX' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.iphone8_plus' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.iphone8' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.iphone7_plus' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.iphone7' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.iphone6s_plus' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.iphone6s' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.iphone6_plus' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.iphone6' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.iphonese' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.iphone5s' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
+    {% if product.handle != 'kardiamobile6l' %}
     <li>
       <span class="regular">{{ 'compatibility.iphone5c' | t }}</span>
       ({{ 'compatibility.ios_10_3_3' | t }})
@@ -73,41 +76,50 @@
       <span class="regular">{{ 'compatibility.iphone5' | t }}</span>
       ({{ 'compatibility.ios_10_3_3' | t }})
     </li>
-    <li>
-      <span class="regular">{{ 'compatibility.ipad_air2' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+    {% endif %}
+  </ul>
+</div>
+<div class="content underline">
+  <div class="brand">
+    {% include 'icon-apple.svg' %}
+    <h3>iPad</h3>
+  </div>
+  <ul class="chart ipad">
+    <li><span class="regular">iPad Pro 12" (2nd Gen)</span>
+      ({{ 'compatibility.ios_12_3' | t }})
+    </li>
+    <li><span class="regular">iPad Pro 10.5" (2nd Gen)</span>
+      ({{ 'compatibility.ios_12_3' | t }})
+    </li>
+    <li><span class="regular">iPad Pro 12"</span>
+      ({{ 'compatibility.ios_12_3' | t }})
+    </li>
+    <li><span class="regular">iPad Pro 9"</span>
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
-      <span class="regular">{{ 'compatibility.ipad_air' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
-    </li>
-    <li>
-      <span class="regular">iPad (2017)</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      <span class="regular">iPad 9.7" (2017)</span>
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">iPad Mini 4</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.ipad_mini_3' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.ipad_mini_2' | t }}</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
-    <li><span class="regular">iPad Pro 12"</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+    <li>
+      <span class="regular">{{ 'compatibility.ipad_air2' | t }}</span>
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
-    <li><span class="regular">iPad Pro 9"</span>
-      ({{ 'compatibility.ios_12_1' | t }})
-    </li>
-    <li><span class="regular">iPad Pro (2nd Gen) 12"</span>
-      ({{ 'compatibility.ios_12_1' | t }})
-    </li>
-    <li><span class="regular">iPad Pro (2nd Gen) 10.5"</span>
-      ({{ 'compatibility.ios_12_1' | t }})
+    <li>
+      <span class="regular">{{ 'compatibility.ipad_air' | t }}</span>
+      ({{ 'compatibility.ios_12_3' | t }})
     </li>
   </ul>
 </div>
@@ -116,13 +128,29 @@
     {% include 'icon-android.svg' %}
     <h3>{{ 'compatibility.android' | t }}</h3>
   </div>
-  <ul class="chart">
+  <ul class="chart android">
+    <li>
+      <span class="regular">{{ 'compatibility.google_pixel_3a' | t }}</span>
+      ({{ 'compatibility.android_9_0_0' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.google_pixel_3axl' | t }}</span>
+      ({{ 'compatibility.android_9_0_0' | t }})
+    </li>
     <li>
       <span class="regular">{{ 'compatibility.google_pixel_3' | t }}</span>
       ({{ 'compatibility.android_9_0_0' | t }})
     </li>
     <li>
       <span class="regular">{{ 'compatibility.google_pixel_3xl' | t }}</span>
+      ({{ 'compatibility.android_9_0_0' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.google_pixel_2' | t }}</span>
+      ({{ 'compatibility.android_9_0_0' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.google_pixel_2xl' | t }}</span>
       ({{ 'compatibility.android_9_0_0' | t }})
     </li>
     <li>
@@ -146,7 +174,23 @@
       ({{ 'compatibility.android_6_0' | t }})
     </li>
     <li>
+      <span class="regular">{{ 'compatibility.galaxy_s10_plus' | t }}</span>
+      ({{ 'compatibility.android_9_0_0' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.galaxy_s10' | t }}</span>
+      ({{ 'compatibility.android_9_0_0' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.galaxy_s9_plus' | t }}</span>
+      ({{ 'compatibility.android_9_0_0' | t }})
+    </li>
+    <li>
       <span class="regular">{{ 'compatibility.galaxy_s9' | t }}</span>
+      ({{ 'compatibility.android_8_0_0' | t }})
+    </li>
+    <li>
+      <span class="regular">{{ 'compatibility.galaxy_s8_plus' | t }}</span>
       ({{ 'compatibility.android_8_0_0' | t }})
     </li>
     <li>
@@ -167,14 +211,6 @@
     </li>
     
     <li>
-      <span class="regular">{{ 'compatibility.galaxy_s4' | t }}</span>
-      ({{ 'compatibility.android_5_0_1' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.galaxy_j1' | t }}</span>
-      ({{ 'compatibility.android_5_1_1' | t }})
-    </li>
-    <li>
       <span class="regular">{{ 'compatibility.samsung_note_9' | t }}</span>
       ({{ 'compatibility.android_8_1_0' | t }})
     </li>
@@ -185,10 +221,6 @@
     <li>
       <span class="regular">{{ 'compatibility.samsung_note_5' | t }}</span>
       ({{ 'compatibility.android_7_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.samsung_note_3' | t }}</span>
-      ({{ 'compatibility.android_5_0' | t }})
     </li>
   </ul>
 </div>

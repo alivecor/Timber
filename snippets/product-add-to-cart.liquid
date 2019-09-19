@@ -1,9 +1,12 @@
-<form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
-  {% if product.variants.size > 1 %}
+<form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">  {% if product.variants.size > 1 %}
   {% comment %}
     If there are variants, show the user some choices via input controls, else we will hide the inputs
   {% endcomment %}
-    <div class="variant-title">{{product.options.first | escape}}</div>
+    <div class="variant-title">
+      {%- for option in product.options_with_values -%}
+        <span>{{ option.name | escape }}</span>
+      {%- endfor -%}
+    </div>
     {% assign has_checked = true %}
     {% unless product.selected_variant %}
       {% assign has_checked = false %}
@@ -70,6 +73,8 @@
     <span id="AddToCartText">
     {% if sold_out %}
     {{ 'products.product.sold_out' | t }}
+    {% elsif preorder %}
+    {{ 'products.product.preorder' | t }}
     {% else %}
     {{ 'products.product.add_to_cart' | t }}
     {% endif %}

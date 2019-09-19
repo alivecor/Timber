@@ -12,6 +12,9 @@
   {% assign product_accessories = collections.kardiamobile-accessories %}
   {% assign product_name = 'kardiamobile' %}
 {% endif %}
+{% if product.handle == 'kardiaband' %}
+  {% assign product_name = 'kardiaband' %}
+{% endif %}
 {% if product.handle == 'kardiamobile6l' %}
   {% assign product_accessories = collections.kardiamobile6l-accessories %}
   {% assign product_name = 'kardiamobile6l' %}
@@ -29,25 +32,21 @@
 {% assign isKm6LAccessory = false %}
 {% for km6lAccessoryProduct in collections.kardiamobile6l-accessories.products %}
   {% if product.handle == km6lAccessoryProduct.handle %}
-    {% assign isKm6LAccessory = true %}
+  {% assign isKm6LAccessory = true %}
   {% endif %}
 {% endfor %}
 {% assign kmHowItWorksVideoId = '251698484' %}
-{% assign km6lHowItWorksVideoId = '335613884' %}
+{% assign kbHowItWorksVideoId = '251698954' %}
+{% assign kb-promo = false %}
 {% assign km-oos = false %}
-{% assign lateship = false %}
-{% assign fsa = false %}
 {% for tag in product.tags %}
-  {% if product.handle == 'kardiamobile' and shop.locale == 'en' and tag == 'oos' %}
+  {% if product.handle == 'kardiaband' and shop.locale == 'en' and tag == 'kb-promo' %}
+    {% assign kb-promo = true %}
+  {% elsif product.handle == 'kardiamobile' and shop.locale == 'en' and tag == 'oos' %}
     {% assign km-oos = true %}
   {% endif %}
-  {% if tag == 'lateship' %}
-    {% assign lateship = true %}
-  {% endif %}
-  {% if product.handle == 'kardiamobile' or product.handle == 'kardiamobile6l') and shop.locale == 'en' and tag == 'fsa' %}
-    {% assign fsa = true %}
-  {% endif %}
 {% endfor%}
+
 
 <div itemscope itemtype="http://schema.org/Product">
 
@@ -71,6 +70,11 @@
   <div class="grid product-single">
     <div class="grid__item large--one-half text-center">
       <div class="product-single__photos" id="ProductPhoto">
+        {% if kb-promo == true %}
+          <div class="ribbon nocaps">
+            Save $100. Extended through July 18!*
+          </div>
+        {% endif %}
         {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
         <img src="{{ featured_image | img_url: '600x' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
         <div class="img-caption {{ product_name }}"></div>
@@ -78,39 +82,54 @@
       {% comment %}
         Create thumbnails if we have more than one product image
       {% endcomment %}
+      {% if kb-promo == true %}
+      <div class="discount-disclaimer-product">
+        *Offer ends July 18, 2018 11:59pm PDT. Limit 2 per order.
+      </div>
+      {% endif %}
       {% if product.images.size > 1 %}
-        <ul class="product-single__thumbnails grid-uniform{% if product_name == 'kardiamobile6l' %} km6l-caption{% endif %}" id="ProductThumbs">
+        <ul class="product-single__thumbnails grid-uniform" id="ProductThumbs">
 
           {% for image in product.images %}
-            <li class="grid__item one-fifth medium--one-fifth small--one-quarter">
+            {% if product_name == 'kardiaband' %}
+              {% if forloop.first != true %}
+                <li class="grid__item one-third medium--one-fifth small--one-quarter">
+                  <a href="{{ image.src | img_url: '800x' }}" class="product-single__thumbnail">
+                    <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+                  </a>
+                </li>
+              {% endif %}
+            {% else %}
+            <li class="grid__item one-third medium--one-fifth small--one-quarter">
               <a href="{{ image.src | img_url: '800x' }}" class="product-single__thumbnail">
                 <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
               </a>
             </li>
+          {% endif %}
           {% endfor %}
 
-          {% comment %} Add How it works video for KM and 6L {% endcomment %}
+          {% comment %} Add How it works video for KM and KB {% endcomment %}
           {% if product_name == 'kardiamobile' %}
-            <li class="grid__item one-fifth medium--one-fifth small--one-quarter">
-              <a class="play-video ga-tracker"
-                data-videoid="{{ kmHowItWorksVideoId }}"
-                data-category="Video"
-                data-action="KardiaMobile How it works"
-                data-label="/products/{{ handle }}">
-                <img src="{{ 'KM_video.jpg' | asset_img_url: 'compact' }}" alt="{{ image.alt | escape }}">
-              </a>
-            </li>
+          <li class="grid__item one-third medium--one-fifth small--one-quarter">
+            <a class="play-video ga-tracker"
+              data-videoid="{{ kmHowItWorksVideoId }}"
+              data-category="Video"
+              data-action="KardiaMobile How it works"
+              data-label="/products/{{ handle }}">
+              <img src="{{ 'KM_video.jpg' | asset_img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+            </a>
+          </li>
           {% endif %}
-          {% if product_name == 'kardiamobile6l' %}
-            <li class="grid__item one-fifth medium--one-fifth small--one-quarter">
-              <a class="play-video ga-tracker"
-                data-videoid="{{ km6lHowItWorksVideoId }}"
-                data-category="Video"
-                data-action="KardiaMobile 6L How it works"
-                data-label="/products/{{ handle }}">
-                <img src="{{ 'KM_video.jpg' | asset_img_url: 'compact' }}" alt="{{ image.alt | escape }}">
-              </a>
-            </li>
+          {% if product_name == 'kardiaband' %}
+          <li class="grid__item one-third medium--one-fifth small--one-quarter">
+            <a class="play-video ga-tracker"
+              data-videoid="{{ kbHowItWorksVideoId }}"
+              data-category="Video"
+              data-action="KardiaBand How it works"
+              data-label="/products/{{ handle }}">
+              <img src="{{ 'KB_video.jpg' | asset_img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+            </a>
+          </li>
           {% endif %}
 
         </ul>
@@ -136,6 +155,7 @@
         </span>
       {% endif %}
 
+
       <!-- Add to Cart
       ======================================================== -->
       <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -149,65 +169,21 @@
       <div class="h3">{{product.options.first | escape}}</div>
       {% endif %}
       {% endcomment %}
-
-      {% comment %}
-        For FSA eligible items -- tagged 'fsa'
-      {% endcomment %}
-      {% if fsa %}
-        {% include 'hsa-fsa-badge' %}
-      {% endif %}
-
-      {% include 'product-add-to-cart' %}
+        
+      {% include 'product-add-to-cart', preorder: true t%}
       </div>
-      {% if km-oos %}
-        <div style="clear: left">
-          {% include 'oos-message', nomargin: true %}
-        </div>
-      {% endif %}
 
-      {% comment %}
-        For late ship items -- tagged 'lateship'
-      {% endcomment %}
-      {% if lateship %}
       <div style="clear: left">
-        <p class="product-late-ship">
-          Please allow 1-2 weeks for delivery.
+        <p class="km6l-preorder-message">
+          {% if product.handle == 'kardiamobile6l' %}
+            Please allow 1-2 weeks for delivery.
+          {% elsif product.handle == 'kardiamobile6l-phoneclip' %}
+            Please allow 2-3 weeks for delivery.
+          {% endif %}
         </p>
       </div>
-      {% endif %}
-
-      <!-- cool stuff! ======================================================== -->
-      <h3 class="cool-stuff">
-        {% if shop.locale == 'en' %}
-          {% include 'benefit-icons-product' %}
-        {% else %}
-          {{ 'main_product.guarantee' | t }}<br>
-          {{ 'main_product.warranty_2years' | t }}
-        {% endif %}
-      </h3>
 
       <div>
-        <!-- Star rating ======================================================== -->
-        <div class="review-count">
-          <a href="#reviews" class="scroll-to-tab">
-            {% if shop.locale == 'en' %}
-              <span class=" stamped-product-reviews-badge" data-id="{{ product.id }}" style="display:block;">{{ product.metafields.stamped.badge }}</span>
-            {% else %}
-              <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-              <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
-            {% endif %}
-          </a>
-        </div>
-
-        {% if product_name == 'kardiamobile' or product_name == 'kardiamobile6l' %}
-        <!-- Compat link ======================================================== -->
-        <div class="compat-link">
-          <a href="#compatibility" class="scroll-to-tab">
-            See compatibility
-          </a>
-        </div>
-        {% endif %}
-      </div>
 
       <!-- Product Description ====================================================== -->
       <div class="product-description rte product" itemprop="description">
@@ -242,7 +218,7 @@
 </div>
 
 <div class="mobile-add-to-cart-btn {{product.handle}}">
-  {% include 'product-add-to-cart-2' %}
+  {% include 'product-add-to-cart-2', preorder: true %}
 </div>
 
 {% include 'product-tabs' %}
@@ -253,7 +229,7 @@
     <h3>{{ 'homepage.sections.frontpage_title' | t }}</h3>
   </div>
 
-  <div class="grid-uniform product-accessories">
+  <div class="grid-uniform">
 
     {% comment %}
       Loop through products in your KardiaMobile accessories collection.
@@ -295,13 +271,13 @@
     <h3>Use with</h3>
   </div>
   <div class="grid-uniform">
-  {% for product in collections.main-product.products %}
-    {% if product.handle == 'kardiamobile6l' %}
-      {% assign grid_item_width = 'large--one-third medium--one-half' %}
-      {% assign product_name = 'kardiamobile_accessory' %}
-      {% include 'home-grid-item' %}
-    {% endif %}
-  {% endfor %}
+    {% for product in collections.main-product.products %}
+      {% if product.handle == 'kardiamobile6l' %}
+        {% assign grid_item_width = 'large--one-third medium--one-half' %}
+        {% assign product_name = 'kardiamobile_accessory' %}
+        {% include 'home-grid-item' %}
+      {% endif %}
+    {% endfor %}
   </div>
 {% endif %}
 
@@ -320,12 +296,28 @@
       currentCaption = 'Check<br/>compatible<br/>devices';
       showCaption = true;
       break;
-    case 'kardiamobile-carrypod':
-      currentCaption = 'KardiaMobile in Carry Pod';
+//     case 'kardiamobile6l':
+//       currentCaption = 'Check compatible devices';
+//       showCaption = true;
+//       break;
+    case 'kardiaband':
+      currentCaption = '<span>Apple Watch Size</span>42mm / 38mm';
       showCaption = true;
       break;
-    case 'kardiamobile-phoneclip':
+    case 'carrypod':
+      currentCaption = 'KardiaMobile in Carry Pod, closed & open';
+      showCaption = true;
+      break;
+    case 'phoneclip':
       currentCaption = 'Phone Clip adheres to back of phone or phone case. KardiaMobile snaps right in.';
+      showCaption = true;
+      break;
+    case 'iphone-8-7-case':
+      currentCaption = 'KardiaMobile in iPhone 8/7 case';
+      showCaption = true;
+      break;
+    case 'iphone-5-5s-case':
+      currentCaption = 'Empty iPhone 5 / 5s / SE case';
       showCaption = true;
       break;
     default:
@@ -350,8 +342,8 @@
         $('#ProductPhoto .img-caption').html('');
       }
     }
-
-    $('#ProductThumbs.km6l-caption li').on('click', function() {
+    
+    $('#kardiamobile-6l #ProductThumbs li').on('click', function() {
       if ($(this).index() === 3) {
         $('#ProductPhoto .img-caption').show();
         $('#ProductPhoto .img-caption').html('1-lead EKG recording with fingers');

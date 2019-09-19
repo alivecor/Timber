@@ -52,89 +52,82 @@
 
   {% endcomment %}
   {% assign show_promo = false %}
-  {% assign show_preorder = false %}
+  {% assign km-oos = false %}
   {% assign preorder-all = false %}
+  {% assign fsa = false %}
   {% for tag in product.tags %}
-    {% if product.handle == 'kardiamobile' and tag == 'pop-up' and shop.locale == 'en' %}
-      {% assign show_promo = true %}
+    {% if product.handle == 'kardiamobile' and shop.locale == 'en' %}
+      {% if tag == 'pop-up' %}
+        {% assign show_promo = true %}
+      {% endif %}
+      {% if tag == 'oos' %}
+        {% assign km-oos = true %}
+      {% endif %}
     {% endif %}
-    {% if product.handle == 'kardiaband' and shop.locale == 'en' %}
-      {% if tag == 'preorder' %}
-        {% assign show_preorder = true %}
-      {% endif %}
-      {% if tag == 'preorder-all' %}
-        {% assign preorder-all = true %}
-      {% endif %}
+    {% if product.handle == 'kardiamobile' or product.handle == 'kardiamobile6l') and shop.locale == 'en' and tag == 'fsa' %}
+      {% assign fsa = true %}
     {% endif %}
   {% endfor%}
   
   <a href="{{ product.url }}" class="grid__image">
-    {% if show_promo == true %}
-      <div class="promo-banner"><span>A GIFT FOR YOUR HEART</span>: Buy KardiaMobile, get a free Carry Pod</div>
-    {% endif %}
+    
     <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-    {% if product.handle == 'kardiamobile' and kb-promo == false %}
-      <div class="ribbon">
-        Best Seller
-      </div>
-    {% endif %}
-    {% if product.handle == 'kardiaband' %}
-      {% if kb-promo == false %}
-      <div class="ribbon">
-        For {% include 'icon-apple.svg' %} Watch Only
-      </div>
-      {% else %}
-      <div class="ribbon nocaps">
-        Save $100. Extended through July 18!*
-      </div>
-      <div class="watch-only-overlay">
-        For <span>{% include 'icon-apple.svg' %} Watch</span> Only
-      </div>
-      <div class="discount-disclaimer">
-        *Offer ends July 18, 2018 11:59pm PDT. Limit 2 per order.
-      </div>
+    {% comment %}
+      Banners/Badges for US
+    {% endcomment %}
+    {% if shop.currency == 'USD' %}
+      {% if product.handle == 'kardiamobile' %}
+        <div class="badge">
+          Best<br>Seller!
+        </div>
+        {% if show_promo == true %}
+          <div class="promo-banner"><span>A GIFT FOR YOUR HEART</span>: Buy KardiaMobile, get a free Carry Pod</div>
+        {% endif %}
+      {% endif %}
+    {% else %}
+      {% comment %}
+        Ribbons for GB/DE stores
+      {% endcomment %}
+      {% if product.handle == 'kardiamobile' %}
+        <div class="ribbon">
+          Best Seller
+        </div>
       {% endif %}
     {% endif %}
   </a>
-
-  <p class="h2Title title">
-    <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-  </p>
-  <p class="h2Price price">
-    {% comment %}
-      You can show a leading 'from' or 'up to' by checking 'product.price_varies'
-      if your variants have different prices.
-    {% endcomment %}
-    {% if on_sale %}
-      {% if product.price_varies %}
-        {% assign sale_price = product.price | money %}
-        {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-      {% else %}
-        <span class="h2Price red">
-          {{ product.price | money }}
-        </span>
-        <span class="strikeout">
-          {{ product.compare_at_price | money }}
-        </span>
-      {% endif %}
-    {% else %}
-      {% if product.price_varies %}
-        {% assign price = product.price | money %}
-        {{ 'products.general.from_text_html' | t: price: price }}
-      {% else %}
-        {{ product.price | money }}
-      {% endif %}
-    {% endif %}
+  <div class="home-main-item-copy">
+    <p class="h2Title title">
+      <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
     </p>
-    
-      <div class="disclaimer">
-        {% if product.handle == 'kardiamobile' %}
-          Works with most smartphones & tablets<br/>(Android & iOS)
+    <p class="h2Price price">
+      {% comment %}
+        You can show a leading 'from' or 'up to' by checking 'product.price_varies'
+        if your variants have different prices.
+      {% endcomment %}
+      {% if on_sale %}
+        {% if product.price_varies %}
+          {% assign sale_price = product.price | money %}
+          {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+        {% else %}
+          <span class="h2Price red">
+            {{ product.price | money }}
+          </span>
+          <span class="strikeout">
+            {{ product.compare_at_price | money }}
+          </span>
         {% endif %}
-        {% if product.handle == 'kardiaband' %}
-          {{ 'products.product.kb_premium1' | t }}<br/>{{ 'products.product.kb_premium2' | t }}
+      {% else %}
+        {% if product.price_varies %}
+          {% assign price = product.price | money %}
+          {{ 'products.general.from_text_html' | t: price: price }}
+        {% else %}
+          {{ product.price | money }}
         {% endif %}
-      </div>
+      {% endif %}
+    </p>
+    {% if fsa %}
+      {% include 'hsa-fsa-badge' %}
+    {% endif %}
     <div class="review-count">
       <a href="{{ product.url }}/#reviews">
         {% if shop.locale == 'en' %}
@@ -146,134 +139,151 @@
       </a>
     </div>
     {% unless no_description %}
-    <div class="product-description rte home" itemprop="description">
-      {% comment %}
-      Wrap description in a div and add another div into description in admin and use styles to show hide the correct one
-      {% endcomment %}
-      {{product.description}}
-    </div>
+      <div class="product-description rte home" itemprop="description">
+        {% comment %}
+          Custom descriptions for main products. Default is to use first bullet point.
+        {% endcomment %}
+        {% if product.handle == 'kardiamobile' %}
+          {{ 'kardiamobile_home.message_html' | t }}
+        {% elsif product.handle == 'kardiamobile6l' %}
+          {{ 'kardiamobile6l_home.message_html' | t }}
+        {% else %}
+          {{product.description}}
+        {% endif %}
+      </div>
     {% endunless %}
-  
-    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="{% if show_promo == true %}promoAdd(event, this, {{product.id}}){% endif %}">
+
+    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+      {% if product.handle == 'kardiamobile' or product.handle == 'kardiamobile6l' %}
+      <div class="disclaimer">
+        <a href="{{ product.url }}/#compatibility">
+        {{ 'compatibility.works_with_most' | t }}<br/>(Android & iOS)
+        </a>
+      </div>
+      {% endif %}
       {% if product.variants.size > 1 %}
       <div class="variant-title {% if product.variants.size > 3 %}oneline{% endif %}">{{product.options.first | escape}}</div>
         {% assign has_checked = false %}
         {% for variant in product.variants %}
           {% if variant.inventory_policy == 'continue' and variant.inventory_quantity <= 1 %}
-              <div class="variant-input-wrapper">
-                <input type="radio"
-                   id="{{variant.id}}"
-                   name="id"
-                   data-sku="{{variant.sku}}"
-                   value="{{variant.id}}"
-                   class="variant-input"
-                   data-index="{{forloop.index0}}"
-                   {% if show_preorder == true %}
-                     onChange="variantPreorder('{{ product.handle }}')"
-                   {% endif %}
-                   {% if has_checked == false %}
-                     checked="true"
-                     {% assign has_checked = true %}
-                   {% endif %}
-                   >
-                <label class="form-control" for="{{variant.id}}">
-                  {{variant.title}}
-                  {% if add_price > 0 %}
-                  &nbsp;(add {{add_price | money_with_currency}})
-                  {% endif %}
-                </label>
-              </div>
-            {% elsif variant.available %}
-              {% assign add_price = variant.price | minus: product.price %}
-              <div class="variant-input-wrapper">
-                <input type="radio"
-                   id="{{variant.id}}"
-                   name="id"
-                   data-sku="{{variant.sku}}"
-                   value="{{variant.id}}"
-                   class="variant-input"
-                   data-index="{{forloop.index0}}"
-                   {% if show_preorder == true %}
-                     onChange="variantForSale('{{ product.handle }}')"
-                   {% endif %}
-                   {% if has_checked == false %}
-                     checked="true"
-                     {% assign has_checked = true %}
-                   {% endif %}
-                   >
-                <label for="{{variant.id}}" class="form-control">
-                  {{variant.title}}
-                  {% if add_price > 0 %}
-                  &nbsp;(add {{add_price | money_with_currency}})
-                  {% endif %}
-                </label>
-              </div>
-            {% else %}
-              <div class="variant-input-wrapper">
-                <input type="radio"
-                     class="variant-input"
-                     disabled>
-                <label class="form-control out-of-stock">
-                  {{ variant.title }} ({{ 'products.product.sold_out' | t }})
-                </label>
-              </div>
-            {% endif %}
-          {% endfor %}
-        {% else %}
-          {% comment %}
-          for only one variant, need to choose the id to add to cart
-          {% endcomment %}
-          <div class="{% if shop.currency == 'GBP' %}variant-placeholder-gb{% elsif shop.currency == 'EUR' %}variant-placeholder-de{% else %}variant-placeholder{% endif %}"></div>
-          {% for variant in product.variants %}
-          <input type="hidden"
+            <div class="variant-input-wrapper">
+              <input type="radio"
                  id="{{variant.id}}"
                  name="id"
                  data-sku="{{variant.sku}}"
                  value="{{variant.id}}"
                  class="variant-input"
                  data-index="{{forloop.index0}}"
-                 {% if forloop.first == true %}
+                 {% if has_checked == false %}
                    checked="true"
+                   {% assign has_checked = true %}
                  {% endif %}
                  >
-          {% endfor %}
-        {% endif %}
-        <div class="visually-hidden">
-          <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
-        </div>
-
-        {% comment %}
-          remove onclick function to stop auto adding item to cart
-        {% endcomment %}
-        <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
-          <span id="AddToCartText">
-          {% if sold_out %}
-          {{ 'products.product.sold_out' | t }}
+              <label class="form-control" for="{{variant.id}}">
+                {{variant.title}}
+                {% if add_price > 0 %}
+                &nbsp;(add {{add_price | money_with_currency}})
+                {% endif %}
+              </label>
+            </div>
+          {% elsif variant.available %}
+            {% assign add_price = variant.price | minus: product.price %}
+            <div class="variant-input-wrapper">
+              <input type="radio"
+                 id="{{variant.id}}"
+                 name="id"
+                 data-sku="{{variant.sku}}"
+                 value="{{variant.id}}"
+                 class="variant-input"
+                 data-index="{{forloop.index0}}"
+                 {% if has_checked == false %}
+                   checked="true"
+                   {% assign has_checked = true %}
+                 {% endif %}
+                 >
+              <label for="{{variant.id}}" class="form-control">
+                {{variant.title}}
+                {% if add_price > 0 %}
+                &nbsp;(add {{add_price | money_with_currency}})
+                {% endif %}
+              </label>
+            </div>
           {% else %}
-          {{ 'products.product.add_to_cart' | t }}
+            <div class="variant-input-wrapper">
+              <input type="radio"
+                   class="variant-input"
+                   disabled>
+              <label class="form-control out-of-stock">
+                {{ variant.title }} ({{ 'products.product.sold_out' | t }})
+              </label>
+            </div>
           {% endif %}
-          </span>
-        </button>
-        {% if product.handle == 'kardiamobile' and shop.currency == 'GBP' and sold_out %}
+        {% endfor %}
+      {% else %}
+        {% comment %}
+          for only one variant, need to choose the id to add to cart
+        {% endcomment %}
+        {% for variant in product.variants %}
+          <input type="hidden"
+             id="{{variant.id}}"
+             name="id"
+             data-sku="{{variant.sku}}"
+             value="{{variant.id}}"
+             class="variant-input"
+             data-index="{{forloop.index0}}"
+             {% if forloop.first == true %}
+               checked="true"
+             {% endif %}
+          >
+        {% endfor %}
+      {% endif %}
+      <div class="visually-hidden">
+        <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+      </div>
+      <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
+        <span id="AddToCartText">
+        {% if sold_out %}
+          {{ 'products.product.sold_out' | t }}
+        {% else %}
+          {{ 'products.product.add_to_cart' | t }}
+        {% endif %}
+        </span>
+      </button>
+      {% comment %}
+        International solutions for sold out
+      {% endcomment %}
+      {% if product.handle == 'kardiamobile' and shop.currency == 'GBP' and sold_out %}
         <a href="https://www.amazon.co.uk/Kardia-Mobile-AliveCor-Black-0-6oz/dp/B01A4W8AUK/" class="btn amazon-sold-out-home" target="_blank">
           Buy From Amazon
         </a>
-        {% elsif product.handle == 'kardiamobile' and shop.currency == 'EUR' and sold_out %}
+      {% elsif product.handle == 'kardiamobile' and shop.currency == 'EUR' and sold_out %}
         <a href="https://www.mindtecstore.com/AliveCor-Kardia-Mobile-ECG-Heart-Monitor" class="btn amazon-sold-out-home" target="_blank">
           Buy From MindTec
         </a>
-        {% else %}
+      {% else %}
         <a href="{{ product.url }}" class="view-details">
           View Details
         </a>
-        {% endif %}
-        {% if product.handle == 'kardiamobile' and shop.locale == 'en' %}
-          <div id="deviceNameCompat"></div>
-        {% endif %}
-        {% if preorder-all == true %}
-          <div class="late-ship home {{ product.handle }} show">
-            <p>We can't make them fast enough! Please allow 3-4 weeks for delivery.</p>
-          </div>
-        {% endif %}
-      </form>
+      {% endif %}
+      {% comment %}
+        Show phone compatibility on mobile
+      {% endcomment %}
+      {% if product.handle == 'kardiamobile' and shop.locale == 'en' %}
+        <div id="deviceNameCompat"></div>
+      {% endif %}
+      {% comment %}
+        Late ship/preorder messaging by tags
+      {% endcomment %}
+      {% if preorder-all == true %}
+        <div class="late-ship home {{ product.handle }} show disclaimer">
+          Please allow 1-2 weeks for delivery.
+        </div>
+      {% endif %}
+      {% if km-oos %}
+        <div style="clear: left">
+          {% include 'oos-message', nomargin: false %}
+        </div>
+      {% endif %}
+    </form>
+  </div>
 </div>

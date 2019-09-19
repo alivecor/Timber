@@ -37,7 +37,17 @@
   {% assign sold_out = false %}
 {% endif %}
 
-<div class="home-grid-item grid__item {{ grid_item_width }} {{ product_name }}">
+{% comment %}
+  Check tags
+{% endcomment %}
+{% assign lateship = false %}
+  {% for tag in product.tags %}
+    {% if tag == 'lateship' %}
+      {% assign lateship = true %}
+    {% endif %}
+  {% endfor%}
+
+<div class="home-grid-item grid__item {{ grid_item_width }} {{ product_name }} {{ product_collection }}">
 
   {% comment %}
     Link to your product with the 'within: collection' filter for the link to be aware of the collection.
@@ -70,8 +80,12 @@
         {% assign sale_price = product.price | money %}
         {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
       {% else %}
-        <strong>{{ 'products.product.on_sale' | t }}</strong>
-        {{ product.price | money }}
+        <span class="h2Price red">
+          {{ product.price | money }}
+        </span>
+        <span class="strikeout">
+          {{ product.compare_at_price | money }}
+        </span>
       {% endif %}
     {% else %}
       {% if product.price_varies %}
@@ -80,51 +94,92 @@
       {% else %}
         {{ product.price | money }}
       {% endif %}
-    </p>
-    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
-
-        {% comment %}
-          Note: forcing the variants and quantities to be hidden
-        {% endcomment %}
-        <div class="visually-hidden">
-          <select name="id" id="productSelect" class="product-single__variants">
-            {% for variant in product.variants %}
-              {% if variant.available %}
-
-                {% comment %}
-                  Note: if you use option_selection.js, your select tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
-                {% endcomment %}
-                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
-
-              {% else %}
-                <option disabled="disabled">
-                  {{ variant.title }} - {{ 'products.product.sold_out' | t }}
-                </option>
+    {% endif %}
+  </p>
+  <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+    {% if product.variants.size > 1 %}
+      <div class="variant-title">
+        {%- for option in product.options_with_values -%}
+          <span>{{ option.name | escape }}</span>
+        {%- endfor -%}
+      </div>
+      {% for variant in product.variants %}
+        {% if variant.available %}
+          {% assign add_price = variant.price | minus: product.price %}
+          <div class="variant-input-wrapper">
+            <input type="radio"
+               id="{{variant.id}}"
+               name="id"
+               data-sku="{{variant.sku}}"
+               value="{{variant.id}}"
+               class="variant-input"
+               data-index="{{forloop.index0}}"
+               data-img-url="{{variant.featured_image.src | img_url: 'large'}}"
+               data-img-id="{{ home_grid_img_id }}"
+               {% if forloop.first == true %}
+                 checked="true"
+               {% endif %}
+               >
+            <label for="{{variant.id}}" class="form-control">
+              {{variant.title}}
+              {% if add_price > 0 %}
+              &nbsp;(add {{add_price | money_with_currency}})
               {% endif %}
-            {% endfor %}
-          </select>
-          <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
-        </div>
-
-        <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
-          <span id="AddToCartText">
-          {% if sold_out %}
-          {{ 'products.product.sold_out' | t }}
-          {% endif %}
-          {% if sold_out == false %}
-          {{ 'products.product.add_to_cart' | t }}
-          {% endif %}
-          </span>
-        </button>
-      <a href="{{ product.url }}" class="view-details">
-        View Details
-      </a>
-      </form>
+            </label>
+          </div>
+        {% else %}
+          <div class="variant-input-wrapper">
+            <input type="radio"
+                 class="variant-input"
+                 disabled>
+            <label class="form-control out-of-stock">
+              {{ variant.title }} ({{ 'products.product.sold_out' | t }})
+            </label>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% comment %}
+        for only one variant, need to choose the id to add to cart
+      {% endcomment %}
+      <div class="variant-placeholder {{product.handle}}"></div>
+      {% for variant in product.variants %}
+        <input type="hidden"
+           id="{{variant.id}}"
+           name="id"
+           data-sku="{{variant.sku}}"
+           value="{{variant.id}}"
+           class="variant-input"
+           data-index="{{forloop.index0}}"
+           {% if forloop.first == true %}
+             checked="true"
+           {% endif %}
+        >
+      {% endfor %}
     {% endif %}
-    {% if on_sale %}
-      <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
-      <br><s>{{ product.compare_at_price | money }}</s>
-    {% endif %}
- 
+    {% comment %}
+      Note: forcing the quantities to be hidden
+    {% endcomment %}
+    <div class="visually-hidden">
+      <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+    </div>
 
+    <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
+      <span id="AddToCartText">
+      {% if sold_out %}
+      {{ 'products.product.sold_out' | t }}
+      {% else %}
+      {{ 'products.product.add_to_cart' | t }}
+      {% endif %}
+      </span>
+    </button>
+    <a href="{{ product.url }}" class="view-details">
+      View Details
+    </a>
+    {% if lateship == true %}
+      <div class="late-ship home {{ product.handle }} show disclaimer">
+        Please allow 1-2 weeks for delivery.
+      </div>
+    {% endif %}
+  </form>
 </div>

@@ -5,10 +5,18 @@ $(document).ready(function() {
     scrollTop = $(window).scrollTop();
 
     // nav bar resize
-    if (scrollTop >= 50) {
-      $('.navigation').addClass('scrolled-nav');
-    } else if (scrollTop < 50) {
-      $('.navigation').removeClass('scrolled-nav');
+    if ($('.navigation').hasClass('home-banner')) {
+      if (scrollTop >= 100) {
+        $('.navigation').addClass('scrolled-nav');
+      } else if (scrollTop < 100) {
+        $('.navigation').removeClass('scrolled-nav');
+      }
+    } else {
+      if (scrollTop >= 50) {
+        $('.navigation').addClass('scrolled-nav');
+      } else if (scrollTop < 50) {
+        $('.navigation').removeClass('scrolled-nav');
+      }
     }
   });
 
@@ -29,16 +37,17 @@ $(document).ready(function() {
     $('#js-navigation-menu').removeClass('show');
   });
 
-  // store home add captions
-  $('#home-grid-carrypod .img-caption').html('KardiaMobile in Carry Pod, closed & open');
-  $('#home-grid-iphone-8-7-case .img-caption').html('KardiaMobile in iPhone 8/7 case');
-  $('#home-grid-phoneclip .img-caption').html('Phone Clip adheres to back of phone or phone case. KardiaMobile snaps right in.');
-  $('#home-grid-iphone-5-5s-case .img-caption').html('Empty iPhone 5 / 5s / SE case');
-
   // product page change image on size change
   $('form').on('click', "input", function(e) {
     var imgUrl = $(this).data().imgUrl;
     $('#ProductPhoto img').attr('src', imgUrl);
+  });
+
+  // home page change image on variant change
+  $('.home-grid-item form, .cart-recommended-accessories form').on('click', "input", function(e) {
+    var imgUrl = $(this).data().imgUrl;
+    var imgId = $(this).data().imgId;
+    $('#' + imgId + ' img').attr('src', imgUrl);
   });
 
   // accordion functions
@@ -134,6 +143,45 @@ $(document).ready(function() {
     setCookie(true);
   }
 
+  //Newsletter signup
+  var isEmail = function(email) {
+    var regex;
+    regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
+  };
+
+  $("#mc-embedded-subscribe").on('click', function(e) {
+    var email;
+    $("footer .not-valid").hide();
+    email = $("#mce-EMAIL").val();
+    if (isEmail(email)) {
+      var url = $("#mc-embedded-subscribe-form").prop('action');
+      $.ajax({
+        type: "GET",
+        url: url,
+        data: $("#mc-embedded-subscribe-form").serialize(),
+        dataType: "json",
+        crossDomain: true,
+        success: function(data) {
+          if (data.result == 'success') {
+            $("footer .thankyou").fadeIn();
+            var newsletterSubmitURL = window.location.protocol + '//' + window.location.host + window.location.pathname + '#newsletter-submit';
+            window.location.href = newsletterSubmitURL;
+          }
+        }
+      })
+      .done(function(data) {
+        if (data.result === 'error') {
+          $("footer .error").html(data.msg).fadeIn();
+        }
+      });
+    } else {
+      $("footer .bad-email").fadeIn();
+      return false;
+    }
+    e.preventDefault();
+  });
+
 });
 
 // video functions
@@ -213,15 +261,7 @@ function variantForSaleProduct() {
   $('.product-description ul li:last-of-type').show();
 }
 
-// for main store page
-// PREORDER TEXT ON BUTTON CHANGE
-function variantPreorder(product) {
-  $('.late-ship.' + product).show();
-}
-function variantForSale(product) {
-  $('.late-ship.' + product).hide();
-}
-
+// Change default sort of stamped reviews
 $(document).on('stamped:reviews:loaded', function(){
   $('.stamped-sort-select option[value="most-votes"]').html('Most Helpful');
 });

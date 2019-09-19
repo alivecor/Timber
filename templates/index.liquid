@@ -28,7 +28,7 @@
       Example:
         - {% assign grid_item_width = 'large--one-third medium--one-half' %}
     {% endcomment %}
-    {% assign grid_item_width = 'large--one-half' %}
+    {% assign grid_item_width = 'large--one-whole' %}
     {% include 'home-main-item' %}
 
   {% endfor %}
@@ -41,14 +41,14 @@
 {% endcomment %}
 
 {% if collections.frontpage.products.length > 0 %}
-<div class="section">
+<div class="accessory-title section">
   <a name="accessories"></a>
-  <span class="line"></span>
+  <span class="line center"></span>
   <h1>{{ 'homepage.sections.frontpage_title' | t }}</h1>
 </div>
 {% endif %}
 
-<div class="grid-uniform">
+<div class="grid-uniform home-accessories">
 
   {% comment %}
     Loop through products in your Frontpage collection.
@@ -56,34 +56,16 @@
   {% endcomment %}
   {% for product in collections.frontpage.products limit:6 %}
 
-    {% comment %}
-      Change the grid item width by using classes from the grid in
-      the grid_item_width variable.
-
-      Example:
-        - {% assign grid_item_width = 'large--one-third medium--one-half' %}
-    {% endcomment %}
     {% if collections.frontpage.products.length <= 2 %}
       {% assign grid_item_width = 'large--one-half medium--one-half' %}
     {% else %}
-      {% assign grid_item_width = 'large--one-third medium--one-half' %}
+      {% assign grid_item_width = 'large--one-half medium--one-half' %}
     {% endif %}
+    {% assign product_collection = product.collections | map: 'handle' | join: ' ' %}
     {% include 'home-grid-item' %}
-
-  {% else %}
-    {% comment %}
-      For onboarding new users to your theme, we add some default products and onboarding tutorials to help populate their store
-    {% endcomment %}
-    {% unless emptyState %}
-      {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
-      {% assign emptyState = true %}
-    {% endunless %}
-
-    {% comment %}{% include 'onboarding-featured-products' %}{% endcomment %}
 
   {% endfor %}
 
 </div>
-
 
 

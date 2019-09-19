@@ -296,7 +296,7 @@
       "compare_at": "Compare at",
       "quantity": "Quantity",
       "add_to_cart": "Add to Cart",
-      "preorder": "Preorder",
+      "preorder": "Pre-order",
       "preorder_date": "Product will be shipped pending CE Mark.",
       "kb_premium1": "Also Requires Premium Membership",
       "kb_premium2": "(available in Kardia app for $9.99\/month or $99\/year)"
@@ -319,6 +319,7 @@
     "month_day_year": "%B %d, %Y"
   },
   "compatibility": {
+    "intro_mobile_new": "{{ product_title }} is a medical device that is regulated per federal and international regulations; we rigorously test and validate devices with smartphones and tablets to meet or exceed these regulations before we claim compatibility. We routinely add support for new phones and tablets. Check back if your device is not listed below.",
     "intro_mobile": "KardiaMobile is a medical device that is regulated per federal and international regulations; we rigorously test and validate devices with smartphones and tablets to meet or exceed these regulations before we claim compatibility. We routinely add support for new phones and tablets. Check back if your device is not listed below.",
     "intro_band": "KardiaBand is a medical device that is regulated per federal and international regulations; we rigorously test and validate devices with smartphones and tablets to meet or exceed these regulations before we claim compatibility. We routinely add support for new phones and tablets. Check back if your device is not listed below.",
     "compatibility": "Compatibility",
@@ -335,6 +336,8 @@
     "ios_11_4": "iOS 11.4",
     "ios_12_0": "iOS 12.0",
     "ios_12_1": "iOS 12.1",
+    "ios_12_2": "iOS 12.2",
+    "ios_12_3": "iOS 12.3",
     "ios_10_3_3": "iOS 10.3.3",
     "iphone7_plus": "iPhone 7 Plus",
     "iphone7": "iPhone 7",
@@ -359,6 +362,7 @@
     "watch_os_4_1": "watchOS 4.1",
     "watch_os_4_3": "watchOS 4.3",
     "watch_os_5_1": "watchOS 5.1",
+    "watch_os_5_2": "watchOS 5.2",
     "ios_9_3_5": "iOS 9.3.5",
     "ios_10_0_2": "iOS 10.0.2",
     "last_updated_on": "Last updated on {{ date }}",
@@ -369,13 +373,19 @@
     "samsung_note_8": "Samsung Note 8",
     "samsung_note_5": "Samsung Note 5",
     "samsung_note_3": "Samsung Note 3",
-    "galaxy_s8": "Samsung Galaxy S8",
+    "galaxy_s10_plus": "Samsung Galaxy S10+",
+    "galaxy_s10": "Samsung Galaxy S10",
+    "galaxy_s9_plus": "Samsung Galaxy S9+",
     "galaxy_s9": "Samsung Galaxy S9",
+    "galaxy_s8_plus": "Samsung Galaxy S8+",
+    "galaxy_s8": "Samsung Galaxy S8",
     "galaxy_s5": "Samsung Galaxy S5",
     "galaxy_s6": "Samsung Galaxy S6",
     "galaxy_s7": "Samsung Galaxy S7",
     "galaxy_s4": "Samsung Galaxy S4",
     "galaxy_j1": "Samsung Galaxy J1",
+    "google_pixel_3a": "Google Pixel 3a",
+    "google_pixel_3axl": "Google Pixel 3a XL",
     "google_pixel_3": "Google Pixel 3",
     "google_pixel_3xl": "Google Pixel 3 XL",
     "google_pixel": "Google Pixel",
@@ -403,7 +413,8 @@
     "omron_compatibility": "Omron Blood Pressure Monitor Compatibility",
     "watch": "Watch",
     "host_iphone": "Host iPhone",
-    "kb_requires": "KardiaBand requires a paired iPhone and Apple Watch, each of which must be in the list below:"
+    "kb_requires": "KardiaBand requires a paired iPhone and Apple Watch, each of which must be in the list below:",
+    "works_with_most": "Works with most smartphones & tablets"
   },
   "product_tabs": {
     "compatibility": "Compatibility",
@@ -418,7 +429,7 @@
   "tech_specs_kardiamobile": {
     "dimensions": "Dimensions",
     "product_dims": "8.2 cm x 3.2 cm x 0.35 cm",
-    "electrode_dims": "2 3cm x 3cm stainless-steel electrodes",
+    "electrode_dims": "Two 3 cm x 3 cm stainless steel electrodes",
     "weight": "Weight",
     "product_weight": "18 grams",
     "power": "Power",
@@ -437,6 +448,17 @@
     "user_manuals": "User Manuals",
     "ios_user_manual_link": "KardiaMobile for iOS",
     "android_user_manual_link": "KardiaMobile for Android"
+  },
+  "tech_specs_kardiamobile6l": {
+    "product_dims": "9.0 cm x 3.0 cm x 0.72 cm",
+    "electrode_dims": "Three 3 cm x 3 cm stainless steel electrodes",
+    "product_weight": "24 grams",
+    "ekg_characteristics": "EKG Characteristics",
+    "six_lead": "Six Lead ECG",
+    "bit_depth": "14 bit resolution",
+    "connection": "Connectivity",
+    "bluetooth": "Bluetooth Low Energy technology",
+    "range": "1m wireless range"
   },
   "tech_specs_kardiaband": {
     "dimensions": "Dimensions (Sensor Module only)",
@@ -486,5 +508,11 @@
         "discount_placeholder": "Promotional Code"
       }
     }
+  },
+  "kardiamobile_home": {
+    "message_html": "The best‑selling FDA‑cleared <strong>single‑lead</strong> personal EKG.<span class=\"break\">Detect Atrial Fibrillation or Normal heart rhythm with a medical-grade EKG anytime, anywhere.</span>"
+  },
+  "kardiamobile6l_home": {
+    "message_html": "The first and only FDA‑cleared <strong>six‑lead</strong> personal EKG.<span class=\"break\">Detect Atrial Fibrillation or Normal heart rhythm anytime, anywhere. 6‑lead EKG data gives your doctor a more complete view of your heart, and the ability to identify other cardiac arrhythmias.</span>"
   }
 }

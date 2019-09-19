@@ -1,16 +1,27 @@
-<p>Every purchase of KardiaMobile includes our basic service free of charge. Unlock comprehensive control of your heart health with a Premium membership. Free trial for 30 days<sup>1</sup>.</p>
+<p>Every purchase of KardiaMobile includes our basic service free of charge. Unlock comprehensive control of your heart health with the Premium Protection Plan. Free trial for 30 days<sup>1</sup>.</p>
 <table>
   <thead>
     <tr>
       <td></td>
-      <td class="head">Basic<span>(Free)</span></td>
-      <td class="head wide">Premium<span>({{ premium_price }})</span></td>
+      <td class="head">Basic</td>
+      <td class="head bold">Premium Protection Plan<span></span></td>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td class="feature top-left-round">
+        Take unlimited EKGs. Detect Atrial Fibrillation, Bradycardia, Tachycardia or Normal heart rhythm.
+      </td>
+      <td class="basic">
+        {% include "icon-checkmark.svg" %}
+      </td>
+      <td class="premium top-right-round">
+        {% include "icon-checkmark.svg" %}
+      </td>
+    </tr>
+    <tr>
       <td class="feature">
-        Take recordings anytime, anywhere
+        Store your EKGs on your phone, and email your EKG to your doctor with the press of a button.
       </td>
       <td class="basic">
         {% include "icon-checkmark.svg" %}
@@ -20,82 +31,32 @@
       </td>
     </tr>
     <tr>
-      <td class="feature">
-        Instant EKG analysis
+      <td class="feature bottom-left-round">
+        Track your weight and blood pressure data for total heart care.
       </td>
       <td class="basic">
         {% include "icon-checkmark.svg" %}
       </td>
-      <td class="premium">
+      <td class="premium bottom-right-round">
         {% include "icon-checkmark.svg" %}
       </td>
     </tr>
+    <tr class="spacer"></tr>
     <tr>
-      <td class="feature">
-        Detect normal heart rhythm or AFib
-      </td>
-      <td class="basic">
-        {% include "icon-checkmark.svg" %}
-      </td>
-      <td class="premium">
-        {% include "icon-checkmark.svg" %}
-      </td>
-    </tr>
-    <tr>
-      <td class="feature">
-        Email unlimited EKG recordings to your doctor
-      </td>
-      <td class="basic">
-        {% include "icon-checkmark.svg" %}
-      </td>
-      <td class="premium">
-        {% include "icon-checkmark.svg" %}
-      </td>
-    </tr>
-    <tr>
-      <td class="feature">
-        Blood pressure and weight tracking
-      </td>
-      <td class="basic">
-        {% include "icon-checkmark.svg" %}
-      </td>
-      <td class="premium">
-        {% include "icon-checkmark.svg" %}
-      </td>
-    </tr>
-    <tr>
-      <td class="feature">
-        Unlimited cloud storage of EKG recordings
+      <td class="feature top-left-round">
+        <span>Cloud Storage & Security</span>Enjoy secure access to all of your EKG recordings on any device, accessible anytime, anywhere.
       </td>
       <td></td>
-      <td class="premium">
+      <td class="premium top-right-round">
         {% include "icon-checkmark.svg" %}
       </td>
     </tr>
     <tr>
-      <td class="feature">
-        Customized monthly reports mailed to your home to share with your doctor
+      <td class="feature bottom-left-round">
+        <span>Medication Tracking</span>Receive reminders to take specific medication at your doctor’s recommended times and track your medication history.
       </td>
       <td></td>
-      <td class="premium">
-        {% include "icon-checkmark.svg" %}
-      </td>
-    </tr>
-    <tr>
-      <td class="feature">
-        Medication tracking
-      </td>
-      <td></td>
-      <td class="premium">
-        {% include "icon-checkmark.svg" %}
-      </td>
-    </tr>
-    <tr>
-      <td class="feature">
-        SmartRhythm monitoring and notifications for Apple Watch
-      </td>
-      <td></td>
-      <td class="premium">
+      <td class="premium bottom-right-round">
         {% include "icon-checkmark.svg" %}
       </td>
     </tr>
@@ -103,6 +64,6 @@
 </table>
 <div class="footnotes">
   <p>
-    1. Your 30-day free trial begins from the time you create an account with the Kardia App. After 30 days, you'll have the option to purchase Premium for {{ premium_price }} or continue to use Basic.
+    1. Your 30-day free trial begins from the time you create an account with the Kardia App. After 30 days, you'll have the option to purchase Premium for {{ premium_price }} or continue to use Basic.<br><a href="https://www.alivecor.com/premium-protection-plan" target="_blank">Click here for Premium Protection Plan details.</a>
   </p>
 </div>
