@@ -284,6 +284,11 @@
           {% include 'oos-message', nomargin: false %}
         </div>
       {% endif %}
+      {% if product.handle == 'kardiamobile' && shop.locale != 'en' %}
+        <div style="clear: left; float: left; font-size: 16px; margin-top: 35px;">
+          KardiaMobile 6L is currently out of stock. Buy KardiaMobile today - the most clinically-validated personal ECG in the world.
+        </div>
+      {% endif %}
     </form>
   </div>
 </div>
