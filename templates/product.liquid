@@ -44,7 +44,7 @@
   {% if tag == 'lateship' %}
     {% assign lateship = true %}
   {% endif %}
-  {% if product.handle == 'kardiamobile' or product.handle == 'kardiamobile6l') and shop.locale == 'en' and tag == 'fsa' %}
+  {% if shop.locale == 'en' and tag == 'fsa' %}
     {% assign fsa = true %}
   {% endif %}
 {% endfor%}
