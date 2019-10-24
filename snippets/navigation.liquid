@@ -64,7 +64,7 @@
         </li>
 
         <li class="nav-link">
-          <a class="ga-nav-tracker" href="https://www.alivecor.com/resellers">
+          <a class="ga-nav-tracker" href="https://www.alivecor.com/international">
             International
           </a>
         </li>
@@ -81,9 +81,7 @@
         </li>
 
         <li class="nav-link free-ship no-mobile">
-          {% if shop.locale == 'en' %}
-          FREE Shipping in the US
-          {% endif %}
+          {{ 'layout.navigation.free_ship' | t }}
           {% comment %}
             If customer accounts are enabled, provide login and create account links
           {% endcomment %}

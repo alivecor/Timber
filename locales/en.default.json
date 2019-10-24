@@ -246,7 +246,8 @@
   },
   "layout": {
     "navigation": {
-      "menu": "Menu"
+      "menu": "Menu",
+      "free_ship": "FREE Shipping in the US"
     },
     "drawers": {
       "browse": "Browse",

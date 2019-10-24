@@ -236,7 +236,8 @@
   },
   "layout": {
     "navigation": {
-      "menu": "Menú"
+      "menu": "Menú",
+      "free_ship": "FREE Shipping Available"
     },
     "drawers": {
       "browse": "Navegar",
