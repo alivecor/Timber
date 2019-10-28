@@ -185,6 +185,12 @@
           {{ 'main_product.warranty_2years' | t }}
         {% endif %}
       </h3>
+      <!-- Shipping details modal for GB store -->
+      {% if shop.locale == 'en-GB' %}
+      <div class="shipping-options-cont">
+        <a class="shipping-options" href="#">Shipping options</a>
+      </div>
+      {% endif %}
 
       <div>
         <!-- Star rating ======================================================== -->

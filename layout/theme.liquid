@@ -62,11 +62,6 @@
 
   <!-- Analytics ================================================= -->
   {% include 'analytics-scripts' %}
-  
-  {% comment %}
-  <!-- Bold's Common Snippet -->
-  {% include 'bold-common' %}
-  {% endcomment %}
 
 {% if product.metafields.inventory.ShappifyHidden == "true" %} {% endif %}
 
@@ -92,7 +87,7 @@
     {% include 'footer' %}
   </div>
   {% include 'cookie-banner' %}
-  {% comment %} Modal for videos {% endcomment %}
+  {% comment %} Modal for videos and shipping {% endcomment %}
   {% include 'modal' %}
 
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
