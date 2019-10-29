@@ -74,7 +74,7 @@
   {% include 'gtm-body' %}
   {% include 'discount-code-body' %}
   {% include 'navigation' %}
-  {% if (template == 'index' or template == 'product') and shop.locale == 'en'  %}
+  {% if template == 'index' or template == 'product' %}
     {% include 'trust-banner' %}
   {% endif %}
   
