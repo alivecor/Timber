@@ -1,3 +1,7 @@
+{% assign baseUrl = 'https://www.alivecor.com' %}
+{% if shop.domain == 'shop.gb.alivecor.com' %}
+  {% assign baseUrl = 'https://www.kardiamobile.co.uk' %}
+{% endif %}
 <footer>
   <section class="footer">
     <div class="newsletter-signup">
@@ -66,23 +70,25 @@
             Compatibility
           </a>
         </li>
+        {% if shop.domain == 'store.alivecor.com' %}
         <li>
-          <a href="https://www.alivecor.com/shipping">
+          <a href="{{ baseUrl }}/shipping">
             Shipping
           </a>
         </li>
+        {% endif %}
         <li>
-          <a href="https://www.alivecor.com/warranty">
+          <a href="{{ baseUrl }}/warranty">
             Warranty
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/international">
+          <a href="{{ baseUrl }}/international">
             International
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/resellers">
+          <a href="{{ baseUrl }}/resellers">
             Resellers
           </a>
         </li>
@@ -104,12 +110,12 @@
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/tos">
+          <a href="{{ baseUrl }}/tos">
             Terms of Service
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/privacy">
+          <a href="{{ baseUrl }}/privacy">
             Privacy Policy
           </a>
         </li>
@@ -121,27 +127,27 @@
           </h6>
         </li>
         <li>
-          <a href="https://www.alivecor.com/mission">
+          <a href="{{ baseUrl }}/mission">
             Our Mission
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/careers">
+          <a href="{{ baseUrl }}/careers">
             Careers
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/blog">
+          <a href="{{ baseUrl }}/blog">
             Blog
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/press">
+          <a href="{{ baseUrl }}/press">
             Press and Media
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/research">
+          <a href="{{ baseUrl }}/research">
             Clinical Research
           </a>
         </li>
