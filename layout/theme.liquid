@@ -86,7 +86,9 @@
     </main>
     {% include 'footer' %}
   </div>
-  {% include 'cookie-banner' %}
+  {% if shop.domain == 'store.alivecor.com' %}
+    {% include 'cookie-banner' %}
+  {% endif %}
   {% comment %} Modal for videos and shipping {% endcomment %}
   {% include 'modal' %}
 

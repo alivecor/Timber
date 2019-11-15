@@ -55,6 +55,8 @@
   {% assign km-oos = false %}
   {% assign preorder-all = false %}
   {% assign fsa = false %}
+  {% assign holiday_ribbon_us = false %}
+  {% assign holiday_ribbon_uk = false %}
   {% for tag in product.tags %}
     {% if product.handle == 'kardiamobile' and shop.locale == 'en' %}
       {% if tag == 'pop-up' %}
@@ -68,7 +70,14 @@
       {% assign fsa = true %}
     {% endif %}
   {% endfor%}
-
+  {% if on_sale %}
+    {% if shop.locale == 'en' %}
+      {% assign holiday_ribbon_us = true %}
+    {% endif %}
+    {% if shop.domain == 'shop.gb.alivecor.com' %}
+      {% assign holiday_ribbon_uk = true %}
+    {% endif %}
+  {% endif %}
   <a href="{{ product.url }}" class="grid__image">
     
     <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
@@ -76,7 +85,7 @@
       Banners/Badges for US
     {% endcomment %}
     {% if shop.currency == 'USD' %}
-      {% if product.handle == 'kardiamobile' %}
+      {% if product.handle == 'kardiamobile' and holiday_ribbon_us == false %}
         <div class="badge">
           Best<br>Seller!
         </div>
@@ -88,11 +97,21 @@
       {% comment %}
         Ribbons for GB/DE stores
       {% endcomment %}
-      {% if product.handle == 'kardiamobile' %}
+      {% if product.handle == 'kardiamobile' and holiday_ribbon_uk == false %}
         <div class="ribbon">
           Best Seller
         </div>
       {% endif %}
+    {% endif %}
+    {% if holiday_ribbon_us %}
+      <div class="ribbon">
+        Save $15
+      </div>
+    {% endif %}
+    {% if holiday_ribbon_uk %}
+      <div class="ribbon">
+        Sale On Now
+      </div>
     {% endif %}
   </a>
   <div class="home-main-item-copy">
