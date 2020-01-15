@@ -180,5 +180,34 @@
       &copy;2019 AliveCor, Inc. All Rights Reserved. US Patent Nos 8,301,232, 8,509,882 and Patents Pending. AliveCor and Kardia are trademarks of AliveCor, Inc. in the United States and other countries.
       </p>
     </div>
+    {% if shop.domain == 'store.alivecor.com' %}
+    {% assign current_url = '' %}
+    {% case template %}
+      {% when 'page' %}
+        {% assign current_url = page.url %}
+      {% when 'collection' %}
+        {% assign current_url = collection.url %}
+      {% when 'list-collections' %}
+        {% assign current_url = shop.domain | append: '/collections' %}
+      {% when 'product' %}
+        {% assign current_url = product.url %}
+      {% when 'index' %}
+        {% assign current_url = shop.domain %}
+      {% when 'cart' %}
+        {% assign current_url = shop.domain | append: '/cart' %}
+    {% endcase %}
+    <div class="ccpa">
+      <a id="do-not-sell"
+        class="ga-tracker"
+        data-category="CCPA Link"
+        data-action="Clicked Do Not Sell My Personal Information"
+        data-label="{{ current_url }}">
+        Do Not Sell My Personal Information
+      </a>
+      <div class="confirmation">
+        <p>Your preference has been stored for this browser and device. If you clear your cookies, your preference will be forgotten.</p>
+      </div>
+    </div>
+    {% endif %}
   </section>
 </footer>
