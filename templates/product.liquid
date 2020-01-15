@@ -44,7 +44,7 @@
   {% if tag == 'lateship' %}
     {% assign lateship = true %}
   {% endif %}
-  {% if product.handle == 'kardiamobile' or product.handle == 'kardiamobile6l') and shop.locale == 'en' and tag == 'fsa' %}
+  {% if shop.locale == 'en' and tag == 'fsa' %}
     {% assign fsa = true %}
   {% endif %}
 {% endfor%}
@@ -169,9 +169,9 @@
         For late ship items -- tagged 'lateship'
       {% endcomment %}
       {% if lateship %}
-      <div style="clear: left">
+      <div class="product-late-ship-cont">
         <p class="product-late-ship">
-          Please allow 1-2 weeks for delivery.
+          Please allow 2-3 weeks for delivery.
         </p>
       </div>
       {% endif %}
@@ -185,6 +185,12 @@
           {{ 'main_product.warranty_2years' | t }}
         {% endif %}
       </h3>
+      <!-- Shipping details modal for GB store -->
+      {% if shop.domain == 'shop.gb.alivecor.com' %}
+      <div class="shipping-options-cont">
+        <a class="shipping-options" href="#">Shipping options</a>
+      </div>
+      {% endif %}
 
       <div>
         <!-- Star rating ======================================================== -->

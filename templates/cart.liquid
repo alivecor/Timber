@@ -81,7 +81,7 @@
                 Add extra copy under product name
               {% endcomment %}
               {% if lateship %}
-                <p><small>Please allow 1-2 weeks for delivery.</small></p>
+                <p><small>Please allow 2-3 weeks for delivery.</small></p>
               {% endif %}
               {% if settings.cart_vendor_enable %}
                 <p>{{ item.vendor }}</p>
@@ -118,8 +118,17 @@
               </a>
             </td>
             <td class="price-cell" data-label="{{ 'cart.label.price' | t }}">
-              <span class="h3 price">
-                {{ item.price | money }}
+              <span class="h4Price price">
+                {% if item.variant.compare_at_price > item.variant.price %}
+                  <span class="red">
+                    {{ item.price | money }}
+                  </span>
+                  <span class="strikeout">
+                    {{ item.variant.compare_at_price | money }}
+                  </span>
+                {% else %}
+                  {{ item.price | money }}
+                {% endif %}
               </span>
             </td>
             <td data-label="{{ 'cart.label.quantity' | t }}">

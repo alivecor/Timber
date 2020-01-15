@@ -672,6 +672,38 @@ footer {
   }
 }
 
+.ccpa {
+  clear: both;
+  margin-top: 20px;
+  #do-not-sell {
+    visibility: hidden;
+    color: $grey3;
+    font-size: 13px;
+    font-weight: 300;
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .confirmation {
+    display: none;
+    background-color: $navy;
+    max-width: 452px;
+    padding: 12px 16px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    border-radius: 10px;
+    width: calc(100% - 72px);
+    p {
+      font-size: 15px;
+      margin: 0;
+      font-weight: normal;
+      color: white;
+    }
+  }
+}
+
 .not-valid {
   margin: 10px 0 0 10px;
   display: none;
@@ -845,7 +877,7 @@ footer {
     overflow: hidden;
     @media (min-width: 1200px) {
       float: left;
-      width: 20%;
+      width: 18%;
       text-align: left;
       margin: 0;
     }
@@ -901,7 +933,7 @@ footer {
       }
       @media (min-width: 1200px) {
         float: left;
-        width: 75%;
+        width: 82%;
         clear: none;
         margin: 0;
       }
@@ -931,15 +963,15 @@ footer {
   .kardiamobile {
     .chart.iphone {
       @media (min-width: 768px) {
-        height: 248px;
+        height: 308px;
       }
       @media (min-width: 1200px) {
-        height: 188px;
+        height: 218px;
       }
     }
     .chart.ipad {
       @media (min-width: 768px) {
-        height: 158px;
+        height: 188px;
       }
       @media (min-width: 1200px) {
         height: 128px;
@@ -947,20 +979,20 @@ footer {
     }
     .chart.android {
       @media (min-width: 768px) {
-        height: 368px;
+        height: 428px;
       }
       @media (min-width: 1200px) {
-        height: 248px;
+        height: 278px;
       }
     }
   }
   .kardiamobile6l {
     .chart.iphone {
       @media (min-width: 768px) {
-        height: 218px;
+        height: 278px;
       }
       @media (min-width: 1200px) {
-        height: 158px;
+        height: 188px;
       }
     }
   }
@@ -1122,6 +1154,55 @@ footer {
     &.open {
       opacity: 1;
       visibility: visible;
+    }
+  }
+
+  .modal-inner.shipping-gb {
+    max-width: 560px;
+    .modal-close {
+      top: 15px;
+      right: 15px;
+      @media(min-width: 1200px) {
+        top: 25px;
+        right: 25px;
+      }
+      &:after,
+      &:before {
+        background: $teal;
+      }
+      &:hover:after,
+      &:hover:before {
+        background: $light-teal;
+      }
+    }
+    .modal-content {
+      position: relative;
+      background-color: #fff;
+      padding: 40px 25px 50px;
+      border-top: 8px solid $red;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      h3 {
+        margin-bottom: 24px;
+        padding: 0 18px;
+      }
+      table {
+        margin: 0 auto;
+        table-layout: auto;
+        max-width: 510px;
+        tr {
+          &>td:last-of-type {
+            text-align: right;
+          }
+        }
+        td {
+          font-size: 15px;
+          padding: 6px 10px;
+          @media (min-width: 768px) {
+            padding: 6px 18px;
+          }
+        }
+      }
     }
   }
 }
@@ -1368,7 +1449,8 @@ a.play-video {
         margin: 0 0 60px;
         font-size: 24px;
         @media(min-width: 768px) {
-          width: 600px;
+          width: 605px;
+          // width: 600px;
           margin: 0 auto 50px;
           font-size: 26px;
         }

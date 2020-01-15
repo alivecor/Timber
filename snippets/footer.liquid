@@ -1,3 +1,7 @@
+{% assign baseUrl = 'https://www.alivecor.com' %}
+{% if shop.domain == 'shop.gb.alivecor.com' %}
+  {% assign baseUrl = 'https://www.kardiamobile.co.uk' %}
+{% endif %}
 <footer>
   <section class="footer">
     <div class="newsletter-signup">
@@ -57,23 +61,35 @@
           </a>
         </li>
         <li>
+          <a href="http://shop.alivecor.com/kardiamobile6l">
+            KardiaMobile 6L
+          </a>
+        </li>
+        <li>
           <a href="https://alivecor.zendesk.com/hc/#compatibility">
             Compatibility
           </a>
         </li>
+        {% if shop.domain == 'store.alivecor.com' %}
         <li>
-          <a href="https://www.alivecor.com/shipping">
+          <a href="{{ baseUrl }}/shipping">
             Shipping
           </a>
         </li>
+        {% endif %}
         <li>
-          <a href="https://www.alivecor.com/warranty">
+          <a href="{{ baseUrl }}/warranty">
             Warranty
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/resellers">
-            International/Resellers
+          <a href="{{ baseUrl }}/international">
+            International
+          </a>
+        </li>
+        <li>
+          <a href="{{ baseUrl }}/resellers">
+            Resellers
           </a>
         </li>
       </ul>
@@ -94,12 +110,12 @@
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/tos">
+          <a href="{{ baseUrl }}/tos">
             Terms of Service
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/privacy">
+          <a href="{{ baseUrl }}/privacy">
             Privacy Policy
           </a>
         </li>
@@ -111,27 +127,27 @@
           </h6>
         </li>
         <li>
-          <a href="https://www.alivecor.com/mission">
+          <a href="{{ baseUrl }}/mission">
             Our Mission
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/careers">
+          <a href="{{ baseUrl }}/careers">
             Careers
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/blog">
+          <a href="{{ baseUrl }}/blog">
             Blog
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/press">
+          <a href="{{ baseUrl }}/press">
             Press and Media
           </a>
         </li>
         <li>
-          <a href="https://www.alivecor.com/research">
+          <a href="{{ baseUrl }}/research">
             Clinical Research
           </a>
         </li>
@@ -164,5 +180,34 @@
       &copy;2019 AliveCor, Inc. All Rights Reserved. US Patent Nos 8,301,232, 8,509,882 and Patents Pending. AliveCor and Kardia are trademarks of AliveCor, Inc. in the United States and other countries.
       </p>
     </div>
+    {% if shop.domain == 'store.alivecor.com' %}
+    {% assign current_url = '' %}
+    {% case template %}
+      {% when 'page' %}
+        {% assign current_url = page.url %}
+      {% when 'collection' %}
+        {% assign current_url = collection.url %}
+      {% when 'list-collections' %}
+        {% assign current_url = shop.domain | append: '/collections' %}
+      {% when 'product' %}
+        {% assign current_url = product.url %}
+      {% when 'index' %}
+        {% assign current_url = shop.domain %}
+      {% when 'cart' %}
+        {% assign current_url = shop.domain | append: '/cart' %}
+    {% endcase %}
+    <div class="ccpa">
+      <a id="do-not-sell"
+        class="ga-tracker"
+        data-category="CCPA Link"
+        data-action="Clicked Do Not Sell My Personal Information"
+        data-label="{{ current_url }}">
+        Do Not Sell My Personal Information
+      </a>
+      <div class="confirmation">
+        <p>Your preference has been stored for this browser and device. If you clear your cookies, your preference will be forgotten.</p>
+      </div>
+    </div>
+    {% endif %}
   </section>
 </footer>

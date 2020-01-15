@@ -104,9 +104,14 @@ $(document).ready(function() {
     }
   });
 
-  $(".modal-inner").on("click", function(e) {
+  $('.modal-inner').on('click', function(e) {
     e.stopPropagation();
   });
+
+  // shipping modal open
+  $('.shipping-options').on('click', function() {
+    openModal('shipping-gb');
+  })
 
   //Cookies stuff
   var acceptsCookies,
@@ -235,8 +240,12 @@ function openModal(type) {
 
   if (type === 'video') {
     $('.modal-inner.video').show();
-    $('.modal-inner.premium').hide();
-    $('.modal-inner.report').hide();
+    $('.modal-inner.shipping-gb').hide();
+  }
+  if (type === 'shipping-gb') {
+    console.log('j')
+    $('.modal-inner.shipping-gb').show();
+    $('.modal-inner.video').hide();
   }
 }
 
@@ -264,7 +273,5 @@ function variantForSaleProduct() {
 // Change default sort of stamped reviews
 $(document).on('stamped:reviews:loaded', function(){
   $('.stamped-sort-select option[value="most-votes"]').html('Most Helpful');
-});
-$(document).on('stamped:reviews:loaded', function(){
   $('.stamped-sort-select option[value="least-votes"]').html('Least Helpful');
 });

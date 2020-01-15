@@ -942,6 +942,12 @@ sub {
 .h4Price {
   font-size: 20px;
   font-family: $bodyFontStack;
+  .red {
+    color: $red;
+  }
+  .strikeout {
+    font-size: 20px;
+  }
 }
 
 /*================ Blockquotes ================*/
@@ -2719,6 +2725,16 @@ label.error {
   }
 }
 
+/* Shipping lightbox GB */
+.shipping-options-cont {
+  margin-bottom: 20px;
+  .shipping-options {
+    font-size: 16px;
+    border-bottom: 1px solid $teal;
+    margin-bottom: 20px;
+  }
+}
+
 /*=================================
 Accordion Styles
 ==================================*/
@@ -4271,8 +4287,14 @@ input.quantity {
     display: table;
   }
   &.home {
-    margin-top: 40px;
+    // margin-top: 40px;
     margin-bottom: 0;
+    margin-top: 0;
+    background-color: $light-blue;
+    padding: 3px 10px;
+    border-radius: 3px;
+    float: left;
+    clear: left;
   }
 }
 
@@ -4467,7 +4489,7 @@ input.quantity {
     background-image: url("//cdn.shopify.com/s/files/1/0368/7037/t/16/assets/ico-select.svg?1400682090820275061");
   }
   .stamped-button-primary {
-    background: $colorBtnPrimary;
+    background: $colorBtnPrimary !important;
     border: 2px solid $colorBtnPrimary;
     padding: 10px 12px;
     &:hover {
@@ -4520,8 +4542,30 @@ input.quantity {
     text-decoration: underline;
   }
 }
-.km6l-preorder-message, .product-late-ship {
+.km6l-preorder-message {
   margin-bottom: 40px;
+}
+.product-late-ship {
+  margin-bottom: 40px;
+  @include at-query(769px, 915px) {
+    margin: 26px 0 40px 20px;
+  }
+  @include at-query($min, 915px) {
+    margin: 40px 0 40px 20px;
+  }
+}
+.product-late-ship-cont {
+  clear: left;
+  @include at-query($min, $medium) {
+    clear: none;
+    float: left;
+  }
+  @include at-query(769px, 915px) {
+    width: 205px;
+  }
+  @include at-query($min, 915px) {
+    width: initial;
+  }
 }
 
 // Upsell

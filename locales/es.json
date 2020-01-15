@@ -236,7 +236,8 @@
   },
   "layout": {
     "navigation": {
-      "menu": "Menú"
+      "menu": "Menú",
+      "free_ship": "FREE Shipping Available"
     },
     "drawers": {
       "browse": "Navegar",
@@ -309,8 +310,7 @@
     "month_day_year": "%d de %B, %Y"
   },
   "compatibility": {
-    "intro_mobile_new": "{{ product_title }} is a medical device that is regulated per federal and international regulations; we rigorously test and validate devices with smartphones and tablets to meet or exceed these regulations before we claim compatibility. We routinely add support for new phones and tablets. Check back if your device is not listed below.",
-    "intro_mobile": "KardiaMobile is a medical device that is regulated per federal and international regulations; we rigorously test and validate devices with smartphones and tablets to meet or exceed these regulations before we claim compatibility. We routinely add support for new phones and tablets. Check back if your device is not listed below.",
+    "intro_mobile": "{{ product_title }} is a medical device that is regulated per federal and international regulations; we rigorously test and validate devices with smartphones and tablets to meet or exceed these regulations before we claim compatibility. We routinely add support for new phones and tablets. Check back if your device is not listed below.",
     "intro_band": "KardiaBand is a medical device that is regulated per federal and international regulations; we rigorously test and validate devices with smartphones and tablets to meet or exceed these regulations before we claim compatibility. We routinely add support for new phones and tablets. Check back if your device is not listed below.",
     "compatibility": "Compatibility",
     "ios": "iOS",
@@ -329,6 +329,7 @@
     "ios_12_2": "iOS 12.2",
     "ios_12_3": "iOS 12.3",
     "ios_10_3_3": "iOS 10.3.3",
+    "ios_13_0": "iOS 13.0",
     "iphone7_plus": "iPhone 7 Plus",
     "iphone7": "iPhone 7",
     "iphone6_plus": "iPhone 6 Plus",
@@ -395,6 +396,7 @@
     "android_8_0_0": "Android 8.0.0",
     "android_8_1_0": "Android 8.1.0",
     "android_9_0_0": "Android 9.0.0",
+    "android_10_0_0": "Android 10.0.0",
     "app_store": "App Store",
     "google_play": "Google Play",
     "use_of_kardia_mobile_requires_html": "Use of KardiaMobile requires the companion app Kardia, available for download in the {{itunes_url}} and {{play_url}}.",

@@ -2,7 +2,7 @@
 <p>{{ 'compatibility.intro_mobile' | t: product_title: product_title }}
 {% comment %}new Date().getTime(){% endcomment %}
 For a list of previously compatible devices please see <a href="https://alivecor.zendesk.com/hc/en-us/articles/115015935767" target="_blank">this article</a>.
-{% assign updated_date = '1559668830' | date: format: 'month_day_year'  %}
+{% assign updated_date = '1575570342' | date: format: 'month_day_year'  %}
 <br/><span class="italic">({{ 'compatibility.last_updated_on' | t: date: updated_date}})</span></p>
 <div class="kardiamobile{% if product.handle == 'kardiamobile6l' %} kardiamobile6l{% endif %}">
 <div class="content underline">
@@ -11,72 +11,28 @@ For a list of previously compatible devices please see <a href="https://alivecor
     <h3>iPhone</h3>
   </div>
   <ul class="chart iphone">
-    <li>
-      <span class="regular">{{ 'compatibility.iphoneXr' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.iphoneXs' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.iphoneXsMax' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.iphoneX' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.iphone8_plus' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.iphone8' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.iphone7_plus' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.iphone7' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.iphone6s_plus' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.iphone6s' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.iphone6_plus' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.iphone6' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.iphonese' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.iphone5s' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
+    <li><span class="regular">iPhone 11</span> (iOS 13.2)</li>
+    <li><span class="regular">iPhone 11 Pro</span> (iOS 13.2)</li>
+    <li><span class="regular">iPhone 11 Pro Max</span> (iOS 13.2)</li>
+    <li><span class="regular">iPhone XR</span> (iOS 13.2)</li>
+    <li><span class="regular">iPhone XS</span> (iOS 13.2)</li>
+    <li><span class="regular">iPhone XS Max</span> (iOS 13.2)</li>
+    <li><span class="regular">iPhone X</span> (iOS 13.2)</li>
+    <li><span class="regular">iPhone 8</span> (iOS 13.2)</li>
+    <li><span class="regular">iPhone 8 Plus</span> (iOS 13.2)</li>
+    <li><span class="regular">iPhone 7</span> (iOS 13.2)</li>
+    <li><span class="regular">iPhone 7 Plus</span> (iOS 13.2)</li>
+    <li><span class="regular">iPhone 6s</span> (iOS 13.2)</li>
+    <li><span class="regular">iPhone 6s Plus</span> (iOS 13.2)</li>
+    <li><span class="regular">iPhone SE</span> (iOS 13.2)</li>
+    <li><span class="regular">iPhone 6</span> (iOS 12.4)</li>
+    <li><span class="regular">iPhone 6 Plus</span> (iOS 12.4)</li>
+    <li><span class="regular">iPhone 5s</span> (iOS 12.4)</li>
     {% if product.handle != 'kardiamobile6l' %}
-    <li>
-      <span class="regular">{{ 'compatibility.iphone5c' | t }}</span>
-      ({{ 'compatibility.ios_10_3_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.iphone5' | t }}</span>
-      ({{ 'compatibility.ios_10_3_3' | t }})
-    </li>
+    <li><span class="regular">iPhone 5c</span> (iOS 10.3.3)</li>
+    <li><span class="regular">iPhone 5</span> (iOS 10.3.3)</li>
     {% endif %}
+    <li><span class="regular">iPod Touch (7th Gen)</span> (iOS 13.2)</li>
   </ul>
 </div>
 <div class="content underline">
@@ -85,42 +41,18 @@ For a list of previously compatible devices please see <a href="https://alivecor
     <h3>iPad</h3>
   </div>
   <ul class="chart ipad">
-    <li><span class="regular">iPad Pro 12" (2nd Gen)</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li><span class="regular">iPad Pro 10.5" (2nd Gen)</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li><span class="regular">iPad Pro 12"</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li><span class="regular">iPad Pro 9"</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">iPad 9.7" (2017)</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">iPad Mini 4</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.ipad_mini_3' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.ipad_mini_2' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.ipad_air2' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.ipad_air' | t }}</span>
-      ({{ 'compatibility.ios_12_3' | t }})
-    </li>
+    <li><span class="regular">iPad Pro 12" (2nd Gen)</span> (iOS 13.2)</li>
+    <li><span class="regular">iPad Pro 10.5" (2nd Gen)</span> (iOS 13.2)</li>
+    <li><span class="regular">iPad Pro 12"</span> (iOS 13.2)</li>
+    <li><span class="regular">iPad Pro 9"</span> (iOS 13.2)</li>
+    <li><span class="regular">iPad 9.7" (2017)</span> (iOS 13.2)</li>
+    <li><span class="regular">iPad Mini 5</span> (iOS 13.2)</li>
+    <li><span class="regular">iPad Mini 4</span> (iOS 13.2)</li>
+    <li><span class="regular">iPad Mini 3</span> (iOS 12.4)</li>
+    <li><span class="regular">iPad Mini 2</span> (iOS 12.4)</li>
+    <li><span class="regular">iPad Air (3rd Gen)</span> (iOS 13.2)</li>
+    <li><span class="regular">iPad Air 2</span> (iOS 13.2)</li>
+    <li><span class="regular">iPad Air (1st Gen)</span> (iOS 12.4)</li>
   </ul>
 </div>
 <div class="content">
@@ -129,99 +61,33 @@ For a list of previously compatible devices please see <a href="https://alivecor
     <h3>{{ 'compatibility.android' | t }}</h3>
   </div>
   <ul class="chart android">
-    <li>
-      <span class="regular">{{ 'compatibility.google_pixel_3a' | t }}</span>
-      ({{ 'compatibility.android_9_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.google_pixel_3axl' | t }}</span>
-      ({{ 'compatibility.android_9_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.google_pixel_3' | t }}</span>
-      ({{ 'compatibility.android_9_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.google_pixel_3xl' | t }}</span>
-      ({{ 'compatibility.android_9_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.google_pixel_2' | t }}</span>
-      ({{ 'compatibility.android_9_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.google_pixel_2xl' | t }}</span>
-      ({{ 'compatibility.android_9_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.google_pixel' | t }}</span>
-      ({{ 'compatibility.android_9_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.google_pixel_xl' | t }}</span>
-      ({{ 'compatibility.android_9_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.huawei_mate_10' | t }}</span>
-      ({{ 'compatibility.android_8_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.lg_nexus_5' | t }}</span>
-      ({{ 'compatibility.android_6_0_1' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.motorola_moto_g_gen_2' | t }}</span>
-      ({{ 'compatibility.android_6_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.galaxy_s10_plus' | t }}</span>
-      ({{ 'compatibility.android_9_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.galaxy_s10' | t }}</span>
-      ({{ 'compatibility.android_9_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.galaxy_s9_plus' | t }}</span>
-      ({{ 'compatibility.android_9_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.galaxy_s9' | t }}</span>
-      ({{ 'compatibility.android_8_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.galaxy_s8_plus' | t }}</span>
-      ({{ 'compatibility.android_8_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.galaxy_s8' | t }}</span>
-      ({{ 'compatibility.android_7_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.galaxy_s7' | t }}</span>
-      ({{ 'compatibility.android_8_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.galaxy_s6' | t }}</span>
-      ({{ 'compatibility.android_7_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.galaxy_s5' | t }}</span>
-      ({{ 'compatibility.android_6_0_1' | t }})
-    </li>
-    
-    <li>
-      <span class="regular">{{ 'compatibility.samsung_note_9' | t }}</span>
-      ({{ 'compatibility.android_8_1_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.samsung_note_8' | t }}</span>
-      ({{ 'compatibility.android_8_0_0' | t }})
-    </li>
-    <li>
-      <span class="regular">{{ 'compatibility.samsung_note_5' | t }}</span>
-      ({{ 'compatibility.android_7_0_0' | t }})
-    </li>
+    <li><span class="regular">Google Pixel 4</span> (Android 10.0.0)</li>
+    <li><span class="regular">Google Pixel 4 XL</span> (Android 10.0.0)</li>
+    <li><span class="regular">Google Pixel 3a</span> (Android 10.0.0)</li>
+    <li><span class="regular">Google Pixel 3a XL</span> (Android 10.0.0)</li>
+    <li><span class="regular">Google Pixel 3</span> (Android 10.0.0)</li>
+    <li><span class="regular">Google Pixel 3 XL</span> (Android 10.0.0)</li>
+    <li><span class="regular">Google Pixel 2</span> (Android 10.0.0)</li>
+    <li><span class="regular">Google Pixel 2 XL</span> (Android 10.0.0)</li>
+    <li><span class="regular">Google Pixel</span> (Android 10.0.0)</li>
+    <li><span class="regular">Google Pixel XL</span> (Android 10.0.0)</li>
+    <li><span class="regular">Samsung Galaxy S10</span> (Android 9.0.0)</li>
+    <li><span class="regular">Samsung Galaxy S10+</span> (Android 9.0.0)</li>
+    <li><span class="regular">Samsung Galaxy S9</span> (Android 8.0.0)</li>
+    <li><span class="regular">Samsung Galaxy S9+</span> (Android 9.0.0)</li>
+    <li><span class="regular">Samsung Galaxy S8</span> (Android 7.0.0)</li>
+    <li><span class="regular">Samsung Galaxy S8+</span> (Android 8.0.0)</li>
+    <li><span class="regular">Samsung Galaxy S7</span> (Android 8.0.0)</li>
+    <li><span class="regular">Samsung Galaxy S6</span> (Android 7.0.0)</li>
+    <li><span class="regular">Samsung Galaxy S5</span> (Android 6.0.1)</li>
+    <li><span class="regular">Samsung Note10</span> (Android 9.0)</li>
+    <li><span class="regular">Samsung Note10+</span> (Android 9.0)</li>
+    <li><span class="regular">Samsung Note9</span> (Android 8.1.0)</li>
+    <li><span class="regular">Samsung Note8</span> (Android 8.0.0)</li>
+    <li><span class="regular">Samsung Note5</span> (Android 7.0.0)</li>
+    <li><span class="regular">Huawei Mate 10</span> (Android 8.0.0)</li>
+    <li><span class="regular">LG Nexus 5</span> (Android 6.0.1)</li>
+    <li><span class="regular">Motorola Moto G Gen 2</span> (Android 6.0)</li>
   </ul>
 </div>
 </div>
