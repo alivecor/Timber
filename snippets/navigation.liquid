@@ -10,7 +10,7 @@
     <div class="mobile-only">
       <span class="mobile-buy">
         <a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
-          <img src="{{ 'store_icon_cart@3x.png' | asset_url }}"/>
+          <img src="{{ 'store_icon_cart@3x.png' | asset_url }}" alt="Shopping Cart" />
             <span id="CartCount">
               {% if cart.item_count > 0 %}
                 {{ cart.item_count }}

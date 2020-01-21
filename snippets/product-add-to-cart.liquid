@@ -23,6 +23,7 @@
              class="variant-input"
              data-index="{{forloop.index0}}"
              data-img-url="{{variant.featured_image.src | img_url: 'large'}}"
+             data-img-alt="{{variant.featured_image.alt}}"
              {% if has_checked == false or product.selected_variant.id == variant.id %}
                checked="true"
                {% assign has_checked = true %}

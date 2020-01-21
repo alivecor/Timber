@@ -273,15 +273,19 @@ timber.productImageSwitch = function () {
     timber.cache.$thumbImages.on('click', function(evt) {
       evt.preventDefault();
       var newImage = $(this).attr('href');
-      timber.switchImage(newImage, null, timber.cache.$productImage);
+      var newAlt = $(this).find('img').attr('alt');
+      timber.switchImage(newImage, null, timber.cache.$productImage, newAlt);
     });
   }
 };
 
-timber.switchImage = function (src, imgObject, el) {
+timber.switchImage = function (src, imgObject, el, imgAlt) {
   // Make sure element is a jquery object
   var $el = $(el);
   $el.attr('src', src);
+  if (imgAlt) {
+    $el.attr('alt', imgAlt);
+  }
 };
 
 timber.responsiveVideos = function () {

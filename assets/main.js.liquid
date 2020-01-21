@@ -40,7 +40,9 @@ $(document).ready(function() {
   // product page change image on size change
   $('form').on('click', "input", function(e) {
     var imgUrl = $(this).data().imgUrl;
+    var imgAlt = $(this).data().imgAlt;
     $('#ProductPhoto img').attr('src', imgUrl);
+    $('#ProductPhoto img').attr('alt', imgAlt);
   });
 
   // home page change image on variant change
