@@ -172,7 +172,7 @@
       </div>
     {% endunless %}
 
-    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+    <form action="/cart/add" method="post" enctype="multipart/form-data" id="{{product.id}}AddToCartForm" class="AddToCartForm form-vertical">
       {% if product.handle == 'kardiamobile' or product.handle == 'kardiamobile6l' %}
       <div class="disclaimer">
         <a href="{{ product.url }}/#compatibility">
@@ -257,7 +257,7 @@
         {% endfor %}
       {% endif %}
       <div class="visually-hidden">
-        <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+        <input type="number" id="{{product.id}}Quantity" name="quantity" value="1" min="1" class="quantity-selector">
       </div>
       <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
         <span id="AddToCartText">
@@ -303,7 +303,7 @@
           {% include 'oos-message', nomargin: false %}
         </div>
       {% endif %}
-      {% if product.handle == 'kardiamobile' and shop.locale != 'en' %}
+      {% if product.handle == 'kardiamobile' and shop.domain == 'shop.de.alivecor.com' %}
         <div style="clear: left; float: left; font-size: 16px; margin-top: 35px;">
           KardiaMobile 6L is currently out of stock. Buy KardiaMobile today - the most clinically-validated personal ECG in the world.
         </div>

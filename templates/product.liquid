@@ -8,13 +8,16 @@
     - http://schema.org/docs/gs.html
 
 {% endcomment %}
+{% assign main_product = false %}
 {% if product.handle == 'kardiamobile' %}
   {% assign product_accessories = collections.kardiamobile-accessories %}
   {% assign product_name = 'kardiamobile' %}
+  {% assign main_product = true %}
 {% endif %}
 {% if product.handle == 'kardiamobile6l' %}
   {% assign product_accessories = collections.kardiamobile6l-accessories %}
   {% assign product_name = 'kardiamobile6l' %}
+  {% assign main_product = true %}
 {% endif %}
 {% assign sold_out = true %}
 {% if product.available %}
@@ -82,7 +85,7 @@
         <ul class="product-single__thumbnails grid-uniform{% if product_name == 'kardiamobile6l' %} km6l-caption{% endif %}" id="ProductThumbs">
 
           {% for image in product.images %}
-            <li class="grid__item one-fifth medium--one-fifth small--one-quarter">
+            <li class="grid__item one-sixth medium--one-tenth small--one-quarter">
               <a href="{{ image.src | img_url: '800x' }}" class="product-single__thumbnail">
                 <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
               </a>
@@ -91,7 +94,7 @@
 
           {% comment %} Add How it works video for KM and 6L {% endcomment %}
           {% if product_name == 'kardiamobile' %}
-            <li class="grid__item one-fifth medium--one-fifth small--one-quarter">
+            <li class="grid__item one-sixth medium--one-tenth small--one-quarter">
               <a class="play-video ga-tracker"
                 data-videoid="{{ kmHowItWorksVideoId }}"
                 data-category="Video"
@@ -102,7 +105,7 @@
             </li>
           {% endif %}
           {% if product_name == 'kardiamobile6l' %}
-            <li class="grid__item one-fifth medium--one-fifth small--one-quarter">
+            <li class="grid__item one-sixth medium--one-tenth small--one-quarter">
               <a class="play-video ga-tracker"
                 data-videoid="{{ km6lHowItWorksVideoId }}"
                 data-category="Video"
@@ -205,7 +208,7 @@
           </a>
         </div>
 
-        {% if product_name == 'kardiamobile' or product_name == 'kardiamobile6l' %}
+        {% if main_product %}
         <!-- Compat link ======================================================== -->
         <div class="compat-link">
           <a href="#compatibility" class="scroll-to-tab">
@@ -216,7 +219,7 @@
       </div>
 
       <!-- Product Description ====================================================== -->
-      <div class="product-description rte product" itemprop="description">
+      <div class="product-description rte product{% if main_product and shop.domain == 'store.alivecor.com' %} mobile-main-product-description{% endif %}" itemprop="description">
         {% comment %}
           Wrap description in a div and add another div into description in admin and use styles to show hide the correct one
         {% endcomment %}
@@ -244,6 +247,17 @@
         {% endif %}
       {% endif %}
     </div>
+    {% comment %}
+      If a main product, show description under the image on desktop
+    {% endcomment %}
+    {% if main_product and shop.domain == 'store.alivecor.com' %}
+    <div class="grid__item large--one-whole desktop-main-product-description">
+      <!-- Product Description ====================================================== -->
+      <div class="main-product product-description rte product" itemprop="description">
+        {{ product.description }}
+      </div>
+    </div>
+    {% endif %}
   </div>
 </div>
 

@@ -92,7 +92,7 @@
       {% endif %}
       {% endcomment %}
         
-      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical" onsubmit="promoAdd(event, this, {{product.id}})">
+      <form action="/cart/add" method="post" enctype="multipart/form-data" id="{{ product.id }}AddToCartForm" class="AddToCartForm form-vertical" onsubmit="promoAdd(event, this, {{product.id}})">
         {% if product.variants.size > 1 %}
         {% comment %}
           If there are variants, show the user some choices via input controls, else we will hide the inputs

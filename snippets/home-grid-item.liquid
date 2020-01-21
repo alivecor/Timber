@@ -96,7 +96,7 @@
       {% endif %}
     {% endif %}
   </p>
-  <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+  <form action="/cart/add" method="post" enctype="multipart/form-data" id="{{product.id}}AddToCartForm" class="AddToCartForm form-vertical">
     {% if product.variants.size > 1 %}
       <div class="variant-title">
         {%- for option in product.options_with_values -%}
@@ -161,7 +161,7 @@
       Note: forcing the quantities to be hidden
     {% endcomment %}
     <div class="visually-hidden">
-      <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+      <input type="number" id="{{product.id}}Quantity" name="quantity" value="1" min="1" class="quantity-selector">
     </div>
 
     <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>

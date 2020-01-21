@@ -1,4 +1,4 @@
-<form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">  {% if product.variants.size > 1 %}
+<form action="/cart/add" method="post" enctype="multipart/form-data" id="{{ product.id }}AddToCartForm1" class="AddToCartForm form-vertical">  {% if product.variants.size > 1 %}
   {% comment %}
     If there are variants, show the user some choices via input controls, else we will hide the inputs
   {% endcomment %}
@@ -69,7 +69,7 @@
   <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
   {% endcomment %}
 
-  <button type="submit" name="add" id="{{product.id}}" class="btn addToCart" {% if sold_out %}disabled{% endif %}>
+  <button type="submit" name="add" id="{{product.id}}AddToCart1" class="btn addToCart" {% if sold_out %}disabled{% endif %}>
     <span id="AddToCartText">
     {% if sold_out %}
     {{ 'products.product.sold_out' | t }}

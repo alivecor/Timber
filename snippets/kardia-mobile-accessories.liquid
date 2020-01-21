@@ -20,7 +20,7 @@
           </p>
 
           <form action="/cart/add" method="post"
-            enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+            enctype="multipart/form-data" id="{{ product.id }}AddToCartForm" class="AddToCartForm form-vertical">
             {% comment %}
               Note: forcing the variants and quantities to be hidden
             {% endcomment %}

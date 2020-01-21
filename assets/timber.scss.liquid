@@ -1212,7 +1212,7 @@ html input[disabled] {
 }
 
 .btn.addToCart {
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     width: 100%;
   }
 }
@@ -2487,10 +2487,17 @@ label.error {
   margin-bottom: $gutter;
   background-color: $grey1;
   position: relative;
+  @include at-query($min, $medium) {
+    float: right;
+    width: 90%;
+  }
+  @include at-query($min, $large) {
+    width: calc(85% + 16px);
+  }
   img {
     width: 100%;
     @media (max-width: 768px) {
-      max-width: 400px;
+      max-width: 500px;
     }
   }
   .img-caption {
@@ -2574,6 +2581,14 @@ label.error {
 
   li {
     margin-bottom: $gutter;
+    @include at-query($min, $medium) {
+      clear: none !important;
+      margin-bottom: 12px;
+    }
+    @include at-query($min, $large) {
+      margin-bottom: 8px;
+      width: 15%;
+    }
   }
 }
 @media (max-width: 768px) {
@@ -2596,10 +2611,10 @@ label.error {
       order: 2;
     }
   }
-  #AddToCartForm button {
+  .AddToCartForm button {
     margin: 30px 0;
     @include at-query($min, $large) {
-      margin: 30px 0 70px;
+      margin: 30px 0 40px;
     }
   }
 }
@@ -2662,7 +2677,7 @@ label.error {
   margin-bottom: 40px;
   @media (min-width: 400px) {
     float: right;
-    margin: 16px 0 40px;
+    margin: 16px 0 32px;
   }
   a {
     font-size: 16px;
@@ -3735,7 +3750,7 @@ input.quantity {
       color: $colorTextBody;
     }
   }
-  #AddToCartForm {
+  .AddToCartForm {
     position: relative;
   }
   .fsa-badge {
@@ -3844,9 +3859,27 @@ input.quantity {
     color: $grey3;
   }
   .product-description {
-    margin: 0 0 18px 0;
-    @media (min-width: 768px) {
-      margin: 0 0 80px 0;
+    margin: 0 0 40px 0;
+    &.main-product ul {
+      @include at-query($min, $large) {
+        columns: 2;
+        column-gap: 50px;
+      }
+      li {
+        padding-right: 20px;
+        break-inside: avoid;
+      }
+    }
+  }
+  .mobile-main-product-description {
+    @include at-query($min, $large) {
+      display: none;
+    }
+  }
+  &.desktop-main-product-description {
+    display: none;
+    @include at-query($min, $large) {
+      display: block;
     }
   }
   .view-details {
@@ -3937,7 +3970,7 @@ input.quantity {
   display: -webkit-flex;
   flex-direction: column;
   @media (min-width: 768px) {
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
   }
   @media (min-width: 1200px) {
     display: block;
