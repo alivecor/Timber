@@ -1,4 +1,5 @@
-$teal: #2D9F86;
+// $teal: #1C826C;
+$teal: #2d9f86;
 $light-teal: #6BC1B6;
 $teal-hover: $light-teal;
 $grey1: #F1F5F3;
@@ -6,7 +7,8 @@ $grey2: #BABFBD;
 $grey3: #536062;
 $light-grey: #E8E8E9;
 $lighter-teal: #E2E7E3;
-$red: #F15757;
+// $red: #D73E3F;
+$red: #f15757;
 $navy: #142A39;
 $light-blue: #C4E5EC;
 $blue: #9DD3DF;
@@ -169,10 +171,14 @@ header.navigation {
       letter-spacing: 0.5px;
     }
     .navigation-menu-button {
-      color: #142a39;
+      color: $navy;
       float: left;
       text-decoration: none;
       margin: -2px 0 0 20px;
+      background-color: transparent;
+      padding: initial;
+      height: 20px;
+      width: 25px;
     }
     .mobile-buy {
       float: right;
@@ -200,7 +206,7 @@ header.navigation {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #142a39;
+    background-color: $navy;
     overflow: hidden;
     transition: 0.4s;
     @media (min-width: 1200px) {
@@ -212,11 +218,13 @@ header.navigation {
   }
   #js-mobile-menu-close {
     position: absolute;
-    top: 22px;
-    left: 25px;
+    top: 15px;
+    left: 15px;
     height: 30px;
     width: 30px;
     cursor: pointer;
+    padding: initial;
+  background-color: transparent;
     @media (min-width: 1200px) {
       display: none;
     }
@@ -234,7 +242,7 @@ header.navigation {
       transform: rotate(45deg);
       height: 20px;
       width: 2px;
-      background: #2D9F86;
+      background: $teal;
       content: '';
       display: block;
     }
@@ -314,13 +322,13 @@ header.navigation {
       opacity: 100;
       visibility: visible;
       transition: all 0.3s;
-      color: #f15757;
+      color: $red;
       font-weight: 600;
       font-size: 14px;
       position: static;
       &:focus,
       &:hover {
-        color: #f15757;
+        color: $red;
       }
       @media (min-width: 1200px) {
         margin-top: 0;
@@ -342,7 +350,7 @@ header.navigation {
       text-decoration: none;
       font-size: 20px;
       @media (min-width: 1200px) {
-        color: #142a39;
+        color: $navy;
         letter-spacing: .5px;
         font-size: 24px;
         width: auto;
@@ -351,7 +359,7 @@ header.navigation {
 
       &:focus,
       &:hover {
-        color: #2d9f86;
+        color: $teal;
       }
       &.buy-now {
         color: #fff;
@@ -367,7 +375,8 @@ header.navigation {
         cursor: pointer;
       }
     }
-    &#products-menu:hover .dropdown {
+    &#products-menu:hover .dropdown,
+    &#products-menu.focus .dropdown {
       display: block;
     }
     .dropdown {
@@ -492,7 +501,7 @@ footer {
     @media (min-width: 1200px) {
       float: left;
     }
-    h6 {
+    .h6 {
       margin-top: 0;
       margin-bottom: 8px;
       padding-bottom: 14px;
@@ -709,6 +718,18 @@ footer {
   display: none;
   font-size: 16px;
   color: $red;
+  svg {
+    height: 20px;
+    width: 20px;
+    margin-right: 6px;
+    vertical-align: text-bottom;
+    path {
+      stroke: $red;
+    }
+    circle {
+      fill: $red;
+    }
+  }
 }
 
 #modal {
@@ -1237,7 +1258,6 @@ a.play-video {
 
 #cookies-message {
   font-weight: normal;
-  font-size: 14px;
   background: $navy;
   position: fixed;
   bottom: 0;
@@ -1253,13 +1273,19 @@ a.play-video {
   p {
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 0 30px;
+    padding: 0 40px 0 30px;
     color: #fff;
+    font-size: 14px;
+    @media(min-width: 768px) {
+      font-size: 16px;
+    }
   }
   a {
     font-weight: bold;
     color: #fff;
     margin-left: 2px;
+    text-decoration: underline;
+    white-space: nowrap;
   }
   #cookies-ok {
     color: #fff;
@@ -1677,6 +1703,27 @@ a.play-video {
     }
   }
 }
+
+.screen-reader-only-focusable:active,.screen-reader-only-focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto
+}
+
+.skip-to-content:focus {
+  background-color: $grey1;
+  font-size: 16px;
+  padding: 16px;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  z-index: 10000;
+  color: $navy;
+}
+
 
 @keyframes showup1 {
   0% { opacity: 0; }

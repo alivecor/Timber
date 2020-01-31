@@ -72,6 +72,7 @@
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} {% if template == 'index' and shop.locale == 'en' %}homepage{% endif %}" >
+  <a href="#site-content" class="visuallyhidden screen-reader-only-focusable skip-to-content">Skip to content</a>
   {% include 'gtm-body' %}
   {% include 'discount-code-body' %}
   {% include 'navigation' %}
@@ -80,7 +81,7 @@
   {% endif %}
   
   <div id="PageContainer" class="is-moved-by-drawer">
-    <main class="{% if template != 'cart' %}wrapper {%else%}cart-wrapper {% endif %}main-content" role="main">
+    <main id="site-content" class="{% if template != 'cart' %}wrapper {%else%}cart-wrapper {% endif %}main-content" role="main">
 
       {{ content_for_layout }}
 

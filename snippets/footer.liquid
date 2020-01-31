@@ -18,7 +18,7 @@
             <div class="response" id="mce-error-response" style="display:none"></div>
             <div class="response" id="mce-success-response" style="display:none"></div>
           </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_a596beb547be99ec121388a51_550f8baa8b" tabindex="-1" value=""></div>
+          <div style="position: absolute; left: -5000px;" aria-hidden="true"><label for="mailchimpBot">b_a596beb547be99ec121388a51_550f8baa8b</label><input id="mailchimpBot" type="text" name="b_a596beb547be99ec121388a51_550f8baa8b" tabindex="-1" value=""></div>
           <div class="input-group-btn clear">
             <input
               type="submit"
@@ -35,7 +35,7 @@
           Thanks! You have been added to the mailing list.
         </div>
         <div class="not-valid bad-email">
-          Please enter a valid email address
+          {% include 'icon-alert.svg' %}Please enter a valid email address
         </div>
         <div class="not-valid error"></div>
       </form>
@@ -53,7 +53,7 @@
     <div class="footer-nav">
       <ul>
         <li>
-          <h6>Shop</h6>
+          <div class="h6">Shop</div>
         </li>
         <li>
           <a href="http://shop.alivecor.com/kardiamobile">
@@ -95,9 +95,9 @@
       </ul>
       <ul>
         <li>
-          <h6>
+          <div class="h6">
             Help
-          </h6>
+          </div>
         </li>
         <li>
           <a href="https://alivecor.zendesk.com/hc">
@@ -122,9 +122,9 @@
       </ul>
       <ul>
         <li>
-          <h6>
+          <div class="h6">
             About AliveCor
-          </h6>
+          </div>
         </li>
         <li>
           <a href="{{ baseUrl }}/mission">
@@ -177,7 +177,7 @@
     </ul>
     <div class="copyright-statement">
       <p>
-      &copy;2019 AliveCor, Inc. All Rights Reserved. US Patent Nos 8,301,232, 8,509,882 and Patents Pending. AliveCor and Kardia are trademarks of AliveCor, Inc. in the United States and other countries.
+      &copy;2020 AliveCor, Inc. All Rights Reserved. US Patent Nos 8,301,232, 8,509,882 and Patents Pending. AliveCor and Kardia are trademarks of AliveCor, Inc. in the United States and other countries.
       </p>
     </div>
     {% if shop.domain == 'store.alivecor.com' %}

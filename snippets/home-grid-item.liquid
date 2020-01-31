@@ -67,9 +67,9 @@
     <div class="img-caption"></div>
   </a>
 
-  <p class="h4Title title">
+  <h3 class="h4Title title">
     <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-  </p>
+  </h3>
   <p class="h4Price price">
     {% comment %}
       You can show a leading 'from' or 'up to' by checking 'product.price_varies'
@@ -161,6 +161,7 @@
       Note: forcing the quantities to be hidden
     {% endcomment %}
     <div class="visually-hidden">
+      <label for="{{product.id}}Quantity">Quantity</label>
       <input type="number" id="{{product.id}}Quantity" name="quantity" value="1" min="1" class="quantity-selector">
     </div>
 

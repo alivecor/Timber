@@ -115,9 +115,9 @@
     {% endif %}
   </a>
   <div class="home-main-item-copy">
-    <p class="h2Title title">
+    <h2 class="h2Title title">
       <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-    </p>
+    </h2>
     <p class="h2Price price">
       {% comment %}
         You can show a leading 'from' or 'up to' by checking 'product.price_varies'
@@ -257,6 +257,7 @@
         {% endfor %}
       {% endif %}
       <div class="visually-hidden">
+        <label for="{{product.id}}Quantity">Quantity</label>
         <input type="number" id="{{product.id}}Quantity" name="quantity" value="1" min="1" class="quantity-selector">
       </div>
       <button type="submit" name="add" id="{{product.id}}" class="btn" {% if sold_out %}disabled{% endif %}>
@@ -301,11 +302,6 @@
       {% if km-oos %}
         <div style="clear: left">
           {% include 'oos-message', nomargin: false %}
-        </div>
-      {% endif %}
-      {% if product.handle == 'kardiamobile' and shop.domain == 'shop.de.alivecor.com' %}
-        <div style="clear: left; float: left; font-size: 16px; margin-top: 35px;">
-          KardiaMobile 6L is currently out of stock. Buy KardiaMobile today - the most clinically-validated personal ECG in the world.
         </div>
       {% endif %}
     </form>

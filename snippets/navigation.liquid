@@ -4,7 +4,7 @@
 {% endif %}
 <header class="navigation" role="banner">
   <div class="navigation-wrapper">
-    <a href="{{ baseUrl }}" class="logo">
+    <a href="{{ baseUrl }}" class="logo" aria-label="AliveCor Store Home">
       {% include "alivecor-logo-teal.svg" %}
     </a>
     <div class="mobile-only">
@@ -20,21 +20,24 @@
             </span>
         </a>
       </span>
-      <a href="javascript:void(0)"
-        class="navicon navigation-menu-button"
-        id="js-mobile-menu">
+      <button class="navigation-menu-button navicon"
+        id="js-mobile-menu"
+        aria-expanded="false"
+        aria-label="Open Navigation menu">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-      </a>
+      </button>
     </div>
     <nav role="navigation">
     <div id="mobile-overlay">
-      <div id="js-mobile-menu-close"></div>
+      <button id="js-mobile-menu-close"
+        aria-label="Close Navigation menu">
+      </button>
       <ul id="js-navigation-menu" class="navigation-menu">
         <li class="nav-link" id="products-menu">
-          <a>
+          <a tabindex="0">
             Products
           </a>
           <div class="dropdown">
@@ -75,7 +78,7 @@
 
         <li class="nav-link no-mobile">
           <a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
-            <img src="{{ 'store_icon_cart@3x.png' | asset_url }}"/>
+            <img src="{{ 'store_icon_cart@3x.png' | asset_url }}" alt="Shopping Cart" />
               {% if cart.item_count > 0 %}
               <span id="CartCount">
                 {{ cart.item_count }}

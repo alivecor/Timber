@@ -29,12 +29,31 @@ $(document).ready(function() {
   $('#js-mobile-menu').on('click', function() {
     document.getElementById('mobile-overlay').style.height = "100%";
     $('#js-navigation-menu').addClass('show');
+    $(this).attr('aria-expanded', true);
   });
 
   $('#js-mobile-menu-close').on('click', function() {
     document.getElementById('mobile-overlay').style.height = "0%";
     $('#js-navigation-menu').removeAttr('style');
     $('#js-navigation-menu').removeClass('show');
+    $('#js-mobile-menu').attr('aria-expanded', false);
+  });
+
+  // tabbable navigation
+  var topLevelLinks = document.querySelectorAll('.nav-link > a');
+  topLevelLinks.forEach(function(link) {
+    link.addEventListener('focus', function() {
+      this.parentElement.classList.add('focus');
+    });
+    if (link.nextElementSibling) {
+      var subMenu = link.nextElementSibling
+      var subMenuLinks = subMenu.querySelectorAll('a')
+      var lastLinkIndex = subMenuLinks.length - 1
+      var lastLink = subMenuLinks[lastLinkIndex]
+      lastLink.addEventListener('blur', function() {
+        link.parentElement.classList.remove('focus');
+      });
+    }
   });
 
   // product page change image on size change
@@ -64,7 +83,7 @@ $(document).ready(function() {
 
   //scroll to tabs on page load  if there is a hash
   var hash = window.location.hash
-  if (hash.length > 0) {
+  if (hash.length > 0 && hash !== '#site-content') {
     var split = hash.split('#')
     window.setTimeout(function() {
       scrollToAnchor(split[1]);
