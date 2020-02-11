@@ -1,5 +1,5 @@
 {% assign baseUrl = 'https://www.alivecor.com' %}
-{% if shop.domain == 'shop.gb.alivecor.com' %}
+{% if shop.domain contains '.co.uk' %}
   {% assign baseUrl = 'https://www.kardiamobile.co.uk' %}
 {% endif %}
 <header class="navigation" role="banner">

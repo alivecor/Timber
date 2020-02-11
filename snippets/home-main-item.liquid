@@ -74,7 +74,7 @@
     {% if shop.locale == 'en' %}
       {% assign holiday_ribbon_us = true %}
     {% endif %}
-    {% if shop.domain == 'shop.gb.alivecor.com' %}
+    {% if shop.domain contains '.co.uk' %}
       {% assign holiday_ribbon_uk = true %}
     {% endif %}
   {% endif %}
