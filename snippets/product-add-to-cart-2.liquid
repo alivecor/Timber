@@ -90,9 +90,11 @@
   <a href="https://www.mindtecstore.com/AliveCor-Kardia-Mobile-ECG-Heart-Monitor" class="btn amazon-sold-out" target="_blank">
     Buy From MindTec
   </a>
+  {% comment %}
   {% elsif product.handle == 'kardiamobile6l' and shop.currency == 'USD' and sold_out %}
     <a href="https://www.amazon.com/AliveCor%C2%AE-KardiaMobile-FDA-Cleared-Wireless-Smartphone/dp/B07RQW6SD5" class="btn amazon-sold-out" target="_blank">
       Buy From Amazon
     </a>
+  {% endcomment %}
   {% endif %}
 </form>

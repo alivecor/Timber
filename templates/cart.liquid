@@ -11,6 +11,7 @@
 {% assign km_in_cart = false %}
 {% assign km6l_in_cart = false %}
 {% assign km-oos = false %}
+{% assign km-six-oos = false %}
   <form action="/cart" method="post" novalidate class="cart table-wrap" id="cartform">
 
     <!-- DISCOUNT CODE script for checkout ================================================== -->
@@ -54,6 +55,11 @@
             {% endfor%}
           {% elsif item.product.handle == 'kardiamobile6l' %}
             {% assign km6l_in_cart = true %}
+            {% for tag in item.product.tags %}
+              {% if shop.locale == 'en' and tag == 'oos' %}
+                {% assign km-six-oos = true %}
+              {% endif %}
+            {% endfor%}
           {% endif %}
           <tr class="cart__row table__section">
             <td data-label="{{ 'customer.order.product' | t }}" data-layout="mobile-column">
@@ -166,6 +172,10 @@
           </p>
           {% if km_in_cart and km-oos %}
             {% include 'oos-message', nomargin: false %}
+          {% elsif km6l_in_cart and km-six-oos %}
+            <div>
+              {% include 'km6l-oos-message', nomargin: false %}
+            </div>
           {% else %}
             <span class="shipping-desc">2-5 business days (USPS First Class)</span>
           {% endif %}

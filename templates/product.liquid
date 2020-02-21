@@ -38,11 +38,15 @@
 {% assign kmHowItWorksVideoId = '251698484' %}
 {% assign km6lHowItWorksVideoId = '335613884' %}
 {% assign km-oos = false %}
+{% assign km-six-oos = false %}
 {% assign lateship = false %}
 {% assign fsa = false %}
 {% for tag in product.tags %}
   {% if product.handle == 'kardiamobile' and shop.locale == 'en' and tag == 'oos' %}
     {% assign km-oos = true %}
+  {% endif %}
+  {% if product.handle == 'kardiamobile6l' and shop.locale == 'en' and tag == 'oos' %}
+    {% assign km-six-oos = true %}
   {% endif %}
   {% if tag == 'lateship' %}
     {% assign lateship = true %}
@@ -165,6 +169,11 @@
       {% if km-oos %}
         <div style="clear: left">
           {% include 'oos-message', nomargin: true %}
+        </div>
+      {% endif %}
+      {% if km-six-oos %}
+        <div style="clear: left">
+          {% include 'km6l-oos-message', nomargin: true %}
         </div>
       {% endif %}
 
