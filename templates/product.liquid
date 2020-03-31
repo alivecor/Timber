@@ -19,6 +19,10 @@
   {% assign product_name = 'kardiamobile6l' %}
   {% assign main_product = true %}
 {% endif %}
+{% if product.handle == 'kardiaband' %}
+  {% assign product_name = 'kardiaband' %}
+  {% assign main_product = true %}
+{% endif %}
 {% assign sold_out = true %}
 {% if product.available %}
   {% assign sold_out = false %}
@@ -37,6 +41,7 @@
 {% endfor %}
 {% assign kmHowItWorksVideoId = '251698484' %}
 {% assign km6lHowItWorksVideoId = '335613884' %}
+{% assign kbHowItWorksVideoId = '251698954' %}
 {% assign km-oos = false %}
 {% assign km-six-oos = false %}
 {% assign lateship = false %}
@@ -89,11 +94,21 @@
         <ul class="product-single__thumbnails grid-uniform{% if product_name == 'kardiamobile6l' %} km6l-caption{% endif %}" id="ProductThumbs">
 
           {% for image in product.images %}
+            {% if product_name == 'kardiaband' %}
+              {% if forloop.first != true %}
+                <li class="grid__item one-sixth medium--one-tenth small--one-quarter">
+              <a href="{{ image.src | img_url: 'large' }}" class="product-single__thumbnail">
+                <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+              </a>
+            </li>
+              {% endif %}
+            {% else %}
             <li class="grid__item one-sixth medium--one-tenth small--one-quarter">
               <a href="{{ image.src | img_url: '800x' }}" class="product-single__thumbnail">
                 <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
               </a>
             </li>
+            {% endif %}
           {% endfor %}
 
           {% comment %} Add How it works video for KM and 6L {% endcomment %}
@@ -119,7 +134,17 @@
               </a>
             </li>
           {% endif %}
-
+          {% if product_name == 'kardiaband' %}
+          <li class="grid__item one-third medium--one-fifth small--one-quarter">
+            <a class="play-video ga-tracker"
+              data-videoid="{{ kbHowItWorksVideoId }}"
+              data-category="Video"
+              data-action="KardiaBand How it works"
+              data-label="/products/{{ handle }}">
+              <img src="{{ 'KB_video.jpg' | asset_img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+            </a>
+          </li>
+          {% endif %}
         </ul>
       {% endif %}
     </div>
@@ -141,6 +166,14 @@
         <span id="ProductPrice" class="h2Price noFloat">
           {{ product.price | money }}
         </span>
+      {% endif %}
+
+      <!-- For KB
+      ======================================================== -->
+      {% if product.handle == 'kardiaband' %}
+      <div class="disclaimer">
+        {{ 'products.product.kb_premium1' | t }}<br/>{{ 'products.product.kb_premium2' | t }}
+      </div>
       {% endif %}
 
       <!-- Add to Cart
@@ -347,6 +380,10 @@
   switch (currentProduct) {
     case 'kardiamobile':
       currentCaption = 'Check<br/>compatible<br/>devices';
+      showCaption = true;
+      break;
+    case 'kardiaband':
+      currentCaption = '<span>Apple Watch Size</span>42mm / 38mm';
       showCaption = true;
       break;
     case 'kardiamobile-carrypod':

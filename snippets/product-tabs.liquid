@@ -19,6 +19,16 @@
     {% assign premium_liquid = 'premium-table-kardiamobile' %}
   {% endif %}
 {% endif %}
+{% if product.handle == "kardiaband" %}
+  {% assign compatibility_liquid = 'compatibility-kardiaband' %}
+  {% assign techspecs_liquid = 'tech-specs-kardiaband' %}
+  {% assign compat_specs_product = true %}
+  {% if shop.currency == "USD" %}
+    {% assign premium_liquid = 'premium-table-kardiamobile-us' %}
+  {% else %}
+    {% assign premium_liquid = 'premium-table-kardiamobile' %}
+  {% endif %}
+{% endif %}
 {% if shop.currency == "GBP" %}
   {% assign premium_price = '£9.99/month or £99/year (£20 savings)' %}
 {% elsif shop.currency == "EUR" %}
