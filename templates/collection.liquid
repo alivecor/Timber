@@ -52,8 +52,9 @@
         See the snippet 'product-grid-item' for the layout.
       {% endcomment %}
       {% for product in collection.products %}
-
+        {% if product.handle != 'kardiaband' %}
         {% include 'product-grid-item', no_description: true  %}
+        {% endif %}
 
       {% else %}
 

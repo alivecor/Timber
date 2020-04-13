@@ -40,7 +40,7 @@ $(document).ready(function() {
   });
 
   // tabbable navigation
-  var topLevelLinks = document.querySelectorAll('.nav-link > a');
+  var topLevelLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-link > a'), 0);
   topLevelLinks.forEach(function(link) {
     link.addEventListener('focus', function() {
       this.parentElement.classList.add('focus');

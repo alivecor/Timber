@@ -58,6 +58,8 @@
 
       <!-- begin product list output -->
       {% for product in collection.products %}
+        {% if product.handle != 'kardiaband' %}
+
         {% comment %}
           Check if the product is on sale and set a variable to be used below.
         {% endcomment %}
@@ -133,7 +135,7 @@
             </div>
           </div>
         </div>
-
+        {% endif %}
       {% else %}
 
         <div class="grid__item">
