@@ -1,4 +1,5 @@
 {% assign compat_specs_product = false %}
+{% assign specs_product = true %}
 {% if product.handle == "kardiamobile" %}
   {% assign compatibility_liquid = 'compatibility-kardiamobile' %}
   {% assign techspecs_liquid = 'tech-specs-kardiamobile' %}
@@ -23,6 +24,16 @@
   {% assign compatibility_liquid = 'compatibility-kardiaband' %}
   {% assign techspecs_liquid = 'tech-specs-kardiaband' %}
   {% assign compat_specs_product = true %}
+  {% if shop.currency == "USD" %}
+    {% assign premium_liquid = 'premium-table-kardiamobile-us' %}
+  {% else %}
+    {% assign premium_liquid = 'premium-table-kardiamobile' %}
+  {% endif %}
+{% endif %}
+{% if product.handle == "omron-evolv" %}
+  {% assign compatibility_liquid = 'compatibility-kardiamobile' %}
+  {% assign compat_specs_product = true %}
+  {% assign specs_product = false %}
   {% if shop.currency == "USD" %}
     {% assign premium_liquid = 'premium-table-kardiamobile-us' %}
   {% else %}
@@ -56,7 +67,7 @@
       {% include compatibility_liquid %}
     </div>
   </div>
-
+  {% if specs_product %}
   <a name="specs"></a>
   <div class="accordion" id="specs">
     <h3>{{ 'product_tabs.tech_specs' | t }}
@@ -73,7 +84,7 @@
       {% include techspecs_liquid %}
     </div>
   </div>
-
+  {% endif %}
   <a name="premium"></a>
   <div class="accordion" id="premium">
     <h3>Premium Features

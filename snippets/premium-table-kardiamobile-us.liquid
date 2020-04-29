@@ -1,7 +1,13 @@
 <section class="premium-plan">
   <div class="main-plan">
     <div class="basic">
-      <p>Every purchase of {{ product.title }} includes our basic service free of charge, which includes unlimited EKG recordings with instant analysis, blood pressure and weight tracking, and storage of recorded EKGs on your phone.</p>
+      <p>
+        {% if product.handle != 'omron-evolv' %}
+        Every purchase of {{ product.title }} includes our basic service free of charge, which includes unlimited EKG recordings with instant analysis, blood pressure and weight tracking, and storage of recorded EKGs on your phone.
+        {% else %}
+        Every purchase of {{ product.title }} includes our basic service free of charge. To get more out of your device, upgrade to the Premium Protection Plan and enjoy the exclusive features below.
+        {% endif %}
+      </p>
     </div>
     <div class="premium">
       <div class="ribbon">Premium Protection Plan</div>
@@ -15,7 +21,11 @@
           Device Replacement
         </div>
         <p>
-           Easily replace your Kardia device if it's lost, stolen or broken for just $19.99.
+          {% if product.handle != 'omron-evolv' %}
+          Easily replace your Kardia device if it's lost, stolen or broken for just $19.99.
+          {% else %}
+          Easily replace your device if it's lost, stolen or broken for just $19.99.
+          {% endif %}
         </p>
       </li>
       <li>
@@ -26,7 +36,11 @@
           Cloud Storage & Security
         </div>
         <p>
+          {% if product.handle != 'omron-evolv' %}
           Enjoy secure access to all of your EKG recordings on any device, accessible anytime, anywhere.
+          {% else %}
+          Enjoy secure access to all of your blood pressure recordings on any device, accessible anytime, anywhere.
+          {% endif %}
         </p>
       </li>
       <li>
@@ -37,7 +51,11 @@
           Personalized Heart Health Report
         </div>
         <p>
+          {% if product.handle != 'omron-evolv' %}
           Receive a mailed report every 30 days with a summary of your EKG and blood pressure data to share with your doctor.
+          {% else %}
+          Receive a mailed report every 30 days with a summary of your heart data to share with your doctor.
+          {% endif %}
         </p>
       </li>
       <li>

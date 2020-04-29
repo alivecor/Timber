@@ -132,6 +132,13 @@
                   <span class="strikeout">
                     {{ item.variant.compare_at_price | money }}
                   </span>
+                {% elsif item.total_discount > 0 %}
+                  <span class="red">
+                  {{ item.price | money }}
+                  </span>
+                  <span class="strikeout">
+                    {{ item.original_price | money }}
+                  </span>
                 {% else %}
                   {{ item.price | money }}
                 {% endif %}
@@ -145,7 +152,7 @@
                 {{ item.line_price | money }}
               </span>
               {% if item.total_discount > 0 %}
-                <div class="discount_message">
+                <div class="discount_message" style="display:none;">
                 <s>{{ item.original_line_price | money }}</s>
                 ({{ item.message }})
                 </div>
@@ -192,6 +199,7 @@
       </div>
     </div>
   </form>
+  {% comment %}
   {% if km_in_cart %}
   <div class="km-accessories wrapper">
     <div class="one-half medium--one-whole small--one-whole cart-recommended-accessories">
@@ -200,6 +208,7 @@
     </div>
   </div>
   {% endif %}
+  {% endcomment %}
 {% else %}
   {% comment %}
     The cart is empty

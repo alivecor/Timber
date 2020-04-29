@@ -111,14 +111,17 @@ For a list of previously compatible devices please see <a href="https://alivecor
   <div class="content">
   <h3>{{ 'compatibility.kardia_app' | t }}</h3>
   <p>
-  {{ 'compatibility.use_of_kardia_mobile_requires_html' | t: itunes_url: itunes_url, play_url: play_url }}
+    {% if product.handle != 'omron-evolv' %}
+    {{ 'compatibility.use_of_kardia_mobile_requires_html' | t: itunes_url: itunes_url, play_url: play_url }}
+    {% else %}
+    Use OMRON Evolv with the companion app, Kardia, which is available for download in the {{ itunes_url }} and {{ play_url }}.
+    {% endif %}
   </p>
-
   <div class="store-links">
     <a class="itunes-badge" target="_blank" href="https://itunes.apple.com/app/aliveecg/id579769143"><img src="{{ 'apple-icon.png' | asset_url }}" alt="link to AppStore"></a>
     <a class="android-badge" target="_blank" href="https://play.google.com/store/apps/details?id=com.alivecor.aliveecg"><img src="{{ 'google-icon.png' | asset_url }}" alt="Android app on Google Play"></a>
   </div>
-  {% if shop.locale == 'en' %}
+  {% if shop.locale == 'en' and product.handle != 'omron-evolv' %}
     <p class="omron-link">
       <a href="https://omronhealthcare.com/kardiamobile/" target="_blank">
         {{ 'compatibility.omron_compatibility' | t }}

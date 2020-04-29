@@ -222,14 +222,14 @@
       {% endif %}
 
       <!-- cool stuff! ======================================================== -->
-      <h3 class="cool-stuff">
+      <div class="cool-stuff">
         {% if shop.locale == 'en' %}
           {% include 'benefit-icons-product' %}
         {% else %}
           {{ 'main_product.guarantee' | t }}<br>
           {{ 'main_product.warranty_2years' | t }}
         {% endif %}
-      </h3>
+      </div>
       <!-- Shipping details modal for GB store -->
       {% if shop.domain contains '.co.uk' %}
       <div class="shipping-options-cont">
@@ -402,7 +402,7 @@
     var firstImg;
 
     if (showCaption) {
-      $('#ProductPhoto .img-caption').html(currentCaption);
+      $('#ProductPhoto .img-caption').html('<p>' + currentCaption + '</p>');
       firstImg = $('.product-single__thumbnails li:first-child a').attr('href');
       $('#ProductPhotoImg').on('load', function () {
         // when changing images, check if first one
@@ -411,7 +411,7 @@
     }
     var checkImg = function(firstImg) {
       if (firstImg === $('#ProductPhotoImg').attr('src')) {
-        $('#ProductPhoto .img-caption').html(currentCaption);
+        $('#ProductPhoto .img-caption').html('<p>' + currentCaption + '</p>');
       } else {
         $('#ProductPhoto .img-caption').html('');
       }
@@ -420,13 +420,13 @@
     $('#ProductThumbs.km6l-caption li').on('click', function() {
       if ($(this).index() === 3) {
         $('#ProductPhoto .img-caption').show();
-        $('#ProductPhoto .img-caption').html('1-lead EKG recording with fingers');
+        $('#ProductPhoto .img-caption').html('<p>1-lead EKG recording with fingers</p>');
       } else if ($(this).index() === 4) {
         $('#ProductPhoto .img-caption').show();
-        $('#ProductPhoto .img-caption').html('6-lead EKG recording with left knee');
+        $('#ProductPhoto .img-caption').html('<p>6-lead EKG recording with left knee</p>');
       } else if ($(this).index() === 5) {
         $('#ProductPhoto .img-caption').show();
-        $('#ProductPhoto .img-caption').html('6-lead EKG recording with left ankle');
+        $('#ProductPhoto .img-caption').html('<p>6-lead EKG recording with left ankle</p>');
       } else {
         $('#ProductPhoto .img-caption').hide();
       }

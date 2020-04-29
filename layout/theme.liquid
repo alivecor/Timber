@@ -93,7 +93,9 @@
   {% endif %}
   {% comment %} Modal for videos and shipping {% endcomment %}
   {% include 'modal' %}
-
+  {% if template == 'cart' and shop.locale == 'en' %}
+  {% include 'carrypod-cart-upsell' %}
+  {% endif %}
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
   {{ 'fastclick.min.js' | asset_url | script_tag }}

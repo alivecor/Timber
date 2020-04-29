@@ -132,7 +132,132 @@ $(document).ready(function() {
   // shipping modal open
   $('.shipping-options').on('click', function() {
     openModal('shipping-gb');
-  })
+  });
+
+  // Cart page
+  // if cart page get cart items
+  if (window.location.pathname.indexOf('cart') >= 0) {
+    var currentCart;
+    $.ajax({
+      type: 'GET',
+      url: '/cart.js',
+      cache: false,
+      dataType: 'json',
+      success: function(cart) {
+        currentCart = cart;
+        searchCartCarryPod(cart);
+      }
+    });
+  }
+  function searchCartOmron(cart) {
+    var km_6l_in_cart = false,
+        omron_in_cart = false;
+    for (i = 0; i < currentCart.items.length; i ++) {
+      if (currentCart.items[i].handle === 'kardiamobile' || currentCart.items[i].handle === 'kardiamobile6l') {
+        km_6l_in_cart = true;
+      }
+      if (currentCart.items[i].handle === 'omron-evolv') {
+        omron_in_cart = true;
+      }
+    }
+    if (km_6l_in_cart && !omron_in_cart) {
+      showOmronOffer();
+    }
+  }
+  function searchCartCarryPod(cart) {
+    var km_in_cart = false,
+        km_cp_in_cart = false,
+        km6l_in_cart = false,
+        km6l_cp_in_cart = false;
+    for (i = 0; i < currentCart.items.length; i ++) {
+      if (currentCart.items[i].handle === 'kardiamobile') {
+        km_in_cart = true;
+      }
+      if (currentCart.items[i].handle === 'kardiamobile-carrypod') {
+        km_cp_in_cart = true;
+      }
+      if (currentCart.items[i].handle === 'kardiamobile6l') {
+        km6l_in_cart = true;
+      }
+      if (currentCart.items[i].handle === 'kardiamobile6l-carrypod') {
+        km6l_cp_in_cart = true;
+      }
+    }
+    if (km_in_cart && !km_cp_in_cart && !km6l_in_cart) {
+      setTimeout(function() {
+        showCarryPodOffer();
+      }, 1500);
+    }
+    if (km6l_in_cart && !km6l_cp_in_cart) {
+      setTimeout(function() {
+        showCarryPod6lOffer();
+      }, 1500);
+    }
+  }
+  function showOmronOffer() {
+    var omron_id = 32200940290151;
+    $('.pop-up.omron').addClass('open');
+    $('#omron-add').on('click', function() {
+      $.ajax({
+        type: 'POST',
+        url: '/cart/add.js',
+        data: {
+          'quantity': 1,
+          'id': omron_id
+        },
+        dataType: 'json',
+        success: function() {
+          location.reload();
+        }
+      });
+    });
+    $('#omron-no, #omron-close').on('click', function() {
+      $('.pop-up.omron').removeClass('open');
+    });
+  }
+
+  function showCarryPodOffer() {
+    var cp_id = 52407081427;
+    $('.pop-up.km-carrypod').addClass('open');
+    $('#km-carrypod-add').on('click', function() {
+      $.ajax({
+        type: 'POST',
+        url: '/cart/add.js',
+        data: {
+          'quantity': 1,
+          'id': cp_id
+        },
+        dataType: 'json',
+        success: function() {
+          location.reload();
+        }
+      });
+    });
+    $('#km-carrypod-no, #km-carrypod-close').on('click', function() {
+      $('.pop-up.km-carrypod').removeClass('open');
+    });
+  }
+  function showCarryPod6lOffer() {
+    var cp6l_id = 29243799208001;
+    $('.pop-up.km6l-carrypod').addClass('open');
+    $('#km6l-carrypod-add').on('click', function() {
+      $.ajax({
+        type: 'POST',
+        url: '/cart/add.js',
+        data: {
+          'quantity': 1,
+          'id': cp6l_id
+        },
+        dataType: 'json',
+        success: function() {
+          location.reload();
+        }
+      });
+    });
+    $('#km6l-carrypod-no, #km6l-carrypod-close').on('click', function() {
+      $('.pop-up.km6l-carrypod').removeClass('open');
+    });
+  }
 
   //Cookies stuff
   var acceptsCookies,
@@ -264,7 +389,6 @@ function openModal(type) {
     $('.modal-inner.shipping-gb').hide();
   }
   if (type === 'shipping-gb') {
-    console.log('j')
     $('.modal-inner.shipping-gb').show();
     $('.modal-inner.video').hide();
   }
