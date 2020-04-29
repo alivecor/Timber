@@ -1,9 +1,13 @@
 {% assign product_title = product.title %}
-<p>{{ 'compatibility.intro_mobile' | t: product_title: product_title }}
+<p>
+  {% if product.handle != 'omron-evolv' %}
+  {{ 'compatibility.intro_mobile' | t: product_title: product_title }}
 {% comment %}new Date().getTime(){% endcomment %}
 For a list of previously compatible devices please see <a href="https://alivecor.zendesk.com/hc/en-us/articles/115015935767" target="_blank">this article</a>.
-{% assign updated_date = '1582830000' | date: format: 'month_day_year'  %}
-<br/><span class="italic">({{ 'compatibility.last_updated_on' | t: date: updated_date}})</span></p>
+{% endif %}
+{% assign updated_date = '1588185000' | date: format: 'month_day_year'  %}
+<br/><span class="italic">({{ 'compatibility.last_updated_on' | t: date: updated_date}})</span>
+</p>
 <div class="kardiamobile{% if product.handle == 'kardiamobile6l' %} kardiamobile6l{% endif %}">
 <div class="content underline">
   <div class="brand">
@@ -81,13 +85,15 @@ For a list of previously compatible devices please see <a href="https://alivecor
     <li><span class="regular">Samsung Galaxy S7</span> (Android 8.0.0)</li>
     <li><span class="regular">Samsung Galaxy S6</span> (Android 7.0.0)</li>
     <li><span class="regular">Samsung Galaxy S5</span> (Android 6.0.1)</li>
-    <li><span class="regular">Samsung Note10</span> (Android 9.0)</li>
-    <li><span class="regular">Samsung Note10+</span> (Android 9.0)</li>
+    <li><span class="regular">Samsung Note10</span> (Android 10.0.0)</li>
+    <li><span class="regular">Samsung Note10+</span> (Android 10.0.0)</li>
     <li><span class="regular">Samsung Note9</span> (Android 8.1.0)</li>
     <li><span class="regular">Samsung Note8</span> (Android 8.0.0)</li>
     <li><span class="regular">Samsung Note5</span> (Android 7.0.0)</li>
     <li><span class="regular">Huawei Mate 10</span> (Android 8.0.0)</li>
     <li><span class="regular">LG Nexus 5</span> (Android 6.0.1)</li>
+    <li><span class="regular">Motorola Moto G8 Plus</span> (Android 9.0.0)</li>
+    <li><span class="regular">Motorola Moto G5 Plus</span> (Android 8.1.0)</li>
     <li><span class="regular">Motorola Moto G Gen 2</span> (Android 6.0)</li>
   </ul>
 </div>
