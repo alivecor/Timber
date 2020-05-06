@@ -119,6 +119,18 @@
             Privacy Policy
           </a>
         </li>
+        {% if shop.domain == 'store.alivecor.com' %}
+        <li>
+          <a href="{{ baseUrl }}/accessibility-statement">
+            Accessibility Statement
+          </a>
+        </li>
+        <li>
+          <a href="{{ baseUrl }}/security">
+            Security
+          </a>
+        </li>
+        {% endif %}
       </ul>
       <ul>
         <li>

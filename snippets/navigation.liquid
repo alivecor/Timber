@@ -88,7 +88,11 @@
         </li>
 
         <li class="nav-link free-ship no-mobile">
-          {{ 'layout.navigation.free_ship' | t }}
+          {% if shop.domain == 'store.alivecor.com' %}
+            FREE Shipping in the US<span style="padding: 0 8px;">|</span>HSA/FSA Accepted
+          {% else %}
+            {{ 'layout.navigation.free_ship' | t }}
+          {% endif %}
           {% comment %}
             If customer accounts are enabled, provide login and create account links
           {% endcomment %}
