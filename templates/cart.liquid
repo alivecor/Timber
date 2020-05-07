@@ -10,8 +10,7 @@
 {% if cart.item_count > 0 %}
 {% assign km_in_cart = false %}
 {% assign km6l_in_cart = false %}
-{% assign km-oos = false %}
-{% assign km-six-oos = false %}
+
   <form action="/cart" method="post" novalidate class="cart table-wrap" id="cartform">
 
     <!-- DISCOUNT CODE script for checkout ================================================== -->
@@ -41,6 +40,8 @@
       <tbody>
         {% for item in cart.items %}
           {% assign lateship = false %}
+          {% assign km-oos = false %}
+          {% assign km-six-oos = false %}
           {% for tag in item.product.tags %}
             {% if tag == 'lateship' %}
               {% assign lateship = true %}
@@ -88,6 +89,9 @@
               {% endcomment %}
               {% if lateship %}
                 <p><small>Please allow 2-3 weeks for delivery.</small></p>
+              {% endif %}
+              {% if km-oos or km-six-oos %}
+                <p><small>Please allow 1-2 weeks for your order to arrive.</small></p>
               {% endif %}
               {% if settings.cart_vendor_enable %}
                 <p>{{ item.vendor }}</p>
@@ -177,15 +181,11 @@
             <span class="mobile-left">Shipping</span>
             <span class="right">FREE</span>
           </p>
-          {% if km_in_cart and km-oos %}
-            {% include 'oos-message', nomargin: false %}
-          {% elsif km6l_in_cart and km-six-oos %}
-            <div>
-              {% include 'km6l-oos-message', nomargin: false %}
-            </div>
-          {% else %}
-            <span class="shipping-desc">2-5 business days (USPS First Class)</span>
+          <span class="shipping-desc">
+          {% if km-oos == false and km-six-oos == false %}
+            2-5 business days (USPS First Class)
           {% endif %}
+          </span>
         {% else %}
           <p class="ous-cart-text">{{ 'cart.general.shipping_at_checkout' | t }}</p>
         {% endif %}
