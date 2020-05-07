@@ -39,16 +39,12 @@
         </div>
         <div class="not-valid error"></div>
       </form>
-      <div class="fastco-logo-small">
-        <div class="fastco">
-          <div class="fastco-img" title="Fast Company the World's Most Innovative Companies 2018"></div>
-          <p>
-            <span>AliveCor</span>
-            <span>Ranked #1</span>
-            <span>AI/Machine Learning</span>
-          </p>
+      {% if shop.domain == 'store.alivecor.co.uk' %}
+        <div class="aa-logo">
+          <p>Proud to support</p>
+          {{ 'arrhythmia-alliance.png' | asset_url | img_tag }}
         </div>
-      </div>
+      {% endif %}
     </div>
     <div class="footer-nav">
       <ul>

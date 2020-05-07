@@ -769,39 +769,38 @@ footer {
     width: 18px;
   }
 }
-
-.fastco-logo-small {
+.aa-logo {
   display: none;
   @media (min-width: 1200px) {
-    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    float: right;
+    margin-top: 24px;
+    text-align: center;
   }
-  .fastco {
-    overflow: hidden;
-    position: absolute;
-    bottom: -9px;
-    right: 0;
-    p {
-      float: right;
-      margin: 42px 20px 0;
-      font-family: $fancyFontStack;
-      font-style: italic;
-      font-size: 20px;
-      color: $grey3;
-      line-height: 25px;
-      padding-bottom: 8px;
-      span {
-        display: block;
-        text-align: right;
-      }
-    }
-    .fastco-img {
-      background-image: url({{ 'fastco-logo.png' | asset_url }});
-      height: 100px;
-      width: 141px;
-      background-size: 141px 100px;
-      float: right;
-      margin: 10px 0;
-    }
+  p {
+    margin: 27px 6px 0 0;
+    font-family: $fancyFontStack;
+    font-size: 20px;
+    color: $grey3;
+    line-height: 25px;
+  }
+  img {
+    width: 220px;
+    display: block;
+    image-rendering: -moz-crisp-edges;         /* Firefox */
+    image-rendering:   -o-crisp-edges;         /* Opera */
+    image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
   }
 }
 
