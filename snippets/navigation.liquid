@@ -36,6 +36,22 @@
         aria-label="Close Navigation menu">
       </button>
       <ul id="js-navigation-menu" class="navigation-menu">
+        <li class="nav-link" id="about-menu">
+          <a tabindex="0">
+            About
+          </a>
+          <div class="dropdown">
+            <ul>
+              <li>
+                <a class="ga-nav-tracker" href="{{ baseUrl }}/mission">Our Mission</a>
+              </li>
+              <li>
+                <a class="ga-nav-tracker" href="{{ baseUrl }}/leadership-team">Leadership Team</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
         <li class="nav-link" id="products-menu">
           <a tabindex="0">
             Products

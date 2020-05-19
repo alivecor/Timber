@@ -366,7 +366,7 @@ header.navigation {
         font-size: 12px;
       }
     }
-    &#products-menu > a {
+    &#products-menu > a, &#about-menu > a {
       display: none;
       @media (min-width: 1200px) {
         display: inline-block;
@@ -376,7 +376,9 @@ header.navigation {
       }
     }
     &#products-menu:hover .dropdown,
-    &#products-menu.focus .dropdown {
+    &#products-menu.focus .dropdown,
+    &#about-menu:hover .dropdown,
+    &#about-menu.focus .dropdown {
       display: block;
     }
     .dropdown {
