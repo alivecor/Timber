@@ -145,7 +145,7 @@ $(document).ready(function() {
       dataType: 'json',
       success: function(cart) {
         currentCart = cart;
-        searchCartCarryPod(cart);
+        searchCartOmron(cart);
       }
     });
   }
@@ -161,7 +161,9 @@ $(document).ready(function() {
       }
     }
     if (km_6l_in_cart && !omron_in_cart) {
-      showOmronOffer();
+      setTimeout(function() {
+        showOmronOffer();
+      }, 1500);
     }
   }
   function searchCartCarryPod(cart) {
@@ -195,7 +197,7 @@ $(document).ready(function() {
     }
   }
   function showOmronOffer() {
-    var omron_id = 32200940290151;
+    var omron_id = 31667890454593;
     $('.pop-up.omron').addClass('open');
     $('#omron-add').on('click', function() {
       $.ajax({
