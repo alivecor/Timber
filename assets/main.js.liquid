@@ -136,7 +136,7 @@ $(document).ready(function() {
 
   // Cart page
   // if cart page get cart items
-  if (window.location.pathname.indexOf('cart') >= 0) {
+  if (window.location.pathname.indexOf('cart') >= 0 && window.location.hostname === 'store.alivecor.com') {
     var currentCart;
     $.ajax({
       type: 'GET',
@@ -145,7 +145,7 @@ $(document).ready(function() {
       dataType: 'json',
       success: function(cart) {
         currentCart = cart;
-        searchCartOmron(cart);
+        searchCartCarryPod(cart);
       }
     });
   }
