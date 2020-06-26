@@ -1,78 +1,86 @@
-<section class="premium-plan">
+<section class="kardiacare-plan">
   <div class="main-plan">
     <div class="basic">
       <p>
-        {% if product.handle != 'omron-evolv' %}
-        Every purchase of {{ product.title }} includes our basic service free of charge, which includes unlimited EKG recordings with instant analysis, blood pressure and weight tracking, and storage of recorded EKGs on your phone.
-        {% else %}
-        Every purchase of {{ product.title }} includes our basic service free of charge. To get more out of your device, upgrade to the Premium Protection Plan and enjoy the exclusive features below.
-        {% endif %}
+        Get the most out of your Kardia device. Become a KardiaCare member for just $9.99/mo or $99/year. Receive a free month when you join today.
       </p>
     </div>
     <div class="premium">
-      <div class="ribbon">Premium Protection Plan</div>
-      <div class="h1">Add even greater peace of mind with a Premium Protection Plan for a low monthly price.</div>
-      <ul class="bullets">
-      <li>
-        <div class="icon">
-        {% include 'device-replacement.svg' %}
+      <div class="ribbon">Join KardiaCare</div>
+        <div class="h1">Enjoy the peace of mind of heart care at home with these exclusive features.*</div>
+        <ul class="bullets">
+        <li>
+          <div class="icon">
+          {% include 'icon-stethoscope.svg' %}
+          </div>
+          <div class="h3">
+            Cardiologist EKG Reviews 
+          </div>
+          <p>
+            Receive an EKG review every 90 days by a board-certified cardiologist. 
+          </p>
+        </li>
+        <li>
+          <div class="icon">
+          {% include 'icon-heart-health.svg' %}
+          </div>
+          <div class="h3">
+            Monthly Heart Health Report
+          </div>
+          <p>
+            Get a report that summarizes all of your EKG recordings every month. Share with your doctor or use it to track your heart health over time.
+          </p>
+        </li>
+        <li>
+          <div class="icon">
+          {% include 'icon-inner-circle.svg' %}
+          </div>
+          <div class="h3">
+            Automatic EKG Sharing 
+          </div>
+          <p>
+            Set up automatic sharing of your EKGs with family or caregivers using Inner Circle. 
+          </p>
+        </li>
+        <li>
+          <div class="icon">
+          {% include 'icon-device-replacement.svg' %}
+          </div>
+          <div class="h3">
+            Device Replacement
+          </div>
+          <p>
+            Receive discounted device replacement if lost or stolen for just $19.99. <i>US only</i>
+          </p>
+        </li>
+      </ul>
+      <div class="button__cont">
+        <div class="desktop">
+          <a class="btn btn--secondary"
+            href="https://www.alivecor.com/kardiacare"
+            target="_blank"
+            data-category="KardiaCare Button"
+            data-action="Clicked Learn More"
+            data-label="{{shop.domain}}{{ productUrl }}">
+            Learn More
+          </a>
         </div>
-        <div class="h3">
-          Device Replacement
+        <div class="mobile">
+          <a class="btn btn--secondary app-direct-link"
+            href="https://www.alivecor.com/kardiacare"
+            target="_blank"
+            data-category="KardiaCare Button"
+            data-action="Clicked Get a Free Month"
+            data-label="{{shop.domain}}{{ productUrl }}"
+            data-ios-url="https://itunes.apple.com/app/aliveecg/id579769143"
+        data-android-url="https://play.google.com/store/apps/details?id=com.alivecor.aliveecg">
+            Get a Free Month
+          </a>
         </div>
-        <p>
-          {% if product.handle != 'omron-evolv' %}
-          Easily replace your Kardia device if it's lost, stolen or broken for just $19.99.
-          {% else %}
-          Easily replace your device if it's lost, stolen or broken for just $19.99.
-          {% endif %}
-        </p>
-      </li>
-      <li>
-        <div class="icon">
-        {% include 'cloud-storage-security.svg' %}
-        </div>
-        <div class="h3">
-          Cloud Storage & Security
-        </div>
-        <p>
-          {% if product.handle != 'omron-evolv' %}
-          Enjoy secure access to all of your EKG recordings on any device, accessible anytime, anywhere.
-          {% else %}
-          Enjoy secure access to all of your blood pressure recordings on any device, accessible anytime, anywhere.
-          {% endif %}
-        </p>
-      </li>
-      <li>
-        <div class="icon">
-        {% include 'personalized-heart-health-report.svg' %}
-        </div>
-        <div class="h3">
-          Personalized Heart Health Report
-        </div>
-        <p>
-          {% if product.handle != 'omron-evolv' %}
-          Receive a mailed report every 30 days with a summary of your EKG and blood pressure data to share with your doctor.
-          {% else %}
-          Receive a mailed report every 30 days with a summary of your heart data to share with your doctor.
-          {% endif %}
-        </p>
-      </li>
-      <li>
-        <div class="icon">
-        {% include 'medication-tracking.svg' %}
-        </div>
-        <div class="h3">
-          Medication Tracking
-        </div>
-        <p>
-          Receive reminders to take specific medication at your doctor’s recommended times and track your medication history.
-        </p>
-      </li>
-    </ul>
-    <div class="footnotes">
-      <a href="https://www.alivecor.com/premium-protection-plan" target="_blank">Click here for Premium Protection Plan details and Device Replacement rules.</a>
-    </div>
+      </div>
+      <div class="footnote-device">
+        <p>*Available for users on iOS devices. Android coming soon. <a href="https://www.alivecor.com/kardiacare" target="_blank" data-category="KardiaCare Link" data-action="Clicked See details and pricing" data-label="{{shop.domain}}{{ productUrl }}">See KardiaCare details and pricing in your country.</a></p>
+      </div>
     </div>
   </div>
 </section>

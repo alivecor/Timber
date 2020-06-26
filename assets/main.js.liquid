@@ -335,6 +335,38 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
+  // listener for links to app
+  $('.app-direct-link').on('click', function(evt) {
+    evt.preventDefault();
+    var link = $(this);
+
+    // ios or android
+    var agent = getUserAgent();
+    if (agent !== '') {
+      if (agent.indexOf('iphone') !== -1) {
+        // ios device
+        window.open(link.data().iosUrl, '_blank');
+      } else {
+        // not ios, assuming android
+        window.open(link.data().androidUrl, '_blank');
+      }
+    } else {
+      // could not get user agent
+      window.open(link.attr('href'), '_blank');
+    }
+  });
+
+  function getUserAgent() {
+    var navigator = window.navigator;
+    if (!navigator) {
+      return '';
+    }
+    if (!navigator.userAgent) {
+      return '';
+    }
+    return navigator.userAgent.toLowerCase();
+  }
+
 });
 
 // video functions

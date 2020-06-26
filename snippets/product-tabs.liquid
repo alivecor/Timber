@@ -41,11 +41,11 @@
   {% endif %}
 {% endif %}
 {% if shop.currency == "GBP" %}
-  {% assign premium_price = '£9.99/month or £99/year (£20 savings)' %}
+  {% assign premium_price = '£9.99/mo or £99/year' %}
 {% elsif shop.currency == "EUR" %}
-  {% assign premium_price = '€9.99/month or €99/year (€20 savings)' %}
+  {% assign premium_price = '€9.99/mo or €99/year' %}
 {% else %}
-  {% assign premium_price = '$9.99/month or $99/year ($20 savings)' %}
+  {% assign premium_price = '$9.99/mo or $99/year' %}
 {% endif %}
 
 <a name="tabs"></a>
@@ -87,7 +87,7 @@
   {% endif %}
   <a name="premium"></a>
   <div class="accordion" id="premium">
-    <h3>Premium Features
+    <h3>KardiaCare Features
       <a class="toggler">
         <div class="rightarrow">
           {% include "icon-rightarrow.svg" %}
@@ -98,7 +98,7 @@
       </a>
     </h3>
     <div class="accordion-inner hidden">
-      {% include premium_liquid %}
+      {% include premium_liquid, productUrl: product.url %}
     </div>
   </div>
   {% endif %}
