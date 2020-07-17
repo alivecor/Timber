@@ -10,7 +10,16 @@
     <div class="h3">Add a KardiaMobile Carry Pod to your purchase to protect your device on-the-go.</div>
       {{ 'carrypod-open.jpg' | asset_url | img_tag }}
       <p class="h4Price price">
-        $ 29.00
+        {% case shop.domain %}
+          {% when 'store.alivecor.com' %}
+            $ 29.00
+          {% when 'store.alivecor.co.uk' %}
+            £ 25.00
+          {% when 'shop.de.alivecor.com' %}
+            € 29.00
+          {% else %}
+            $ 29.00
+        {% endcase %}
       </p>
       <a class="btn ga-tracker"
         id="km-carrypod-add"
@@ -42,7 +51,16 @@
     <div class="h3">Add a KardiaMobile 6L Carry Pod to your purchase to protect your device on-the-go.</div>
       {{ '6l-carrypod-open.jpg' | asset_url | img_tag }}
       <p class="h4Price price">
-        $ 29.00
+        {% case shop.domain %}
+          {% when 'store.alivecor.com' %}
+            $ 29.00
+          {% when 'store.alivecor.co.uk' %}
+            £ 25.00
+          {% when 'shop.de.alivecor.com' %}
+            € 29.00
+          {% else %}
+            $ 29.00
+        {% endcase %}
       </p>
       <a class="btn ga-tracker"
         id="km6l-carrypod-add"

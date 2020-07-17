@@ -136,7 +136,7 @@ $(document).ready(function() {
 
   // Cart page
   // if cart page get cart items
-  if (window.location.pathname.indexOf('cart') >= 0 && window.location.hostname === 'store.alivecor.com') {
+  if (window.location.pathname.indexOf('cart') >= 0) {
     var currentCart;
     $.ajax({
       type: 'GET',
@@ -219,7 +219,19 @@ $(document).ready(function() {
   }
 
   function showCarryPodOffer() {
-    var cp_id = 52407081427;
+    switch(window.location.hostname) {
+      case 'store.alivecor.com':
+        var cp_id = 52407081427;
+        break;
+      case 'store.alivecor.co.uk':
+        var cp_id = 4977985486887;
+        break;
+      case 'shop.de.alivecor.com':
+        var cp_id = 14735901556785;
+        break;
+      default:
+        break;
+    }
     $('.pop-up.km-carrypod').addClass('open');
     $('#km-carrypod-add').on('click', function() {
       $.ajax({
@@ -240,7 +252,19 @@ $(document).ready(function() {
     });
   }
   function showCarryPod6lOffer() {
-    var cp6l_id = 29243799208001;
+    switch(window.location.hostname) {
+      case 'store.alivecor.com':
+        var cp6l_id = 29243799208001;
+        break;
+      case 'store.alivecor.co.uk':
+        var cp6l_id = 29621855289416;
+        break;
+      case 'shop.de.alivecor.com':
+        var cp6l_id = 16029382869041;
+        break;
+      default:
+        break;
+    }
     $('.pop-up.km6l-carrypod').addClass('open');
     $('#km6l-carrypod-add').on('click', function() {
       $.ajax({

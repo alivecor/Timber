@@ -93,7 +93,7 @@
   {% endif %}
   {% comment %} Modal for videos and shipping {% endcomment %}
   {% include 'modal' %}
-  {% if template == 'cart' and shop.locale == 'en' %}
+  {% if template == 'cart' %}
     {% include 'omron-cart-upsell' %}
     {% include 'carrypod-cart-upsell' %}
   {% endif %}
