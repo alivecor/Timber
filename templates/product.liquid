@@ -203,8 +203,16 @@
       {% if fsa %}
         {% include 'hsa-fsa-badge' %}
       {% endif %}
-
-      {% include 'product-add-to-cart' %}
+      <div class="add-to-cart-compat-flex">
+        {% include 'product-add-to-cart' %}
+        {% if main_product %}
+          <!-- Compat link ======================================================== -->
+          <div class="device-compat-link">
+            <img src="{{ 'icon-device-compat.png' | asset_url }}" alt="link to device compatibility modal">
+            <a class="compat-modal">Device Compatibility</a>
+          </div>
+        {% endif %}
+      </div>
       </div>
       {% if km-oos %}
         <div style="clear: left">
@@ -245,6 +253,7 @@
       {% endif %}
 
       <div>
+        {% if main_product == false %}
         <!-- Star rating ======================================================== -->
         <div class="review-count">
           <a href="#reviews" class="scroll-to-tab">
@@ -256,14 +265,14 @@
             {% endif %}
           </a>
         </div>
-
+        {% endif %}
         {% if main_product %}
         <!-- Compat link ======================================================== -->
-        <div class="compat-link">
+        <!-- <div class="compat-link">
           <a href="#compatibility" class="scroll-to-tab">
             See compatibility
           </a>
-        </div>
+        </div> -->
         {% endif %}
       </div>
 

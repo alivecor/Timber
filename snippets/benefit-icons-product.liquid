@@ -25,23 +25,54 @@
 {% if product.handle == "kardiamobile" %}
 <div class="review">
   <div class="h2">Best product I have purchased</div>
-  <span class="name">JMS on March 18, 2018</span>
-  {% include 'icon-five-stars.svg' %}
   <p>You cannot imagine the face of the nurse when I told them I was in AFib - This is one of the best products I have ever purchased and well worth the price. If you are suffering from AFib or had it you should get this. It will make a world difference for you.</p>
+  <span class="name">JMS on March 18, 2018</span>
+  <!-- Star rating ======================================================== -->
+  <div class="review-count">
+    <a href="#reviews" class="scroll-to-tab">
+      {% if shop.locale == 'en' %}
+        <span class=" stamped-product-reviews-badge" data-id="{{ product.id }}" style="display:block;">{{ product.metafields.stamped.badge }}</span>
+      {% else %}
+        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
+      {% endif %}
+    </a>
+  </div>
 </div>
 {% endif %}
 {% if product.handle == "kardiamobile6l" %}
 <div class="review">
   <div class="h2">Highly recommend!</div>
-  <span class="name">G. Daniels on July 19, 2019</span>
-  {% include 'icon-five-stars.svg' %}
   <p>A six lead ECG in your pocket. My cardiologist says there is an enormous range of evaluations he can make on the 6L product that he could not make using only a single lead ECG. He couldn't believe his eyes when I showed it to him. He was aware of the company and told me that he trusted the wave form, and felt very confident making interpretations.</p>
+  <span class="name">G. Daniels on July 19, 2019</span>
+  <!-- Star rating ======================================================== -->
+  <div class="review-count">
+    <a href="#reviews" class="scroll-to-tab">
+      {% if shop.locale == 'en' %}
+        <span class=" stamped-product-reviews-badge" data-id="{{ product.id }}" style="display:block;">{{ product.metafields.stamped.badge }}</span>
+      {% else %}
+        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
+      {% endif %}
+    </a>
+  </div>
 </div>
 {% endif %}
 {% if product.handle == "kardiaband" %}
 <div class="review">
   <div class="h2 fullWidth">Worth the Price and Peace of Mind</div>
-  <span class="name">Mike on February 1, 2018</span>
   <p>I had an AFib incident recently which the watch detected, recorded, and alerted me. It alerts you if it sees an irregular pattern and you can take the ekg trace on the spot. My cardiologist loves the reports it produces. What makes the band easy is if it occurs at night you get the alert.</p>
+  <span class="name">Mike on February 1, 2018</span>
+  <!-- Star rating ======================================================== -->
+  <div class="review-count">
+    <a href="#reviews" class="scroll-to-tab">
+      {% if shop.locale == 'en' %}
+        <span class=" stamped-product-reviews-badge" data-id="{{ product.id }}" style="display:block;">{{ product.metafields.stamped.badge }}</span>
+      {% else %}
+        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
+      {% endif %}
+    </a>
+  </div>
 </div>
 {% endif %}
