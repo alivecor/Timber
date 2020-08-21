@@ -154,14 +154,20 @@
       {% include 'hsa-fsa-badge' %}
     {% endif %}
     <div class="review-count">
-      <a href="{{ product.url }}/#reviews">
-        {% if shop.locale == 'en' %}
-          <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
-        {% else %}
+      {% if shop.locale == 'en' %}
+        {% comment %}
+        <!-- /snippets/bv-inline-ratings.liquid --> <!-- Bazaarvoice Inline Rating -->
+        {% endcomment %}
+        <div data-bv-show="inline_rating" data-bv-product-Id="{{product.id}}" data-bv-redirect-url="{{ product.url }}/#reviews"></div>
+        {% comment %}
+        <!-- End Bazaarvoice Inline Rating -->
+        {% endcomment %}
+      {% else %}
+        <a href="{{ product.url }}/#reviews">
           <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-        {% endif %}
-        <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
-      </a>
+        </a>
+      {% endif %}
+
     </div>
     {% unless no_description %}
       <div class="product-description rte home" itemprop="description">
