@@ -112,7 +112,9 @@ $(document).ready(function() {
   window.bvCallback = function (BV) {
     BV.reviews.on('show', function () {
       scrollToAnchor('reviews');
-      $('#reviews .accordion-header').click();
+      if (!$('#reviews .accordion-inner').is(':visible')) {
+        $('#reviews .accordion-header').click();
+      }
     });
     // BV.questions.on('show', function () {});
   }
@@ -206,7 +208,16 @@ $(document).ready(function() {
     }
   }
   function showOmronOffer() {
-    var omron_id = 31667890454593;
+    switch(window.location.hostname) {
+      case 'store.alivecor.com':
+        var omron_id = 31667890454593;
+        break;
+      case 'dev-alivecor-us.myshopify.com':
+        var omron_id = 32200940290151;
+        break;
+      default:
+        break;
+    }
     $('.pop-up.omron').addClass('open');
     $('#omron-add').on('click', function() {
       $.ajax({
@@ -237,6 +248,9 @@ $(document).ready(function() {
         break;
       case 'shop.de.alivecor.com':
         var cp_id = 14735901556785;
+        break;
+      case 'dev-alivecor-us.myshopify.com':
+        var cp_id = 29056384073831;
         break;
       default:
         break;
@@ -270,6 +284,9 @@ $(document).ready(function() {
         break;
       case 'shop.de.alivecor.com':
         var cp6l_id = 16029382869041;
+        break;
+      case 'dev-alivecor-us.myshopify.com':
+        var cp6l_id = 20769767522407;
         break;
       default:
         break;
