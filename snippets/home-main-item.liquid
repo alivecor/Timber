@@ -154,11 +154,11 @@
       {% include 'hsa-fsa-badge' %}
     {% endif %}
     <div class="review-count">
-      {% if shop.locale == 'en' %}
+      {% if shop.domain == 'store.alivecor.com' or shop.domain == 'store.alivecor.co.uk' %}
         {% comment %}
         <!-- /snippets/bv-inline-ratings.liquid --> <!-- Bazaarvoice Inline Rating -->
         {% endcomment %}
-        <div data-bv-show="inline_rating" data-bv-product-Id="{{product.id}}" data-bv-redirect-url="{{ product.url }}/#reviews"></div>
+        <div data-bv-show="inline_rating" data-bv-seo="false" data-bv-product-Id="{{product.id}}" data-bv-redirect-url="{{ product.url }}/#reviews"></div>
         {% comment %}
         <!-- End Bazaarvoice Inline Rating -->
         {% endcomment %}

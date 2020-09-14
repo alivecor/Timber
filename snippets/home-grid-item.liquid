@@ -80,7 +80,7 @@
         {% assign sale_price = product.price | money %}
         {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
       {% else %}
-        <span class="h2Price red">
+        <span class="red">
           {{ product.price | money }}
         </span>
         <span class="strikeout">
@@ -97,11 +97,11 @@
     {% endif %}
   </p>
 
-  {% if shop.locale == 'en' %}
+  {% if shop.domain == 'store.alivecor.com' or shop.domain == 'store.alivecor.co.uk' %}
     {% comment %}
     <!-- /snippets/bv-inline-ratings.liquid --> <!-- Bazaarvoice Inline Rating -->
     {% endcomment %}
-    <div data-bv-show="inline_rating" data-bv-product-Id="{{product.id}}" data-bv-redirect-url="{{ product.url }}/#reviews"></div>
+    <div data-bv-show="inline_rating" data-bv-seo="false" data-bv-product-Id="{{product.id}}" data-bv-redirect-url="{{ product.url }}/#reviews"></div>
     {% comment %}
     <!-- End Bazaarvoice Inline Rating -->
     {% endcomment %}

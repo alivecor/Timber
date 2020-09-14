@@ -66,7 +66,7 @@
 {% endfor%}
 
 <div itemscope itemtype="http://schema.org/Product">
-
+  <meta itemprop="name" content="{{ product.title }}">
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
   <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
 
@@ -239,7 +239,7 @@
       <div>
         <!-- Star rating ======================================================== -->
         <div class="review-count">
-          {% if shop.locale == 'en' %}
+          {% if shop.domain == 'store.alivecor.com' or shop.domain == 'store.alivecor.co.uk' %}
             {% comment %}
             <!-- /snippets/bv-summary.liquid --> <!-- Bazaarvoice Summary Container -->
             {% endcomment %}
@@ -309,71 +309,72 @@
     </div>
     {% endif %}
   </div>
-</div>
 
-<div class="mobile-add-to-cart-btn {{product.handle}}">
-  {% include 'product-add-to-cart-2' %}
-</div>
 
-{% include 'product-tabs' %}
-
-{% if product_accessories.products.length > 0 %}
-  <div class="section">
-    <a name="accessories"></a>
-    <h3>{{ 'homepage.sections.frontpage_title' | t }}</h3>
+  <div class="mobile-add-to-cart-btn {{product.handle}}">
+    {% include 'product-add-to-cart-2' %}
   </div>
 
-  <div class="grid-uniform product-accessories">
+  {% include 'product-tabs' %}
 
-    {% comment %}
-      Loop through products in your KardiaMobile accessories collection.
-      This collection is created by default, but you must add products to it.
-    {% endcomment %}
-    {% for product in product_accessories.products limit:6 %}
+  {% if product_accessories.products.length > 0 %}
+    <div class="section">
+      <a name="accessories"></a>
+      <h3>{{ 'homepage.sections.frontpage_title' | t }}</h3>
+    </div>
+
+    <div class="grid-uniform product-accessories">
+
       {% comment %}
-        Change the grid item width by using classes from the grid in
-        the grid_item_width variable.
+        Loop through products in your KardiaMobile accessories collection.
+        This collection is created by default, but you must add products to it.
       {% endcomment %}
-      {% if product_accessories.products.length <= 3 %}
+      {% for product in product_accessories.products limit:6 %}
+        {% comment %}
+          Change the grid item width by using classes from the grid in
+          the grid_item_width variable.
+        {% endcomment %}
+        {% if product_accessories.products.length <= 3 %}
+          {% assign grid_item_width = 'large--one-third medium--one-half' %}
+        {% else %}
+        {% assign grid_item_width = 'large--one-quarter medium--one-half' %}
+        {% endif %}
+        {% include 'home-grid-item' %}
+      {% endfor %}
+
+    </div>
+  {% endif %}
+
+  {% if isKmAccessory %}
+    <div class="section">
+      <h3>Use with</h3>
+    </div>
+    <div class="grid-uniform">
+    {% for product in collections.main-product.products %}
+      {% if product.handle == 'kardiamobile' %}
         {% assign grid_item_width = 'large--one-third medium--one-half' %}
-      {% else %}
-      {% assign grid_item_width = 'large--one-quarter medium--one-half' %}
+        {% assign product_name = 'kardiamobile_accessory' %}
+        {% include 'home-grid-item' %}
       {% endif %}
-      {% include 'home-grid-item' %}
     {% endfor %}
+    </div>
+  {% endif %}
 
-  </div>
-{% endif %}
-
-{% if isKmAccessory %}
-  <div class="section">
-    <h3>Use with</h3>
-  </div>
-  <div class="grid-uniform">
-  {% for product in collections.main-product.products %}
-    {% if product.handle == 'kardiamobile' %}
-      {% assign grid_item_width = 'large--one-third medium--one-half' %}
-      {% assign product_name = 'kardiamobile_accessory' %}
-      {% include 'home-grid-item' %}
-    {% endif %}
-  {% endfor %}
-  </div>
-{% endif %}
-
-{% if isKm6LAccessory %}
-  <div class="section">
-    <h3>Use with</h3>
-  </div>
-  <div class="grid-uniform">
-  {% for product in collections.main-product.products %}
-    {% if product.handle == 'kardiamobile6l' %}
-      {% assign grid_item_width = 'large--one-third medium--one-half' %}
-      {% assign product_name = 'kardiamobile_accessory' %}
-      {% include 'home-grid-item' %}
-    {% endif %}
-  {% endfor %}
-  </div>
-{% endif %}
+  {% if isKm6LAccessory %}
+    <div class="section">
+      <h3>Use with</h3>
+    </div>
+    <div class="grid-uniform">
+    {% for product in collections.main-product.products %}
+      {% if product.handle == 'kardiamobile6l' %}
+        {% assign grid_item_width = 'large--one-third medium--one-half' %}
+        {% assign product_name = 'kardiamobile_accessory' %}
+        {% include 'home-grid-item' %}
+      {% endif %}
+    {% endfor %}
+    </div>
+  {% endif %}
+</div>
 
 <!-- DataLayer pushes -->
 <script type="text/javascript">
