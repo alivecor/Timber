@@ -64,6 +64,10 @@
     {% assign fsa = true %}
   {% endif %}
 {% endfor%}
+{% assign us_store = false %}
+{% if shop.domain == 'store.alivecor.com' or shop.domain == 'dev-alivecor-us.myshopify.com' %}
+  {% assign us_store = true %}
+{% endif %}
 
 <div itemscope itemtype="http://schema.org/Product">
   <meta itemprop="name" content="{{ product.title }}">
@@ -269,7 +273,7 @@
       </div>
 
       <!-- Product Description ====================================================== -->
-      <div class="product-description rte product{% if main_product and shop.domain == 'store.alivecor.com' %} mobile-main-product-description{% endif %}" itemprop="description">
+      <div class="product-description rte product{% if main_product and us_store %} mobile-main-product-description{% endif %}" itemprop="description">
         {% comment %}
           Wrap description in a div and add another div into description in admin and use styles to show hide the correct one
         {% endcomment %}
@@ -300,7 +304,7 @@
     {% comment %}
       If a main product, show description under the image on desktop
     {% endcomment %}
-    {% if main_product and shop.domain == 'store.alivecor.com' %}
+    {% if main_product and us_store %}
     <div class="grid__item large--one-whole desktop-main-product-description">
       <!-- Product Description ====================================================== -->
       <div class="main-product product-description rte product" itemprop="description">

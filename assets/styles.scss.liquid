@@ -1305,7 +1305,7 @@ a.play-video {
 }
 
 /* Premium Table */
-#premium {
+#premium, .kardiacare-table {
   .accordion-inner {
     padding: 8px 0 62px;
     @media (min-width: 1200px) {
@@ -1424,6 +1424,9 @@ a.play-video {
         width: 20px;
         height: 16px;
       }
+    }
+    .mobile-table {
+      display: none;
     }
   }
   .footnote-table {
@@ -1631,6 +1634,194 @@ a.play-video {
     }
   }
 }
+.kardiacare-upsell.pop-up .content {
+  .h2Title {
+    margin-bottom: 8px;
+  }
+  @media(max-width: 768px) {
+    .h2Title {
+      font-size: 24px;
+    }
+    .h3.subtitle {
+      font-size: 18px;
+      margin: 0 0 40px;
+    }
+    a.upsell-no {
+      margin-top: 12px;
+    }
+  }
+}
+.kardiacare-table {
+  .h2Title {
+    line-height: 1;
+  }
+  .h3.subtitle {
+    font-weight: normal;
+    margin-bottom: 24px;
+  }
+  .upsell-table-cont {
+    background-color: $grey1;
+    margin: 20px 0;
+    position: relative;
+    @media(min-width: 768px) {
+      padding: 0 0 10px;
+      margin: 50px 0 30px;
+    }
+  }
+  table {
+    width: 100%;
+    &.product {
+      width: calc(100% - 40px);
+      margin: 0 0 20px;
+      .premium svg {
+        height: 40px;
+        width: 40px;
+      }
+      td {
+        padding: 4px 0;
+      }
+    }
+    &.upsell, &.home {
+      background-color: $grey1;
+      padding-bottom: 20px;
+      .premium svg {
+        height: 40px;
+        width: 40px;
+      }
+      thead {
+        background-color: $navy;
+        padding: 20px 0;
+        border: none;
+        td.head {
+          font-weight: bold;
+          color: #fff;
+          padding: 30px 0 14px;
+          width: 40px;
+          font-size: 14px;
+          @media(min-width: 768px) {
+            width: 60px;
+            font-size: 15px;
+          }
+        }
+      }
+      td {
+        padding: 0;
+        &.feature {
+      padding-left: 10px;
+          line-height: 16px;
+          @media(min-width: 768px) {
+            padding-left: 30px;
+            line-height: 18px;
+          }
+        }
+        &.basic {
+          width: 40px;
+          @media(min-width: 768px) {
+            width: 60px;
+          }
+        }
+        &.premium {
+          width: 90px;
+          @media(min-width: 768px) {
+            width: 130px;
+          }
+        }
+      }
+    }
+/*     &.upsell {
+      @media(max-width: 768px) {
+        thead tr {
+          &:first-of-type {
+            display: none;
+          }
+        }
+        tr.mobile-table {
+          display: table-row;
+        }
+        tbody tr {
+          &.mobile-table {
+            background-color: $navy;
+            td {
+              color: #fff;
+              padding: 10px;
+              font-weight: bold;
+              span {
+                font-weight: normal;
+                display: block;
+                font-size: 12px;
+              }
+            }
+          }
+          &.basic-row {
+            td.premium > svg {
+              display: none;
+            }
+            .mobile-table {
+              display: block;
+              svg {
+                width: 40px;
+                height: 12px;
+                path.check-1 {
+                  stroke: $grey2;
+                  stroke-width: 2px;
+                }
+              }
+            }
+          }
+        }
+        td {
+          line-height: 1;
+          height: 35px;
+          &.feature {
+            width: 100%;
+          }
+          &.basic {
+            visibility: hidden;
+          }
+          &.premium {
+            svg {
+              display: block;
+              height: 32px;
+              width: 40px;
+            }
+          }
+        }
+      }
+    } */
+  }
+  .table-ribbon {
+    width: 220px;
+    position: absolute;
+    top: -20px;
+    background-color: $purple;
+    text-align: center;
+    height: 36px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 36px;
+  }
+  .table-ribbon:before, .table-ribbon:after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    border: 18px solid $purple;
+  }
+  .table-ribbon:before {
+    left: -15px;
+    border-left-width: 10px;
+    border-left-color: transparent;
+  }
+  .table-ribbon:after {
+    right: -15px;
+    border-right-width: 10px;
+    border-right-color: transparent;
+  }
+}
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -1756,3 +1947,126 @@ a.play-video {
   100% { opacity: 0; }
 }
 
+.kardiacare-radio {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  border: 0;
+  overflow: hidden;
+  &:checked + label {
+    border: 2px solid $purple;
+    box-shadow: 0 8px 15px 0 rgba(0,0,0,.2);
+    background-color: #f3eff6;
+  .checkmark {
+      display: block;
+      svg {
+        width: 20px;
+        height: 20px;
+        .check-1 {
+          stroke: $purple;
+        }
+      }
+    }
+  }
+}
+.kardiacare-options {
+  position: relative;
+  margin-bottom: 20px;
+  @media(min-width: 768px) {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 0px;
+    flex: 1 1 0;
+    
+  }
+  &:not(:last-of-type) {
+    @media(min-width: 768px) {
+      margin-right: 20px;
+    }
+    .kardiacare-options-label {
+      padding-top: 0;
+    }
+  }
+  .label-text {
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition:    all 0.1s ease-in-out;
+    -ms-transition:     all 0.1s ease-in-out;
+    -o-transition:      all 0.1s ease-in-out;
+    transition:         all 0.1s ease-in-out;
+    h3 {
+      margin: 0;
+    }
+    p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: normal;
+    }
+    .checkmark {
+      display: none;
+    }
+  }
+  label:hover {
+    cursor: pointer;
+  }
+}
+.kardiacare-options-label {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  background-color: #fff;
+  border: 1px solid $grey2;
+  border-radius: 5px;
+  text-align: center;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition:    all 0.1s ease-in-out;
+  -ms-transition:     all 0.1s ease-in-out;
+  -o-transition:      all 0.1s ease-in-out;
+  transition:         all 0.1s ease-in-out;
+  padding-top: 20px;
+  @media(min-width: 768px) {
+    height: 150px;
+  }
+}
+.kardiacare-ribbon {
+  width: 70%;
+  max-width: 180px;
+  position: absolute;
+  text-align: center;
+  left: 1px;
+  margin: 0 auto;
+  font-weight: bold;
+  height: 30px;
+  font-size: 15px;
+  top: 10px;
+  line-height: 30px;
+  background-color: $purple;
+  color: #fff;
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    border: 15px solid $purple;
+    right: -15px;
+    border-right-width: 14px;
+    border-right-color: transparent;
+  }
+}
+.kardiacare-products {
+  margin-top: 30px;
+  @media(min-width: 768px) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+}

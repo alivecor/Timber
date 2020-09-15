@@ -1,0 +1,188 @@
+<!-- /templates/product.liquid -->
+{% comment %}
+
+  Rich snippets (itemscope, itemtype, etc.) for products are a theme requirement,
+  and allow search engines to easily understand what the content is.
+
+  For more information on these Scheme.org tags, visit:
+    - http://schema.org/docs/gs.html
+
+{% endcomment %}
+{% assign main_product = false %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% assign fsa = false %}
+{% for tag in product.tags %}
+  {% if shop.locale == 'en' and tag == 'fsa' %}
+    {% assign fsa = true %}
+  {% endif %}
+{% endfor%}
+
+<div itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="name" content="{{ product.title }}">
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
+
+  {% comment %}
+    Get first variant, or deep linked one
+  {% endcomment %}
+  {% assign current_variant = product.selected_or_first_available_variant %}
+
+  {% include 'breadcrumb' %}
+  <div class="grid product-single">
+    <div class="grid__item large--one-half kardiacare-table">
+      <h1 class="h2Title product-title" itemprop="name">{{ product.title }}</h1>
+      <h2 class="h3 subtitle">Unlock these exclusive features</h2>
+    {% include 'kardiacare-table-us' pageName: 'product' %}
+    </div>
+
+    <div class="grid__item large--one-half {% if shop.locale == 'en' %}flex-order{% endif %}">
+      
+
+      {% comment %}
+      <!-- Price stuff ======================================================== -->
+      {% if product.compare_at_price_max > product.price %}
+        <div>
+          <span id="ProductPrice" class="h2Price red">
+            {{ product.price | money }}
+          </span>
+          <span class="strikeout">
+          {{ current_variant.compare_at_price | money }}
+          </span>
+        </div>
+      {% else %}
+        <span id="ProductPrice" class="h2Price noFloat">
+          {{ product.price | money }}
+        </span>
+      {% endif %}
+    {% endcomment %}
+
+      <!-- Add to Cart
+      ======================================================== -->
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+        <meta itemprop="price" content="{{ product.price | money_without_currency }}">
+        <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+      {% comment %}
+        For FSA eligible items -- tagged 'fsa'
+      {% endcomment %}
+      {% if fsa %}
+        {% include 'hsa-fsa-badge' %}
+      {% endif %}
+
+      {% include 'kardiacare-add-to-cart' %}
+      </div>
+      
+
+      <div>
+        <!-- Star rating ======================================================== -->
+        {% comment %}
+        <div class="review-count">
+          {% if shop.domain == 'store.alivecor.com' or shop.domain == 'store.alivecor.co.uk' %}
+            {% comment %}
+            <!-- /snippets/bv-summary.liquid --> <!-- Bazaarvoice Summary Container -->
+            {% endcomment %}
+            <div data-bv-show="rating_summary" data-bv-productId="{{product.id}}">
+            {% if product.metafields.bazaarvoice.reviews-aggregate-ratings %}
+              {{ product.metafields.bazaarvoice.reviews-aggregate-ratings }}
+            {% endif %}
+            </div>
+            {% comment %}
+            <!-- End Bazaarvoice Summary Container --> {% endcomment %}
+          {% else %}
+            <a href="#reviews" class="scroll-to-tab">
+              <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+              <span class="go-see-em">{{ 'main_product.see_all_reviews' | t }}</span>
+            </a>
+          {% endif %}
+        </div>
+    {% endcomment %}
+        {% if main_product %}
+        <!-- Compat link ======================================================== -->
+        <div class="compat-link">
+          <a href="#compatibility" class="scroll-to-tab">
+            See compatibility
+          </a>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Product Description ====================================================== -->
+      <div class="product-description rte product{% if main_product and shop.domain == 'store.alivecor.com' %} mobile-main-product-description{% endif %}" itemprop="description">
+        {% comment %}
+          Wrap description in a div and add another div into description in admin and use styles to show hide the correct one
+        {% endcomment %}
+        <div style="margin-top: 20px; float: left;">
+        {{ product.description }}
+        </div>
+      </div>
+
+      {% comment %}
+        If the user is on a collection product page (ie with /collections/collection-handle/products/product-handle)
+        in the URL, we can show next/previous links to other products in the collection.
+      {% endcomment %}
+      {% if collection %}
+        {% if collection.previous_product or collection.next_product %}
+          <p>
+            {% if collection.previous_product %}
+              <span class="left">
+                {{ 'products.general.previous_product_html' | t | link_to: collection.previous_product }}
+              </span>
+            {% endif %}
+            {% if collection.next_product %}
+              <span class="right">
+                {{ 'products.general.next_product_html' | t | link_to: collection.next_product }}
+              </span>
+            {% endif %}
+          </p>
+        {% endif %}
+      {% endif %}
+    </div>
+    {% comment %}
+      If a main product, show description under the image on desktop
+    {% endcomment %}
+    {% if main_product and shop.domain == 'store.alivecor.com' %}
+    <div class="grid__item large--one-whole desktop-main-product-description">
+      <!-- Product Description ====================================================== -->
+      <div class="main-product product-description rte product" itemprop="description">
+        {{ product.description }}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  
+  {% comment %}
+  <div class="mobile-add-to-cart-btn {{product.handle}}">
+    {% include 'product-add-to-cart-2' %}
+  </div>
+  {% endcomment %}
+
+  {% comment %}
+  {% include 'product-tabs' %}
+  {% endcomment %}
+
+  <div class="section">
+    <h3>Use with</h3>
+  </div>
+  <div class="grid-uniform">
+  {% for product in collections.main-product.products %}
+    {% if product.handle == 'kardiamobile' or product.handle =='kardiamobile6l' %}
+      {% assign grid_item_width = 'large--one-third medium--one-half' %}
+      {% assign product_name = 'kardiamobile_accessory' %}
+      {% include 'home-grid-item' %}
+    {% endif %}
+  {% endfor %}
+  </div>
+</div>
+
+<!-- DataLayer pushes -->
+<script type="text/javascript">
+  dataLayer.push({
+    productId: '{{ product.id }}'
+  });
+</script>

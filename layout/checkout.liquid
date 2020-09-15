@@ -107,13 +107,17 @@
       {% for discount in checkout.discounts %}
         {% assign discountcode = discount.code %}
       {% endfor %}
-      var productsArray = [];
+      var productsArray = [],
+          kardiaCarePurchase = false;
       {% for item in checkout.line_items %}
         productsArray.push({
           name: '{{ item.title }}',
           productId: '{{ item.product_id }}',
           quantity: '{{ item.quantity }}'
         });
+        {% if item.title == 'KardiaCare Membership - 1 year' or item.title == 'KardiaCare Membership - 2 year' %}
+          kardiaCarePurchase = true;
+        {% endif %}
       {% endfor %}
       dataLayer.push({
         orderId: '{{ checkout.order_number }}',
@@ -121,6 +125,11 @@
         products: productsArray,
         discountCode: '{{ discountcode }}'
       });
+      if (kardiaCarePurchase) {
+        Shopify.Checkout.OrderStatus.addContentBox(
+          '<p>Look for your KardiaCare activation email soon.</p>'
+        )
+      }
     </script>
   </body>
 </html>

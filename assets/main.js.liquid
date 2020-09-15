@@ -156,7 +156,11 @@ $(document).ready(function() {
       dataType: 'json',
       success: function(cart) {
         currentCart = cart;
-        searchCartCarryPod(cart);
+        if (window.location.hostname === 'store.alivecor.com' || window.location.hostname === 'dev-alivecor-us.myshopify.com') {
+          searchCartKardiaCare(cart);
+        } else {
+          searchCartCarryPod(cart);
+        }
       }
     });
   }
@@ -176,6 +180,32 @@ $(document).ready(function() {
         showOmronOffer();
       }, 1500);
     }
+  }
+   function searchCartKardiaCare(cart) {
+    var km_in_cart = false,
+        km6l_in_cart = false,
+        kardiacare_in_cart = false;
+    for (i = 0; i < currentCart.items.length; i ++) {
+      if (currentCart.items[i].handle === 'kardiamobile') {
+        km_in_cart = true;
+      }
+      if (currentCart.items[i].handle === 'kardiamobile6l') {
+        km6l_in_cart = true;
+      }
+      if (currentCart.items[i].handle === 'kardiacare') {
+        kardiacare_in_cart = true;
+      }
+    }
+    if ((km_in_cart || km6l_in_cart) && !kardiacare_in_cart) {
+      setTimeout(function() {
+        showKardiaCareOffer();
+      }, 1500);
+    }
+   if (kardiacare_in_cart && !km_in_cart && !km6l_in_cart) {
+     setTimeout(function() {
+        showKardiaMobileOffer();
+      }, 1500);
+     }
   }
   function searchCartCarryPod(cart) {
     var km_in_cart = false,
@@ -237,7 +267,66 @@ $(document).ready(function() {
       $('.pop-up.omron').removeClass('open');
     });
   }
-
+  function showKardiaCareOffer() {
+    switch(window.location.hostname) {
+      case 'store.alivecor.com':
+        var kardiacare_id = 32194082472001;
+        break;
+      case 'dev-alivecor-us.myshopify.com':
+        var kardiacare_id = 32759436279911;
+        break;
+      default:
+        break;
+    }
+    $('.pop-up.kardiacare-upsell').addClass('open');
+    $('#kardiacare-upsell-add').on('click', function() {
+      $.ajax({
+        type: 'POST',
+        url: '/cart/add.js',
+        data: {
+          'quantity': 1,
+          'id': kardiacare_id
+        },
+        dataType: 'json',
+        success: function() {
+          location.reload();
+        }
+      });
+    });
+    $('#kardiacare-upsell-no, #kardiacare-upsell-close').on('click', function() {
+      $('.pop-up.kardiacare-upsell').removeClass('open');
+    });
+  }
+  function showKardiaMobileOffer() {
+    switch(window.location.hostname) {
+      case 'store.alivecor.com':
+        var kardiamobile_id = 20036084615;
+        break;
+      case 'dev-alivecor-us.myshopify.com':
+        var kardiamobile_id = 57806915659;
+        break;
+      default:
+        break;
+    }
+    $('.pop-up.kardiamobile-upsell').addClass('open');
+    $('#kardiamobile-upsell-add').on('click', function() {
+      $.ajax({
+        type: 'POST',
+        url: '/cart/add.js',
+        data: {
+          'quantity': 1,
+          'id': kardiamobile_id
+        },
+        dataType: 'json',
+        success: function() {
+          location.reload();
+        }
+      });
+    });
+    $('#kardiamobile-upsell-no, #kardiamobile-upsell-close').on('click', function() {
+      $('.pop-up.kardiamobile-upsell').removeClass('open');
+    });
+  }
   function showCarryPodOffer() {
     switch(window.location.hostname) {
       case 'store.alivecor.com':
@@ -504,3 +593,28 @@ $(document).on('stamped:reviews:loaded', function(){
   $('.stamped-sort-select option[value="most-votes"]').html('Most Helpful');
   $('.stamped-sort-select option[value="least-votes"]').html('Least Helpful');
 });
+
+function bundleAddKc(event, form, id) {
+  var event = event || window.event,
+      kc_id = ''
+  event.preventDefault();
+  if (document.getElementById('kardiacare-1-year-product').checked) {
+    var kc_id = document.getElementById('kardiacare-1-year-product').value
+  }
+  if (kc_id !== '') {
+    $.ajax({
+      type: 'POST',
+      url: '/cart/add.js',
+      data: {
+        'quantity': 1,
+        'id': kc_id
+      },
+      dataType: 'json',
+      success: function() {
+        form.submit();
+      }
+    });
+  } else {
+    form.submit();
+  }
+}
