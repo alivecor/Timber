@@ -2,7 +2,10 @@
 {% if shop.domain contains '.co.uk' %}
   {% assign baseUrl = 'https://www.alivecor.co.uk' %}
 {% endif %}
-<header class="navigation" role="banner">
+<header class="navigation{% if shop.domain == 'store.alivecor.com' %} home-banner{% endif %}" role="banner">
+{% if shop.domain == 'store.alivecor.com' %}
+  {% include 'banner-discount' %}
+{% endif %}
   <div class="navigation-wrapper">
     <a href="{{ baseUrl }}" class="logo" aria-label="AliveCor Store Home">
       {% include "alivecor-logo-teal.svg" %}

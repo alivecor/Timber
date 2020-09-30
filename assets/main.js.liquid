@@ -6,9 +6,9 @@ $(document).ready(function() {
 
     // nav bar resize
     if ($('.navigation').hasClass('home-banner')) {
-      if (scrollTop >= 100) {
+      if (scrollTop >= 80) {
         $('.navigation').addClass('scrolled-nav');
-      } else if (scrollTop < 100) {
+      } else if (scrollTop < 80) {
         $('.navigation').removeClass('scrolled-nav');
       }
     } else {
@@ -196,16 +196,22 @@ $(document).ready(function() {
         kardiacare_in_cart = true;
       }
     }
-    if ((km_in_cart || km6l_in_cart) && !kardiacare_in_cart) {
+    if (km6l_in_cart && !kardiacare_in_cart) {
       setTimeout(function() {
+        $('.pop-up .kardiamobile6l-header').show();
+        showKardiaCareOffer();
+      }, 1500);
+    } else if (km_in_cart && !kardiacare_in_cart) {
+      setTimeout(function() {
+        $('.pop-up .kardiamobile-header').show();
         showKardiaCareOffer();
       }, 1500);
     }
-   if (kardiacare_in_cart && !km_in_cart && !km6l_in_cart) {
+    if (kardiacare_in_cart && !km_in_cart && !km6l_in_cart) {
      setTimeout(function() {
-        showKardiaMobileOffer();
+        showKardiaMobile6LOffer();
       }, 1500);
-     }
+    }
   }
   function searchCartCarryPod(cart) {
     var km_in_cart = false,
@@ -295,6 +301,7 @@ $(document).ready(function() {
     });
     $('#kardiacare-upsell-no, #kardiacare-upsell-close').on('click', function() {
       $('.pop-up.kardiacare-upsell').removeClass('open');
+      $('.pop-up .kardiamobile-header, .pop-up .kardiamobile6l-header').hide();
     });
   }
   function showKardiaMobileOffer() {
@@ -324,6 +331,36 @@ $(document).ready(function() {
       });
     });
     $('#kardiamobile-upsell-no, #kardiamobile-upsell-close').on('click', function() {
+      $('.pop-up.kardiamobile-upsell').removeClass('open');
+    });
+  }
+  function showKardiaMobile6LOffer() {
+    switch(window.location.hostname) {
+      case 'store.alivecor.com':
+        var kardiamobile6l_id = 28007532101697;
+        break;
+      case 'dev-alivecor-us.myshopify.com':
+        var kardiamobile6l_id = 20642078130279;
+        break;
+      default:
+        break;
+    }
+    $('.pop-up.kardiamobile-upsell').addClass('open');
+    $('#kardiamobile6l-upsell-add').on('click', function() {
+      $.ajax({
+        type: 'POST',
+        url: '/cart/add.js',
+        data: {
+          'quantity': 1,
+          'id': kardiamobile6l_id
+        },
+        dataType: 'json',
+        success: function() {
+          location.reload();
+        }
+      });
+    });
+    $('#kardiamobile6l-upsell-no, #kardiamobile6l-upsell-close').on('click', function() {
       $('.pop-up.kardiamobile-upsell').removeClass('open');
     });
   }

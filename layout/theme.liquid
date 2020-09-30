@@ -71,7 +71,7 @@
 {% comment %}
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
-<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} {% if template == 'index' and shop.locale == 'en' %}homepage{% endif %}" >
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if template == 'index' and shop.domain == 'store.alivecor.com' %} homepage{% endif %}{% if shop.domain == 'store.alivecor.com' %} en-us{% endif %}" >
   <a href="#site-content" class="visuallyhidden screen-reader-only-focusable skip-to-content">Skip to content</a>
   {% include 'gtm-body' %}
   {% include 'discount-code-body' %}
@@ -97,7 +97,7 @@
     {% include 'omron-cart-upsell' %}
     {% include 'carrypod-cart-upsell' %}
     {% include 'kardiacare-cart-upsell' %}
-    {% include 'kardiamobile-cart-upsell' %}
+    {% include 'kardiamobile6l-cart-upsell' %}
   {% endif %}
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 

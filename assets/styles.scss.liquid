@@ -27,12 +27,17 @@ $button-height: 46px;
 // Nav and body height/spacing
 $promo-height-desktop: 0;
 $promo-height-mobile: 0;
+$promo-height-desktop-us: 90px;
+$promo-height-mobile-us: 68px;
 $navigation-height-home: 55px + $promo-height-mobile;
 $navigation-height-tablet-home: 55px + $promo-height-desktop;
 $navigation-height-horizontal-home: 120px + $promo-height-desktop;
 $navigation-height: 55px;
 $navigation-height-tablet: 55px;
 $navigation-height-horizontal: 120px;
+$navigation-height-home-us: $navigation-height + $promo-height-mobile-us;
+$navigation-height-tablet-home-us: $navigation-height-tablet + $promo-height-desktop-us;
+$navigation-height-horizontal-home-us: $navigation-height-horizontal + $promo-height-desktop-us;
 
 body {
   padding-top: 55px;
@@ -56,6 +61,24 @@ body {
     }
     @media (min-width: 1200px) {
       padding-top: $navigation-height-horizontal-home;
+    }
+  }
+  &.en-us {
+    padding-top: $navigation-height-home-us;
+    @media (min-width: 768px) {
+      padding-top: $navigation-height-tablet-home-us;
+    }
+    @media (min-width: 1200px) {
+      padding-top: $navigation-height-horizontal-home-us;
+    }
+    header.navigation:not(.scrolled-nav) {
+      height: $navigation-height-home-us;
+      @media (min-width: 768px) {
+        height: $navigation-height-tablet-home-us;
+      }
+      @media (min-width: 1200px) {
+        height: $navigation-height-horizontal-home-us;
+      }
     }
   }
 }
@@ -432,6 +455,123 @@ header.navigation {
             }
           }
         }
+      }
+    }
+  }
+  &:not(.scrolled-nav) .banner {
+    background-color: $teal; 
+    min-height: 30px;
+    opacity: 100;
+    visibility: visible;
+    text-align: center;
+    padding: 2px 10px;
+    position: relative;
+    @media (min-width: 768px) {
+      height: 40px;
+      padding: 8px 20px;
+    }
+    &.red {
+      background-color: $red;
+    }
+    &.two-lines {
+      padding: 6px 10px;
+      @media (min-width: 768px) {
+        padding: 8px 20px;
+      }
+      div {
+        font-size: 14px;
+        line-height: 18px;
+        @media (min-width: 768px) {
+          font-size: 18px;
+        }
+      }
+    }
+    &.navy {
+      background-color: $navy;
+    }
+    &.heartday {
+      background-color: $purple;
+      height: $promo-height-mobile-us;
+      padding: 7px 20px;
+      @media (min-width: 768px) {
+        padding: 12px 20px;
+        height: $promo-height-desktop-us;
+      }
+      div {
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 400;
+        @media (min-width: 768px) {
+          line-height: 22px;
+          font-size: 17px;
+        }
+        span.line-break {
+          @media (min-width: 400px) {
+            display: block;
+          }
+          &.bold {
+            font-weight: normal;
+            @media (min-width: 400px) {
+              font-weight: bold;
+            }
+            @media (min-width: 768px) {
+              font-size: 18px;
+            }
+          }
+        }
+        span.period {
+          @media (min-width: 400px) {
+            display: none;
+          }
+        }
+      }
+    }
+    div {
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 1;
+      display: inline-block;
+      overflow: visible;
+      white-space: normal;
+      @media (min-width: 768px) {
+        font-size: 16px;
+        white-space: nowrap;
+      }
+      span.line-two {
+        display: block;
+      }
+      span.mobile-break {
+        display: block;
+        @media (min-width: 768px) {
+          display: inline;
+        }
+      }
+      span.light {
+        font-weight: normal;
+        // display: block;
+        font-size: 13px;
+        @media (min-width: 768px) {
+          font-size: 15px;
+          display: inline;
+        }
+      }
+      span.italic {
+        font-weight: normal;
+        font-size: 13px;
+        font-style: italic;
+        padding-left: 2px;
+        @media (min-width: 768px) {
+          font-size: 14px;
+          display: inline;
+        }
+      }
+      span.underline {
+        color: $light-teal;
+        text-decoration: underline;
+      }
+      span.bold {
+        font-weight: bold;
       }
     }
   }
@@ -1658,6 +1798,13 @@ a.play-video {
   .h3.subtitle {
     font-weight: normal;
     margin-bottom: 24px;
+    .italic {
+      font-style: italic;
+      font-size: 16px;
+    }
+  }
+  .kardiamobile-header, .kardiamobile6l-header {
+    display: none;
   }
   .upsell-table-cont {
     background-color: $grey1;
@@ -1833,84 +1980,6 @@ a.play-video {
   width: 1px;
 }
 
-.banner {
-  background-color: $teal; 
-  height: 65px;
-  opacity: 100;
-  visibility: visible;
-  text-align: center;
-  padding: 13px 20px;
-  position: relative;
-  @media (min-width: 768px) {
-    height: 50px;
-  }
-  &.red {
-    background-color: $red;
-    padding: 4px 10px;
-    @media (min-width: 367px) {
-      padding: 13px 10px;
-    }
-    @media (min-width: 768px) {
-      padding: 4px 20px;
-    }
-    @media (min-width: 950px) {
-      padding: 13px 20px;
-    }
-    div {
-      font-size: 14px;
-      overflow: all;
-      white-space: normal;
-      @media (min-width: 768px) {
-        font-size: 18px;
-        white-space: nowrap;
-      }
-      span {
-        font-weight: normal;
-        font-size: 14px;
-        @media (min-width: 610px) {
-          display: block;
-        }
-        @media (min-width: 768px) {
-          font-size: 16px;
-        }
-        @media (min-width: 950px) {
-          display: inline;
-        }
-      }
-    }
-  }
-  div {
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 20px;
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    @media (min-width: 768px) {
-      font-size: 16px;
-    }
-    &#message-1 {
-      display: block;
-      position: absolute;
-      width: calc(100% - 40px);
-      animation: showup1 14s infinite;
-    }
-    &#message-2 {
-      display: block;
-      position: absolute;
-      width: calc(100% - 40px);
-      animation: showup2 14s infinite;
-    }
-    span.mobile-break {
-      display: block;
-      @media (min-width: 768px) {
-        display: inline;
-      }
-    }
-  }
-}
-
 .screen-reader-only-focusable:active,.screen-reader-only-focusable:focus {
   clip: auto;
   height: auto;
@@ -1929,22 +1998,6 @@ a.play-video {
   top: 3px;
   z-index: 10000;
   color: $navy;
-}
-
-
-@keyframes showup1 {
-  0% { opacity: 0; }
-  10% { opacity: 1; }
-  40% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 0; }
-}
-@keyframes showup2 {
-  0% { opacity: 0; }
-  50% { opacity: 0; }
-  60% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { opacity: 0; }
 }
 
 .kardiacare-radio {
