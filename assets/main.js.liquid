@@ -196,20 +196,14 @@ $(document).ready(function() {
         kardiacare_in_cart = true;
       }
     }
-    if (km6l_in_cart && !kardiacare_in_cart) {
+    if ((km6l_in_cart || km_in_cart) && !kardiacare_in_cart) {
       setTimeout(function() {
-        $('.pop-up .kardiamobile6l-header').show();
-        showKardiaCareOffer();
-      }, 1500);
-    } else if (km_in_cart && !kardiacare_in_cart) {
-      setTimeout(function() {
-        $('.pop-up .kardiamobile-header').show();
         showKardiaCareOffer();
       }, 1500);
     }
     if (kardiacare_in_cart && !km_in_cart && !km6l_in_cart) {
      setTimeout(function() {
-        showKardiaMobile6LOffer();
+        showKardiaMobileOffer();
       }, 1500);
     }
   }
@@ -301,7 +295,6 @@ $(document).ready(function() {
     });
     $('#kardiacare-upsell-no, #kardiacare-upsell-close').on('click', function() {
       $('.pop-up.kardiacare-upsell').removeClass('open');
-      $('.pop-up .kardiamobile-header, .pop-up .kardiamobile6l-header').hide();
     });
   }
   function showKardiaMobileOffer() {
