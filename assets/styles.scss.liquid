@@ -15,6 +15,7 @@ $blue: #9DD3DF;
 $reviewGrey: #a9afb0;
 $fancyFontStack: "arno-pro-display",garamond,serif;
 $purple: #895da7;
+$light-purple: #f3eff6;
 
 // Button Vars
 $button-border-radius: 10px;
@@ -474,15 +475,23 @@ header.navigation {
       background-color: $red;
     }
     &.two-lines {
-      padding: 6px 10px;
+      padding: 8px 10px;
       @media (min-width: 768px) {
-        padding: 8px 20px;
+        padding: 11px 20px;
       }
       div {
         font-size: 14px;
-        line-height: 18px;
+        line-height: 17px;
+        display: block;
         @media (min-width: 768px) {
-          font-size: 18px;
+          font-size: 17px;
+          line-height: 18px;
+        }
+        span.line-break {
+          display: block;
+          @media (min-width: 768px) {
+            display: inline;
+          }
         }
       }
     }
@@ -1818,15 +1827,41 @@ a.play-video {
   table {
     width: 100%;
     &.product {
-      width: calc(100% - 40px);
-      margin: 0 0 20px;
+      width: calc(100% - 20px);
+      @media(min-width: 768px) {
+        margin: 0 20px;
+      }
       .premium svg {
         height: 40px;
         width: 40px;
       }
+      thead {
+        background-color: $navy;
+        border: none;
+        td.head {
+          font-weight: bold;
+          color: #fff;
+          padding: 14px 0;
+        }
+      }
+      tbody {
+        background-color: rgba(243, 239, 246, .7);
+        tr {
+          border-bottom-color: rgba(186, 191, 189, .4);
+          td:first-of-type {
+            padding-left: 24px;
+          }
+        }
+      }
       td {
         padding: 4px 0;
+        &.head, &.basic, &.premium {
+          @media(min-width: 768px) {
+            width: 115px;
+          }
+        }
       }
+
     }
     &.upsell, &.home {
       background-color: $grey1;
@@ -1837,7 +1872,6 @@ a.play-video {
       }
       thead {
         background-color: $navy;
-        padding: 20px 0;
         border: none;
         td.head {
           font-weight: bold;
@@ -2010,7 +2044,7 @@ a.play-video {
   &:checked + label {
     border: 2px solid $purple;
     box-shadow: 0 8px 15px 0 rgba(0,0,0,.2);
-    background-color: #f3eff6;
+    background-color: $light-purple;
   .checkmark {
       display: block;
       svg {

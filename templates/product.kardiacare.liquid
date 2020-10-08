@@ -35,14 +35,36 @@
   {% include 'breadcrumb' %}
   <div class="grid product-single">
     <div class="grid__item large--one-half kardiacare-table">
-      <h1 class="h2Title product-title" itemprop="name">{{ product.title }}</h1>
-      <h2 class="h3 subtitle">Unlock these exclusive features</h2>
-    {% include 'kardiacare-table-us' pageName: 'product' %}
+      <div class="product-single__photos" id="ProductPhoto">
+        {% include 'kardiacare-table-us' pageName: 'product' %}
+        <img src="{{ product.images[1] | img_url: '1200x1200' }}" alt="" id="ProductPhotoImg" style="display: none;">
+      </div>
+      {% comment %}
+        Create thumbnails if we have more than one product image
+      {% endcomment %}
+      {% if product.images.size > 1 %}
+        <ul class="product-single__thumbnails grid-uniform" id="ProductThumbs">
+          <li class="grid__item one-sixth medium--one-tenth small--one-quarter">
+            <a href="" class="kardiacare-table__thumbnail">
+              <img src="{{ 'table-thumbnail.png' | asset_img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+            </a>
+          </li>
+          {% for image in product.images %}
+            {% if forloop.first != true %}
+            <li class="grid__item one-sixth medium--one-tenth small--one-quarter">
+              <a href="{{ image.src | img_url: '1200x1200' }}" class="kardiacare-single__thumbnail">
+                <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+              </a>
+            </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
     </div>
 
     <div class="grid__item large--one-half {% if shop.locale == 'en' %}flex-order{% endif %}">
-      
-
+      <h1 class="h2Title product-title" itemprop="name">{{ product.title }}</h1>
+      <h2 class="h3 subtitle">Unlock these exclusive features</h2>
       {% comment %}
       <!-- Price stuff ======================================================== -->
       {% if product.compare_at_price_max > product.price %}
