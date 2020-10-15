@@ -71,7 +71,7 @@
 {% comment %}
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
-<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if template == 'index' and shop.domain == 'store.alivecor.com' %} homepage{% endif %}{% if shop.domain == 'store.alivecor.com' %} en-us{% endif %}" >
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if template == 'index' and shop.domain == 'store.alivecor.com' %} homepage{% endif %}{% if shop.domain == 'store.alivecor.com' %} en-us{% endif %}{% if shop.domain == 'store.alivecor.co.uk' %} en-gb{% endif %}" >
   <a href="#site-content" class="visuallyhidden screen-reader-only-focusable skip-to-content">Skip to content</a>
   {% include 'gtm-body' %}
   {% include 'discount-code-body' %}

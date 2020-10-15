@@ -1,14 +1,19 @@
-<a href="https://store.alivecor.com/cart/add?id[]=28007532101697&id[]=32194082472001"
+{% if shop.domain == 'store.alivecor.co.uk' %}
+<a href="https://store.kardiamobile.co.uk/products/kardiamobile"
   class="ga-tracker"
   data-category="Banner Click"
-  data-action="World Heart Day"
-  data-label="{{ .URL }}">
-  <div class="banner heartday two-lines">
+  data-action="Prime Day 2020"
+  data-label="{{ template }}">  
+  <div class="banner red">
     <div>
-      <span class="line-two">Celebrate World Heart Day</span>
-      <span class="line-break bold">Get $25 OFF KardiaMobile 6L when you join KardiaCare<span class="period">.</span></span>
-      <span class="line-break">Use code: <span class="bold">HEARTDAY</span>
-      <span class="italic">(US only)</span></span>
+        Get £10 OFF KardiaMobile <span class="italic">(UK only)</span>
     </div>
   </div>
 </a>
+{% else %}
+  <div class="banner red two-lines">
+    <div>
+      Save on Kardia Devices this Prime Day. <span class="line-break">Don't miss out on our lowest prices ever. <span class="italic line-break">(US only)</span></span>
+    </div>
+  </div>
+{% endif %}
