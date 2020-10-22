@@ -1,0 +1,109 @@
+{% if pageName == 'upsell' or pageName == 'home' %}
+  <div class="table-ribbon">
+    KardiaCare Features
+  </div>
+{% endif %}
+<table class="{{ pageName }}">
+  <thead>
+    <tr>
+      <td></td>
+      <td class="head">Basic</td>
+      <td class="head bold">KardiaCare<span></span></td>
+    </tr>
+    <tr class="mobile-table">
+      <td class="head" colspan="3">Basic</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="basic-row">
+      <td class="feature">
+        Unlimited ECGs
+      </td>
+      <td class="basic">
+        {% include "icon-checkmark.svg" %}
+      </td>
+      <td class="premium">
+        {% include "icon-shield.svg" %}
+        <div class="mobile-table">
+          {% include "icon-checkmark.svg" %}
+        </div>
+      </td>
+    </tr>
+    <tr class="basic-row">
+      <td class="feature">
+        ECG storage on your phone
+      </td>
+      <td class="basic">
+        {% include "icon-checkmark.svg" %}
+      </td>
+      <td class="premium">
+        {% include "icon-shield.svg" %}
+        <div class="mobile-table">
+          {% include "icon-checkmark.svg" %}
+        </div>
+      </td>
+    </tr>
+    <tr class="basic-row">
+      <td class="feature">
+        Weight and blood pressure monitoring
+      </td>
+      <td class="basic">
+        {% include "icon-checkmark.svg" %}
+      </td>
+      <td class="premium">
+        {% include "icon-shield.svg" %}
+        <div class="mobile-table">
+          {% include "icon-checkmark.svg" %}
+        </div>
+      </td>
+    </tr>
+    <tr class="mobile-table">
+      <td class="head" colspan="3">Premium<span>(Basic Included)</span></td>
+    </tr>
+    <tr>
+      <td class="feature">
+        Clinician ECG Reviews
+      </td>
+      <td></td>
+      <td class="premium">
+        {% include "icon-shield.svg" %}
+      </td>
+    </tr>
+    <tr>
+      <td class="feature">
+        Monthly Heart Health Report
+      </td>
+      <td></td>
+      <td class="premium">
+        {% include "icon-shield.svg" %}
+      </td>
+    </tr>
+    <tr>
+      <td class="feature">
+        Automatic ECG Sharing
+      </td>
+      <td></td>
+      <td class="premium">
+        {% include "icon-shield.svg" %}
+      </td>
+    </tr>
+    <tr>
+      <td class="feature">
+        Medication Tracking
+      </td>
+      <td></td>
+      <td class="premium">
+        {% include "icon-shield.svg" %}
+      </td>
+    </tr>
+    <tr>
+      <td class="feature">
+        Cloud Storage and Security
+      </td>
+      <td></td>
+      <td class="premium">
+        {% include "icon-shield.svg" %}
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,3 +1,9 @@
+{% if shop.currency == "USD" %}
+  {% assign currencySymbol = "$" %}
+{% endif %}
+{% if shop.currency == "GBP" %}
+  {% assign currencySymbol = "£" %}
+{% endif %}
 <form action="/cart/add" method="post" enctype="multipart/form-data" id="{{ product.id }}AddToCartForm1" class="AddToCartForm form-vertical">
  {% if product.variants.size > 1 %}
   {% comment %}
@@ -19,7 +25,6 @@
              value="{{variant.id}}"
              class="kardiacare-radio"
              data-index="{{forloop.index0}}"
-             data-img-url="{{variant.featured_image.src | img_url: 'large'}}"
              data-img-alt="{{variant.featured_image.alt}}"
              {% if has_checked == false or product.selected_variant.id == variant.id %}
                checked="true"
@@ -33,12 +38,12 @@
               </div>
               {% if variant.title == '1 year' %}
               <h3>{{variant.price | money}} per year</h3>
-              <p>(only $8.25/mo)</p>
+              <p>(only {{currencySymbol}}8.25/mo)</p>
               {% endif %}
               {% if variant.title == '2 year' %}
               <div class="kardiacare-ribbon">Best Value</div>
               <h3>{{variant.price | money}} for 2 years</h3>
-              <p>(only $7.46/mo)</p>
+              <p>(only {{currencySymbol}}7.46/mo)</p>
               {% endif %}
             </div>
           </label>

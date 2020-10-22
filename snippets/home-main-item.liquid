@@ -89,7 +89,11 @@
       <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
     {% else %}
       <div class="kardiacare-table">
-        {% include 'kardiacare-table-us', pageName: 'home' %}
+        {% if shop.domain == 'store.alivecor.co.uk'%}
+          {% include 'kardiacare-table-uk', pageName: 'home' %}
+        {% else %}
+          {% include 'kardiacare-table-us', pageName: 'home' %}
+        {% endif %}
       </div>
     {% endif %}
     {% comment %}
@@ -153,7 +157,7 @@
         {% if product.price_varies and product.handle != 'kardiacare' %}
           {% assign price = product.price | money %}
           {{ 'products.general.from_text_html' | t: price: price }}
-      {% elsif product.handle == 'kardiacare' %}
+        {% elsif product.handle == 'kardiacare' %}
           {{ product.price | money }} per year
         {% else %}
           {{ product.price | money }}
@@ -190,7 +194,11 @@
         {% elsif product.handle == 'kardiamobile6l' %}
           {{ 'kardiamobile6l_home.message_html' | t }}
         {% elsif product.handle == 'kardiacare' %}
-          Unlock exclusive features and gain access to advanced insights on your heart health with KardiaCare. Enjoy cardiologist EKG reviews, monthly summaries of your heart data, automatic EKG sharing, and more.
+          {% if shop.domain == 'store.alivecor.co.uk'%}
+            Unlock exclusive features and gain access to advanced insights on your heart health with KardiaCare. Enjoy regular ECG reviews, monthly summaries of your heart data, automatic ECG sharing, and more.
+          {% else %}
+            Unlock exclusive features and gain access to advanced insights on your heart health with KardiaCare. Enjoy cardiologist EKG reviews, monthly summaries of your heart data, automatic EKG sharing, and more.
+          {% endif %}
         {% else %}
           {{product.description}}
         {% endif %}

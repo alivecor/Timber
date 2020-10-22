@@ -156,10 +156,10 @@ $(document).ready(function() {
       dataType: 'json',
       success: function(cart) {
         currentCart = cart;
-        if (window.location.hostname === 'store.alivecor.com' || window.location.hostname === 'dev-alivecor-us.myshopify.com') {
-          searchCartKardiaCare(cart);
-        } else {
+        if (window.location.hostname === 'shop.de.alivecor.com') {
           searchCartCarryPod(cart);
+        } else {
+          searchCartKardiaCare(cart);
         }
       }
     });
@@ -275,6 +275,9 @@ $(document).ready(function() {
       case 'dev-alivecor-us.myshopify.com':
         var kardiacare_id = 32759436279911;
         break;
+      case 'store.alivecor.co.uk':
+        var kardiacare_id = 36449673445448;
+        break;
       default:
         break;
     }
@@ -304,6 +307,9 @@ $(document).ready(function() {
         break;
       case 'dev-alivecor-us.myshopify.com':
         var kardiamobile_id = 57806915659;
+        break;
+      case 'store.alivecor.co.uk':
+        var kardiamobile_id = 17995438657;
         break;
       default:
         break;

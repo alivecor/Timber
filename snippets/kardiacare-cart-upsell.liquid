@@ -8,9 +8,13 @@
       data-label="Cart"></a>
     <div class="text kardiacare-table">
       <div class="h2Title">KardiaCare Membership</div>
-      <div class="h3 subtitle">Gain access to exclusive features with KardiaCare.<br/>Just $99/year.</div>
+      <div class="h3 subtitle">Gain access to exclusive features with KardiaCare.<br/>{% if shop.domain == 'store.alivecor.com'%}Just $99/year.{% else %}Just £99/year.{% endif %}</div>
       <div class="upsell-table-cont">
-      {% include 'kardiacare-table-us', pageName: 'upsell' %}
+        {% if shop.domain == 'store.alivecor.com'%}
+          {% include 'kardiacare-table-us', pageName: 'upsell' %}
+        {% else %}
+          {% include 'kardiacare-table-uk', pageName: 'upsell' %}
+        {% endif %}
       </div>
       <a class="btn ga-tracker"
         id="kardiacare-upsell-add"

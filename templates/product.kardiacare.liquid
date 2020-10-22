@@ -36,7 +36,11 @@
   <div class="grid product-single">
     <div class="grid__item large--one-half kardiacare-table">
       <div class="product-single__photos" id="ProductPhoto">
-        {% include 'kardiacare-table-us' pageName: 'product' %}
+        {% if shop.domain == 'store.alivecor.co.uk'%}
+          {% include 'kardiacare-table-uk', pageName: 'product' %}
+        {% else %}
+          {% include 'kardiacare-table-us', pageName: 'product' %}
+        {% endif %}
         <img src="{{ product.images[1] | img_url: '1200x1200' }}" alt="" id="ProductPhotoImg" style="display: none;">
       </div>
       {% comment %}
