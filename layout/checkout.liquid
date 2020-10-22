@@ -23,6 +23,30 @@
 
     {{ checkout_stylesheets }}
     {{ checkout_scripts }}
+    {{ 'thank-you.scss.css' | asset_url | stylesheet_tag }}
+    <style>
+      @media (min-width: 1000px) {
+      .order-summary__section--discount {
+        position: absolute;
+        bottom: 50px;
+        border-top: none;
+        width: 100%;
+      }
+      .promoShowLink {
+        cursor: pointer;
+        position: absolute;
+        bottom: 80px;
+        font-weight: bold;
+      }
+    }
+    .alt-payment-list-container {
+      text-align: center;
+    }
+    .alternative-payment-separator {
+      font-size: 16px;
+      color: #333;
+    }
+    </style>
   </head>
   <body>
     {% include 'gtm-body' %}
@@ -60,6 +84,9 @@
         </div>
       </div>
     </div>
+
+    {% include 'thank-you-kardiacare' %}
+    {% include 'thank-you-kardia-device' %}
 
     {{ tracking_code }}
     <script>
@@ -108,7 +135,9 @@
         {% assign discountcode = discount.code %}
       {% endfor %}
       var productsArray = [],
-          kardiaCarePurchase = false;
+          kardiaCarePurchase = false,
+          kardiaDevicePurchase = false;
+
       {% for item in checkout.line_items %}
         productsArray.push({
           name: '{{ item.title }}',
@@ -118,6 +147,9 @@
         {% if item.title == 'KardiaCare Membership - 1 year' or item.title == 'KardiaCare Membership - 2 year' %}
           kardiaCarePurchase = true;
         {% endif %}
+        {% if item.title == 'KardiaMobile' or item.title == 'KardiaMobile 6L' %}
+          kardiaDevicePurchase = true;
+        {% endif %}
       {% endfor %}
       dataLayer.push({
         orderId: '{{ checkout.order_number }}',
@@ -125,10 +157,44 @@
         products: productsArray,
         discountCode: '{{ discountcode }}'
       });
-      if (kardiaCarePurchase) {
-        Shopify.Checkout.OrderStatus.addContentBox(
-          '<p>Look for your KardiaCare activation email soon.</p>'
-        )
+      var kardiaCareCheckoutMessage = '<h2><span style=\"color: #f15757;font-weight: bold;\">IMPORTANT:</span> You will need to activate your KardiaCare membership to begin using it. Check your inbox for an activation email with instructions on how to activate your membership. Your term will begin once you activate or 30 days after purchase.</h2>';
+      if (kardiaCarePurchase && !kardiaDevicePurchase) {
+        if (Shopify.Checkout.OrderStatus) {
+          Shopify.Checkout.OrderStatus.addContentBox(kardiaCareCheckoutMessage);
+        }
+        if (Shopify.Checkout.page === 'thank_you') {
+          setTimeout(function() {
+            openKardiaCareOnlyModal();
+          }, 1500);
+        }
+      }
+      if (kardiaCarePurchase && kardiaDevicePurchase) {
+        if (Shopify.Checkout.OrderStatus) {
+          Shopify.Checkout.OrderStatus.addContentBox(kardiaCareCheckoutMessage);
+        }
+        if (Shopify.Checkout.page === 'thank_you') {
+          setTimeout(function() {
+            openKardiaCareDeviceModal();
+          }, 1500);
+        }
+      }
+      function openKardiaCareOnlyModal() {
+        var modal = document.querySelector('.pop-up.kardiacare-thank-you');
+        modal.classList.add('open');
+        document.querySelectorAll('.kardiacare-thank-you-close').forEach(function(item) {
+          item.addEventListener('click', function() {
+            modal.classList.remove('open');
+          });
+        });
+      }
+      function openKardiaCareDeviceModal() {
+        var modal = document.querySelector('.pop-up.kardia-device-thank-you');
+        modal.classList.add('open');
+        document.querySelectorAll('.kardia-device-thank-you-close').forEach(function(item) {
+          item.addEventListener('click', function() {
+            modal.classList.remove('open');
+          });
+        });
       }
     </script>
   </body>

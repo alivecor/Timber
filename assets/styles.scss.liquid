@@ -408,6 +408,22 @@ header.navigation {
         color: #fff;
         font-size: 12px;
       }
+      .new-badge {
+        border-radius: 4px;
+        background-color: $purple;
+        color: #fff;
+        font-size: 11px;
+        margin-right: 5px;
+        text-transform: uppercase;
+        position: relative;
+        top: -3px;
+        padding: 1px 5px;
+        @media (min-width: 1200px) {
+          font-size: 8px;
+          padding: 1px 4px;
+          top: -2px;
+        }
+      }
     }
     &#products-menu > a, &#about-menu > a {
       display: none;
@@ -1844,9 +1860,9 @@ a.play-video {
   table {
     width: 100%;
     &.product {
-      width: calc(100% - 20px);
       @media(min-width: 768px) {
         margin: 0 20px;
+        width: calc(100% - 20px);
       }
       .premium svg {
         height: 40px;
@@ -1873,6 +1889,14 @@ a.play-video {
       td {
         padding: 4px 0;
         &.head, &.basic, &.premium {
+          @media(min-width: 768px) {
+            width: 115px;
+          }
+        }
+        &.premium {
+          @media(min-width: 375px) {
+            width: 95px;
+          }
           @media(min-width: 768px) {
             width: 115px;
           }
@@ -1905,7 +1929,7 @@ a.play-video {
       td {
         padding: 0;
         &.feature {
-      padding-left: 10px;
+          padding-left: 10px;
           line-height: 16px;
           @media(min-width: 768px) {
             padding-left: 30px;
@@ -1926,66 +1950,6 @@ a.play-video {
         }
       }
     }
-/*     &.upsell {
-      @media(max-width: 768px) {
-        thead tr {
-          &:first-of-type {
-            display: none;
-          }
-        }
-        tr.mobile-table {
-          display: table-row;
-        }
-        tbody tr {
-          &.mobile-table {
-            background-color: $navy;
-            td {
-              color: #fff;
-              padding: 10px;
-              font-weight: bold;
-              span {
-                font-weight: normal;
-                display: block;
-                font-size: 12px;
-              }
-            }
-          }
-          &.basic-row {
-            td.premium > svg {
-              display: none;
-            }
-            .mobile-table {
-              display: block;
-              svg {
-                width: 40px;
-                height: 12px;
-                path.check-1 {
-                  stroke: $grey2;
-                  stroke-width: 2px;
-                }
-              }
-            }
-          }
-        }
-        td {
-          line-height: 1;
-          height: 35px;
-          &.feature {
-            width: 100%;
-          }
-          &.basic {
-            visibility: hidden;
-          }
-          &.premium {
-            svg {
-              display: block;
-              height: 32px;
-              width: 40px;
-            }
-          }
-        }
-      }
-    } */
   }
   .table-ribbon {
     width: 220px;

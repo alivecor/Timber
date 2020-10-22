@@ -2655,6 +2655,18 @@ label.error {
   padding-top: 0;
 }
 
+.mobile-title {
+  @media(min-width: 768px) {
+    display: none;
+  }
+}
+.desktop-title {
+  display: none;
+  @media(min-width: 768px) {
+    display: block;
+  }
+}
+
 .h3.subtitle {
   font-weight: normal;
   margin-bottom: 24px;
