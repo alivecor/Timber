@@ -748,19 +748,19 @@ footer {
   a {
     display: inline-block;
     margin-left: 9px;
-    color: $teal;
-    width: 50px;
-    height: 50px;
-    border-radius: $button-border-radius;
-    background: #fff;
-    text-align: center;
-    i {
-      font-size: 26px;
-      margin-top: 12px;
+    svg {
+      width: 50px;
+      height: 50px;
     }
     &:hover {
-      color: $lighter-teal;
-      background: $teal;
+      svg {
+        .background {
+          fill: $teal;
+        }
+        .icon {
+          fill: #fff;
+        }
+      }
     }
   }
 }
