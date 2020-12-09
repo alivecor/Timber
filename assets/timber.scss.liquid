@@ -2674,6 +2674,18 @@ label.error {
     font-size: 18px;
     margin-top: 6px;
     color: $purple;
+    span {
+      font-size: 16px;
+      display: block;
+      @media(min-width: 468px) {
+        display: inline;
+        margin-left: 8px;
+      }
+      @media(min-width: 769px) and (max-width: 920px) {
+        display: block;
+        margin-left: 0;
+      }
+    }
   }
 }
 
