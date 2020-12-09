@@ -1,3 +1,6 @@
+<!-- Begin ReCharge code -->
+{% include 'subscription-cart-footer' %}
+<!-- End ReCharge code -->
 <!-- /templates/cart.liquid -->
 {% comment %}
 
@@ -10,6 +13,12 @@
 {% if cart.item_count > 0 %}
 {% assign km_in_cart = false %}
 {% assign km6l_in_cart = false %}
+{% case shop.domain %}
+  {% when 'store.alivecor.com' %}
+    {% assign kardiaCareUrl = 'https://store.alivecor.com/products/kardiacare' %}
+  {% else %}
+    {% assign kardiaCareUrl = 'https://dev-alivecor-us.myshopify.com/products/kardiacare' %}
+{% endcase %}
 
   <form action="/cart" method="post" novalidate class="cart table-wrap" id="cartform">
 
@@ -64,7 +73,11 @@
           {% endif %}
           <tr class="cart__row table__section">
             <td data-label="{{ 'customer.order.product' | t }}" data-layout="mobile-column">
-              <a href="{{ item.url }}">
+              {% if item.title contains "KardiaCare" and shop.domain != 'store.alivecor.co.uk' %}
+                <a href="{{ kardiaCareUrl }}">
+              {% else %}
+                <a href="{{ item.url }}">
+              {% endif %}
               {% comment %}
                 More image size options at:
                   - http://docs.shopify.com/themes/filters/product-img-url
@@ -77,9 +90,15 @@
             </td>
             <td>
               <h4>
-                <a href="{{ item.url }}">
-                {{ item.product.title }}
-                </a>
+                {% if item.title contains "KardiaCare" and shop.domain != 'store.alivecor.co.uk %}
+                  <a href="{{ kardiaCareUrl }}">
+                    {{ item.product.title }}
+                  </a>
+                {% else %}
+                  <a href="{{ item.url }}">
+                    {{ item.product.title }}
+                  </a>
+                {% endif %}
               </h4>
               {% unless item.variant.title contains 'Default' %}
                 <small class="cart_variant">{{ item.variant.title }}</small>
@@ -106,7 +125,7 @@
               {% assign property_size = item.properties | size %}
               {% if property_size > 0 %}
                 {% for p in item.properties %}
-                  {% unless p.last == blank %}
+                  {% unless p.last == blank or p.first == "subscription_id" or p.first == "shipping_interval_frequency" or p.first == "shipping_interval_unit_type" %}
                     {{ p.first }}:
 
                     {% comment %}

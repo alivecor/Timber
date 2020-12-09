@@ -1,80 +1,183 @@
-{% if shop.currency == "USD" %}
-  {% assign currencySymbol = "$" %}
-{% endif %}
-{% if shop.currency == "GBP" %}
-  {% assign currencySymbol = "£" %}
-{% endif %}
-<form action="/cart/add" method="post" enctype="multipart/form-data" id="{{ product.id }}AddToCartForm1" class="AddToCartForm form-vertical">
- {% if product.variants.size > 1 %}
-  {% comment %}
-    If there are variants, show the user some choices via input controls, else we will hide the inputs
-  {% endcomment %}
-    {% assign has_checked = true %}
-    {% unless product.selected_variant %}
-      {% assign has_checked = false %}
-    {% endunless %}
+<form action="/cart/add" method="post" enctype="multipart/form-data" id="kardiaCareProductAddToCartForm" class="AddToCartForm form-vertical" data-productid="{{product.id}}" onsubmit="addToCartKardiaCareRecurring(event, this)">
+{% comment %}{% if product.available %}{% include 'subscription-product' %}{% endif %}{% endcomment %}
     <div class="kardiacare-products">
-    {% for variant in product.variants %}
-      {% if variant.available %}
-        {% assign add_price = variant.price | minus: product.price %}
-        <div class="kardiacare-options">
-          <input type="radio"
-             id="{{variant.id}}"
-             name="id"
-             data-sku="{{variant.sku}}"
-             value="{{variant.id}}"
-             class="kardiacare-radio"
-             data-index="{{forloop.index0}}"
-             data-img-alt="{{variant.featured_image.alt}}"
-             {% if has_checked == false or product.selected_variant.id == variant.id %}
-               checked="true"
-               {% assign has_checked = true %}
-             {% endif %}
-             >
-          <label for="{{variant.id}}" class="kardiacare-options-label">
-            <div class="label-text">
-              <div class="checkmark">
-                {% include 'icon-checkmark.svg' %}
-              </div>
-              {% if variant.title == '1 year' %}
-              <h3>{{variant.price | money}} per year</h3>
-              <p>(only {{currencySymbol}}8.25/mo)</p>
-              {% endif %}
-              {% if variant.title == '2 year' %}
-              <div class="kardiacare-ribbon">Best Value</div>
-              <h3>{{variant.price | money}} for 2 years</h3>
-              <p>(only {{currencySymbol}}7.46/mo)</p>
-              {% endif %}
-            </div>
+      {% capture 1year_title %}
+        1-Year Plan
+      {% endcapture %}
+      {% capture 2year_title %}
+        2-Year Plan
+      {% endcapture %}
+      {% capture 1month_title %}
+        Monthly Plan
+      {% endcapture %}
+      {% assign 1month_price = "$9.99/month" %}
+      {% assign 1year_price = "$99/year" %}
+      {% assign 2year_price = "$179/2 years" %}
+      {% case shop.domain %}
+        {% when 'dev-alivecor-us.myshopify.com' %}
+          {% assign 1year_id = 32992175226983 %}
+          {% assign 1year_frequency = "12" %}
+          {% capture 1year_label %}
+          1-Year Plan ($99/year)
+          {% endcapture %}
+          {% assign 2year_id = 32992089899111 %}
+          {% assign 2year_frequency = "24" %}
+          {% capture 2year_label %}
+          2-Year Plan ($179/2 years)
+          {% endcapture %}
+          {% assign 1month_id = 32991987204199 %}
+          {% assign 1month_frequency = "1" %}
+          {% capture 1month_label %}
+          Monthly Plan ($9.99/month)
+          {% endcapture %}
+        {% when 'store.alivecor.com' %}
+          {% assign 1year_id = 32194082472001 %}
+          {% assign 1year_frequency = "12" %}
+          {% capture 1year_label %}
+          1-Year Plan ($99/year)
+          {% endcapture %}
+          {% assign 2year_id = 32283255341121 %}
+          {% assign 2year_frequency = "24" %}
+          {% capture 2year_label %}
+          2-Year Plan ($179/2 years)
+          {% endcapture %}
+          {% assign 1month_id = 32283254751297 %}
+          {% assign 1month_frequency = "1" %}
+          {% capture 1month_label %}
+          Monthly Plan ($9.99/month)
+          {% endcapture %}
+        {% else %}
+      {% endcase %}
+
+      {% if selectorType == 'radio' %}
+      <fieldset>
+        <legend class="h3">
+          Pick your plan*
+        </legend>
+        <div class="form-radio">
+          <label for="{{ 1month_id }}">
+            <input
+              id="{{ 1month_id }}"
+              name="kardiaCareMembershipLength"
+              type="radio"
+              data-frequency="{{ 1month_frequency }}"
+              data-price="{{ 1month_price }}"
+              class="field radio"
+              value="{{ 1month_id }}"
+              tabindex="0"
+              onchange=""
+              checked="checked"
+              required
+              autocomplete="off"
+             />
+             {{ 1month_label }}
           </label>
         </div>
-      {% else %}
-        <div class="variant-input-wrapper">
-        <input type="radio"
-             class="variant-input"
-             disabled>
-        <label class="form-control out-of-stock">
-          {{ variant.title }} ({{ 'products.product.sold_out' | t }})
-        </label>
-      </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-  {% else %}
-    {% for variant in product.variants %}
-    <input type="hidden"
-           id="{{variant.id}}"
-           name="id"
-           data-sku="{{variant.sku}}"
-           value="{{variant.id}}"
-           class="variant-input"
-           data-index="{{forloop.index0}}"
-           {% if forloop.first == true %}
-             checked="true"
-           {% endif %}
-           >
-    {% endfor %}
+        <div class="form-radio">
+          <label for="{{ 1year_id }}">
+            <input
+              id="{{ 1year_id }}"
+              name="kardiaCareMembershipLength"
+              type="radio"
+              data-frequency="{{ 1year_frequency }}"
+              data-price="{{ 1year_price }}"
+              class="field radio"
+              value="{{ 1year_id }}"
+              tabindex="1"
+              onchange=""
+              required
+              autocomplete="off"
+             />
+             {{ 1year_label }}
+          </label>
+        </div>
+        <div class="form-radio">
+          <label for="{{ 2year_id }}">
+            <input
+              id="{{ 2year_id }}"
+              name="kardiaCareMembershipLength"
+              type="radio"
+              data-frequency="{{ 2year_frequency }}"
+              data-price="{{ 2year_price }}"
+              class="field radio"
+              value="{{ 2year_id }}"
+              tabindex="2"
+              onchange=""
+              required
+              autocomplete="off"
+             />
+             {{ 2year_label }}
+          </label>
+        </div>
+      </fieldset>
   {% endif %}
+  {% if selectorType == 'slider' %}
+    <div class="plan-selector-container{% if location == 'upsell' %} two{% else %} three{% endif %}">
+      <div class="plan-selector" data-selected="0">
+        <div class="plan">
+          <input
+            id="{{ 1month_id }}"
+            name="kardiaCareMembershipLength"
+            type="radio"
+            data-frequency="{{ 1month_frequency }}"
+            data-price="{{ 1month_price }}"
+            class="field radio"
+            value="{{ 1month_id }}"
+            tabindex="1"
+            onchange=""
+            checked="true"
+            required
+            autocomplete="off"
+            />
+          <label for="{{ 1month_id }}">
+            {{ 1month_title }}
+          </label>
+        </div>
+        <div class="plan">
+          <input
+            id="{{ 1year_id }}"
+            name="kardiaCareMembershipLength"
+            type="radio"
+            data-frequency="{{ 1year_frequency }}"
+            data-price="{{ 1year_price }}"
+            class="field radio"
+            value="{{ 1year_id }}"
+            tabindex="1"
+            onchange=""
+            required
+            autocomplete="off"
+           />
+          <label for="{{ 1year_id }}">
+            {{ 1year_title }}
+          </label>
+        </div>
+        {% if location != 'upsell' %}
+        <div class="plan">
+          <input
+            id="{{ 2year_id }}"
+            name="kardiaCareMembershipLength"
+            type="radio"
+            data-frequency="{{ 2year_frequency }}"
+            data-price="{{ 2year_price }}"
+            class="field radio"
+            value="{{ 2year_id }}"
+            tabindex="2"
+            onchange=""
+            required
+            autocomplete="off"
+           />
+          <label for="{{ 2year_id }}">
+            {{ 2year_title }}
+          </label>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% if location == 'upsell' %}
+      <span id="KardiaCareProductPrice" class="h2Price upsell-price">{{ 1month_price }}</span>
+    {% endif %}
+  {% endif %}
+  </div>
 
   {% comment %}
   <!-- removing quantities for now -->
@@ -82,7 +185,20 @@
   <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
   {% endcomment %}
 
-  <button type="submit" name="add" id="{{product.id}}AddToCart1" class="btn addToCart" {% if sold_out %}disabled{% endif %}>
+  <button
+    type="submit"
+    name="add"
+    id="{{product.id}}AddToCart1"
+    class="btn addToCart{% if location == 'upsell' %} ga-tracker{% endif %}"
+    {% if sold_out %}
+      disabled
+    {% endif %}
+    {% if location == 'upsell' %}
+      data-category="KardiaCare Cart Pop Up Upsell - Choice"
+      data-action="Clicked Add to cart"
+      data-label="Cart"
+    {% endif %}
+   >
     <span id="AddToCartText">
     {% if sold_out %}
     {{ 'products.product.sold_out' | t }}
@@ -93,4 +209,9 @@
     {% endif %}
     </span>
   </button>
+  {% if page == 'home' %}
+    <a href="/products/kardiacare" class="view-details">
+      View Details
+    </a>
+  {% endif %}
 </form>

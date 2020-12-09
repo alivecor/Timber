@@ -158,7 +158,11 @@
           {% assign price = product.price | money %}
           {{ 'products.general.from_text_html' | t: price: price }}
         {% elsif product.handle == 'kardiacare' %}
-          {{ product.price | money }} per year
+          {% if shop.domain == 'store.alivecor.co.uk'%}
+            {{ product.price | money }} per year
+          {% else %}
+            <span id="KardiaCareProductPrice" class="noFloat">$9.99 Monthly Plan</span>
+          {% endif %}
         {% else %}
           {{ product.price | money }}
         {% endif %}
@@ -204,18 +208,20 @@
         {% endif %}
       </div>
     {% endunless %}
-
+    {% if product.handle == 'kardiacare' %}
+      <div class="disclaimer">
+        Multiple plan options available
+      </div>
+      <a href="{{ product.url }}" class="btn--secondary">
+        View Details
+      </a>
+    {% else %}
     <form action="/cart/add" method="post" enctype="multipart/form-data" id="{{product.id}}AddToCartForm" class="AddToCartForm form-vertical">
       {% if product.handle == 'kardiamobile' or product.handle == 'kardiamobile6l' %}
       <div class="disclaimer">
         <a href="{{ product.url }}/#compatibility">
         {{ 'compatibility.works_with_most' | t }}<br/>(Android & iOS)
         </a>
-      </div>
-      {% endif %}
-      {% if product.handle == 'kardiacare' %}
-      <div class="disclaimer">
-    Works with KardiaMobile and KardiaMobile 6L
       </div>
       {% endif %}
       {% if product.variants.size > 1 and product.handle != 'kardiacare' %}
@@ -274,23 +280,6 @@
                 {{ variant.title }} ({{ 'products.product.sold_out' | t }})
               </label>
             </div>
-          {% endif %}
-        {% endfor %}
-      {% elsif product.handle == 'kardiacare' %}
-        {% comment %}
-          for kardiacare we are only offering the first variant - 1 year
-        {% endcomment %}
-        {% for variant in product.variants %}
-          {% if forloop.first == true %}
-            <input type="hidden"
-               id="{{variant.id}}"
-               name="id"
-               data-sku="{{variant.sku}}"
-               value="{{variant.id}}"
-               class="variant-input"
-               data-index="{{forloop.index0}}"
-               checked="true"
-               >
           {% endif %}
         {% endfor %}
       {% else %}
@@ -371,5 +360,6 @@
         </div>
       {% endif %}
     </form>
+    {% endif %}
   </div>
 </div>

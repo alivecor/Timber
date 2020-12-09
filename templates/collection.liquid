@@ -53,7 +53,9 @@
       {% endcomment %}
       {% for product in collection.products %}
         {% if product.handle != 'kardiaband' %}
+        {% unless product.handle contains 'kardiacare' %}
         {% include 'product-grid-item', no_description: true  %}
+        {% endunless %}
         {% endif %}
 
       {% else %}

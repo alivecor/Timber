@@ -2670,6 +2670,11 @@ label.error {
 .h3.subtitle {
   font-weight: normal;
   margin-bottom: 24px;
+  &.kardiacare {
+    font-size: 18px;
+    margin-top: 6px;
+    color: $purple;
+  }
 }
 
 .product-description {
@@ -2700,12 +2705,14 @@ label.error {
   }
 }
 
-#ProductPrice {
+#ProductPrice, #KardiaCareProductPrice {
   font-weight: lighter;
   margin-right: 10px;
   line-height: 1.1em;
   float: left;
 }
+
+
 
 .cool-stuff {
   line-height: 1.2em;
@@ -4023,7 +4030,7 @@ input.quantity {
   margin-bottom: 0;
 }
 
-#ProductPrice.noFloat {
+#ProductPrice.noFloat, #KardiaCareProductPrice.noFloat {
   float: none;
 }
 
@@ -4434,7 +4441,7 @@ input.quantity {
     @media(min-width: 768px) {
       width: 600px;
     }
-    @media(max-height: 850px) {
+    @media(max-height: 870px) {
       top: 0;
       transform: translateY(0);
       -ms-transform: translateY(0);

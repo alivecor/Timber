@@ -1,0 +1,35 @@
+<!-- DEV -->
+<script>
+  var kardiacareCount = 0,
+      orderId;
+  {% for item in line_items %}
+    {% if "KardiaCare" in item.product_title %}
+      kardiacareCount += {{item.quantity}};
+      orderId = {{item.subscription_id}};
+    {% endif %}
+  {% endfor %}
+  var thankYouMessage = document.getElementsByClassName('thank-you__message')[0];
+  if (kardiacareCount === 1) {
+    var accountBtn = document.getElementsByClassName('btn btn--primary')[0];
+    if (accountBtn.href.indexOf('account/register') >= 0) {
+      var encodedEmail = encodeURIComponent('{{email}}');
+      accountBtn.href = 'https://staging.products.alivecor.com/create-account?email=' + encodedEmail + '&order_id=' + orderId;
+    }
+    thankYouMessage.innerHTML = 'You must activate your KardiaCare membership. An activation email has been sent to {{email}} with instructions. <span style=\"margin-top: 12px;display: block;\">Or simply click the button below.</span>';
+  } else {
+    var accountBtn = document.getElementsByClassName('btn btn--primary')[0];
+    accountBtn.style.display = 'none';
+    thankYouMessage.innerHTML = 'You must activate your KardiaCare membership. An activation email has been sent to {{email}} with instructions';
+  }
+  var aTags = document.getElementsByTagName('a'),
+    continueText = 'Continue',
+    printText = 'Print';
+  for (var i = 0; i < aTags.length; i++) {
+    if (aTags[i].textContent.indexOf(continueText) >= 0) {
+      aTags[i].classList.remove('btn');
+    }
+    if (aTags[i].textContent.indexOf(printText) >= 0) {
+      aTags[i].style.display = 'none';
+    }
+  }
+</script>

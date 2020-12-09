@@ -1,0 +1,126 @@
+<!-- PROD -->
+<script>
+  var kardiacareCount = 0,
+      orderId;
+  {% for item in line_items %}
+    {% if "KardiaCare" in item.product_title %}
+      kardiacareCount += {{item.quantity}};
+      orderId = '{{item.subscription_id}}';
+    {% endif %}
+  {% endfor %}
+  var thankYouMessage = document.getElementsByClassName('thank-you__message')[0];
+  if (kardiacareCount === 1) {
+    var accountBtn = document.getElementsByClassName('btn btn--primary')[0];
+    if (accountBtn.href.indexOf('account/register') >= 0) {
+      var encodedEmail = encodeURIComponent('{{email}}');
+      accountBtn.href = 'https://products.alivecor.com/create-account?email=' + encodedEmail + '&order_id=' + orderId;
+    }
+    thankYouMessage.innerHTML = 'You must activate your KardiaCare membership. An activation email has been sent to {{email}} with instructions. <span style=\"margin-top: 12px;display: block;\">Or simply click the button below.</span>';
+  } else {
+    var accountBtn = document.getElementsByClassName('btn btn--primary')[0];
+    accountBtn.style.display = 'none';
+    thankYouMessage.innerHTML = 'You must activate your KardiaCare membership. An activation email has been sent to {{email}} with instructions';
+  }
+  var aTags = document.getElementsByTagName('a'),
+    continueText = 'Continue',
+    printText = 'Print';
+  for (var i = 0; i < aTags.length; i++) {
+    if (aTags[i].textContent.indexOf(continueText) >= 0) {
+      aTags[i].classList.remove('btn');
+    }
+    if (aTags[i].textContent.indexOf(printText) >= 0) {
+      aTags[i].style.display = 'none';
+    }
+  }
+</script>
+
+<!-- start Omniconvert.com code -->
+<link rel="dns-prefetch" href="//app.omniconvert.com"/>
+<script type="text/javascript" src="//cdn.omniconvert.com/js/k192b35.js"></script>
+<!-- end Omniconvert.com code -->
+
+<!-- Only run conversion scripts on first time accessing page -->
+{% if first_time_load %}
+
+ {% if attributes.mktz_custom %}
+ <!-- start conversion goal -->
+ <script>
+     var _mktz = _mktz || [];
+     var mktzCustom = JSON.parse('{{ attributes.mktz_custom }}'.replace(/&quot;/g, '"').replace(/&#34;/g, '"'));
+     mktzCustom.transaction = 'r_{{ order_number }}';
+     _mktz._Goal('sale', '{{ total_price }}', mktzCustom);
+ </script>
+ <!-- end conversion goal -->
+ {% endif %}
+
+{% endif %}
+
+
+
+<!-- Bazaarvoice Pixel code -->
+<script type = "text/javascript" >
+ if (Shopify.Checkout.step == 'thank_you')
+ {
+ window.bvCallback = function(BV)
+ {
+ BV.pixel.trackTransaction(
+ {
+ "orderId": "{{ order_number }}",
+ "total": "{{ subtotal_price }}",
+ "shipping": "{{ total_shipping }}",
+ "discount": "{{ total_discounts }}",
+ "tax": "{{ total_tax }}",
+ "currency": "{{ shop.currency }}",
+ "items": [
+ {% for line_item in line_items %}
+ {
+ "productId": "{{ line_item.product_id }}",
+ "name": "{{ line_item.title }}",
+ "price": "{{ line_item.price }}",
+ "discount": "{{ line_item.total_discount }}",
+ "quantity": "{{ line_item.quantity }}",
+ },
+ {% endfor %}],
+ {% if customer.first_name %}
+ "nickname": "{{ customer.first_name }}",
+ {% endif %}
+ "email": "{{ customer.email }}",
+ "locale": "en_US",
+ "source": "Shopify_BV_Plugin",
+ "sourceVersion": "Shopify_BV_Plugin_V2.0"
+ });
+ };
+ }
+</script>
+<!-- Bazaarvoice Shopify Integration Version 2.0 -->
+<!-- End Bazaarvoice Pixel code -->
+
+<!--ShareASale Referral pixels -->
+<img src="https://shareasale.com/sale.cfm?amount={{subtotal_price}}&tracking={{order_number}}&transtype=sale&merchantID=66320&couponcode={{discount_code}}" width="1" height="1">
+<!-- ShareASale JS -->
+<script type="text/javascript" src="https://shareasale-analytics.com/j.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Ads: 974562942 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-974562942"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-974562942');
+</script>
+
+<!-- Event snippet for Purchases [BOFU] conversion page -->
+<script>
+  gtag('event', 'conversion', { 'send_to': 'AW-974562942/usB8CP2Vh2oQ_sza0AM', 'value': '{{subtotal_price}}', 'currency': 'USD', 'transaction_id': '{{order_number}}' });
+</script>
+
+
+<!-- Bing Yahoo Conversion Code Tracking -->
+<script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"25120500"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+
+<script>
+   window.uetq = window.uetq || []; 
+   window.uetq.push('event', '', { 'revenue_value': {{ subtotal_price }}, 'currency': '{{ shop.currency }}' }); 
+</script>
+<!-- End Bing Yahoo Conversion Tracking -->

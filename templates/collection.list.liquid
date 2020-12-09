@@ -59,7 +59,7 @@
       <!-- begin product list output -->
       {% for product in collection.products %}
         {% if product.handle != 'kardiaband' %}
-
+    {% unless product.handle contains 'kardiacare' %}
         {% comment %}
           Check if the product is on sale and set a variable to be used below.
         {% endcomment %}
@@ -135,6 +135,7 @@
             </div>
           </div>
         </div>
+        {% endunless %}
         {% endif %}
       {% else %}
 

@@ -29,8 +29,10 @@
 
     <div class="grid">
       {% for product in collection.products limit:5 %}
+        {% unless product.handle contains 'kardiacare' %}
         {% assign grid_item_width = 'large--one-fifth medium--one-half' %}
         {% include 'product-grid-item', no_description: true  %}
+        {% endunless %}
       {% endfor %}
     </div>
 

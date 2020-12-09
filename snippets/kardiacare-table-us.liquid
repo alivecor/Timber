@@ -114,5 +114,17 @@
         {% include "icon-shield.svg" %}
       </td>
     </tr>
+    {% if pageName != 'home' %}
+    <tr class="coming-soon">
+      <td class="feature">
+        Advanced Determinations
+      </td>
+      <td></td>
+      <td class="premium">
+        {% include "icon-shield.svg" %}
+        <span>Coming soon</span>
+      </td>
+    </tr>
+    {% endif %}
   </tbody>
 </table>
