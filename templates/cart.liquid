@@ -202,7 +202,7 @@
           </p>
           <span class="shipping-desc">
           {% if km-oos == false and km-six-oos == false %}
-            2-5 business days (USPS First Class)
+            2-5 business days (UPS Ground)
           {% endif %}
           </span>
         {% else %}
@@ -218,7 +218,6 @@
       </div>
     </div>
   </form>
-  {% comment %}
   {% if km_in_cart %}
   <div class="km-accessories wrapper">
     <div class="one-half medium--one-whole small--one-whole cart-recommended-accessories">
@@ -227,7 +226,6 @@
     </div>
   </div>
   {% endif %}
-  {% endcomment %}
 {% else %}
   {% comment %}
     The cart is empty

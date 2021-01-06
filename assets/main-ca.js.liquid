@@ -7,8 +7,20 @@ $(document).ready(function() {
   adPersonalization = Cookies.get('ad_personalization');
   caVisitor = Cookies.get('ca_visitor');
 
-  cityLookupSuccess = function(location) {
-    var inCA = Object.values(location["subdivisions"][0].names).includes("California")
+  function includes(container, value) {
+    var returnValue = false;
+    var pos = container.indexOf(value);
+    if (pos >= 0) {
+      returnValue = true;
+    }
+    return returnValue;
+  }
+
+  var cityLookupSuccess = function(location) {
+    var names = Object.keys(location["subdivisions"][0].names).map(function(e) {
+      return location["subdivisions"][0].names[e]
+    });
+    var inCA = includes(names, "California");
     Cookies.set('ca_visitor', inCA, {
       expires: 365,
       domain: 'alivecor.com'
