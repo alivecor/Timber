@@ -186,6 +186,9 @@
       </tbody>
     </table>
     <div class="wrapper grid cart__row">
+      {% if shop.domain == 'store.alivecor.com' %}
+      <p class="shipping-note">Shipping address must be a physical address, UPS cannot ship to PO boxes.</p>
+      {% endif %}
       <div class="text-right">
         <p class="cart-totals">
           <span class="{% if shop.locale == 'en' %}mobile-left {% endif %}cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
