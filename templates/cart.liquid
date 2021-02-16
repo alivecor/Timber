@@ -267,21 +267,21 @@
 </script>
 
 <!-- Omniconvert Start -->
+<!-- conversions tracking code on cart; more info at https://www.omniconvert.com/help/kba/integrate-with-shopify/ -->
 <script>
-document.onreadystatechange = function () {
-  if (document.readyState == 'complete') {
-    var variations = _mktz.getSeenVariations();
-    var visitor    = _mktz.getVisitor();
-    if (variations && visitor) {
-      var experimentData = {
-        'uid': visitor.uid,
-        'session': visitor.session_id,
-        'last_variation': variations.join('|')
-      };
-
-      $('#mktz_custom').val(JSON.stringify(experimentData));
+  document.onreadystatechange = function () {
+    if (document.readyState == 'complete' && typeof _mktz.getSeenVariations === 'function') {
+      var variations = _mktz.getSeenVariations();
+      var visitor = _mktz.getVisitor();
+      if (variations && visitor) {
+        var experimentData = {
+          'uid': visitor.uid,
+          'session': visitor.session_id,
+          'last_variation': variations.join('|')
+        };
+        $('#mktz_custom').val(JSON.stringify(experimentData));
+      }
     }
-  }
-};
+  };
 </script>
 <!-- Omniconvert End -->
