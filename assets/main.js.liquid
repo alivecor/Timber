@@ -39,6 +39,15 @@ $(document).ready(function() {
     $('#js-mobile-menu').attr('aria-expanded', false);
   });
 
+  $('#products-menu, #about-menu').on('click', function() {
+    if ($(this).hasClass('open')) {
+      $(this).removeClass('open');
+    } else {
+      $(this).siblings().removeClass('open');
+      $(this).addClass('open');
+    }
+  });
+
   // tabbable navigation
   var topLevelLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-link > a'), 0);
   topLevelLinks.forEach(function(link) {

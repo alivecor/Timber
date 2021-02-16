@@ -340,11 +340,11 @@ header.navigation {
     z-index: 9999;
     margin-bottom: 18px;
     position: relative;
+    text-transform: uppercase;
     @media (max-height: 420px) {
       margin-bottom: 0;
     }
     @media (min-width: 1200px) {
-      text-transform: uppercase;
       line-height: 40px;
       display: inline;
       text-decoration: none;
@@ -402,7 +402,9 @@ header.navigation {
 
       &:focus,
       &:hover {
-        color: $teal;
+        @media (min-width: 1200px) {
+          color: $teal;
+        }
       }
       &.buy-now {
         color: #fff;
@@ -425,24 +427,68 @@ header.navigation {
         }
       }
     }
-    &#products-menu > a, &#about-menu > a {
-      display: none;
+    &#about-menu {
       @media (min-width: 1200px) {
+        order: -1;
+      }
+    }
+    &#products-menu .dropdown ul {
+      @media (min-width: 1200px) {
+        display: flex;
+        flex-direction: column;
+        li:first-child {
+          order: 4;
+          border-bottom: none;
+        }
+        li:last-child {
+          border-bottom: 1px solid #EAEEEB;
+        }
+      }
+    }
+    &#products-menu > a, &#about-menu > a {
+      &:after {
+        content: "";
+        background: center / contain url('https://cdn.shopify.com/s/files/1/0368/7037/files/icon-caret.svg?v=1613435102') no-repeat;
         display: inline-block;
+        width: 14px;
+        height: 20px;
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+        position: relative;
+        right: -15px;
+        top: 3px;
       }
-      &:hover {
-        cursor: pointer;
+      @media (min-width: 1200px) {
+        &:after {
+          background: none;
+          display: none;
+        }
       }
+    }
+    &#products-menu.open > a, &#about-menu.open > a {
+      &:after {
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+      }
+    }
+    &#products-menu.open .dropdown,
+    &#about-menu.open .dropdown {
+      display: block;
     }
     &#products-menu:hover .dropdown,
     &#products-menu.focus .dropdown,
     &#about-menu:hover .dropdown,
     &#about-menu.focus .dropdown {
-      display: block;
+      @media (min-width: 1200px) {
+        display: block;
+      }
     }
     .dropdown {
+      display: none;
+      background-color: #325065;
+      padding: 14px 0;
+      margin-top: 8px;
       @media (min-width: 1200px) {
-        display: none;
         position: absolute;
         left: -21px;
         text-align: left;
@@ -452,9 +498,9 @@ header.navigation {
         min-width: 220px;
         top: 30px;
         margin-top: 13px;
+        box-shadow: 0px 6px 15px 6px rgba(0,0,0,0.08);
         -webkit-box-shadow: 0px 6px 15px 6px rgba(0,0,0,0.08);
         -moz-box-shadow: 0px 6px 15px 6px rgba(0,0,0,0.08);
-        box-shadow: 0px 6px 15px 6px rgba(0,0,0,0.08);
       }
       &.show {
         display: block;
@@ -464,18 +510,19 @@ header.navigation {
         margin: 0;
         padding: 0;
         li {
-          padding: 0;
           margin-bottom: 18px;
+          padding: 0;
           line-height: 36px;
+          text-transform: none;
           @media (min-width: 1200px) {
             margin: 0;
             line-height: 30px;
-            text-transform: none;
             border-bottom: 1px solid #EAEEEB;
             padding: 5px 0;
           }
           &:last-child {
             border-bottom: none;
+            margin-bottom: 0;
           }
           &.active a {
             color: $teal;
