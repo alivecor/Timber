@@ -13,12 +13,11 @@
 {% if cart.item_count > 0 %}
 {% assign km_in_cart = false %}
 {% assign km6l_in_cart = false %}
-{% case shop.domain %}
-  {% when 'store.alivecor.com' %}
-    {% assign kardiaCareUrl = 'https://store.alivecor.com/products/kardiacare' %}
-  {% else %}
-    {% assign kardiaCareUrl = 'https://dev-alivecor-us.myshopify.com/products/kardiacare' %}
-{% endcase %}
+{% assign kardiaCareUrl = '/products/kardiacare' %}
+{% assign canadaShop = false %}
+{% if request.host == 'shop.kardiamobile.ca' %}
+  {% assign canadaShop = true %}
+{% endif %}
 
   <form action="/cart" method="post" novalidate class="cart table-wrap" id="cartform">
 
@@ -187,7 +186,12 @@
     </table>
     <div class="wrapper grid cart__row">
       {% if shop.domain == 'store.alivecor.com' %}
-      <p class="shipping-note">Shipping address must be a physical address, UPS cannot ship to PO boxes.</p>
+      <p class="shipping-note">
+        {% if canadaShop %}
+        *If shipping to Canada please allow up to 3 weeks for delivery.<br>
+        {% endif %}
+        Shipping address must be a physical address, UPS cannot ship to PO boxes.
+      </p>
       {% endif %}
       <div class="text-right">
         <p class="cart-totals">
@@ -201,10 +205,10 @@
           </p>
           <p class="cart-totals">
             <span class="mobile-left">Shipping</span>
-            <span class="right">FREE</span>
+            <span class="right">FREE{% if canadaShop %}*{% endif %}</span>
           </p>
           <span class="shipping-desc">
-          {% if km-oos == false and km-six-oos == false %}
+          {% if km-oos == false and km-six-oos == false and canadaShop == false %}
             2-5 business days (UPS Ground)
           {% endif %}
           </span>

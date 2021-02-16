@@ -285,6 +285,12 @@ $(document).ready(function() {
         kardiacare_1year_id = 32194082472001;
         kardiacare_2year_id = 32283255341121;
         break;
+      case 'shop.kardiamobile.ca':
+        // same as us
+        kardiacare_1month_id = 32283254751297;
+        kardiacare_1year_id = 32194082472001;
+        kardiacare_2year_id = 32283255341121;
+        break;
       case 'dev-alivecor-us.myshopify.com':
         kardiacare_1month_id = 32991987204199;
         kardiacare_1year_id = 32992175226983;
@@ -351,6 +357,10 @@ $(document).ready(function() {
   function showKardiaMobileOffer() {
     switch(window.location.hostname) {
       case 'store.alivecor.com':
+        var kardiamobile_id = 20036084615;
+        break;
+      case 'shop.kardiamobile.ca':
+        // same as us
         var kardiamobile_id = 20036084615;
         break;
       case 'dev-alivecor-us.myshopify.com':
@@ -509,6 +519,12 @@ $(document).ready(function() {
       domain: 'alivecor.com'
     });
   };
+  setCookieCa = function(value) {
+    Cookies.set('accepts_cookies', value, {
+      expires: 365,
+      domain: 'kardiamobile.ca'
+    });
+  };
 
   // accepts_cookies cookie exists
   if (acceptsCookies !== undefined) {
@@ -516,7 +532,11 @@ $(document).ready(function() {
     cookiesMsg.remove();
   } else {
     cookiesMsg.removeClass('hideBanner');
-    setCookie(true);
+    if (window.location.hostname === 'shop.kardiamobile.ca') {
+      setCookieCa(true);
+    } else {
+      setCookie(true);
+    }
   }
 
   //Newsletter signup

@@ -48,6 +48,20 @@
           {% endcapture %}
         {% else %}
       {% endcase %}
+      {% if request.host == 'shop.kardiamobile.ca' %}
+        {% capture 1year_label %}
+        1-Year Plan ($128/year)
+        {% endcapture %}
+        {% capture 2year_label %}
+        2-Year Plan ($231/2 years)
+        {% endcapture %}
+        {% capture 1month_label %}
+        Monthly Plan ($13/month)
+        {% endcapture %}
+        {% assign 1month_price = "$13/month" %}
+        {% assign 1year_price = "$128/year" %}
+        {% assign 2year_price = "$231/2 years" %}
+      {% endif %}
 
       {% if selectorType == 'radio' %}
       <fieldset>

@@ -44,7 +44,7 @@
       data-label="Cart"></a>
     <div class="text kardiacare-table">
       <div class="h2Title">KardiaCare Membership</div>
-      <div class="h3 subtitle">Get a <b>free month</b> when you join today.<br/>{% if shop.domain == 'store.alivecor.co.uk'%}Only £9.99/month.{% else %}Only $9.99/month.{% endif %}</div>
+      <div class="h3 subtitle">Get a <b>free month</b> when you join today.<br/>{% if shop.domain == 'store.alivecor.co.uk'%}Only £9.99/month.{% elsif request.host == 'shop.kardiamobile.ca' %}Only $13/month.{% else %}Only $9.99/month.{% endif %}</div>
       <div class="upsell-table-cont">
         {% if shop.domain == 'store.alivecor.co.uk'%}
           {% include 'kardiacare-table-uk', pageName: 'upsell' %}

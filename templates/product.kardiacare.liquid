@@ -93,7 +93,11 @@
       {% endif %}
     {% endcomment %}
     <span id="KardiaCareProductPrice" class="h2Price noFloat">
-      $9.99/month
+      {% if request.host == 'shop.kardiamobile.ca' %}
+        $13/month
+      {% else %}
+        $9.99/month
+      {% endif %}
     </span>
     <h2 class="h3 subtitle kardiacare">Get your <b>second month free</b> when you join today.</h2>
 

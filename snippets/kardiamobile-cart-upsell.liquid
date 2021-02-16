@@ -13,13 +13,10 @@
       <p class="h4Price price">
         {% if shop.domain == 'store.alivecor.co.uk'%}
         £99.00
+        {% elsif request.host == 'shop.kardiamobile.ca' %}
+        $115.00
         {% else %}
-        <span class="red">
-          $ 89.00
-        </span>
-        <span class="strikeout">
-          $ 99.00
-        </span>
+        $89.00
         {% endif %}
       </p>
       <a class="btn ga-tracker"

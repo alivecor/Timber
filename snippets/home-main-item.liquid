@@ -37,6 +37,7 @@
   {% assign sold_out = false %}
 {% endif %}
 
+{% unless request.host == 'shop.kardiamobile.ca' and product.handle == 'omron-evolv' %}
 <div class="home-main-item grid__item {{ grid_item_width }}">
 
   {% comment %}
@@ -118,11 +119,13 @@
         </div>
       {% endif %}
     {% endif %}
+    {% comment %}
     {% if holiday_ribbon_us %}
       <div class="ribbon">
         Save $10
       </div>
     {% endif %}
+    {% endcomment %}
     {% if holiday_ribbon_uk %}
       <div class="ribbon">
         Sale On Now
@@ -160,6 +163,8 @@
         {% elsif product.handle == 'kardiacare' %}
           {% if shop.domain == 'store.alivecor.co.uk'%}
             {{ product.price | money }} per year
+          {% elsif request.host == 'shop.kardiamobile.ca' %}
+            <span id="KardiaCareProductPrice" class="noFloat">$13 Monthly Plan</span>
           {% else %}
             <span id="KardiaCareProductPrice" class="noFloat">$9.99 Monthly Plan</span>
           {% endif %}
@@ -363,3 +368,4 @@
     {% endif %}
   </div>
 </div>
+{% endunless %}

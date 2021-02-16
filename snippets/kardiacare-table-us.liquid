@@ -60,6 +60,7 @@
     <tr class="mobile-table">
       <td class="head" colspan="3">Premium<span>(Basic Included)</span></td>
     </tr>
+    {% if request.host != 'shop.kardiamobile.ca' %}
     <tr>
       <td class="feature">
         Cardiologist EKG Reviews
@@ -69,6 +70,7 @@
         {% include "icon-shield.svg" %}
       </td>
     </tr>
+    {% endif %}
     <tr>
       <td class="feature">
         Monthly Heart Health Report
@@ -105,6 +107,7 @@
         {% include "icon-shield.svg" %}
       </td>
     </tr>
+    {% if request.host != 'shop.kardiamobile.ca' %}
     <tr>
       <td class="feature">
         Device Replacement
@@ -114,17 +117,15 @@
         {% include "icon-shield.svg" %}
       </td>
     </tr>
-    {% if pageName != 'home' %}
-    <tr class="coming-soon">
+    {% endif %}
+    <tr>
       <td class="feature">
         Advanced Determinations
       </td>
       <td></td>
       <td class="premium">
         {% include "icon-shield.svg" %}
-        <span>Coming soon</span>
       </td>
     </tr>
-    {% endif %}
   </tbody>
 </table>
